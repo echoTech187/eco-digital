@@ -1,0 +1,215 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+  WhatsappIcon,
+  LaptopProgrammingIcon,
+  ShieldCheckIcon,
+  ArrowRight01Icon,
+} from "@hugeicons/core-free-icons";
+import logoMarkImg from "../../../public/images/logo/logo-mark.png";
+
+const WA_NUMBER = "6287875856918";
+const WA_DISPLAY = "0878-7585-6918";
+
+export default function ContactPage() {
+  const [name, setName] = useState("");
+  const [waOrEmail, setWaOrEmail] = useState("");
+  const [category, setCategory] = useState("Riset & Tugas Akhir (SPK)");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const formatted = `Halo EcoDigital, saya ingin konsultasi sistem melalui formulir web:
+• Nama: ${name || "Calon Klien"}
+• Kontak: ${waOrEmail || "-"}
+• Kategori: ${category}
+• Pesan/Kebutuhan: ${message || "Mohon info estimasi dan ketersediaan waktu."}`;
+
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(formatted)}`, "_blank");
+  };
+
+  return (
+    <div className="relative min-h-screen w-full overflow-hidden bg-[#060A14] text-white">
+      {/* Background Ambient Glow */}
+      <div className="pointer-events-none absolute -left-40 top-1/4 h-[600px] w-[600px] rounded-full bg-emerald-500/15 blur-[140px]" />
+      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-[600px] w-[600px] rounded-full bg-blue-500/15 blur-[140px]" />
+
+      {/* Header */}
+      <header className="relative z-30 flex h-20 w-full items-center justify-between px-6 sm:px-10 lg:px-14 border-b border-white/10 bg-[#060A14]/90 backdrop-blur-xl">
+        <Link href="/" className="group flex items-center gap-3">
+          <Image
+            src={logoMarkImg}
+            alt="EcoDigital"
+            width={80}
+            height={94}
+            priority
+            unoptimized
+            className="h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-md"
+          />
+          <div className="flex flex-col">
+            <span className="text-base font-black tracking-tight text-white group-hover:text-emerald-300 transition-colors">
+              EcoDigital
+            </span>
+            <span className="text-[10px] font-semibold tracking-wider text-emerald-400/90 -mt-0.5">
+              Software & IT Partner
+            </span>
+          </div>
+        </Link>
+        <Link
+          href="/"
+          className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold text-white/90 backdrop-blur-md transition-all hover:bg-white/20 hover:text-white"
+        >
+          ← Kembali ke Beranda
+        </Link>
+      </header>
+
+      {/* Main Content */}
+      <main className="relative z-20 mx-auto max-w-5xl px-6 py-12 lg:py-16">
+        <div className="text-center">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
+            Hubungi Tim EcoDigital
+          </span>
+          <h1 className="mt-3 text-3xl font-black text-white sm:text-4xl lg:text-5xl">
+            Konsultasikan Kebutuhan Sistem Anda
+          </h1>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/70">
+            Mulai dari ide awal riset tugas akhir/skripsi, otomasi operasional instansi dinas & sekolah, hingga prototipe aplikasi mobile dan startup bisnis Anda.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-8 md:grid-cols-5 items-start">
+          {/* Contact Details Side */}
+          <div className="space-y-4 md:col-span-2">
+            {/* WhatsApp Card */}
+            <div className="rounded-3xl border border-emerald-400/30 bg-emerald-950/20 p-6 backdrop-blur-xl">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400">
+                <HugeiconsIcon icon={WhatsappIcon} size={24} />
+              </div>
+              <h3 className="mt-3 text-base font-bold text-white">WhatsApp Resmi EcoDigital</h3>
+              <p className="mt-1 text-xs text-white/70">
+                Respon cepat untuk diskusi fitur, estimasi biaya, dan jadwal pengerjaan.
+              </p>
+              <a
+                href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
+                  "Halo EcoDigital, saya ingin konsultasi kebutuhan pembuatan website / aplikasi."
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#10B981] hover:underline"
+              >
+                <span>Chat WA: {WA_DISPLAY}</span>
+                <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
+              </a>
+            </div>
+
+            {/* Sesi Bedah Koding & Konsultasi Card */}
+            <div className="rounded-3xl border border-white/15 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500/20 text-cyan-400">
+                <HugeiconsIcon icon={LaptopProgrammingIcon} size={24} />
+              </div>
+              <h3 className="mt-3 text-base font-bold text-white">Sesi Bedah Koding</h3>
+              <p className="mt-1 text-xs text-white/60">
+                Konsultasikan rancangan arsitektur, pemilihan tech stack, hingga sesi bimbingan teknis 1-on-1 sampai paham.
+              </p>
+              <a
+                href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
+                  "Halo EcoDigital, saya ingin konsultasi teknis & jadwal sesi bedah koding sistem."
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:underline"
+              >
+                <span>Jadwalkan Sesi Konsultasi</span>
+                <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
+              </a>
+            </div>
+
+            {/* Garansi Card */}
+            <div className="rounded-3xl border border-white/15 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400">
+                <HugeiconsIcon icon={ShieldCheckIcon} size={24} />
+              </div>
+              <h3 className="mt-3 text-base font-bold text-white">Garansi & Sesi Bimbingan</h3>
+              <p className="mt-1 text-xs text-white/60">
+                100% full source code tanpa enkripsi, garansi bug fixing, dan bimbingan bedah koding 1-on-1 sampai paham.
+              </p>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="rounded-[32px] border border-white/20 bg-white/[0.06] p-8 shadow-2xl backdrop-blur-2xl md:col-span-3">
+            <h2 className="text-xl font-bold text-white">Kirim Formulir Brief</h2>
+            <p className="mt-1 text-xs text-white/60">
+              Isi formulir di bawah ini untuk tersambung ke WhatsApp developer EcoDigital dengan rincian kebutuhan Anda.
+            </p>
+
+            <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+              <div>
+                <label className="text-xs font-semibold text-white/80">Nama Lengkap</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Nama Anda atau Instansi"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="mt-1 w-full rounded-2xl border border-white/20 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-[#10B981] focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-white/80">Nomor WhatsApp / Email Kontak</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="0812xxxxxx atau email@anda.com"
+                  value={waOrEmail}
+                  onChange={(e) => setWaOrEmail(e.target.value)}
+                  className="mt-1 w-full rounded-2xl border border-white/20 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-[#10B981] focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-white/80">Kategori Proyek</label>
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="mt-1 w-full rounded-2xl border border-white/20 bg-[#060A14] px-4 py-3 text-sm text-white focus:border-[#10B981] focus:outline-none"
+                >
+                  <option value="Riset & Tugas Akhir (SPK)">Riset & Tugas Akhir / Skripsi (SPK / Algoritma)</option>
+                  <option value="Website Profil UMKM / Bisnis">Website Profil UMKM & Bisnis</option>
+                  <option value="Sistem Informasi & Dashboard Admin">Sistem Informasi & Dashboard Admin Operasional</option>
+                  <option value="Aplikasi Mobile Android (Flutter)">Aplikasi Mobile Android (Flutter)</option>
+                  <option value="Perbaikan Bug / Modul Tambahan">Perbaikan Bug & Penambahan Modul Koding</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-white/80">Rincian Kebutuhan / Judul Proyek</label>
+                <textarea
+                  rows={4}
+                  required
+                  placeholder="Ceritakan judul tugas akhir, proses bisnis, atau fitur sistem yang ingin dibuat..."
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="mt-1 w-full rounded-2xl border border-white/20 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-[#10B981] focus:outline-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-xl shadow-emerald-950/40 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95"
+              >
+                <HugeiconsIcon icon={WhatsappIcon} size={18} />
+                <span>Kirim Brief ke WhatsApp EcoDigital →</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
