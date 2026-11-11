@@ -101,7 +101,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#10B981] hover:underline"
               >
-                <span>Chat WA: {WA_DISPLAY}</span>
+                <span>Ngobrol via Whatsapp : {WA_DISPLAY}</span>
                 <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
               </a>
             </div>
