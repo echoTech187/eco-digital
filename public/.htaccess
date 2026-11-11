@@ -1,4 +1,41 @@
-# Proper MIME types for Next.js static export
+# ==============================================================================
+# ecoDigital Production Apache Web Server Configuration (.htaccess)
+# Hardened in accordance with OWASP Top 10 (A05: Security Misconfiguration)
+# ==============================================================================
+
+# Disable directory browsing & server signatures
+Options -Indexes
+ServerSignature Off
+
+# Block access to hidden files (e.g., .git, .env, .htaccess itself)
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# ------------------------------------------------------------------------------
+# 1. HTTP Security Headers (OWASP Hardening)
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # Clickjacking Protection (A05 / CWE-1021)
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # MIME Sniffing Prevention (A05 / CWE-693)
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Referrer Policy: protects URL parameter & path leakage
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions Policy: restrict unauthorized hardware/API access
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # Cross-Site Scripting Filter for legacy browsers
+  Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 2. Proper MIME Types for Next.js Static Export
+# ------------------------------------------------------------------------------
 <IfModule mod_mime.c>
   AddType text/css .css
   AddType application/javascript .js
@@ -8,6 +45,9 @@
   AddType text/plain .txt
 </IfModule>
 
+# ------------------------------------------------------------------------------
+# 3. Next.js Routing & Rewrite Rules
+# ------------------------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -21,7 +61,7 @@
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Rewrite clean URLs to .html files
+  # Rewrite clean URLs to .html files (e.g. /contact -> /contact.html)
   RewriteCond %{DOCUMENT_ROOT}/$1.html -f
   RewriteRule ^(.*)$ $1.html [L]
 
