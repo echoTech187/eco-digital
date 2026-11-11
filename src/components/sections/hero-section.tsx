@@ -143,8 +143,8 @@ export function HeroSection() {
             </AnimateOnScroll>
           </div>
 
-          {/* Right Column: Founder Photo & Mockup Preview (Visual Asli) */}
-          <div className="lg:col-span-5 xl:col-span-5 relative flex items-end justify-center lg:justify-end mt-4 lg:mt-0">
+          {/* Right Column: Founder Photo & Mockup Preview (Visual Asli - Hidden di HP, Muncul di Desktop/Laptop) */}
+          <div className="hidden lg:flex lg:col-span-5 xl:col-span-5 relative items-end justify-center lg:justify-end mt-4 lg:mt-0">
             <AnimateOnScroll
               preset="fade-left"
               duration={0.7}

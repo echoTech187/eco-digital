@@ -116,7 +116,7 @@ Kira-kira bisa dibantu? Terima kasih!`;
                   className="w-full flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 py-4 px-6 text-sm sm:text-base font-extrabold text-white shadow-xl shadow-emerald-500/30 transition-all duration-200 hover:from-emerald-400 hover:to-teal-400 hover:shadow-emerald-500/50 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                 >
                   <HugeiconsIcon icon={WhatsappIcon} size={20} className="shrink-0" />
-                  <span>Kirim Detail &amp; Mulai Ngobrol di WA →</span>
+                  <span>Kirim &amp; Mulai Ngobrol →</span>
                 </button>
               </form>
 
