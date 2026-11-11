@@ -22,15 +22,15 @@ export function ConsultationFormSection() {
 
   const handleQuickFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const nameStr = formName.trim() ? `kenalin saya ${formName.trim()}` : "saya mau konsultasi";
-    const waStr = formWa.trim() ? ` (No. WA: ${formWa.trim()})` : "";
-    const noteStr = formNotes.trim() ? formNotes.trim() : "Mohon info ketersediaan & jadwal diskusi.";
+    const nameStr = formName.trim() ? `kenalin saya ${formName.trim().slice(0, 100)}` : "saya mau konsultasi";
+    const waStr = formWa.trim() ? ` (No. WA: ${formWa.trim().slice(0, 30)})` : "";
+    const noteStr = formNotes.trim() ? formNotes.trim().slice(0, 1500) : "Mohon info ketersediaan & jadwal diskusi.";
     const msg = `Halo Mas (ecoDigital), ${nameStr}${waStr}.
 Saya mau konsultasi untuk kebutuhan: ${formType}.
 Detail singkatnya: ${noteStr}
 Kira-kira bisa dibantu? Terima kasih!`;
 
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -62,6 +62,7 @@ Kira-kira bisa dibantu? Terima kasih!`;
                     <input
                       type="text"
                       required
+                      maxLength={100}
                       placeholder="Nama Panggilanmu"
                       value={formName}
                       onChange={(e) => setFormName(e.target.value)}
@@ -74,6 +75,7 @@ Kira-kira bisa dibantu? Terima kasih!`;
                     </label>
                     <input
                       type="tel"
+                      maxLength={30}
                       placeholder="08xxxxxxxxxx (Boleh dikosongkan)"
                       value={formWa}
                       onChange={(e) => setFormWa(e.target.value)}
@@ -104,6 +106,7 @@ Kira-kira bisa dibantu? Terima kasih!`;
                   </label>
                   <textarea
                     rows={3}
+                    maxLength={1500}
                     placeholder="Ceritakan singkat masalah kodinganmu, judul TA, atau sistem yang mau dibuat (sebutkan juga kalau ada deadline mepet)..."
                     value={formNotes}
                     onChange={(e) => setFormNotes(e.target.value)}

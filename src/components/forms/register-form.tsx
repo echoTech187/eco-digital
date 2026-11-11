@@ -19,11 +19,9 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
   const {
     register,
     handleSubmit,
-    watch,
+    getValues,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormValues>();
-
-  const password = watch("password");
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -62,7 +60,7 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
         error={errors.confirmPassword?.message}
         {...register("confirmPassword", {
           required: "Konfirmasi kata sandi wajib diisi",
-          validate: (val) => val === password || "Kata sandi tidak cocok",
+          validate: (val) => val === getValues("password") || "Kata sandi tidak cocok",
         })}
       />
       <Button type="submit" isLoading={isSubmitting} className="mt-2 w-full">

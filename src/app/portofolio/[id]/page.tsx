@@ -18,7 +18,6 @@ import {
 } from "@hugeicons/core-free-icons";
 import {
   PORTFOLIO_PROJECTS,
-  ProjectItem,
   getWaUrl,
 } from "@/data/landing-data";
 import { ProjectScreenPreview } from "@/components/sections/project-screen-preview";

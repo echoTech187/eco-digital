@@ -18,9 +18,7 @@ import {
   ApiIcon,
   LaptopProgrammingIcon,
   Building03Icon,
-  Mortarboard01Icon,
   CreditCardIcon,
-  ShieldCheckIcon,
   WhatsappIcon,
   Wrench01Icon,
 } from "@hugeicons/core-free-icons";
@@ -52,6 +50,7 @@ export interface ProjectItem {
   impact: string;
   features: string[];
   mockupGradient: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   mockupIcon: any;
   mockupSubtitle: string;
   fullSpecs?: {

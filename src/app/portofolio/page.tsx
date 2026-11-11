@@ -9,7 +9,6 @@ import {
   LockIcon,
   WhatsappIcon,
   Search01Icon,
-  Layers01Icon,
 } from "@hugeicons/core-free-icons";
 import { PORTFOLIO_PROJECTS, getWaUrl } from "@/data/landing-data";
 import { ProjectScreenPreview } from "@/components/sections/project-screen-preview";

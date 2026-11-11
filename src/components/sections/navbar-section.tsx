@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,13 +14,11 @@ import {
 import logoMarkImg from "../../../public/images/logo/logo-vertical-transparent.png";
 import { getWaUrl, WA_DISPLAY } from "@/data/landing-data";
 
+const emptySubscribe = () => () => {};
+
 export function NavbarSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   // Lock background scroll when drawer is open
   useEffect(() => {

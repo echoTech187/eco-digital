@@ -8,7 +8,13 @@ export async function apiClient<T>(
   endpoint: string,
   options?: RequestInit
 ): Promise<T> {
-  const url = `${BASE_URL}${endpoint}`;
+  // Validate endpoint to prevent open redirect or SSRF injection
+  if (/^https?:\/\//i.test(endpoint)) {
+    throw new Error("Absolute URLs are not permitted in apiClient");
+  }
+
+  const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+  const url = `${BASE_URL}${cleanEndpoint}`;
 
   const response = await fetch(url, {
     headers: {
@@ -19,7 +25,7 @@ export async function apiClient<T>(
   });
 
   if (!response.ok) {
-    throw new Error(`API error: ${response.status} ${response.statusText}`);
+    throw new Error(`API error: HTTP ${response.status}`);
   }
 
   return response.json() as Promise<T>;

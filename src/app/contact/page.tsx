@@ -11,9 +11,7 @@ import {
   ArrowRight01Icon,
 } from "@hugeicons/core-free-icons";
 import logoMarkImg from "../../../public/images/logo/logo-mark.png";
-
-const WA_NUMBER = "6287875856918";
-const WA_DISPLAY = "0878-7585-6918";
+import { WA_NUMBER, WA_DISPLAY } from "@/data/landing-data";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -23,13 +21,18 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const formatted = `Halo EcoDigital, saya ingin konsultasi sistem melalui formulir web:
-• Nama: ${name || "Calon Klien"}
-• Kontak: ${waOrEmail || "-"}
-• Kategori: ${category}
-• Pesan/Kebutuhan: ${message || "Mohon info estimasi dan ketersediaan waktu."}`;
+    const safeName = name.trim().slice(0, 100) || "Calon Klien";
+    const safeContact = waOrEmail.trim().slice(0, 80) || "-";
+    const safeCategory = category.slice(0, 100);
+    const safeMessage = message.trim().slice(0, 1500) || "Mohon info estimasi dan ketersediaan waktu.";
 
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(formatted)}`, "_blank");
+    const formatted = `Halo EcoDigital, saya ingin konsultasi sistem melalui formulir web:
+• Nama: ${safeName}
+• Kontak: ${safeContact}
+• Kategori: ${safeCategory}
+• Pesan/Kebutuhan: ${safeMessage}`;
+
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(formatted)}`, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -154,6 +157,7 @@ export default function ContactPage() {
                 <input
                   type="text"
                   required
+                  maxLength={100}
                   placeholder="Nama Anda atau Instansi"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -166,6 +170,7 @@ export default function ContactPage() {
                 <input
                   type="text"
                   required
+                  maxLength={80}
                   placeholder="0812xxxxxx atau email@anda.com"
                   value={waOrEmail}
                   onChange={(e) => setWaOrEmail(e.target.value)}
@@ -193,6 +198,7 @@ export default function ContactPage() {
                 <textarea
                   rows={4}
                   required
+                  maxLength={1500}
                   placeholder="Ceritakan judul tugas akhir, proses bisnis, atau fitur sistem yang ingin dibuat..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
