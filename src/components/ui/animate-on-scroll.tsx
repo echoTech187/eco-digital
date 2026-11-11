@@ -45,10 +45,12 @@ interface AnimateOnScrollProps extends Omit<MotionProps, "variants"> {
   delay?: number;
   /** Durasi animasi (detik) */
   duration?: number;
-  /** Seberapa besar elemen harus terlihat sebelum trigger (0–1) */
-  threshold?: number;
+  /** Seberapa besar elemen harus terlihat sebelum trigger (0–1 atau "some") */
+  threshold?: number | "some" | "all";
   /** Hanya animasi sekali saat pertama kali masuk viewport */
   once?: boolean;
+  /** Animasi langsung saat mount (untuk elemen above the fold / Hero) */
+  immediate?: boolean;
   className?: string;
 }
 
@@ -58,8 +60,9 @@ export function AnimateOnScroll({
   variants,
   delay = 0,
   duration = 0.5,
-  threshold = 0.15,
+  threshold = "some",
   once = true,
+  immediate = false,
   className,
   ...props
 }: AnimateOnScrollProps) {
@@ -69,8 +72,9 @@ export function AnimateOnScroll({
     <motion.div
       className={className}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once, amount: threshold }}
+      animate={immediate ? "visible" : undefined}
+      whileInView={immediate ? undefined : "visible"}
+      viewport={immediate ? undefined : { once, amount: threshold }}
       variants={selectedVariants}
       transition={{ duration, delay, ease: "easeOut" }}
       {...props}

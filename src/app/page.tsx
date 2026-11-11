@@ -658,6 +658,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
               width={320}
               height={100}
               priority
+              loading="eager"
               unoptimized
               className="h-10 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-md"
             />
@@ -833,7 +834,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
             
             {/* Left Column: Headline, Sub-headline, Dual CTA, & Explore Button */}
             <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center text-left">
-              <AnimateOnScroll preset="fade-right" duration={0.6}>
+              <AnimateOnScroll preset="fade-right" duration={0.6} immediate>
                 {/* Status Eyebrow Badge */}
                 <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-950/60 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md shadow-lg shadow-emerald-950/40 w-fit">
                   <span className="relative flex h-2 w-2">
@@ -899,6 +900,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
               <AnimateOnScroll
                 preset="fade-left"
                 duration={0.7}
+                immediate
                 className="relative w-full flex items-end justify-center lg:justify-end"
               >
                 {/* Soft Radial Ambient Behind Founder */}
@@ -941,6 +943,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                     alt="Founder EcoDigital"
                     fill
                     priority
+                    loading="eager"
                     unoptimized
                     sizes="(max-width: 768px) 80vw, (max-width: 1200px) 450px, 500px"
                     className="object-contain object-bottom drop-shadow-[0_25px_50px_rgba(0,0,0,0.85)]"
