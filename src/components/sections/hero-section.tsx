@@ -12,7 +12,7 @@ import {
 } from "@hugeicons/core-free-icons";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 import founderImg from "../../../public/images/founder.png";
-import { getWaUrl } from "@/data/landing-data";
+import { getWaUrl, WA_DISPLAY } from "@/data/landing-data";
 
 // ─── Depth Bokeh 3-Blade Star Glyph ──────────────────────────────────────────
 function PropellerStar({
@@ -140,19 +140,6 @@ export function HeroSection() {
                   Bisa Dicicil Sesuai Progres
                 </span>
               </div>
-
-              {/* Tombol Scroll untuk Eksplorasi */}
-              <div className="mt-6 sm:mt-8 flex items-center">
-                <Link
-                  href="#layanan"
-                  className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-white/80 backdrop-blur-md transition-all hover:border-emerald-400/50 hover:bg-white/10 hover:text-white active:scale-95"
-                >
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-xs text-emerald-400 transition-transform group-hover:translate-y-0.5">
-                    <HugeiconsIcon icon={ArrowDown01Icon} size={14} />
-                  </span>
-                  <span>Scroll Untuk Eksplorasi</span>
-                </Link>
-              </div>
             </AnimateOnScroll>
           </div>
 
@@ -178,25 +165,25 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* Floating Badge 2: 100% Source Code + Video Bedah Kode */}
+              {/* Floating Badge 2: Sesi Bedah Kode */}
               <div className="hidden sm:flex absolute -right-2 bottom-24 z-20 items-center gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-4 py-2.5 shadow-xl backdrop-blur-xl animate-float-delayed">
                 <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-500/20 text-blue-300">
-                  <HugeiconsIcon icon={ShieldCheckIcon} size={18} />
+                  <HugeiconsIcon icon={LaptopProgrammingIcon} size={18} />
                 </span>
                 <div>
-                  <span className="block text-[11px] font-bold text-white">🎥 100% Source Code</span>
-                  <span className="block text-[9px] text-cyan-300">+ Video Bedah Kode</span>
+                  <span className="block text-[11px] font-bold text-white">💻 Sesi Bedah Kode</span>
+                  <span className="block text-[9px] text-cyan-300">Diajari Sampai Paham</span>
                 </div>
               </div>
 
               {/* Founder Image with Transparent Fade-Out at Bottom */}
               <div
-                className="relative h-[320px] sm:h-[420px] md:h-[480px] lg:h-[580px] xl:h-[640px] w-full max-w-[280px] sm:max-w-[360px] lg:max-w-[420px] aspect-[1397/2485]"
+                className="relative h-[360px] sm:h-[460px] md:h-[520px] lg:h-[600px] xl:h-[650px] w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[440px]"
                 style={{
                   maskImage:
-                    "linear-gradient(to top, transparent 0%, rgba(0,0,0,0.3) 5%, rgba(0,0,0,0.9) 15%, black 25%, black 100%)",
+                    "linear-gradient(to top, transparent 0%, rgba(0,0,0,0.4) 4%, black 15%, black 100%)",
                   WebkitMaskImage:
-                    "linear-gradient(to top, transparent 0%, rgba(0,0,0,0.3) 5%, rgba(0,0,0,0.9) 15%, black 25%, black 100%)",
+                    "linear-gradient(to top, transparent 0%, rgba(0,0,0,0.4) 4%, black 15%, black 100%)",
                 }}
               >
                 <Image
@@ -213,6 +200,34 @@ export function HeroSection() {
             </AnimateOnScroll>
           </div>
 
+        </div>
+      </div>
+
+      {/* Hero Bottom Anchor Bar (Scroll Button on Left, Official WA on Right) */}
+      <div className="relative z-30 w-full border-t border-white/10 bg-[#060A14]/80 backdrop-blur-md px-4 sm:px-8 lg:px-14 xl:px-18 py-3 sm:py-3.5">
+        <div className="mx-auto flex max-w-7xl items-center justify-between">
+          <Link
+            href="#layanan"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-white/80 backdrop-blur-md transition-all hover:border-emerald-400/50 hover:bg-white/10 hover:text-white active:scale-95 cursor-pointer"
+          >
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-xs text-emerald-400 transition-transform group-hover:translate-y-0.5">
+              <HugeiconsIcon icon={ArrowDown01Icon} size={14} />
+            </span>
+            <span>Scroll Untuk Eksplorasi</span>
+          </Link>
+
+          <a
+            href={getWaUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-xs text-white/60 hover:text-emerald-300 transition-colors"
+          >
+            <span className="hidden sm:inline text-white/40">WhatsApp Resmi:</span>
+            <span className="font-bold text-emerald-400 flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              {WA_DISPLAY}
+            </span>
+          </a>
         </div>
       </div>
     </section>

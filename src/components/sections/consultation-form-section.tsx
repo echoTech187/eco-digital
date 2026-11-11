@@ -22,9 +22,12 @@ export function ConsultationFormSection() {
 
   const handleQuickFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `Halo Mas (ecoDigital), kenalin saya ${formName || "Klien"}.
+    const nameStr = formName.trim() ? `kenalin saya ${formName.trim()}` : "saya mau konsultasi";
+    const waStr = formWa.trim() ? ` (No. WA: ${formWa.trim()})` : "";
+    const noteStr = formNotes.trim() ? formNotes.trim() : "Mohon info ketersediaan & jadwal diskusi.";
+    const msg = `Halo Mas (ecoDigital), ${nameStr}${waStr}.
 Saya mau konsultasi untuk kebutuhan: ${formType}.
-Detail singkatnya: ${formNotes || "Mohon info ketersediaan & jadwal diskusi."}
+Detail singkatnya: ${noteStr}
 Kira-kira bisa dibantu? Terima kasih!`;
 
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
@@ -67,12 +70,11 @@ Kira-kira bisa dibantu? Terima kasih!`;
                   </div>
                   <div>
                     <label className="text-[11px] font-semibold text-white/70 block mb-1">
-                      Nomor WhatsApp Aktif
+                      Nomor WhatsApp (Opsional)
                     </label>
                     <input
                       type="tel"
-                      required
-                      placeholder="Nomor WhatsApp Aktif"
+                      placeholder="08xxxxxxxxxx (Boleh dikosongkan)"
                       value={formWa}
                       onChange={(e) => setFormWa(e.target.value)}
                       className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-white placeholder-white/30 focus:border-emerald-400 focus:outline-none"
@@ -87,7 +89,7 @@ Kira-kira bisa dibantu? Terima kasih!`;
                   <select
                     value={formType}
                     onChange={(e) => setFormType(e.target.value)}
-                    className="w-full rounded-xl border border-white/10 bg-[#060A14] px-4 py-2.5 text-xs text-white focus:border-emerald-400 focus:outline-none"
+                    className="w-full rounded-xl border border-white/10 bg-[#060A14] px-4 py-2.5 text-xs text-white focus:border-emerald-400 focus:outline-none cursor-pointer"
                   >
                     <option value="Fix Error & Tambah Fitur">Fix Error &amp; Tambah Fitur</option>
                     <option value="Bikin Sistem TA & Riset">Bikin Sistem TA &amp; Riset</option>
@@ -111,23 +113,23 @@ Kira-kira bisa dibantu? Terima kasih!`;
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-xl shadow-emerald-950/40 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-98"
+                  className="w-full flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 py-4 px-6 text-sm sm:text-base font-extrabold text-white shadow-xl shadow-emerald-500/30 transition-all duration-200 hover:from-emerald-400 hover:to-teal-400 hover:shadow-emerald-500/50 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                 >
-                  <HugeiconsIcon icon={WhatsappIcon} size={16} />
+                  <HugeiconsIcon icon={WhatsappIcon} size={20} className="shrink-0" />
                   <span>Kirim Detail &amp; Mulai Ngobrol di WA →</span>
                 </button>
               </form>
 
-              <div className="mt-5 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 gap-2">
-                <span>Atau chat langsung tanpa isi form:</span>
+              <div className="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/60">
+                <span className="font-medium">Atau chat langsung tanpa isi form:</span>
                 <a
                   href={getWaUrl("Halo Mas (ecoDigital), saya mau konsultasi pembuatan website / sistem.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-1.5"
+                  className="inline-flex items-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-950/50 px-4 py-2 text-xs font-bold text-emerald-300 hover:bg-emerald-900/60 hover:border-emerald-400/60 hover:text-white transition-all shadow-md cursor-pointer"
                 >
-                  <HugeiconsIcon icon={WhatsappIcon} size={14} />
-                  <span>Chat WhatsApp: {WA_DISPLAY}</span>
+                  <HugeiconsIcon icon={WhatsappIcon} size={15} className="text-emerald-400" />
+                  <span>Chat Langsung via WhatsApp ({WA_DISPLAY})</span>
                 </a>
               </div>
             </div>
