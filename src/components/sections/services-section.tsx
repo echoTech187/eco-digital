@@ -136,7 +136,7 @@ export function ServicesSection() {
           </div>
 
           {/* Card 3: Aplikasi Sekolah, Instansi & Bisnis UMKM */}
-          <div className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-7 backdrop-blur-md transition-all duration-300 hover:border-teal-500/50 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-950/30">
+          <div className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-7 backdrop-blur-md transition-all duration-300 hover:border-teal-500/50 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-950/30 md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none w-full">
             <div>
               {/* Header: Icon & Category Badge */}
               <div className="flex items-center justify-between">

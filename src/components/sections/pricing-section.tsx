@@ -136,7 +136,7 @@ export function PricingSection() {
           </div>
 
           {/* Paket 3: Sistem Skala Penuh / Custom App */}
-          <div className="relative rounded-[32px] border border-blue-500/30 bg-gradient-to-b from-blue-950/40 via-white/[0.05] to-black/40 p-5 sm:p-7 backdrop-blur-xl flex flex-col justify-between">
+          <div className="relative rounded-[32px] border border-blue-500/30 bg-gradient-to-b from-blue-950/40 via-white/[0.05] to-black/40 p-5 sm:p-7 backdrop-blur-xl flex flex-col justify-between md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none w-full">
             <div>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-blue-400">
                 <HugeiconsIcon icon={Building03Icon} size={12} />

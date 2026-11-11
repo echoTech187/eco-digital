@@ -43,7 +43,7 @@ function PropellerStar({
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-80px)] w-full flex-col justify-between overflow-hidden bg-[#060A14]">
+    <section className="relative flex w-full flex-col justify-between overflow-hidden bg-[#060A14] xl:min-h-[calc(100vh-80px)]">
       {/* Ambient Radial Atmosphere (Seamless Mesh Glow) */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-28 top-1/4 h-[600px] w-[600px] rounded-full bg-emerald-500/20 blur-[140px]" />
@@ -58,11 +58,11 @@ export function HeroSection() {
       </div>
 
       {/* Hero Interactive Stage (Headline & CTA di Kiri, Foto di Kanan) */}
-      <div className="relative z-20 flex flex-1 items-center px-4 sm:px-8 lg:px-14 xl:px-18 py-6 sm:py-10 lg:py-6">
-        <div className="mx-auto w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+      <div className="relative z-20 flex flex-1 items-center px-4 sm:px-8 md:px-10 lg:px-12 xl:px-16 py-8 sm:py-10 md:py-12 lg:py-14 xl:py-6">
+        <div className="mx-auto w-full max-w-7xl grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-10 items-center">
           
           {/* Left Column: Headline, Sub-headline, Dual CTA, & Explore Button */}
-          <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center text-left">
+          <div className="md:col-span-7 xl:col-span-7 flex flex-col justify-center text-left">
             <AnimateOnScroll preset="fade-right" duration={0.6} immediate>
               {/* Status Eyebrow Badge */}
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-950/60 px-3.5 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md shadow-md shadow-emerald-950/40 w-fit">
@@ -74,7 +74,7 @@ export function HeroSection() {
               </div>
 
               {/* Headline Utama Sesuai Dokumen Blueprint */}
-              <h1 className="mt-3.5 sm:mt-5 text-[26px] sm:text-3xl md:text-4xl lg:text-[34px] xl:text-[46px] font-black tracking-tight text-white leading-[1.22]">
+              <h1 className="mt-3.5 sm:mt-5 text-2xl sm:text-3xl md:text-[32px] lg:text-[38px] xl:text-[46px] font-black tracking-tight text-white leading-[1.22]">
                 Ngoding Mentok atau Mau Bikin Sistem dari Nol?{" "}
                 <span className="block mt-1 sm:mt-0 sm:inline bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
                   Kita Beresin Bareng Sampai Jalan.
@@ -116,32 +116,32 @@ export function HeroSection() {
                 </span>
               </div>
 
-              {/* 3 Jaminan Utama dalam Card Grid Rapi */}
-              <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                <div className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-white/90 backdrop-blur-sm">
+              {/* 3 Jaminan Utama dalam Card Grid Rapi & Adaptif */}
+              <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-2 lg:p-2.5 xl:p-3 text-white/90 backdrop-blur-sm">
                   <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
                     ✓
                   </span>
-                  <span className="font-medium">Tanpa DP Mengambang</span>
+                  <span className="text-[11px] xl:text-xs font-medium leading-tight">Tanpa DP Mengambang</span>
                 </div>
 
-                <div className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-white/90 backdrop-blur-sm">
+                <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-2 lg:p-2.5 xl:p-3 text-white/90 backdrop-blur-sm">
                   <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
                     ✓
                   </span>
-                  <span className="font-medium">Source Code 100% Hak Milik</span>
+                  <span className="text-[11px] xl:text-xs font-medium leading-tight">Source Code 100% Hak Milik</span>
                 </div>
 
-                <div className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-white/90 backdrop-blur-sm">
+                <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-2 lg:p-2.5 xl:p-3 text-white/90 backdrop-blur-sm">
                   <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
                     ✓
                   </span>
-                  <span className="font-medium">Bisa Cicil Sesuai Progres</span>
+                  <span className="text-[11px] xl:text-xs font-medium leading-tight">Bisa Cicil Sesuai Progres</span>
                 </div>
               </div>
 
-              {/* Highlight Direct Developer Tambahan di Mobile */}
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-white/60 lg:hidden">
+              {/* Highlight Direct Developer Tambahan di Mobile (Hidden di Tablet/Desktop karena sudah ada di foto) */}
+              <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-white/60 md:hidden">
                 <span className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-950/40 border border-emerald-500/20 px-2.5 py-1 text-emerald-300 font-medium">
                   <span>👨‍💻</span>
                   <span>Direct Developer (Tanpa Perantara Sales)</span>
@@ -154,19 +154,19 @@ export function HeroSection() {
             </AnimateOnScroll>
           </div>
 
-          {/* Right Column: Founder Photo & Mockup Preview (Visual Asli - Hidden di HP, Muncul di Desktop/Laptop) */}
-          <div className="hidden lg:flex lg:col-span-5 xl:col-span-5 relative items-end justify-center lg:justify-end mt-4 lg:mt-0">
+          {/* Right Column: Founder Photo & Mockup Preview (Adaptive: muncul dari tablet md:flex hingga desktop) */}
+          <div className="hidden md:flex md:col-span-5 xl:col-span-5 relative items-end justify-center md:justify-end mt-4 md:mt-0">
             <AnimateOnScroll
               preset="fade-left"
               duration={0.7}
               immediate
-              className="relative w-full flex items-end justify-center lg:justify-end"
+              className="relative w-full flex items-end justify-center md:justify-end"
             >
               {/* Soft Radial Ambient Behind Founder */}
-              <div className="pointer-events-none absolute h-[280px] w-[280px] sm:h-[380px] sm:w-[380px] lg:h-[440px] lg:w-[440px] rounded-full bg-gradient-to-tr from-emerald-500/25 via-blue-600/30 to-cyan-400/25 blur-[90px] -z-10" />
+              <div className="pointer-events-none absolute h-[260px] w-[260px] sm:h-[340px] sm:w-[340px] md:h-[400px] md:w-[400px] lg:h-[440px] lg:w-[440px] rounded-full bg-gradient-to-tr from-emerald-500/25 via-blue-600/30 to-cyan-400/25 blur-[90px] -z-10" />
 
               {/* Floating Badge 1: Direct Developer (Tanpa Perantara) */}
-              <div className="hidden sm:flex absolute left-0 xl:-left-4 top-16 z-20 items-center gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-4 py-2.5 shadow-xl backdrop-blur-xl animate-float">
+              <div className="hidden sm:flex absolute left-0 xl:-left-4 top-10 md:top-12 xl:top-16 z-20 items-center gap-2 sm:gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-3 sm:px-4 py-2 sm:py-2.5 shadow-xl backdrop-blur-xl animate-float">
                 <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
                   <HugeiconsIcon icon={LaptopProgrammingIcon} size={18} />
                 </span>
@@ -177,7 +177,7 @@ export function HeroSection() {
               </div>
 
               {/* Floating Badge 2: Sesi Bedah Kode */}
-              <div className="hidden sm:flex absolute -right-2 bottom-24 z-20 items-center gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-4 py-2.5 shadow-xl backdrop-blur-xl animate-float-delayed">
+              <div className="hidden sm:flex absolute -right-1 sm:-right-2 bottom-14 md:bottom-18 xl:bottom-24 z-20 items-center gap-2 sm:gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-3 sm:px-4 py-2 sm:py-2.5 shadow-xl backdrop-blur-xl animate-float-delayed">
                 <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-500/20 text-blue-300">
                   <HugeiconsIcon icon={LaptopProgrammingIcon} size={18} />
                 </span>
@@ -189,7 +189,7 @@ export function HeroSection() {
 
               {/* Founder Image with Transparent Fade-Out at Bottom */}
               <div
-                className="relative h-[360px] sm:h-[460px] md:h-[520px] lg:h-[600px] xl:h-[650px] w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[440px]"
+                className="relative h-[360px] sm:h-[440px] md:h-[480px] lg:h-[540px] xl:h-[620px] w-full max-w-[300px] md:max-w-[340px] lg:max-w-[390px] xl:max-w-[430px]"
                 style={{
                   maskImage:
                     "linear-gradient(to top, transparent 0%, rgba(0,0,0,0.4) 4%, black 15%, black 100%)",
