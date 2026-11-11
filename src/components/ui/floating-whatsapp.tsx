@@ -4,7 +4,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { WhatsappIcon } from "@hugeicons/core-free-icons";
 
 export function FloatingWhatsApp() {
-  const waUrl = "https://wa.me/6287875856918?text=Halo%20EcoDigital,%20saya%20ingin%20konsultasi%20pembuatan%20website%20/%20aplikasi.";
+  const waUrl = "https://wa.me/6287875856918?text=Halo%20Mas%20(ecoDigital)%2C%20saya%20mau%20konsultasi%20pembuatan%20website%20%2F%20aplikasi.";
 
   return (
     <div className="fixed bottom-6 right-6 z-50 transition-transform duration-300">

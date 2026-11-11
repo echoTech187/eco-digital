@@ -12,14 +12,14 @@ export default function Footer() {
           <Link href="/" className="flex items-center gap-2.5">
             <Image
               src={logoMarkImg}
-              alt="EcoDigital"
+              alt="ecoDigital"
               width={70}
               height={82}
               unoptimized
               className="h-7 w-auto object-contain"
             />
             <span className="text-sm font-bold tracking-tight text-white/90">
-              EcoDigital
+              ecoDigital
             </span>
           </Link>
           <div className="flex items-center gap-3 text-xs text-white/60">
@@ -36,7 +36,7 @@ export default function Footer() {
             <span className="text-white/50">Konsultasi & Garansi Resmi</span>
           </div>
           <p className="text-xs text-white/40">
-            &copy; 2026 EcoDigital. All rights reserved.
+            &copy; 2026 ecoDigital. All rights reserved.
           </p>
         </div>
       </div>

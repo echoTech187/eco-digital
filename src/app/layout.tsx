@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "EcoDigital — Jasa Website & Aplikasi Custom",
-    template: "%s — EcoDigital",
+    default: "ecoDigital — Jasa Website & Aplikasi Custom",
+    template: "%s — ecoDigital",
   },
   description:
-    "Wujudkan sistem website & aplikasi custom untuk riset, tugas akhir, instansi, hingga bisnis Anda. Pembuatan dari nol, penambahan fitur, dan bimbingan teknis bersama EcoDigital.",
+    "Wujudkan sistem website & aplikasi custom untuk riset, tugas akhir, instansi, hingga bisnis Anda. Pembuatan dari nol, penambahan fitur, dan bimbingan teknis bersama ecoDigital.",
 };
 
 export default function RootLayout({

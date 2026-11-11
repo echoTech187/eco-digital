@@ -55,16 +55,18 @@ const WA_DISPLAY = "0878-7585-6918";
 
 function getWaUrl(message?: string) {
   const defaultMsg =
-    "Halo EcoDigital, saya ingin konsultasi pembuatan website / aplikasi.";
+    "Halo Mas (ecoDigital), saya mau konsultasi pembuatan website / aplikasi custom.";
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message || defaultMsg)}`;
 }
 
 // ─── Project Data Interface ──────────────────────────────────────────────────
+type PortfolioCategory = "sistem_informasi" | "mobile" | "instansi" | "ecommerce";
+
 interface ProjectItem {
   id: string;
   title: string;
   domain: string;
-  category: "all" | "instansi" | "akademik" | "bisnis" | "mobile";
+  categories: PortfolioCategory[];
   badge: string;
   desc: string;
   features: string[];
@@ -84,8 +86,8 @@ const PORTFOLIO_PROJECTS: ProjectItem[] = [
     id: "simpelantas",
     title: "SIMPELANTAS",
     domain: "sipelantas.polresmojokerto.id",
-    category: "instansi",
-    badge: "Instansi & Mobile App",
+    categories: ["instansi", "mobile"],
+    badge: "Web Instansi & Mobile App",
     desc: "Sistem Informasi & Mobile App terpadu personel Satlantas Polres Mojokerto beserta Web Admin Console dan push notification real-time.",
     features: ["Flutter Mobile", "CodeIgniter 4", "REST API & FCM", "MySQL Database"],
     mockupGradient: "from-blue-600/30 to-indigo-900/40",
@@ -108,8 +110,8 @@ const PORTFOLIO_PROJECTS: ProjectItem[] = [
     id: "siapel",
     title: "SiApel",
     domain: "siapel.ecodigital.id",
-    category: "bisnis",
-    badge: "Presensi & Kepegawaian",
+    categories: ["sistem_informasi"],
+    badge: "Sistem Informasi Presensi",
     desc: "Aplikasi presensi online berbasis geolokasi GPS (Geofencing), rekap kehadiran otomatis, dan dashboard manajemen jam kerja karyawan/pegawai.",
     features: ["Next.js 15 App Router", "Geolocation & Camera", "PostgreSQL & Prisma", "Export Excel/PDF"],
     mockupGradient: "from-emerald-600/30 to-teal-900/40",
@@ -132,8 +134,8 @@ const PORTFOLIO_PROJECTS: ProjectItem[] = [
     id: "eloker",
     title: "E-Loker",
     domain: "eloker.ecodigital.id",
-    category: "bisnis",
-    badge: "Platform Rekrutmen ATS",
+    categories: ["sistem_informasi"],
+    badge: "Sistem Informasi Rekrutmen ATS",
     desc: "Platform manajemen pelamar kerja dan screening kandidat dengan Role-Based Access Control (RBAC), Zod schema, dan JWT authentication.",
     features: ["React 19 + TypeScript", "Node.js & Express", "Prisma PostgreSQL", "Kanban Screening"],
     mockupGradient: "from-purple-600/30 to-blue-900/40",
@@ -156,8 +158,8 @@ const PORTFOLIO_PROJECTS: ProjectItem[] = [
     id: "projex",
     title: "Projex",
     domain: "projex.ecodigital.id",
-    category: "bisnis",
-    badge: "Enterprise Task Manager",
+    categories: ["sistem_informasi"],
+    badge: "Sistem Informasi Manajemen Proyek",
     desc: "Aplikasi manajemen proyek dan timeline tim operasional enterprise dengan generator milestone, kanban board dinamis, dan RESTful API teroptimasi.",
     features: ["Laravel 12 Backend", "Kanban & Task Engine", "PostgreSQL Indexing", "Sprint Burndown"],
     mockupGradient: "from-rose-600/30 to-red-950/40",
@@ -180,8 +182,8 @@ const PORTFOLIO_PROJECTS: ProjectItem[] = [
     id: "smk",
     title: "SMK Portal & LMS",
     domain: "smk.ecodigital.id",
-    category: "instansi",
-    badge: "Pendidikan & Sekolah",
+    categories: ["instansi", "sistem_informasi"],
+    badge: "Web Instansi Sekolah & LMS",
     desc: "Ekosistem web portal sekolah dan e-learning multi-role (Admin Console, Portal Guru, Aplikasi Siswa, dan Landing Page PPDB Online).",
     features: ["Next.js & TypeScript", "Multi-portal RBAC", "Portal Nilai Raport", "PPDB Online Generator"],
     mockupGradient: "from-cyan-600/30 to-blue-950/40",
@@ -204,8 +206,8 @@ const PORTFOLIO_PROJECTS: ProjectItem[] = [
     id: "simopmas",
     title: "SIMOPMAS",
     domain: "simopmas.ecodigital.id",
-    category: "instansi",
-    badge: "Lembaga & Pelayanan Publik",
+    categories: ["instansi"],
+    badge: "Web Instansi Pelayanan Publik",
     desc: "Sistem Informasi Manajemen Operasional & Pelayanan Masyarakat untuk pengajuan surat online, verifikasi berkas dinamis, dan pelaporan terpadu.",
     features: ["TypeScript Strict", "Tailwind Design System", "Dokumen Generator PDF", "Verifikasi QR Code"],
     mockupGradient: "from-amber-600/30 to-emerald-950/40",
@@ -228,8 +230,8 @@ const PORTFOLIO_PROJECTS: ProjectItem[] = [
     id: "spk-ahp-topsis",
     title: "SPK AHP & TOPSIS",
     domain: "spk-topsis.ecodigital.id",
-    category: "akademik",
-    badge: "Riset & Tugas Akhir SPK",
+    categories: ["sistem_informasi"],
+    badge: "Sistem Informasi Riset SPK",
     desc: "Sistem Pendukung Keputusan penentuan kelayakan penerima bantuan & beasiswa menggunakan kombinasi pembobotan AHP dan perangkingan TOPSIS.",
     features: ["PHP / Laravel / Python", "Algoritma AHP & TOPSIS", "Matriks Keputusan", "Export Bab 4 Skripsi"],
     mockupGradient: "from-teal-600/30 to-cyan-950/40",
@@ -252,8 +254,8 @@ const PORTFOLIO_PROJECTS: ProjectItem[] = [
     id: "pos-umkm-wa",
     title: "POS Kasir & WA Gateway",
     domain: "pos-umkm.ecodigital.id",
-    category: "mobile",
-    badge: "UMKM & Mobile POS",
+    categories: ["mobile", "ecommerce"],
+    badge: "E-Commerce & Mobile POS",
     desc: "Aplikasi kasir point-of-sale toko & cafe terhubung cetak struk Bluetooth dan pengiriman nota digital otomatis langsung ke WhatsApp pelanggan.",
     features: ["Flutter Mobile", "Thermal Printer Bluetooth", "WhatsApp API Notif", "Laporan Omset Harian"],
     mockupGradient: "from-emerald-600/30 to-blue-900/40",
@@ -527,44 +529,44 @@ export default function Home() {
   // Quick Consultation Form State
   const [formName, setFormName] = useState("");
   const [formWa, setFormWa] = useState("");
-  const [formType, setFormType] = useState("Riset & Tugas Akhir (SPK)");
+  const [formType, setFormType] = useState("Fix Error & Tambah Fitur");
   const [formNotes, setFormNotes] = useState("");
 
   // Filtered Portfolio Projects
   const filteredProjects = useMemo(() => {
     if (activeCategory === "all") return PORTFOLIO_PROJECTS;
-    return PORTFOLIO_PROJECTS.filter(
-      (p) => p.category === activeCategory || (activeCategory === "mobile" && p.features.some(f => f.toLowerCase().includes("flutter") || f.toLowerCase().includes("mobile")))
+    return PORTFOLIO_PROJECTS.filter((p) =>
+      p.categories.includes(activeCategory as PortfolioCategory)
     );
   }, [activeCategory]);
 
   // Cost Calculator Calculations
   const calculatedResult = useMemo(() => {
     const basePrices: Record<string, { label: string; price: number; days: string }> = {
-      perbaikan: {
-        label: "Perbaikan Bug / Modul Tambahan",
-        price: 199000,
-        days: "1–2 Hari Kerja",
+      fix_error: {
+        label: "Penyelamat Revisi & Fix Error",
+        price: 150000,
+        days: "1–3 Hari Kerja",
       },
       skripsi: {
-        label: "Riset / Tugas Akhir / Skripsi (SPK)",
+        label: "Bangun Web / Sistem Baru (Reguler / TA)",
         price: 499000,
         days: "3–7 Hari Kerja",
       },
       umkm: {
-        label: "Website Profil UMKM / Landing Page",
+        label: "Website Profil UMKM / Bisnis",
         price: 499000,
-        days: "1–3 Hari Kerja",
+        days: "3–7 Hari Kerja",
       },
       custom_admin: {
         label: "Sistem Informasi & Dashboard Admin Custom",
         price: 999000,
-        days: "7–14 Hari Kerja",
+        days: "1–3 Minggu",
       },
       mobile_app: {
         label: "Aplikasi Mobile Android (Flutter)",
         price: 1499000,
-        days: "10–21 Hari Kerja",
+        days: "2–4 Minggu",
       },
     };
 
@@ -574,7 +576,7 @@ export default function Home() {
         price: 200000,
       },
       bedah_kode: {
-        label: "Sesi Bimbingan & Bedah Koding 1-on-1 (Google Meet)",
+        label: "Video Bedah Kode & Sesi Bimbingan 1-on-1",
         price: 150000,
       },
       domain_hosting: {
@@ -582,15 +584,15 @@ export default function Home() {
         price: 250000,
       },
       wa_gateway: {
-        label: "Notifikasi Otomatis WhatsApp Gateway",
+        label: "Integrasi Notifikasi WhatsApp Gateway Otomatis",
         price: 200000,
       },
       export_pdf: {
-        label: "Modul Ekspor Laporan Otomatis (PDF/Excel Berkop)",
+        label: "Modul Ekspor Laporan Otomatis (PDF & Excel)",
         price: 150000,
       },
       multi_role: {
-        label: "Sistem Multi-Role RBAC (Admin, Pegawai, User)",
+        label: "Sistem Hak Akses Berjenjang (Multi-Role RBAC)",
         price: 200000,
       },
     };
@@ -612,13 +614,11 @@ export default function Home() {
       maximumFractionDigits: 0,
     }).format(total);
 
-    const waText = `Halo EcoDigital, saya sudah mencoba simulasi estimasi sistem di website:
-• Kategori: ${base.label}
-• Fitur Tambahan: ${selectedAddonLabels.length > 0 ? selectedAddonLabels.join(", ") : "Tidak ada"}
-• Estimasi Biaya: ${formattedPrice}
-• Estimasi Waktu: ${base.days}
-
-Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
+    const waText = `Halo Mas (ecoDigital), saya baru coba hitung simulasi biaya di website:
+- Jenis Proyek: ${base.label}
+- Fitur Tambahan: ${selectedAddonLabels.length > 0 ? selectedAddonLabels.join(", ") : "Tidak ada"}
+- Estimasi Kasar di Web: ${formattedPrice}
+Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
 
     return {
       label: base.label,
@@ -632,11 +632,10 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
   // Handle Quick Form Submission
   const handleQuickFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `Halo EcoDigital, saya ingin request konsultasi via form website:
-• Nama: ${formName || "Calon Klien"}
-• No. WhatsApp: ${formWa || "-"}
-• Jenis Kebutuhan: ${formType}
-• Catatan Kebutuhan: ${formNotes || "Mohon info ketersediaan & estimasi sistem."}`;
+    const msg = `Halo Mas (ecoDigital), kenalin saya ${formName || "Klien"}.
+Saya mau konsultasi untuk kebutuhan: ${formType}.
+Detail singkatnya: ${formNotes || "Mohon info ketersediaan & jadwal diskusi."}
+Kira-kira bisa dibantu? Terima kasih!`;
 
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
   };
@@ -654,7 +653,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
           <Link href="/" className="group flex items-center gap-3">
             <Image
               src={logoMarkImg}
-              alt="EcoDigital"
+              alt="ecoDigital"
               width={320}
               height={100}
               priority
@@ -715,15 +714,14 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
           <div className="flex items-center gap-3">
             <a
               href={getWaUrl(
-                "Halo EcoDigital, saya ingin konsultasi gratis mengenai kebutuhan sistem / website saya."
+                "Halo Mas (ecoDigital), saya mau konsultasi pembuatan website / sistem."
               )}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-5 py-2.5 text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:from-emerald-400 hover:to-teal-400 hover:scale-105 active:scale-95"
             >
               <HugeiconsIcon icon={WhatsappIcon} size={16} />
-              <span className="hidden sm:inline">Konsultasi Gratis</span>
-              <span className="sm:hidden">Chat WA</span>
+              <span>Chat Developer</span>
             </a>
 
             {/* Mobile Hamburger Toggle Button */}
@@ -757,28 +755,28 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1 text-white/80 hover:text-emerald-400"
               >
-                Portofolio (8 Proyek)
+                Portofolio
               </Link>
               <Link
                 href="#keunggulan"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1 text-white/80 hover:text-emerald-400"
               >
-                Keunggulan (Why Us)
+                Keunggulan
               </Link>
               <Link
                 href="#cara-kerja"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1 text-white/80 hover:text-emerald-400"
               >
-                Alur Pengerjaan
+                Alur Kerja
               </Link>
               <Link
                 href="#paket-harga"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1 text-white/80 hover:text-emerald-400"
               >
-                Paket Harga (Mulai Rp 199rb)
+                Paket Harga (Mulai Rp150rb)
               </Link>
               <Link
                 href="#kalkulator-biaya"
@@ -786,7 +784,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                 className="py-1 text-emerald-400 hover:text-emerald-300 font-bold flex items-center gap-1.5"
               >
                 <HugeiconsIcon icon={FlashIcon} size={15} />
-                <span>Simulasi Estimasi Biaya</span>
+                <span>Simulasi Biaya</span>
               </Link>
               <Link
                 href="#faq"
@@ -797,13 +795,13 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
               </Link>
               <div className="pt-4 border-t border-white/10 flex flex-col gap-2">
                 <a
-                  href={getWaUrl()}
+                  href={getWaUrl("Halo Mas (ecoDigital), saya mau konsultasi pembuatan website / sistem.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 rounded-xl bg-emerald-500 py-3 text-xs font-bold text-white shadow"
                 >
                   <HugeiconsIcon icon={WhatsappIcon} size={16} />
-                  <span>Chat WhatsApp Resmi ({WA_DISPLAY})</span>
+                  <span>Chat Developer ({WA_DISPLAY})</span>
                 </a>
               </div>
             </nav>
@@ -841,47 +839,54 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
                   </span>
-                  <span>EcoDigital — IT & Software Partner</span>
+                  <span>TERSEDIA UNTUK PROYEK BARU &amp; PERBAIKAN KILAT</span>
                 </div>
 
                 {/* Headline Utama Sesuai Dokumen Blueprint */}
-                <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[50px] font-black tracking-tight text-white leading-[1.18]">
-                  Wujudkan Sistem Website & Aplikasi Custom{" "}
+                <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-[42px] xl:text-[48px] font-black tracking-tight text-white leading-[1.18]">
+                  Ngoding Mentok atau Mau Bikin Sistem dari Nol?{" "}
                   <span className="block sm:inline bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
-                    untuk Riset, Tugas Akhir, hingga Bisnis Anda.
+                    Kita Beresin Bareng Sampai Jalan.
                   </span>
                 </h1>
 
                 {/* Sub-headline Blueprint */}
                 <p className="mt-4 max-w-xl text-sm sm:text-base leading-relaxed text-white/80">
-                  Melayani pembuatan dari nol, pengembangan & perbaikan fitur, hingga pendampingan teknis langsung dengan harga bersahabat & bergaransi resmi.
+                  Nggak perlu pusing hadapi <em>error</em> sendirian atau bayar mahal ke agensi. Di <strong>ecoDigital</strong>, kamu diskusi langsung sama <em>developer</em>-nya. Mulai dari benerin <em>bug</em> H-3 bimbingan, bangun aplikasi Tugas Akhir, sampai sistem operasional sekolah &amp; bisnis—semua dikerjakan rapi, bisa dipantau <em>live</em>, dan dibimbing sampai kamu paham luar-dalam.
                 </p>
 
                 {/* Call to Action (CTA) Ganda */}
                 <div className="mt-6 flex flex-wrap items-center gap-3.5">
                   <a
                     href={getWaUrl(
-                      "Halo EcoDigital, saya ingin diskusi sistem website/aplikasi custom untuk kebutuhan saya."
+                      "Halo Mas (ecoDigital), saya mau chat dan diskusi gratis untuk kebutuhan kodingan / sistem saya."
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-emerald-950/50 transition-all hover:from-emerald-400 hover:to-teal-400 hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <HugeiconsIcon icon={WhatsappIcon} size={18} />
-                    <span>Diskusi Sistem via WhatsApp</span>
+                    <span>Chat &amp; Diskusi Gratis via WA</span>
                   </a>
 
                   <Link
                     href="#portofolio"
                     className="flex items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white/90 backdrop-blur-xl transition-all hover:bg-white/20 hover:text-white active:scale-[0.98]"
                   >
-                    <span>Lihat Portofolio Karya</span>
-                    <HugeiconsIcon icon={ArrowDown01Icon} size={16} />
+                    <span>Coba Live Demo Karya Saya ↓</span>
                   </Link>
                 </div>
 
-                {/* Tombol Scroll & Info WhatsApp di dalam Hero */}
-                <div className="mt-8 md:mt-20 flex flex-wrap items-center gap-4">
+                {/* Badge Kecil di Bawah Tombol */}
+                <div className="mt-4 flex items-center gap-2 text-xs text-white/70">
+                  <span className="text-amber-400 font-bold">⚡</span>
+                  <span className="font-medium">
+                    Respon cepat via WhatsApp • Diskusi alur &amp; cek error gratis
+                  </span>
+                </div>
+
+                {/* Tombol Scroll untuk Eksplorasi */}
+                <div className="mt-8 flex items-center">
                   <Link
                     href="#layanan"
                     className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-white/80 backdrop-blur-md transition-all hover:border-emerald-400/50 hover:bg-white/10 hover:text-white active:scale-95"
@@ -906,25 +911,25 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                 {/* Soft Radial Ambient Behind Founder */}
                 <div className="pointer-events-none absolute h-[380px] w-[380px] sm:h-[440px] sm:w-[440px] rounded-full bg-gradient-to-tr from-emerald-500/25 via-blue-600/30 to-cyan-400/25 blur-[90px] -z-10" />
 
-                {/* Floating Badge 1: 100% Bergaransi (Hugeicons ShieldCheck) */}
+                {/* Floating Badge 1: Direct Developer (Tanpa Perantara) */}
                 <div className="hidden sm:flex absolute -left-4 top-16 z-20 items-center gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-4 py-2.5 shadow-xl backdrop-blur-xl animate-float">
                   <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
-                    <HugeiconsIcon icon={ShieldCheckIcon} size={18} />
-                  </span>
-                  <div>
-                    <span className="block text-[11px] font-bold text-white">100% Garansi Revisi</span>
-                    <span className="block text-[9px] text-emerald-300">Sampai ACC & Sesuai Alur</span>
-                  </div>
-                </div>
-
-                {/* Floating Badge 2: Pendampingan & Bedah Kode (Hugeicons LaptopProgramming) */}
-                <div className="hidden sm:flex absolute -right-2 bottom-24 z-20 items-center gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-4 py-2.5 shadow-xl backdrop-blur-xl animate-float-delayed">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-500/20 text-blue-300">
                     <HugeiconsIcon icon={LaptopProgrammingIcon} size={18} />
                   </span>
                   <div>
-                    <span className="block text-[11px] font-bold text-white">Sesi Bedah Kode</span>
-                    <span className="block text-[9px] text-cyan-300">Diajari Sampai Paham</span>
+                    <span className="block text-[11px] font-bold text-white">👨‍💻 Direct Developer</span>
+                    <span className="block text-[9px] text-emerald-300">Tanpa Perantara</span>
+                  </div>
+                </div>
+
+                {/* Floating Badge 2: 100% Source Code + Video Bedah Kode */}
+                <div className="hidden sm:flex absolute -right-2 bottom-24 z-20 items-center gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-4 py-2.5 shadow-xl backdrop-blur-xl animate-float-delayed">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-500/20 text-blue-300">
+                    <HugeiconsIcon icon={ShieldCheckIcon} size={18} />
+                  </span>
+                  <div>
+                    <span className="block text-[11px] font-bold text-white">🎥 100% Source Code</span>
+                    <span className="block text-[9px] text-cyan-300">+ Video Bedah Kode</span>
                   </div>
                 </div>
 
@@ -940,7 +945,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                 >
                   <Image
                     src={founderImg}
-                    alt="Founder EcoDigital"
+                    alt="Founder ecoDigital"
                     fill
                     priority
                     loading="eager"
@@ -981,157 +986,145 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 3: LAYANAN BERDASARKAN TARGET (Services / Solutions)
+          SECTION 3: LAYANAN (APA YANG BISA DIBANTU?)
           ═══════════════════════════════════════════════════════════════════════ */}
       <div id="layanan" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20">
         <div className="mx-auto max-w-6xl">
           <AnimateOnScroll preset="fade-up" className="mb-12 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
-              Target & Solusi Nyata
+              APA YANG BISA DIBANTU?
             </span>
             <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
-              Solusi Digital yang Sesuai dengan Kebutuhan Anda
+              Masuk di Kondisi Apa Pun, Pilih Sesuai Kebutuhanmu
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
-              Dibagi ke dalam 3 kategori spesifik agar setiap mahasiswa, pengelola instansi, hingga pelaku bisnis langsung menemukan solusi yang tepat.
+              Entah kamu baru punya ide kasar di kertas, atau sudah punya kodingan tapi berantakan dan <em>error</em> terus—saya siap masuk bantu beresin.
             </p>
           </AnimateOnScroll>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {/* Card 1: Riset, Tugas Akhir & Akademik */}
+            {/* Card 1: Klinik Koding: Fix Error & Tambah Fitur */}
             <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/50 hover:bg-white/[0.08]">
               <div>
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-[#10B981]">
-                  <HugeiconsIcon icon={Mortarboard01Icon} size={28} />
+                  <HugeiconsIcon icon={Wrench01Icon} size={28} />
                 </div>
                 <h3 className="mt-5 text-xl font-bold text-white">
-                  Riset, Tugas Akhir & Akademik
+                  Klinik Koding: Fix Error &amp; Tambah Fitur
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-white/70">
-                  Sistem Informasi, SPK (Sistem Pendukung Keputusan), pengolahan data penelitian, lengkap dengan sesi bedah kode & bimbingan alur sistem sampai siap sidang.
+                  Kodingan lama macet, ditinggal <em>developer</em> sebelumnya, atau mendadak disuruh dosen tambah fitur? Nggak perlu bikin ulang dari nol.
                 </p>
                 <ul className="mt-6 space-y-2.5 text-xs text-white/80">
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-[#10B981] shrink-0" />
-                    <span>Algoritma SPK (AHP, SAW, TOPSIS, KNN, SMART, dll.)</span>
+                    <span>Perbaikan bug/error PHP, Laravel, JS, Flutter, dll.</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-[#10B981] shrink-0" />
-                    <span>Sesi Bimbingan & Bedah Koding (Siap Hadapi Penguji)</span>
+                    <span>Tambah modul/fitur baru sesuai catatan revisi.</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-[#10B981] shrink-0" />
-                    <span>Full Source Code, Database, & Panduan Instalasi</span>
+                    <span>Redesign tampilan UI biar lebih modern &amp; rapi.</span>
                   </li>
                 </ul>
               </div>
               <div className="mt-8 pt-6 border-t border-white/10">
-                <span className="text-[11px] text-white/40 block mb-3">
-                  Cocok untuk: Mahasiswa D3/S1, Peneliti, Dosen, Akademisi.
-                </span>
                 <a
                   href={getWaUrl(
-                    "Halo EcoDigital, saya ingin konsultasi pembuatan sistem informasi / tugas akhir / riset akademik."
+                    "Halo Mas (ecoDigital), saya mau konsultasi perbaikan error / tambah fitur kodingan."
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-4 py-2.5 text-xs font-semibold text-white/90 backdrop-blur transition-all hover:border-[#10B981] hover:bg-[#10B981]/20 hover:text-white"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-3 text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400"
                 >
-                  <HugeiconsIcon icon={WhatsappIcon} size={15} />
-                  <span>Konsultasi Layanan Ini</span>
-                  <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
+                  <HugeiconsIcon icon={WhatsappIcon} size={16} />
+                  <span>Beresin Error Sekarang →</span>
                 </a>
               </div>
             </div>
 
-            {/* Card 2: Sistem Instansi & UMKM / Bisnis */}
+            {/* Card 2: Partner Sistem Tugas Akhir, SPK & Riset */}
             <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-md transition-all duration-300 hover:border-blue-500/50 hover:bg-white/[0.08]">
               <div>
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-400">
-                  <HugeiconsIcon icon={Building03Icon} size={28} />
+                  <HugeiconsIcon icon={Mortarboard01Icon} size={28} />
                 </div>
                 <h3 className="mt-5 text-xl font-bold text-white">
-                  Sistem Instansi & UMKM / Bisnis
+                  Partner Sistem Tugas Akhir, SPK &amp; Riset
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-white/70">
-                  Web operasional, aplikasi pelayanan publik/sekolah, manajemen inventori toko, landing page perusahaan, dan dashboard monitoring data mandiri.
+                  Bikin aplikasi web/mobile untuk penelitian atau skripsi yang nggak cuma sekadar jalan, tapi juga bikin kamu siap menjawab pertanyaan penguji.
                 </p>
                 <ul className="mt-6 space-y-2.5 text-xs text-white/80">
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-blue-400 shrink-0" />
-                    <span>Dashboard Admin Manajemen Data & Multi-Role RBAC</span>
+                    <span>Alur program &amp; database sesuai flowchart kamu.</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-blue-400 shrink-0" />
-                    <span>Web Operasional Kantor & Otomasi Surat / Berkas</span>
+                    <span>Bebas request metode (SPK, Sistem Informasi, dll.).</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-blue-400 shrink-0" />
-                    <span>Company Profile Resmi + Domain (.com/.id) & Cloud</span>
+                    <span>Bonus: Video penjelasan alur kode &amp; bimbingan 1-on-1.</span>
                   </li>
                 </ul>
               </div>
               <div className="mt-8 pt-6 border-t border-white/10">
-                <span className="text-[11px] text-white/40 block mb-3">
-                  Cocok untuk: Instansi Dinas, Sekolah/SMK, PT, CV, Toko Retail, UMKM.
-                </span>
                 <a
                   href={getWaUrl(
-                    "Halo EcoDigital, saya ingin konsultasi sistem instansi / web operasional UMKM & bisnis."
+                    "Halo Mas (ecoDigital), saya mau konsultasi pembuatan sistem Tugas Akhir / SPK / riset skripsi."
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-4 py-2.5 text-xs font-semibold text-white/90 backdrop-blur transition-all hover:border-blue-400 hover:bg-blue-500/20 hover:text-white"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-3 text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400"
                 >
-                  <HugeiconsIcon icon={WhatsappIcon} size={15} />
-                  <span>Konsultasi Layanan Ini</span>
-                  <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
+                  <HugeiconsIcon icon={WhatsappIcon} size={16} />
+                  <span>Konsultasi Judul / Sistem →</span>
                 </a>
               </div>
             </div>
 
-            {/* Card 3: Prototipe Start-up & Custom App */}
+            {/* Card 3: Aplikasi Sekolah, Instansi & Bisnis UMKM */}
             <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-md transition-all duration-300 hover:border-teal-500/50 hover:bg-white/[0.08]">
               <div>
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-500/10 text-teal-400">
-                  <HugeiconsIcon icon={Rocket01Icon} size={28} />
+                  <HugeiconsIcon icon={Building03Icon} size={28} />
                 </div>
                 <h3 className="mt-5 text-xl font-bold text-white">
-                  Prototipe Start-up & Custom App
+                  Aplikasi Sekolah, Instansi &amp; Bisnis UMKM
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-white/70">
-                  Pembuatan MVP (Minimum Viable Product), aplikasi mobile (Android/Web App Flutter), dan integrasi Open API pihak ketiga dengan arsitektur scalable.
+                  Bangun sistem operasional yang siap pakai di lapangan—bukan sekadar <em>template</em> pajangan.
                 </p>
                 <ul className="mt-6 space-y-2.5 text-xs text-white/80">
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-teal-400 shrink-0" />
-                    <span>Aplikasi Mobile Android & Web App Modern (Flutter)</span>
+                    <span>Sistem informasi sekolah, BK, &amp; pelayanan publik.</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-teal-400 shrink-0" />
-                    <span>Integrasi REST API, Payment Gateway & WhatsApp Notif</span>
+                    <span>Website profil usaha, katalog, hingga kasir/inventori.</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-teal-400 shrink-0" />
-                    <span>Arsitektur Bersih & Siap Scale-Up Jangka Panjang</span>
+                    <span>Langsung online (termasuk setup domain/hosting/Vercel).</span>
                   </li>
                 </ul>
               </div>
               <div className="mt-8 pt-6 border-t border-white/10">
-                <span className="text-[11px] text-white/40 block mb-3">
-                  Cocok untuk: Founder Start-up, Pemilik Ide Digital, Bisnis SaaS.
-                </span>
                 <a
                   href={getWaUrl(
-                    "Halo EcoDigital, saya ingin konsultasi pembuatan prototipe start-up / MVP / aplikasi mobile custom."
+                    "Halo Mas (ecoDigital), saya mau diskusi pembuatan aplikasi sekolah / instansi / bisnis UMKM."
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-4 py-2.5 text-xs font-semibold text-white/90 backdrop-blur transition-all hover:border-teal-400 hover:bg-teal-500/20 hover:text-white"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-3 text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400"
                 >
-                  <HugeiconsIcon icon={WhatsappIcon} size={15} />
-                  <span>Konsultasi Layanan Ini</span>
-                  <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
+                  <HugeiconsIcon icon={WhatsappIcon} size={16} />
+                  <span>Diskusi Sistem Bisnis →</span>
                 </a>
               </div>
             </div>
@@ -1140,19 +1133,19 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 4: SHOWCASE PORTOFOLIO (Hasil Karya Nyata) — Enhanced Filter & Modal
+          SECTION 4: SHOWCASE PORTOFOLIO (BUKTI KARYA NYATA)
           ═══════════════════════════════════════════════════════════════════════ */}
       <div id="portofolio" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20">
         <div className="mx-auto max-w-6xl">
           <AnimateOnScroll preset="fade-up" className="mb-8 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
-              Hasil Karya Nyata
+              BUKTI KARYA NYATA
             </span>
             <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
-              Showcase Proyek yang Sudah Kami Bangun & Deploy
+              Jangan Percaya Janji Manis—Klik &amp; Coba Sendiri Sistem yang Sudah Live
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
-              Mulai dari instansi kepolisian, sistem presensi, platform rekrutmen, portal sekolah, SPK tugas akhir, hingga aplikasi mobile kasir — teruji di lingkungan nyata.
+              Semua proyek di bawah ini asli hasil kodingan sendiri dan sudah di-<em>deploy</em>. Silakan klik tombol <em>Live Demo</em> untuk mencoba tampilannya langsung dari HP atau laptopmu.
             </p>
           </AnimateOnScroll>
 
@@ -1160,10 +1153,10 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
           <div className="mb-10 flex flex-wrap items-center justify-center gap-2">
             {[
               { id: "all", label: "Semua Proyek", icon: Layers01Icon },
-              { id: "instansi", label: "Instansi & Layanan Publik", icon: Building03Icon },
-              { id: "akademik", label: "Akademik & Riset SPK", icon: Mortarboard01Icon },
-              { id: "bisnis", label: "Bisnis & HRD", icon: Briefcase01Icon },
-              { id: "mobile", label: "Mobile App", icon: SmartPhone01Icon },
+              { id: "sistem_informasi", label: "Sistem Informasi", icon: LaptopProgrammingIcon },
+              { id: "mobile", label: "Aplikasi Mobile", icon: SmartPhone01Icon },
+              { id: "instansi", label: "Web Instansi", icon: Building03Icon },
+              { id: "ecommerce", label: "E-Commerce", icon: ShoppingBag01Icon },
             ].map((tab) => {
               const TabIcon = tab.icon;
               const isActive = activeCategory === tab.id;
@@ -1270,19 +1263,19 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                           onClick={() => setSelectedProject(p)}
                           className="flex items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-white/5 py-2.5 px-3 text-xs font-semibold text-white/90 hover:bg-white/15 hover:text-white transition-all"
                         >
-                          <HugeiconsIcon icon={Search01Icon} size={14} />
-                          <span>Lihat Spek</span>
+                          <HugeiconsIcon icon={Globe02Icon} size={14} className="text-emerald-400" />
+                          <span>Coba Live Demo</span>
                         </button>
                         <a
                           href={getWaUrl(
-                            `Halo EcoDigital, saya tertarik memesan sistem yang serupa dengan portofolio ${p.title} (${p.domain}). Boleh minta estimasi alur dan biayanya?`
+                            `Halo Mas (ecoDigital), saya tertarik bikin sistem seperti ${p.title} (${p.domain}). Boleh minta estimasi alur dan biayanya?`
                           )}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-2.5 px-3 text-xs font-bold text-white shadow-md shadow-emerald-950/40 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95"
                         >
                           <HugeiconsIcon icon={WhatsappIcon} size={14} />
-                          <span>Pesan Serupa</span>
+                          <span>Bikin Kayak Gini</span>
                         </a>
                       </div>
                     </div>
@@ -1371,7 +1364,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
             <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center gap-3">
               <a
                 href={getWaUrl(
-                  `Halo EcoDigital, saya tertarik memesan sistem yang serupa dengan portofolio ${selectedProject.title} (${selectedProject.domain}). Bisakah kita diskusikan alur dan biayanya?`
+                  `Halo Mas (ecoDigital), saya tertarik memesan sistem yang serupa dengan portofolio ${selectedProject.title} (${selectedProject.domain}). Bisakah kita diskusikan alur dan biayanya?`
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -1392,47 +1385,47 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
       )}
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 5: KEUNGGULAN / KENAPA MEMILIH ECODIGITAL? (Hugeicons)
+          SECTION 5: KEUNGGULAN (STANDAR KERJA ECODIGITAL)
           ═══════════════════════════════════════════════════════════════════════ */}
       <div id="keunggulan" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20">
         <div className="mx-auto max-w-6xl">
           <AnimateOnScroll preset="fade-up" className="mb-12 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
-              Nilai Tambah & Kredibilitas
+              STANDAR KERJA ECODIGITAL
             </span>
             <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
-              Kenapa Memilih EcoDigital?
+              Kenapa Ngoding Bareng ecoDigital Jauh Lebih Tenang?
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
-              Standar pengerjaan profesional yang menjawab keraguan & ketakutan terbesar calon klien.
+              Empat jaminan nyata supaya kamu nggak kena drama joki lepas tangan atau proyek mangkrak.
             </p>
           </AnimateOnScroll>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: Settings02Icon,
-                title: "100% Custom Sesuai Alur",
-                desc: "Dibuat mengikuti flowchart, dokumen analisis, atau proses bisnis spesifik Anda — bukan sekadar template pasaran yang kaku.",
-                badge: "Tailored Architecture",
-              },
-              {
                 icon: LaptopProgrammingIcon,
-                title: "Pendampingan & Bedah Kode",
-                desc: "Klien diajari cara kerja sistem, query database, hingga arsitektur koding sampai benar-benar paham (sangat dicari mahasiswa & staf IT instansi).",
-                badge: "Mentoring & Hands-on",
+                title: "Bukan Joki Lepas Tangan (Dapat Video Bedah Kode)",
+                desc: "Saya nggak cuma kirim file .ZIP lalu menghilang. Kamu bakal dikasih video rekaman penjelasan cara kerja database dan alur kodingannya sampai benar-benar paham saat ditanya dosen atau atasan.",
+                badge: "Video Bedah Kode",
               },
               {
-                icon: ShieldCheckIcon,
-                title: "Garansi Revisi & Bug Fixing",
-                desc: "Jaminan sistem berjalan lancar sesuai kesepakatan awal tanpa biaya tersembunyi. Didukung garansi perbaikan bug pasca-serah terima.",
-                badge: "SLA Support",
+                icon: Globe02Icon,
+                title: "Pantau Progres Lewat Link Live",
+                desc: "Nggak perlu nebak-nebak apakah proyekmu sudah dikerjakan atau belum. Kamu bakal dapat link preview untuk cek perkembangan aplikasimu langsung dari browser kapan saja.",
+                badge: "Live Staging Preview",
+              },
+              {
+                icon: WhatsappIcon,
+                title: "Ngobrol Langsung Sama Eksekutornya",
+                desc: "Tanpa admin atau sales yang gagap teknis. Mau ubah alur tabel, konsultasi logika algoritma, atau tanya solusi error—kamu ngobrol langsung di WA bareng saya yang nulis kodingannya.",
+                badge: "Direct Developer",
               },
               {
                 icon: CreditCardIcon,
-                title: "Pembayaran Bertahap",
-                desc: "Aman dan transparan, bayar sesuai progres pengerjaan (DP Awal → Progress Demo Online → Pelunasan saat siap serah terima).",
-                badge: "Milestone-based",
+                title: "Bayar Bertahap Sesuai Progres",
+                desc: "Uangmu aman. Cukup DP untuk mulai pengerjaan, dan pelunasan baru dilakukan setelah sistem selesai didemokan di depanmu dengan lancar.",
+                badge: "Pembayaran Bertahap",
               },
             ].map((k, ki) => {
               const WhyUsIcon = k.icon;
@@ -1461,19 +1454,19 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 6: ALUR PENGERJAAN (How It Works)
+          SECTION 6: ALUR PENGERJAAN (CARA KERJA ANTI-GHOSTING)
           ═══════════════════════════════════════════════════════════════════════ */}
       <div id="cara-kerja" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20">
         <div className="mx-auto max-w-5xl text-center">
           <AnimateOnScroll preset="fade-up" className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
-              Proses Transparan
+              CARA KERJA ANTI-GHOSTING
             </span>
             <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
-              Alur Pengerjaan: Mudah, Mulai dari Satu Chat
+              4 Langkah Simpel, Tanpa Birokrasi Ribet
             </h2>
-            <p className="mt-2 text-sm text-white/50">
-              4 tahapan terstruktur dari konsultasi awal hingga sistem online dan serah terima.
+            <p className="mt-2 text-sm text-white/60">
+              Dari obrolan pertama di WhatsApp sampai aplikasi jalan di laptopmu.
             </p>
           </AnimateOnScroll>
 
@@ -1482,27 +1475,27 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
             {[
               {
                 step: "01",
-                title: "Konsultasi & Bedah Kebutuhan",
-                tag: "Gratis via WhatsApp",
-                desc: "Ceritakan ide, judul riset, atau masalah bisnis Anda. Kirimkan referensi atau flowchart sistem yang diinginkan.",
+                title: "Curhat Kebutuhan (Gratis)",
+                tag: "Gratis di WA",
+                desc: "Chat ke WA, ceritakan judul atau masalah kodinganmu. Belum punya gambaran alur? Kita bedah bareng.",
               },
               {
                 step: "02",
-                title: "Penawaran & Kesepakatan",
-                tag: "Transparan & DP",
-                desc: "Penentuan rincian fitur, timeline pengerjaan, estimasi biaya transparan, serta pembayaran uang muka (DP) bertahap.",
+                title: "Kunci Fitur & Estimasi Biaya",
+                tag: "Tanpa Biaya Siluman",
+                desc: "Kita sepakati daftar fitur yang mau dibuat, batas waktu (deadline), dan biayanya di awal—nggak ada biaya siluman di tengah jalan.",
               },
               {
                 step: "03",
-                title: "Development & Update Berkala",
-                tag: "Pantau Online",
-                desc: "Proses coding berlangsung di mana Anda dapat memantau progres secara online dan memberikan masukan berkala.",
+                title: "Eksekusi & Pantau Live",
+                tag: "Link Staging Live",
+                desc: "Proses coding jalan. Kamu bisa cek progres tampilannya secara berkala lewat link staging/preview.",
               },
               {
                 step: "04",
-                title: "Demo, Bimbingan & Serah Terima",
+                title: "Demo, Bedah Kode & Serah Terima",
                 tag: "Garansi Revisi",
-                desc: "Penyerahan full source code & database, panduan operasional, sesi bedah koding, serta jaminan garansi bug fixing.",
+                desc: "Sistem didemokan sampai oke, penyerahan full source code + database, video bedah kode, dan garansi revisi.",
               },
             ].map((s, si) => (
               <div
@@ -1537,77 +1530,77 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
 
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 8: ESTIMASI PAKET / SKEMA HARGA (Pricing)
+          SECTION 7: ESTIMASI PAKET / SKEMA HARGA (HARGA TERBUKA & TRANSPARAN)
           ═══════════════════════════════════════════════════════════════════════ */}
       <div id="paket-harga" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20">
         <div className="mx-auto max-w-6xl">
           <AnimateOnScroll preset="fade-up" className="mb-12 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
-              Skema Harga Fleksibel
+              HARGA TERBUKA &amp; TRANSPARAN
             </span>
             <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
-              Estimasi Paket: Konsep &quot;Mulai Dari&quot; Transparan
+              Pilih Paket Sesuai Kondisi Proyekmu Saat Ini
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-white/60">
-              Tiap sistem memiliki kerumitan yang berbeda. Pilih skema yang paling sesuai dengan kebutuhan dan anggaran Anda.
+              Nggak perlu takut kemahalan. Kalau cuma butuh benerin <em>error</em> sedikit, cukup ambil paket hemat mulai Rp150 ribuan.
             </p>
           </AnimateOnScroll>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {/* Paket 1: Perbaikan / Tambah Fitur */}
+            {/* Paket 1: Penyelamat Revisi & Fix Error */}
             <div className="relative rounded-[32px] border border-white/15 bg-white/5 p-7 backdrop-blur-xl flex flex-col justify-between">
               <div>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white/80">
                   <HugeiconsIcon icon={Wrench01Icon} size={12} className="text-emerald-400" />
-                  <span>Paket Modul / Debugging</span>
+                  <span>Paket Fix Error &amp; Modul</span>
                 </span>
                 <h3 className="mt-4 text-xl font-black text-white">
-                  Perbaikan & Tambah Fitur
+                  Penyelamat Revisi &amp; Fix Error
                 </h3>
                 <p className="mt-2 text-xs font-semibold leading-relaxed text-emerald-300/90">
-                  Untuk benerin error kodingan, redesign UI, atau tambah modul di sistem yang sudah ada.
+                  Cocok buat kodingan yang mentok <em>error</em>, benerin tampilan berantakan, atau tambah 1–2 fitur cepat.
                 </p>
                 <div className="mt-6 flex items-baseline gap-2">
                   <span className="text-xs text-white/40">Mulai dari</span>
-                  <span className="text-2xl font-black text-white">Rp 199.000</span>
+                  <span className="text-2xl font-black text-white">Rp 150.000</span>
                 </div>
                 <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-6 text-xs text-white/80">
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-emerald-400 shrink-0" />
-                    <span>Bug fixing & perbaikan error koding</span>
+                    <span>Cek sumber error/bug gratis di awal</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-emerald-400 shrink-0" />
-                    <span>Redesign antarmuka UI/UX responsif</span>
+                    <span>Perbaikan fungsi / query database macet</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-emerald-400 shrink-0" />
-                    <span>Penambahan fitur / modul baru</span>
+                    <span>Tambah fitur / modul revisi dosen</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-emerald-400 shrink-0" />
-                    <span>Garansi fungsi berjalan normal</span>
+                    <span>Bayar setelah bukti error beres dikirim</span>
                   </li>
                 </ul>
               </div>
               <a
                 href={getWaUrl(
-                  "Halo EcoDigital, saya butuh bantuan perbaikan bug / penambahan fitur kodingan pada sistem saya."
+                  "Halo Mas (ecoDigital), saya mau tanya biaya fix error / revisi kodingan saya."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 py-3 text-xs font-bold text-white transition-all hover:bg-white/20 hover:scale-[1.02]"
               >
                 <HugeiconsIcon icon={WhatsappIcon} size={16} />
-                <span>Konsultasi Perbaikan Fitur</span>
+                <span>Tanya Biaya Fix Error</span>
               </a>
             </div>
 
-            {/* Paket 2: Reguler (Akademik / TA / Sistem Standar) — Best Value */}
+            {/* Paket 2: Bangun Web / Sistem Baru (Reguler) — Paling Banyak Dipilih */}
             <div className="relative rounded-[32px] border-2 border-emerald-400/40 bg-gradient-to-b from-emerald-950/30 via-white/[0.06] to-black/40 p-7 backdrop-blur-xl shadow-2xl shadow-emerald-950/30 flex flex-col justify-between">
               <span className="absolute -top-3.5 left-6 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-3.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/40">
                 <HugeiconsIcon icon={FireIcon} size={12} className="text-amber-300" />
-                <span>Paling Banyak Dipilih / Best Value</span>
+                <span>Paling Banyak Dipilih</span>
               </span>
 
               <div>
@@ -1615,10 +1608,10 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                   Paket Reguler Standar
                 </span>
                 <h3 className="mt-4 text-xl font-black text-white">
-                  Akademik / TA / Sistem Standar
+                  Bangun Web / Sistem Baru (Reguler)
                 </h3>
                 <p className="mt-2 text-xs font-semibold leading-relaxed text-emerald-300">
-                  Cocok untuk Landing Page UMKM, Profil Bisnis, & Sistem Informasi / Riset Tugas Akhir.
+                  Cocok buat Tugas Akhir, SPK, Sistem Informasi standar, atau Landing Page UMKM siap online.
                 </p>
                 <div className="mt-6 flex items-baseline gap-2">
                   <span className="text-xs text-white/40">Mulai dari</span>
@@ -1627,51 +1620,51 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                 <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-6 text-xs text-white/80">
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-[#10B981] shrink-0" />
-                    <span>Web / Sistem custom skala dasar–menengah</span>
+                    <span>100% Custom sesuai alur/flowchart</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-[#10B981] shrink-0" />
-                    <span>Sesi pendampingan koding & bedah database</span>
+                    <span>Desain responsif (rapi di HP &amp; Laptop)</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-[#10B981] shrink-0" />
-                    <span>Termasuk Domain resmi (.com/.id) & Cloud Hosting</span>
+                    <span>Full Source Code &amp; Database lengkap</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-[#10B981] shrink-0" />
-                    <span>Sertifikat SSL & Tombol WhatsApp terintegrasi</span>
+                    <span>Bonus: Video penjelasan kode &amp; bimbingan</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-[#10B981] shrink-0" />
-                    <span>Full source code & garansi revisi sampai ACC</span>
+                    <span>Garansi revisi &amp; bug fixing</span>
                   </li>
                 </ul>
               </div>
               <a
                 href={getWaUrl(
-                  "Halo EcoDigital, saya tertarik memesan Paket Reguler (mulai Rp 499rb) untuk sistem / riset tugas akhir saya."
+                  "Halo Mas (ecoDigital), saya tertarik ambil Paket Reguler (mulai Rp499.000) untuk sistem / web saya."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#10B981] py-3 text-xs font-bold uppercase tracking-wider text-white shadow-lg transition-all hover:bg-[#059669] hover:scale-[1.02]"
               >
                 <HugeiconsIcon icon={WhatsappIcon} size={16} />
-                <span>Pesan Paket Reguler</span>
+                <span>Ambil Paket Reguler</span>
               </a>
             </div>
 
-            {/* Paket 3: Pro (Bisnis / Instansi / Prototipe Start-up) */}
+            {/* Paket 3: Sistem Skala Penuh / Custom App */}
             <div className="relative rounded-[32px] border border-blue-500/30 bg-gradient-to-b from-blue-950/40 via-white/[0.05] to-black/40 p-7 backdrop-blur-xl flex flex-col justify-between">
               <div>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-blue-400">
                   <HugeiconsIcon icon={Building03Icon} size={12} />
-                  <span>Paket Enterprise & Scale-Up</span>
+                  <span>Paket Enterprise &amp; Scale-Up</span>
                 </span>
                 <h3 className="mt-4 text-xl font-black text-white">
-                  Pro (Bisnis / Instansi / Start-up)
+                  Sistem Skala Penuh / Custom App
                 </h3>
                 <p className="mt-2 text-xs font-semibold leading-relaxed text-cyan-300">
-                  Cocok untuk Sistem Informasi, Aplikasi Custom, Penelitian/Tugas Akhir, & Instansi.
+                  Cocok buat Aplikasi Sekolah/Instansi, Mobile App (Android), atau integrasi sistem kompleks.
                 </p>
                 <div className="mt-6 flex items-baseline gap-2">
                   <span className="text-2xl font-black text-blue-400">Penawaran Tertulis</span>
@@ -1680,36 +1673,32 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                 <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-6 text-xs text-white/80">
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-blue-400 shrink-0" />
-                    <span>Sistem skala penuh, dashboard admin & multi-user RBAC</span>
+                    <span>Web System + Mobile App (Flutter/Android)</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-blue-400 shrink-0" />
-                    <span>Aplikasi Mobile Flutter (Android & iOS)</span>
+                    <span>Integrasi Open API / Payment Gateway</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-blue-400 shrink-0" />
-                    <span>Integrasi API, Payment Gateway & WhatsApp Gateway</span>
+                    <span>Deployment ke Server / Cloud / Vercel</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-blue-400 shrink-0" />
-                    <span>Deployment ke Server / Cloud & Maintenance Prioritas</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-blue-400 shrink-0" />
-                    <span>Dokumen panduan manual & garansi SLA bug fixing</span>
+                    <span>Dokumentasi teknis &amp; maintenance berkala</span>
                   </li>
                 </ul>
               </div>
               <a
                 href={getWaUrl(
-                  "Halo EcoDigital, saya ingin meminta penawaran tertulis untuk sistem skala Pro / Bisnis / Instansi."
+                  "Halo Mas (ecoDigital), saya ingin diskusi proyek custom untuk sistem skala penuh / aplikasi instansi."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-lg transition-all hover:bg-blue-500 hover:scale-[1.02]"
               >
                 <HugeiconsIcon icon={WhatsappIcon} size={16} />
-                <span>Minta Penawaran Pro</span>
+                <span>Diskusi Proyek Custom</span>
               </a>
             </div>
           </div>
@@ -1717,19 +1706,19 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          FITUR BARU STANDAR: INTERACTIVE PROJECT COST ESTIMATOR & SIMULATOR
+          SECTION 8: SIMULASI & HITUNG ESTIMASI BIAYA PROYEK
           ═══════════════════════════════════════════════════════════════════════ */}
       <div id="kalkulator-biaya" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20 border-t border-white/10">
         <div className="mx-auto max-w-4xl">
           <AnimateOnScroll preset="fade-up" className="mb-10 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
-              Transparansi Anggaran
+              SIMULASI &amp; HITUNG MANDIRI
             </span>
             <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
-              Simulasi & Hitung Estimasi Biaya Proyek
+              Masih Ragu Biayanya? Hitung Sendiri Estimasi Kasarnya di Sini
             </h2>
             <p className="mx-auto mt-2 max-w-lg text-sm text-white/60">
-              Pilih jenis sistem dan modul tambahan untuk mendapatkan gambaran estimasi biaya dan waktu pengerjaan secara transparan.
+              Klik jenis sistem dan centang fitur tambahan yang kamu butuhkan, lalu kirim hasilnya ke WA saya untuk negosiasi santai.
             </p>
           </AnimateOnScroll>
 
@@ -1742,11 +1731,11 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {[
-                  { id: "skripsi", name: "Riset / TA / Skripsi (SPK)", desc: "Sistem Informasi, data riset & bimbingan", base: "Mulai 499rb" },
-                  { id: "umkm", name: "Website Profil UMKM / Bisnis", desc: "Company profile, portofolio & WhatsApp", base: "Mulai 499rb" },
+                  { id: "fix_error", name: "Fix Error & Tambah Fitur", desc: "Perbaikan bug, error query, revisi", base: "Mulai 150rb" },
+                  { id: "skripsi", name: "Bangun Web / TA / SPK Reguler", desc: "Custom alur, database & bimbingan", base: "Mulai 499rb" },
+                  { id: "umkm", name: "Website Profil UMKM / Bisnis", desc: "Company profile resmi & WhatsApp", base: "Mulai 499rb" },
                   { id: "custom_admin", name: "Sistem Info & Dashboard Admin", desc: "Operasional kantor, multi-user RBAC", base: "Mulai 999rb" },
                   { id: "mobile_app", name: "Aplikasi Mobile Flutter", desc: "Android APK, backend API & cloud", base: "Mulai 1.49jt" },
-                  { id: "perbaikan", name: "Perbaikan Bug / Modul Tambah", desc: "Fix error, redesign UI, tambah fitur", base: "Mulai 199rb" },
                 ].map((item) => (
                   <button
                     key={item.id}
@@ -1770,15 +1759,15 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
             {/* Step 2: Pilih Fitur Tambahan */}
             <div className="mt-8 pt-6 border-t border-white/10">
               <label className="text-xs font-extrabold uppercase tracking-wider text-cyan-300 block mb-3">
-                2. Pilih Fitur & Fasilitas Tambahan (Opsional):
+                2. Pilih Fitur &amp; Fasilitas Tambahan (Opsional):
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  { id: "spk_algo", label: "Algoritma SPK (AHP / TOPSIS / SAW / KNN)", price: "+Rp 200rb" },
-                  { id: "bedah_kode", label: "Sesi Bedah Koding 1-on-1 (Persiapan Sidang / Presentasi)", price: "+Rp 150rb" },
-                  { id: "domain_hosting", label: "Domain Resmi (.com/.id) & Cloud Hosting Siap Online 1 Tahun", price: "+Rp 250rb" },
+                  { id: "spk_algo", label: "Algoritma SPK (AHP, TOPSIS, SAW, KNN)", price: "+Rp 200rb" },
+                  { id: "bedah_kode", label: "Video Bedah Kode & Sesi Bimbingan 1-on-1", price: "+Rp 150rb" },
+                  { id: "domain_hosting", label: "Domain Resmi (.com/.id) & Cloud Hosting Siap Online", price: "+Rp 250rb" },
                   { id: "wa_gateway", label: "Integrasi Notifikasi WhatsApp Gateway Otomatis", price: "+Rp 200rb" },
-                  { id: "export_pdf", label: "Modul Ekspor Laporan Otomatis (PDF & Excel Berkop)", price: "+Rp 150rb" },
+                  { id: "export_pdf", label: "Modul Ekspor Laporan Otomatis (PDF & Excel)", price: "+Rp 150rb" },
                   { id: "multi_role", label: "Sistem Hak Akses Berjenjang (Multi-Role RBAC)", price: "+Rp 200rb" },
                 ].map((addon) => {
                   const isChecked = calcAddons.includes(addon.id);
@@ -1828,7 +1817,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                   </span>
                 </div>
                 <p className="text-[11px] text-white/50 mt-1">
-                  *Garansi revisi sampai ACC & full source code tanpa enkripsi.
+                  *Garansi revisi sampai ACC &amp; full source code tanpa enkripsi.
                 </p>
               </div>
 
@@ -1839,8 +1828,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                 className="w-full md:w-auto flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-4 text-xs font-bold text-white shadow-xl shadow-emerald-500/30 transition-all hover:scale-105 active:scale-95"
               >
                 <HugeiconsIcon icon={WhatsappIcon} size={18} />
-                <span>Kirim Rincian Estimasi Ini ke WA</span>
-                <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
+                <span>Kirim Hasil Simulasi ke WA →</span>
               </a>
             </div>
 
@@ -1849,51 +1837,51 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SECTION 9: FAQ (Pertanyaan yang Sering Diajukan)
+          SECTION 9: FAQ (TANYA JAWAB SANTAI)
           ═══════════════════════════════════════════════════════════════════════ */}
       <div id="faq" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20">
         <div className="mx-auto max-w-4xl">
           <AnimateOnScroll preset="fade-up" className="mb-10 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
-              FAQ
+              TANYA JAWAB SANTAI (FAQ)
             </span>
             <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
-              Pertanyaan yang Sering Diajukan
+              Hal yang Paling Sering Ditanyain Sebelum Mulai Ngoding
             </h2>
-            <p className="mt-2 text-sm text-white/50">
-              Jawaban ringkas seputar konsultasi, proses pengerjaan, dan garansi layanan.
+            <p className="mt-2 text-sm text-white/60">
+              Biar nggak ada keraguan atau salah paham di belakang, cek dulu jawaban jujur untuk pertanyaan yang paling sering mampir di WhatsApp saya.
             </p>
           </AnimateOnScroll>
 
           <div className="space-y-3.5">
             {[
               {
-                q: "Apakah bisa bantu kalau baru punya judul atau ide kasar saja?",
-                a: "Tentu sangat bisa! Tim EcoDigital siap membantu membedah kebutuhan, menyusun flowchart alur sistem, entitas database (ERD), hingga rekomendasi teknologi yang paling tepat dan efisien.",
+                q: "Saya baru punya judul atau ide kasar aja, belum tahu alur sistemnya. Bisa dibantu?",
+                a: "Bisa banget! Kamu nggak perlu nunggu punya flowchart atau rancangan database yang sempurna. Cukup ceritakan gambaran kasarnya lewat WA, nanti kita bedah bareng fitur apa saja yang paling masuk akal, sesuai dengan kebutuhan riset/bisnismu, dan pastinya aman buat dikejar sesuai deadline.",
               },
               {
-                q: "Berapa lama waktu pengerjaan rata-rata?",
-                a: "Untuk sistem website standar siap online berkisar 1–3 hari kerja. Untuk sistem tugas akhir, SPK, atau aplikasi mobile custom berkisar 1–3 minggu sesuai kompleksitas fitur yang disepakati.",
+                q: "Kodingan saya sudah setengah jalan tapi mentok error / ditinggal developer lama. Bisa lanjutin tanpa bikin ulang?",
+                a: "Sangat bisa. Justru itu alasan saya menyediakan paket Penyelamat Revisi & Fix Error (Mulai Rp150.000). Kirim saja source code lamamu untuk saya cek dulu kerusakannya secara gratis. Kalau memang masih layak pakai dan cuma butuh benerin bug atau tambah 1–2 fitur revisi dosen, kamu nggak perlu buang uang buat bangun ulang dari nol.",
               },
               {
-                q: "Apakah saya mendapatkan full source code dan database?",
-                a: "Ya, 100% full source code, database (.sql), dan aset terkait diserahkan sepenuhnya tanpa enkripsi. Kami juga sediakan panduan instalasi dan video cara menjalankannya.",
+                q: "Nanti kalau ditanya dosen penguji pas sidang gimana? Saya takut nggak paham kodingannya.",
+                a: "Tenang, saya bukan joki lepas tangan yang cuma kirim file .ZIP lalu hilang kontak. Setiap serah terima proyek sistem baru sudah termasuk video rekaman penjelasan alur kodingan & struktur database khusus untuk aplikasimu, ditambah sesi tanya-jawab 1-on-1. Kamu bisa putar ulang videonya kapan saja sampai benar-benar siap maju sidang.",
               },
               {
-                q: "Bagaimana jika ada revisi dari dosen atau atasan?",
-                a: "Kami menyediakan garansi revisi dan bug fixing sesuai kesepakatan fitur awal. Jika dosen atau atasan meminta penyesuaian minor atau perbaikan alur, kami dampingi sampai tuntas dan ACC.",
+                q: "Berapa lama proses pengerjaannya? Bisa bantu kejar deadline yang sudah mepet?",
+                a: "Durasi pengerjaan menyesuaikan tingkat kerumitan: Fix Error / Tambah Fitur Ringan (1–3 hari beres), Landing Page / Web Standar (3–7 hari kerja), dan Sistem Informasi / SPK / Aplikasi Custom (1–3 minggu). Kalau jadwal bimbingan atau sidangmu sudah mepet dalam hitungan hari, infokan saja jujur di awal chat supaya kita bisa memprioritaskan modul utamanya agar siap didemokan tepat waktu.",
               },
               {
-                q: "Apakah ada sesi pendampingan atau bedah kode?",
-                a: "Ya! Khususnya untuk mahasiswa TA atau staf IT instansi, kami sediakan sesi mentoring bedah koding (via Google Meet / AnyDesk / WA) agar Anda benar-benar paham alur koding dan siap saat ditanya penguji.",
+                q: "Apa saja yang bakal saya dapatkan saat proyek selesai?",
+                a: "Komplit dan menjadi hak milikmu 100% tanpa ada kode yang dikunci (enkripsi): Full Source Code asli yang rapi, file database lengkap (.sql), panduan/bantuan instalasi sampai aplikasi jalan normal di laptopmu sendiri (localhost / Android), link live preview, serta video penjelasan alur program.",
               },
               {
-                q: "Bagaimana skema pembayaran dan keamanannya?",
-                a: "Pembayaran bertahap yang sangat aman: Down Payment (DP) awal untuk memulai, progress demo online saat sistem selesai dibangun, dan pelunasan hanya dilakukan saat Anda puas sebelum serah terima akhir.",
+                q: "Gimana kalau setelah aplikasi jadi, tiba-tiba ada revisi dari dosen atau atasan?",
+                a: "Semua paket sudah dilindungi Garansi Revisi. Selama revisi tersebut masih berada di dalam kesepakatan alur fitur awal atau perbaikan bug tampilan/fungsi, akan saya bereskan gratis tanpa biaya tambahan. Namun, jika di tengah jalan dosen atau atasan meminta penambahan fitur/modul baru di luar kesepakatan awal, biayanya tinggal menyesuaikan paket tambah fitur ringan.",
               },
               {
-                q: "Apakah sistem dijamin aman dari plagiasi / template pasaran?",
-                a: "Pasti! Seluruh kode dibuat custom mengikuti diagram alur dan proses bisnis unik Anda dengan standar clean architecture, sehingga orisinal dan bebas dari template pasaran.",
+                q: "Sistem pembayarannya gimana? Apakah uang saya aman?",
+                a: "Transparan dan dibayar bertahap sesuai progres. Khusus Paket Fix Error Ringan: Saya perbaiki dulu error-nya di laptop saya, lalu saya kirimkan bukti video/screen record bahwa fitur sudah berjalan normal; setelah kamu lihat buktinya beres, baru lakukan pembayaran dan file dikirim. Pembuatan Sistem Baru: Cukup bayar DP 50% untuk mulai pengerjaan (progres bisa dipantau lewat link live preview), dan pelunasan 50% sisanya baru dilakukan setelah sistem selesai didemokan.",
               },
             ].map((faq, i) => (
               <details
@@ -1926,13 +1914,13 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
             <div className="rounded-[36px] border border-white/20 bg-gradient-to-r from-emerald-950/60 via-black/60 to-blue-950/60 p-8 sm:p-12 backdrop-blur-2xl shadow-2xl">
               <div className="text-center mb-8">
                 <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
-                  Mulai Sekarang
+                  MULAI DISKUSI SEKARANG
                 </span>
                 <h2 className="mt-3 text-3xl font-black text-white sm:text-4xl">
-                  Siap Mulai Proyek Anda? Diskusikan Gratis Sekarang!
+                  Masih Bingung Mulai dari Mana? Obrolin Aja Dulu, Gratis Kok!
                 </h2>
                 <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/75">
-                  Ceritakan kebutuhan riset, judul tugas akhir, atau sistem bisnis Anda ke WhatsApp kami. Konsultasi awal 100% gratis tanpa komitmen.
+                  Isi detail singkat di bawah ini, nanti pesannya otomatis terformat rapi dan langsung masuk ke WhatsApp saya ({WA_DISPLAY}).
                 </p>
               </div>
 
@@ -1942,12 +1930,12 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-[11px] font-semibold text-white/70 block mb-1">
-                        Nama Lengkap
+                        Nama Panggilanmu
                       </label>
                       <input
                         type="text"
                         required
-                        placeholder="Contoh: Rian Pratama"
+                        placeholder="Nama Panggilanmu"
                         value={formName}
                         onChange={(e) => setFormName(e.target.value)}
                         className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-white placeholder-white/30 focus:border-emerald-400 focus:outline-none"
@@ -1955,12 +1943,12 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                     </div>
                     <div>
                       <label className="text-[11px] font-semibold text-white/70 block mb-1">
-                        Nomor WhatsApp
+                        Nomor WhatsApp Aktif
                       </label>
                       <input
                         type="tel"
                         required
-                        placeholder="Contoh: 08123456789"
+                        placeholder="Nomor WhatsApp Aktif"
                         value={formWa}
                         onChange={(e) => setFormWa(e.target.value)}
                         className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-white placeholder-white/30 focus:border-emerald-400 focus:outline-none"
@@ -1970,28 +1958,27 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
 
                   <div>
                     <label className="text-[11px] font-semibold text-white/70 block mb-1">
-                      Kategori Kebutuhan
+                      Pilih Kebutuhan
                     </label>
                     <select
                       value={formType}
                       onChange={(e) => setFormType(e.target.value)}
                       className="w-full rounded-xl border border-white/10 bg-[#060A14] px-4 py-2.5 text-xs text-white focus:border-emerald-400 focus:outline-none"
                     >
-                      <option value="Riset & Tugas Akhir (SPK)">Riset & Tugas Akhir (SPK / Skripsi)</option>
-                      <option value="Website Profil UMKM / Bisnis">Website Profil UMKM / Bisnis</option>
-                      <option value="Sistem Informasi & Dashboard Admin">Sistem Informasi & Dashboard Admin Custom</option>
-                      <option value="Aplikasi Mobile Android (Flutter)">Aplikasi Mobile Android (Flutter)</option>
-                      <option value="Perbaikan Bug / Penambahan Fitur">Perbaikan Bug / Penambahan Fitur</option>
+                      <option value="Fix Error & Tambah Fitur">Fix Error &amp; Tambah Fitur</option>
+                      <option value="Bikin Sistem TA & Riset">Bikin Sistem TA &amp; Riset</option>
+                      <option value="Web Bisnis & Instansi">Web Bisnis &amp; Instansi</option>
+                      <option value="Konsultasi Dulu">Konsultasi Dulu</option>
                     </select>
                   </div>
 
                   <div>
                     <label className="text-[11px] font-semibold text-white/70 block mb-1">
-                      Catatan Kebutuhan / Judul / Fitur yang Diinginkan
+                      Detail Singkat Kebutuhan
                     </label>
                     <textarea
                       rows={3}
-                      placeholder="Ceritakan judul tugas akhir, proses bisnis, atau fitur yang ingin dibuat..."
+                      placeholder="Ceritakan singkat masalah kodinganmu, judul TA, atau sistem yang mau dibuat (sebutkan juga kalau ada deadline mepet)..."
                       value={formNotes}
                       onChange={(e) => setFormNotes(e.target.value)}
                       className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-white placeholder-white/30 focus:border-emerald-400 focus:outline-none"
@@ -2003,14 +1990,14 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                     className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-xl shadow-emerald-950/40 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-98"
                   >
                     <HugeiconsIcon icon={WhatsappIcon} size={16} />
-                    <span>Kirim Brief Langsung ke WhatsApp EcoDigital →</span>
+                    <span>Kirim Detail &amp; Mulai Ngobrol di WA →</span>
                   </button>
                 </form>
 
                 <div className="mt-5 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 gap-2">
                   <span>Atau chat langsung tanpa isi form:</span>
                   <a
-                    href={getWaUrl()}
+                    href={getWaUrl("Halo Mas (ecoDigital), saya mau konsultasi pembuatan website / sistem.")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-bold text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-1.5"
@@ -2032,7 +2019,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
               <div className="flex items-center gap-3">
                 <Image
                   src={logoMarkImg}
-                  alt="EcoDigital"
+                  alt="ecoDigital"
                   width={280}
                   height={88}
                   unoptimized
@@ -2040,7 +2027,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                 />
               </div>
               <p className="mt-3 text-xs leading-relaxed text-white/60 max-w-md">
-                Software house & IT development partner terpercaya untuk riset akademik, tugas akhir/skripsi, sistem informasi instansi, hingga prototipe aplikasi bisnis & start-up.
+                ecoDigital — Partner ngoding pembuatan website, aplikasi custom, dan penyelamat revisi sistem. Dikerjakan langsung oleh developer secara transparan, rapi, dan bergaransi.
               </p>
               <div className="mt-4 flex items-center gap-3 text-white/80">
                 <a
@@ -2048,7 +2035,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-9 w-9 rounded-full bg-emerald-500/20 hover:bg-emerald-500/30 flex items-center justify-center text-emerald-400 transition-colors"
-                  aria-label="WhatsApp EcoDigital"
+                  aria-label="WhatsApp ecoDigital"
                 >
                   <HugeiconsIcon icon={WhatsappIcon} size={18} />
                 </a>
@@ -2057,7 +2044,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
-                  aria-label="X EcoDigital"
+                  aria-label="X ecoDigital"
                 >
                   <HugeiconsIcon icon={NewTwitterIcon} size={18} />
                 </a>
@@ -2066,7 +2053,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
-                  aria-label="Facebook EcoDigital"
+                  aria-label="Facebook ecoDigital"
                 >
                   <HugeiconsIcon icon={Facebook01Icon} size={18} />
                 </a>
@@ -2075,7 +2062,7 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
-                  aria-label="Instagram EcoDigital"
+                  aria-label="Instagram ecoDigital"
                 >
                   <HugeiconsIcon icon={InstagramIcon} size={18} />
                 </a>
@@ -2090,27 +2077,27 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
               <ul className="mt-3 space-y-2 text-xs text-white/70">
                 <li>
                   <Link href="#layanan" className="hover:text-white transition-colors">
-                    Riset & Tugas Akhir (SPK)
+                    Fix Error &amp; Tambah Fitur
                   </Link>
                 </li>
                 <li>
                   <Link href="#layanan" className="hover:text-white transition-colors">
-                    Sistem Instansi & Sekolah
+                    Sistem Tugas Akhir &amp; Riset SPK
                   </Link>
                 </li>
                 <li>
                   <Link href="#layanan" className="hover:text-white transition-colors">
-                    Aplikasi Mobile Android (Flutter)
+                    Aplikasi Sekolah &amp; Instansi
                   </Link>
                 </li>
                 <li>
                   <Link href="#layanan" className="hover:text-white transition-colors">
-                    Web Operasional & UMKM
+                    Web Profil UMKM &amp; Bisnis
                   </Link>
                 </li>
                 <li>
                   <Link href="#paket-harga" className="hover:text-white transition-colors">
-                    Perbaikan Bug & Modul Koding
+                    Paket Harga (Mulai Rp150rb)
                   </Link>
                 </li>
               </ul>
@@ -2149,8 +2136,8 @@ Apakah jadwal antrean pengerjaan tersedia untuk memulai diskusi?`;
           </div>
 
           <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/40 gap-3">
-            <p>&copy; 2026 EcoDigital. All rights reserved.</p>
-            <p>Garansi Pengerjaan & Sesi Pendampingan Teknis Langsung</p>
+            <p>&copy; 2026 ecoDigital. All rights reserved.</p>
+            <p>Garansi Pengerjaan &amp; Sesi Pendampingan Teknis Langsung</p>
           </div>
         </footer>
       </div>
