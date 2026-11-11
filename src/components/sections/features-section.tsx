@@ -27,18 +27,19 @@ export function FeaturesSection() {
             return (
               <div
                 key={ki}
-                className="rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/40 hover:bg-white/[0.08]"
+                className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/40 hover:bg-white/[0.08]"
               >
-                <div className="mb-4 flex items-center justify-between">
+                {/* Header Icon & Badge: di mobile ditengah dengan flex-column, di tablet/desktop flex-row justify-between */}
+                <div className="mb-4 flex flex-col items-center justify-center gap-2.5 sm:w-full sm:flex-row sm:items-center sm:justify-between">
                   <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 text-emerald-400">
                     <HugeiconsIcon icon={WhyUsIcon} size={28} />
                   </span>
-                  <span className="rounded-full border border-emerald-400/20 bg-emerald-950/40 px-2 py-0.5 text-[9px] font-semibold text-emerald-300">
+                  <span className="rounded-full border border-emerald-400/20 bg-emerald-950/40 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-300">
                     {k.badge}
                   </span>
                 </div>
-                <h4 className="text-base font-bold text-white">{k.title}</h4>
-                <p className="mt-2 text-xs leading-relaxed text-white/60">
+                <h4 className="text-base font-bold text-white text-center sm:text-left">{k.title}</h4>
+                <p className="mt-2 text-xs leading-relaxed text-white/60 text-center sm:text-left">
                   {k.desc}
                 </p>
               </div>
@@ -49,4 +50,3 @@ export function FeaturesSection() {
     </div>
   );
 }
-
