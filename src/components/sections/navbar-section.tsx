@@ -125,7 +125,7 @@ export function NavbarSection() {
             >
               <HugeiconsIcon icon={WhatsappIcon} size={15} />
               <span className="hidden sm:inline">Chat Developer</span>
-              <span className="sm:hidden">Chat WA</span>
+              <span className="sm:hidden">Ngobrol Yuk!</span>
             </a>
 
             {/* Mobile & Tablet Hamburger Toggle Button */}

@@ -198,7 +198,7 @@ Kira-kira bisa dibantu? Terima kasih!`;
           {/* Col 2: Ringkasan Layanan */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-400">
-              Layanan Kami
+              Layanan
             </h4>
             <ul className="mt-3 space-y-2 text-xs text-white/70">
               <li>
@@ -250,20 +250,12 @@ Kira-kira bisa dibantu? Terima kasih!`;
                 <span className="text-cyan-400">Layanan:</span>
                 <span className="text-white/80">Konsultasi Seluruh Indonesia</span>
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-white/40">Status:</span>
-                <span className="text-emerald-300 font-semibold flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                  Menerima Proyek Baru
-                </span>
-              </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/40 gap-3">
           <p>&copy; 2026 ecoDigital. All rights reserved.</p>
-          <p>Garansi Pengerjaan &amp; Sesi Pendampingan Teknis Langsung</p>
         </div>
       </footer>
     </div>

@@ -1,18 +1,22 @@
+"use client";
+
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { RegisterForm } from "@/components/forms/register-form";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 
-export const metadata = { title: "Daftar — Eco Digital" };
-
 export default function RegisterPage() {
+  useEffect(() => {
+    document.title = "Daftar — Eco Digital";
+  }, []);
+
   async function handleRegister(data: {
     name: string;
     email: string;
     password: string;
     confirmPassword: string;
   }) {
-    "use server";
     console.log("Register:", data.email);
   }
 
@@ -61,17 +65,15 @@ export default function RegisterPage() {
           </div>
         </AnimateOnScroll>
 
-        <AnimateOnScroll preset="fade-up" delay={0.2}>
-          <p className="mt-6 text-center text-sm text-white/50">
-            Sudah punya akun?{" "}
-            <Link
-              href="/login"
-              className="font-medium text-[#14B478] hover:underline"
-            >
-              Masuk di sini
-            </Link>
-          </p>
-        </AnimateOnScroll>
+        <p className="mt-6 text-center text-sm text-white/40">
+          Sudah punya akun?{" "}
+          <Link
+            href="/login"
+            className="font-medium text-[#14B478] hover:text-[#19D48D] transition-colors"
+          >
+            Masuk di sini
+          </Link>
+        </p>
       </div>
     </main>
   );

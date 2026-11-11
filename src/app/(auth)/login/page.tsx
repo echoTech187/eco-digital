@@ -1,13 +1,17 @@
+"use client";
+
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { LoginForm } from "@/components/forms/login-form";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 
-export const metadata = { title: "Masuk — Eco Digital" };
-
 export default function LoginPage() {
+  useEffect(() => {
+    document.title = "Masuk — Eco Digital";
+  }, []);
+
   async function handleLogin(data: { email: string; password: string }) {
-    "use server";
     console.log("Login:", data.email);
   }
 
@@ -51,17 +55,15 @@ export default function LoginPage() {
           </div>
         </AnimateOnScroll>
 
-        <AnimateOnScroll preset="fade-up" delay={0.2}>
-          <p className="mt-6 text-center text-sm text-white/50">
-            Belum punya akun?{" "}
-            <Link
-              href="/register"
-              className="font-medium text-[#14B478] hover:underline"
-            >
-              Daftar sekarang
-            </Link>
-          </p>
-        </AnimateOnScroll>
+        <p className="mt-6 text-center text-sm text-white/40">
+          Belum punya akun?{" "}
+          <Link
+            href="/register"
+            className="font-medium text-[#14B478] hover:text-[#19D48D] transition-colors"
+          >
+            Daftar sekarang
+          </Link>
+        </p>
       </div>
     </main>
   );

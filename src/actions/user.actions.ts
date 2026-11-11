@@ -1,5 +1,3 @@
-"use server";
-
 import { CreateUserDto } from "@/lib/entities/user.entity";
 import { CreateUserUseCase } from "@/lib/use-cases/user/create-user.use-case";
 import { GetUserUseCase } from "@/lib/use-cases/user/get-user.use-case";
