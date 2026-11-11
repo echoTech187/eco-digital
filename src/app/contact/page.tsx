@@ -40,7 +40,7 @@ export default function ContactPage() {
 
       {/* Header */}
       <header className="relative z-30 flex h-20 w-full items-center justify-between px-6 sm:px-10 lg:px-14 border-b border-white/10 bg-[#060A14]/90 backdrop-blur-xl">
-        <Link href="/" className="group flex items-center gap-3">
+        <Link href="/" prefetch={false} className="group flex items-center gap-3">
           <Image
             src={logoMarkImg}
             alt="ecoDigital — Hubungi Kami untuk Jasa Pembuatan Website & Aplikasi"
@@ -61,6 +61,7 @@ export default function ContactPage() {
         </Link>
         <Link
           href="/"
+          prefetch={false}
           className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold text-white/90 backdrop-blur-md transition-all hover:bg-white/20 hover:text-white"
         >
           ← Kembali ke Beranda

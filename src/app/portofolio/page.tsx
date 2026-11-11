@@ -85,7 +85,7 @@ export default function PortfolioIndexPage() {
       {/* Header */}
       <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-[#060A14]/90 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-8">
-          <Link href="/" className="group flex items-center gap-3">
+          <Link href="/" prefetch={false} className="group flex items-center gap-3">
             <Image
               src={logoMarkImg}
               alt="ecoDigital Logo"
@@ -108,6 +108,7 @@ export default function PortfolioIndexPage() {
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/"
+              prefetch={false}
               className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 sm:px-4 py-2 text-xs font-semibold text-white/80 hover:bg-white/15 hover:text-white transition-all"
             >
               <HugeiconsIcon icon={ArrowLeft02Icon} size={14} />
@@ -132,7 +133,7 @@ export default function PortfolioIndexPage() {
       <main className="relative z-20 mx-auto max-w-6xl px-4 sm:px-8 py-10 sm:py-14">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-white/50">
-          <Link href="/" className="hover:text-emerald-400 transition-colors">
+          <Link href="/" prefetch={false} className="hover:text-emerald-400 transition-colors">
             Beranda
           </Link>
           <span>/</span>
@@ -280,10 +281,10 @@ export default function PortfolioIndexPage() {
         <div className="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© {new Date().getFullYear()} ecoDigital. Seluruh hak cipta dilindungi.</p>
           <div className="flex items-center gap-4">
-            <Link href="/" className="hover:text-white transition-colors">
+            <Link href="/" prefetch={false} className="hover:text-white transition-colors">
               Beranda
             </Link>
-            <Link href="/contact" className="hover:text-white transition-colors">
+            <Link href="/contact" prefetch={false} className="hover:text-white transition-colors">
               Kontak
             </Link>
           </div>
