@@ -56,7 +56,7 @@ export function NavbarSection() {
           <Link href="/" className="group flex items-center gap-2 sm:gap-3 shrink-0">
             <Image
               src={logoMarkImg}
-              alt="ecoDigital"
+              alt="ecoDigital — Jasa Pembuatan Website & Aplikasi Custom"
               width={320}
               height={100}
               priority
@@ -171,7 +171,7 @@ export function NavbarSection() {
                     >
                       <Image
                         src={logoMarkImg}
-                        alt="ecoDigital"
+                        alt="ecoDigital — Jasa Pembuatan Website & Aplikasi Custom"
                         width={180}
                         height={56}
                         unoptimized

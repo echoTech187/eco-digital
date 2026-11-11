@@ -199,7 +199,7 @@ export function HeroSection() {
               >
                 <Image
                   src={founderImg}
-                  alt="Founder ecoDigital"
+                  alt="Developer & Founder ecoDigital — Layanan Pembuatan Website & Aplikasi"
                   fill
                   priority
                   loading="eager"

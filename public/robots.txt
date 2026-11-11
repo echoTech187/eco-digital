@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eco.co-id.id/sitemap.xml

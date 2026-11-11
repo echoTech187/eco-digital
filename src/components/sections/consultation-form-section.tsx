@@ -145,7 +145,7 @@ Kira-kira bisa dibantu? Terima kasih!`;
             <div className="flex items-center gap-3">
               <Image
                 src={logoMarkImg}
-                alt="ecoDigital"
+                alt="ecoDigital Logo — Jasa Pembuatan Website & Aplikasi Custom"
                 width={280}
                 height={88}
                 unoptimized

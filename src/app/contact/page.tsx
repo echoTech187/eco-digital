@@ -43,7 +43,7 @@ export default function ContactPage() {
         <Link href="/" className="group flex items-center gap-3">
           <Image
             src={logoMarkImg}
-            alt="EcoDigital"
+            alt="ecoDigital — Hubungi Kami untuk Jasa Pembuatan Website & Aplikasi"
             width={80}
             height={94}
             priority
