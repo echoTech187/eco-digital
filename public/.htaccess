@@ -1,6 +1,19 @@
+# Proper MIME types for Next.js static export
+<IfModule mod_mime.c>
+  AddType text/css .css
+  AddType application/javascript .js
+  AddType font/woff2 .woff2
+  AddType image/svg+xml .svg
+  AddType image/webp .webp
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # Pass static Next.js assets directly to filesystem without rewrite
+  RewriteRule ^_next/ - [L]
+  RewriteRule ^images/ - [L]
 
   # Serve existing files and directories directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
