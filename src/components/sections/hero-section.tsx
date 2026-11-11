@@ -117,6 +117,30 @@ export function HeroSection() {
                 </span>
               </div>
 
+              {/* Garansi & Transparansi Jaminan di Bawah Tombol Hero */}
+              <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-emerald-300 font-medium">
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
+                    ✓
+                  </span>
+                  Tanpa DP Mengambang
+                </span>
+                <span className="hidden sm:inline text-white/20">•</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
+                    ✓
+                  </span>
+                  Source Code 100% Hak Milik
+                </span>
+                <span className="hidden sm:inline text-white/20">•</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
+                    ✓
+                  </span>
+                  Bisa Dicicil Sesuai Progres
+                </span>
+              </div>
+
               {/* Tombol Scroll untuk Eksplorasi */}
               <div className="mt-8 flex items-center">
                 <Link
@@ -194,3 +218,4 @@ export function HeroSection() {
     </section>
   );
 }
+

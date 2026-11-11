@@ -40,18 +40,35 @@ export function CalculatorSection() {
       maximumFractionDigits: 0,
     }).format(total);
 
+    const formattedBasePrice = new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      maximumFractionDigits: 0,
+    }).format(base.price);
+
     const waText = `Halo Mas (ecoDigital), saya baru coba hitung simulasi biaya di website:
 - Jenis Proyek: ${base.label}
 - Fitur Tambahan: ${selectedAddonLabels.length > 0 ? selectedAddonLabels.join(", ") : "Tidak ada"}
 - Estimasi Kasar di Web: ${formattedPrice}
 Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
 
+    const selectedAddonDetails = calcAddons
+      .filter((id) => CALCULATOR_ADDON_OPTIONS[id])
+      .map((id) => ({
+        id,
+        label: CALCULATOR_ADDON_OPTIONS[id].label,
+        price: CALCULATOR_ADDON_OPTIONS[id].priceFormatted,
+      }));
+
     return {
       label: base.label,
+      baseName: base.name,
+      basePrice: formattedBasePrice,
       totalPrice: formattedPrice,
       days: base.days,
       waUrl: `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waText)}`,
       addonLabels: selectedAddonLabels,
+      addonDetails: selectedAddonDetails,
     };
   }, [calcProjectType, calcAddons]);
 
@@ -151,14 +168,78 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
             </div>
           </div>
 
+          {/* Ringkasan Instan (Instant Interactive Breakdown) */}
+          <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-5 backdrop-blur-md">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+                </span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white/90">
+                  Ringkasan Instan (Real-Time Breakdown)
+                </span>
+              </div>
+              <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-400">
+                Terupdate Otomatis
+              </span>
+            </div>
+
+            <div className="mt-3 space-y-2 text-xs">
+              {/* Base Item */}
+              <div className="flex items-center justify-between text-white/80">
+                <span className="flex items-center gap-1.5 font-medium">
+                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={14} className="text-emerald-400 shrink-0" />
+                  <span>Paket Dasar: {calculatedResult.baseName}</span>
+                </span>
+                <span className="font-semibold text-white/90">{calculatedResult.basePrice}</span>
+              </div>
+
+              {/* Addons List */}
+              {calculatedResult.addonDetails.length > 0 ? (
+                calculatedResult.addonDetails.map((addon) => (
+                  <div key={addon.id} className="flex items-center justify-between text-white/70 pl-5">
+                    <span className="truncate pr-2">• {addon.label}</span>
+                    <span className="font-semibold text-cyan-300 shrink-0">{addon.price}</span>
+                  </div>
+                ))
+              ) : (
+                <div className="text-[11px] text-white/40 italic pl-5">
+                  (Belum ada fitur tambahan yang dipilih)
+                </div>
+              )}
+            </div>
+
+            {/* Quick Trust Badges */}
+            <div className="mt-4 pt-3 border-t border-white/5 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] text-emerald-300/80">
+              <span className="inline-flex items-center gap-1">
+                <HugeiconsIcon icon={CheckmarkCircle01Icon} size={12} className="text-emerald-400" />
+                100% Source Code &amp; Database Milik Anda
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <HugeiconsIcon icon={CheckmarkCircle01Icon} size={12} className="text-emerald-400" />
+                Garansi Revisi Sampai ACC
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <HugeiconsIcon icon={CheckmarkCircle01Icon} size={12} className="text-emerald-400" />
+                Bisa Dicicil Sesuai Progres
+              </span>
+            </div>
+          </div>
+
           {/* Step 3: Hasil Kalkulasi & Action CTA */}
           <div className="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 bg-black/40 -mx-6 sm:-mx-10 -mb-6 sm:-mb-10 p-6 sm:p-8 rounded-b-3xl">
             <div>
-              <span className="text-[11px] uppercase tracking-wider text-white/50 block">
-                Estimasi Biaya Transparan:
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] uppercase tracking-wider text-white/50 block">
+                  Estimasi Biaya Transparan:
+                </span>
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 border border-emerald-400/20 px-2 py-0.5 text-[9px] font-bold text-emerald-300">
+                  ⚡ Live Total
+                </span>
+              </div>
               <div className="flex items-baseline gap-2 mt-1">
-                <span className="text-3xl sm:text-4xl font-black text-emerald-400">
+                <span className="text-3xl sm:text-4xl font-black text-emerald-400 transition-all duration-300 drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
                   {calculatedResult.totalPrice}
                 </span>
                 <span className="text-xs text-white/60">
@@ -185,3 +266,4 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
     </div>
   );
 }
+

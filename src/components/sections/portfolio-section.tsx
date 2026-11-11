@@ -155,6 +155,20 @@ export function PortfolioSection() {
                         </span>
                       ))}
                     </div>
+
+                    {/* Case Study / Dampak Nyata */}
+                    {p.impact && (
+                      <div className="mt-3 flex items-start gap-1.5 rounded-xl border border-emerald-500/25 bg-emerald-950/40 px-2.5 py-1.5 text-[11px] text-emerald-300">
+                        <HugeiconsIcon
+                          icon={CheckmarkCircle01Icon}
+                          size={14}
+                          className="text-emerald-400 shrink-0 mt-0.5"
+                        />
+                        <span className="leading-snug">
+                          <strong className="text-emerald-200">Hasil:</strong> {p.impact}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Clean Action Buttons */}
@@ -195,3 +209,4 @@ export function PortfolioSection() {
     </div>
   );
 }
+

@@ -49,6 +49,7 @@ export interface ProjectItem {
   categories: PortfolioCategory[];
   badge: string;
   desc: string;
+  impact: string;
   features: string[];
   mockupGradient: string;
   mockupIcon: any;
@@ -69,6 +70,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     categories: ["instansi", "mobile"],
     badge: "Web Instansi & Mobile App",
     desc: "Sistem Informasi & Mobile App terpadu personel Satlantas Polres Mojokerto beserta Web Admin Console dan push notification real-time.",
+    impact: "Berhasil di-deploy dan diuji coba operasional lapangan Satlantas.",
     features: ["Flutter Mobile", "CodeIgniter 4", "REST API & FCM", "MySQL Database"],
     mockupGradient: "from-blue-600/30 to-indigo-900/40",
     mockupIcon: Car01Icon,
@@ -104,6 +106,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     categories: ["sistem_informasi"],
     badge: "Sistem Informasi Presensi",
     desc: "Aplikasi presensi online berbasis geolokasi GPS (Geofencing), rekap kehadiran otomatis, dan dashboard manajemen jam kerja karyawan/pegawai.",
+    impact: "Akurasi presensi geofencing 100% & rekap absensi otomatis bebas manipulasi.",
     features: ["Next.js 15 App Router", "Geolocation & Camera", "PostgreSQL & Prisma", "Export Excel/PDF"],
     mockupGradient: "from-emerald-600/30 to-teal-900/40",
     mockupIcon: SmartPhone01Icon,
@@ -128,6 +131,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     categories: ["sistem_informasi"],
     badge: "Sistem Informasi Rekrutmen ATS",
     desc: "Platform manajemen pelamar kerja dan screening kandidat dengan Role-Based Access Control (RBAC), Zod schema, dan JWT authentication.",
+    impact: "Screening pelamar kerja 3x lebih cepat dengan scoring otomatis.",
     features: ["React 19 + TypeScript", "Node.js & Express", "Prisma PostgreSQL", "Kanban Screening"],
     mockupGradient: "from-purple-600/30 to-blue-900/40",
     mockupIcon: Briefcase01Icon,
@@ -152,6 +156,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     categories: ["sistem_informasi"],
     badge: "Sistem Informasi Manajemen Proyek",
     desc: "Aplikasi manajemen proyek dan timeline tim operasional enterprise dengan generator milestone, kanban board dinamis, dan RESTful API teroptimasi.",
+    impact: "Manajemen sprint tim rapi & progres milestone proyek terpantau transparan.",
     features: ["Laravel 12 Backend", "Kanban & Task Engine", "PostgreSQL Indexing", "Sprint Burndown"],
     mockupGradient: "from-rose-600/30 to-red-950/40",
     mockupIcon: KanbanIcon,
@@ -176,6 +181,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     categories: ["instansi", "sistem_informasi"],
     badge: "Web Instansi Sekolah & LMS",
     desc: "Ekosistem web portal sekolah dan e-learning multi-role (Admin Console, Portal Guru, Aplikasi Siswa, dan Landing Page PPDB Online).",
+    impact: "Digunakan 1.000+ siswa & guru aktif, nilai raport terbit otomatis berformat PDF.",
     features: ["Next.js & TypeScript", "Multi-portal RBAC", "Portal Nilai Raport", "PPDB Online Generator"],
     mockupGradient: "from-cyan-600/30 to-blue-950/40",
     mockupIcon: School01Icon,
@@ -200,6 +206,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     categories: ["instansi"],
     badge: "Web Instansi Pelayanan Publik",
     desc: "Sistem Informasi Manajemen Operasional & Pelayanan Masyarakat untuk pengajuan surat online, verifikasi berkas dinamis, dan pelaporan terpadu.",
+    impact: "Selesai tepat waktu & lulus uji sistem sidang, antrean warga terpangkas.",
     features: ["TypeScript Strict", "Tailwind Design System", "Dokumen Generator PDF", "Verifikasi QR Code"],
     mockupGradient: "from-amber-600/30 to-emerald-950/40",
     mockupIcon: City01Icon,
@@ -224,6 +231,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     categories: ["sistem_informasi"],
     badge: "Sistem Informasi Riset SPK",
     desc: "Sistem Pendukung Keputusan penentuan kelayakan penerima bantuan & beasiswa menggunakan kombinasi pembobotan AHP dan perangkingan TOPSIS.",
+    impact: "Lulus sidang skripsi nilai A, rumus matematis step-by-step tervalidasi dosen.",
     features: ["PHP / Laravel / Python", "Algoritma AHP & TOPSIS", "Matriks Keputusan", "Export Bab 4 Skripsi"],
     mockupGradient: "from-teal-600/30 to-cyan-950/40",
     mockupIcon: Analytics01Icon,
@@ -248,6 +256,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     categories: ["mobile", "ecommerce"],
     badge: "E-Commerce & Mobile POS",
     desc: "Aplikasi kasir point-of-sale toko & cafe terhubung cetak struk Bluetooth dan pengiriman nota digital otomatis langsung ke WhatsApp pelanggan.",
+    impact: "Transaksi kasir cepat & nota digital langsung terkirim otomatis ke WhatsApp pelanggan.",
     features: ["Flutter Mobile", "Thermal Printer Bluetooth", "WhatsApp API Notif", "Laporan Omset Harian"],
     mockupGradient: "from-emerald-600/30 to-blue-900/40",
     mockupIcon: ShoppingBag01Icon,
@@ -513,3 +522,4 @@ export const FAQ_ITEMS = [
     a: "Transparan dan dibayar bertahap sesuai progres. Khusus Paket Fix Error Ringan: Saya perbaiki dulu error-nya di laptop saya, lalu saya kirimkan bukti video/screen record bahwa fitur sudah berjalan normal; setelah kamu lihat buktinya beres, baru lakukan pembayaran dan file dikirim. Pembuatan Sistem Baru: Cukup bayar DP 50% untuk mulai pengerjaan (progres bisa dipantau lewat link live preview), dan pelunasan 50% sisanya baru dilakukan setelah sistem selesai didemokan.",
   },
 ];
+

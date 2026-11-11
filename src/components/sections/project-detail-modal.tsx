@@ -54,6 +54,21 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
           </p>
         </div>
 
+        {/* Case Study / Dampak Nyata */}
+        {project.impact && (
+          <div className="mt-3 flex items-start gap-2.5 rounded-2xl border border-emerald-500/30 bg-emerald-950/40 p-3.5 text-xs text-emerald-300">
+            <HugeiconsIcon
+              icon={CheckmarkCircle01Icon}
+              size={18}
+              className="text-emerald-400 shrink-0 mt-0.5"
+            />
+            <div>
+              <span className="font-bold text-emerald-200">Hasil &amp; Dampak Nyata: </span>
+              <span className="text-white/90">{project.impact}</span>
+            </div>
+          </div>
+        )}
+
         {/* Key Modules */}
         {project.fullSpecs?.keyModules && (
           <div className="mt-5">
@@ -118,3 +133,4 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
     </div>
   );
 }
+
