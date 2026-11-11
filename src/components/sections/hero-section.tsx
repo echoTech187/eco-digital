@@ -74,7 +74,7 @@ export function HeroSection() {
               </div>
 
               {/* Headline Utama Sesuai Dokumen Blueprint */}
-              <h1 className="mt-3.5 sm:mt-5 text-[26px] sm:text-3xl md:text-4xl lg:text-[40px] xl:text-[48px] font-black tracking-tight text-white leading-[1.22]">
+              <h1 className="mt-3.5 sm:mt-5 text-[26px] sm:text-3xl md:text-4xl lg:text-[34px] xl:text-[46px] font-black tracking-tight text-white leading-[1.22]">
                 Ngoding Mentok atau Mau Bikin Sistem dari Nol?{" "}
                 <span className="block mt-1 sm:mt-0 sm:inline bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
                   Kita Beresin Bareng Sampai Jalan.
@@ -141,7 +141,7 @@ export function HeroSection() {
               </div>
 
               {/* Highlight Direct Developer Tambahan di Mobile */}
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-white/60">
+              <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-white/60 lg:hidden">
                 <span className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-950/40 border border-emerald-500/20 px-2.5 py-1 text-emerald-300 font-medium">
                   <span>👨‍💻</span>
                   <span>Direct Developer (Tanpa Perantara Sales)</span>
@@ -166,7 +166,7 @@ export function HeroSection() {
               <div className="pointer-events-none absolute h-[280px] w-[280px] sm:h-[380px] sm:w-[380px] lg:h-[440px] lg:w-[440px] rounded-full bg-gradient-to-tr from-emerald-500/25 via-blue-600/30 to-cyan-400/25 blur-[90px] -z-10" />
 
               {/* Floating Badge 1: Direct Developer (Tanpa Perantara) */}
-              <div className="hidden sm:flex absolute -left-4 top-16 z-20 items-center gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-4 py-2.5 shadow-xl backdrop-blur-xl animate-float">
+              <div className="hidden sm:flex absolute left-0 xl:-left-4 top-16 z-20 items-center gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-4 py-2.5 shadow-xl backdrop-blur-xl animate-float">
                 <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
                   <HugeiconsIcon icon={LaptopProgrammingIcon} size={18} />
                 </span>
@@ -216,7 +216,7 @@ export function HeroSection() {
 
       {/* Hero Bottom Anchor Bar (Scroll Button on Left, Official WA on Right) */}
       <div className="relative z-30 w-full border-t border-white/10 bg-[#060A14]/80 backdrop-blur-md px-4 sm:px-8 lg:px-14 xl:px-18 py-3 sm:py-3.5">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
+        <div className="mx-auto flex max-w-7xl items-center justify-between sm:pr-48 lg:pr-52">
           <Link
             href="#layanan"
             className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-white/80 backdrop-blur-md transition-all hover:border-emerald-400/50 hover:bg-white/10 hover:text-white active:scale-95 cursor-pointer"

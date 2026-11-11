@@ -64,62 +64,62 @@ export function NavbarSection() {
             />
           </Link>
 
-          {/* Center: Navigation Links (Desktop & Notebook) */}
-          <nav className="hidden items-center gap-4 xl:gap-8 lg:flex">
+          {/* Center: Navigation Links (Desktop & Widescreen) */}
+          <nav className="hidden items-center gap-3.5 xl:gap-6 2xl:gap-8 xl:flex whitespace-nowrap">
             <Link
               href="#layanan"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300"
+              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
             >
               Layanan
             </Link>
             <Link
               href="#portofolio"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300"
+              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
             >
               Portofolio
             </Link>
             <Link
               href="#keunggulan"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300"
+              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
             >
               Keunggulan
             </Link>
             <Link
               href="#cara-kerja"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300"
+              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
             >
               Alur Kerja
             </Link>
             <Link
               href="#paket-harga"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300"
+              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
             >
               Paket Harga
             </Link>
             <Link
               href="#kalkulator-biaya"
-              className="text-xs font-semibold uppercase tracking-wider text-emerald-400 transition-colors hover:text-emerald-300 flex items-center gap-1.5"
+              className="text-xs font-semibold uppercase tracking-wider text-emerald-400 transition-colors hover:text-emerald-300 flex items-center gap-1.5 whitespace-nowrap"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
               Simulasi Biaya
             </Link>
             <Link
               href="#faq"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300"
+              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
             >
               FAQ
             </Link>
           </nav>
 
           {/* Right: Direct WhatsApp CTA Button & Mobile/Tablet Hamburger */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <a
               href={getWaUrl(
                 "Halo Mas (ecoDigital), saya mau konsultasi pembuatan website / sistem."
               )}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-3 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:from-emerald-400 hover:to-teal-400 hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-3 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:from-emerald-400 hover:to-teal-400 hover:scale-105 active:scale-95 whitespace-nowrap shrink-0"
             >
               <HugeiconsIcon icon={WhatsappIcon} size={15} />
               <span className="hidden sm:inline">Chat Developer</span>
@@ -129,7 +129,7 @@ export function NavbarSection() {
             {/* Mobile & Tablet Hamburger Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 transition-colors hover:bg-white/10 hover:text-white lg:hidden cursor-pointer"
+              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 transition-colors hover:bg-white/10 hover:text-white xl:hidden cursor-pointer"
               aria-label="Buka Menu Navigasi"
               aria-expanded={mobileMenuOpen}
             >
@@ -143,7 +143,7 @@ export function NavbarSection() {
       {mounted &&
         createPortal(
           <div
-            className={`fixed inset-0 z-[999] lg:hidden transition-all duration-300 ${
+            className={`fixed inset-0 z-[999] xl:hidden transition-all duration-300 ${
               mobileMenuOpen
                 ? "pointer-events-auto opacity-100 visible"
                 : "pointer-events-none opacity-0 invisible"
