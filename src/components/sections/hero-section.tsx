@@ -8,7 +8,6 @@ import {
   WhatsappIcon,
   ArrowDown01Icon,
   LaptopProgrammingIcon,
-  ShieldCheckIcon,
 } from "@hugeicons/core-free-icons";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 import founderImg from "../../../public/images/founder.png";
@@ -44,29 +43,29 @@ function PropellerStar({
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[calc(100vh-80px)] w-full flex-col justify-between overflow-hidden bg-[#060A14]">
+    <section className="relative flex min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-80px)] w-full flex-col justify-between overflow-hidden bg-[#060A14]">
       {/* Ambient Radial Atmosphere (Seamless Mesh Glow) */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-28 top-1/4 h-[600px] w-[600px] rounded-full bg-emerald-500/20 blur-[140px]" />
         <div className="absolute -right-28 top-1/4 h-[600px] w-[600px] rounded-full bg-blue-600/20 blur-[140px]" />
         <div className="absolute left-1/2 bottom-10 -translate-x-1/2 h-[350px] w-[600px] rounded-full bg-emerald-950/25 blur-[120px]" />
 
-        {/* Decorative Stars */}
-        <PropellerStar className="left-[8%] top-[55%] h-20 w-20" size="75px" blur={0} />
-        <PropellerStar className="left-[25%] top-[75%] h-28 w-28" size="45px" blur={1} />
-        <PropellerStar className="right-[28%] top-[25%] h-32 w-32" size="65px" blur={0} />
-        <PropellerStar className="right-[10%] top-[45%] h-16 w-16" size="25px" blur={2} />
+        {/* Decorative Stars (Hanya aktif di desktop agar tidak mengotori background mobile) */}
+        <PropellerStar className="hidden lg:block left-[8%] top-[55%] h-20 w-20" size="75px" blur={0} />
+        <PropellerStar className="hidden lg:block left-[25%] top-[75%] h-28 w-28" size="45px" blur={1} />
+        <PropellerStar className="hidden lg:block right-[28%] top-[25%] h-32 w-32" size="65px" blur={0} />
+        <PropellerStar className="hidden lg:block right-[10%] top-[45%] h-16 w-16" size="25px" blur={2} />
       </div>
 
       {/* Hero Interactive Stage (Headline & CTA di Kiri, Foto di Kanan) */}
-      <div className="relative z-20 flex flex-1 items-center px-4 sm:px-8 lg:px-14 xl:px-18 py-6 sm:py-8 lg:py-6">
+      <div className="relative z-20 flex flex-1 items-center px-4 sm:px-8 lg:px-14 xl:px-18 py-6 sm:py-10 lg:py-6">
         <div className="mx-auto w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* Left Column: Headline, Sub-headline, Dual CTA, & Explore Button */}
           <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center text-left">
             <AnimateOnScroll preset="fade-right" duration={0.6} immediate>
               {/* Status Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-950/60 px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md shadow-lg shadow-emerald-950/40 w-fit">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-950/60 px-3.5 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md shadow-md shadow-emerald-950/40 w-fit">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
@@ -75,9 +74,9 @@ export function HeroSection() {
               </div>
 
               {/* Headline Utama Sesuai Dokumen Blueprint */}
-              <h1 className="mt-3.5 sm:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-[40px] xl:text-[48px] font-black tracking-tight text-white leading-[1.2]">
+              <h1 className="mt-3.5 sm:mt-5 text-[26px] sm:text-3xl md:text-4xl lg:text-[40px] xl:text-[48px] font-black tracking-tight text-white leading-[1.22]">
                 Ngoding Mentok atau Mau Bikin Sistem dari Nol?{" "}
-                <span className="block sm:inline bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+                <span className="block mt-1 sm:mt-0 sm:inline bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
                   Kita Beresin Bareng Sampai Jalan.
                 </span>
               </h1>
@@ -95,7 +94,7 @@ export function HeroSection() {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-emerald-950/50 transition-all hover:from-emerald-400 hover:to-teal-400 hover:scale-[1.02] active:scale-[0.98]"
+                  className="flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-5 sm:px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-emerald-950/50 transition-all hover:from-emerald-400 hover:to-teal-400 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <HugeiconsIcon icon={WhatsappIcon} size={18} />
                   <span>Chat &amp; Diskusi Gratis via WA</span>
@@ -103,13 +102,13 @@ export function HeroSection() {
 
                 <Link
                   href="#portofolio"
-                  className="flex items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-4 sm:px-5 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold text-white/90 backdrop-blur-xl transition-all hover:bg-white/20 hover:text-white active:scale-[0.98]"
+                  className="flex items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-4 sm:px-5 py-3.5 text-xs sm:text-sm font-semibold text-white/90 backdrop-blur-xl transition-all hover:bg-white/20 hover:text-white active:scale-[0.98]"
                 >
                   <span>Coba Live Demo Karya Saya ↓</span>
                 </Link>
               </div>
 
-              {/* Badge Kecil di Bawah Tombol */}
+              {/* Badge Kecepatan Respon */}
               <div className="mt-3.5 sm:mt-4 flex items-center gap-2 text-[11px] sm:text-xs text-white/70">
                 <span className="text-amber-400 font-bold">⚡</span>
                 <span className="font-medium">
@@ -117,27 +116,39 @@ export function HeroSection() {
                 </span>
               </div>
 
-              {/* Garansi & Transparansi Jaminan di Bawah Tombol Hero */}
-              <div className="mt-3 flex flex-wrap items-center gap-x-2.5 sm:gap-x-3 gap-y-1.5 text-[11px] sm:text-xs text-emerald-300 font-medium">
-                <span className="inline-flex items-center gap-1.5">
-                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
+              {/* 3 Jaminan Utama dalam Card Grid Rapi */}
+              <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                <div className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-white/90 backdrop-blur-sm">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
                     ✓
                   </span>
-                  Tanpa DP Mengambang
+                  <span className="font-medium">Tanpa DP Mengambang</span>
+                </div>
+
+                <div className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-white/90 backdrop-blur-sm">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
+                    ✓
+                  </span>
+                  <span className="font-medium">Source Code 100% Hak Milik</span>
+                </div>
+
+                <div className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-white/90 backdrop-blur-sm">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
+                    ✓
+                  </span>
+                  <span className="font-medium">Bisa Cicil Sesuai Progres</span>
+                </div>
+              </div>
+
+              {/* Highlight Direct Developer Tambahan di Mobile */}
+              <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-white/60">
+                <span className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-950/40 border border-emerald-500/20 px-2.5 py-1 text-emerald-300 font-medium">
+                  <span>👨‍💻</span>
+                  <span>Direct Developer (Tanpa Perantara Sales)</span>
                 </span>
-                <span className="hidden sm:inline text-white/20">•</span>
-                <span className="inline-flex items-center gap-1.5">
-                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
-                    ✓
-                  </span>
-                  Source Code 100% Hak Milik
-                </span>
-                <span className="hidden sm:inline text-white/20">•</span>
-                <span className="inline-flex items-center gap-1.5">
-                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-400 font-bold">
-                    ✓
-                  </span>
-                  Bisa Dicicil Sesuai Progres
+                <span className="inline-flex items-center gap-1.5 rounded-lg bg-blue-950/40 border border-blue-500/20 px-2.5 py-1 text-blue-300 font-medium">
+                  <span>💻</span>
+                  <span>Sesi Bedah Kode &amp; Bimbingan Live</span>
                 </span>
               </div>
             </AnimateOnScroll>
@@ -216,13 +227,14 @@ export function HeroSection() {
             <span>Scroll Untuk Eksplorasi</span>
           </Link>
 
+          {/* Hanya ditampilkan di layar sm ke atas agar tidak tumpang tindih dengan Floating WhatsApp di mobile */}
           <a
             href={getWaUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-xs text-white/60 hover:text-emerald-300 transition-colors"
+            className="hidden sm:flex items-center gap-2 text-xs text-white/60 hover:text-emerald-300 transition-colors"
           >
-            <span className="hidden sm:inline text-white/40">WhatsApp Resmi:</span>
+            <span className="text-white/40">WhatsApp Resmi:</span>
             <span className="font-bold text-emerald-400 flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               {WA_DISPLAY}
@@ -233,4 +245,3 @@ export function HeroSection() {
     </section>
   );
 }
-
