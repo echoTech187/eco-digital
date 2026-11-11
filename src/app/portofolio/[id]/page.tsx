@@ -545,6 +545,7 @@ export default async function ProjectDetailPage({
                 <Link
                   key={rel.id}
                   href={`/portofolio/${rel.id}`}
+                  prefetch={false}
                   className="group flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-5 hover:border-emerald-500/40 hover:bg-white/[0.06] transition-all"
                 >
                   <div>

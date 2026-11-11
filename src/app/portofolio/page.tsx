@@ -249,6 +249,7 @@ export default function PortfolioIndexPage() {
                     <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
                       <Link
                         href={`/portofolio/${p.id}`}
+                        prefetch={false}
                         className="flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl border border-white/15 bg-white/5 py-2 sm:py-2.5 px-2 sm:px-3 text-[11px] sm:text-xs font-semibold text-white/90 hover:bg-white/15 hover:text-white transition-all text-center"
                       >
                         <HugeiconsIcon icon={Search01Icon} size={13} className="text-emerald-400 shrink-0" />
