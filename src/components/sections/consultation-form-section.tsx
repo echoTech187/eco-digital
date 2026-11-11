@@ -31,25 +31,25 @@ Kira-kira bisa dibantu? Terima kasih!`;
   };
 
   return (
-    <div className="relative z-20 w-full bg-[#060A14] px-6 pt-6 pb-12 lg:px-14 border-t border-white/10">
+    <div className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 pt-6 pb-12 border-t border-white/10">
       {/* High-Converting Closing Section (Form Brief + Direct WhatsApp) */}
-      <div className="mx-auto max-w-4xl mb-16">
+      <div className="mx-auto max-w-4xl mb-12 sm:mb-16">
         <AnimateOnScroll preset="zoom-in">
-          <div className="rounded-[36px] border border-white/20 bg-gradient-to-r from-emerald-950/60 via-black/60 to-blue-950/60 p-8 sm:p-12 backdrop-blur-2xl shadow-2xl">
-            <div className="text-center mb-8">
+          <div className="rounded-3xl sm:rounded-[36px] border border-white/20 bg-gradient-to-r from-emerald-950/60 via-black/60 to-blue-950/60 p-5 sm:p-8 md:p-12 backdrop-blur-2xl shadow-2xl">
+            <div className="text-center mb-6 sm:mb-8">
               <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
                 MULAI DISKUSI SEKARANG
               </span>
-              <h2 className="mt-3 text-3xl font-black text-white sm:text-4xl">
+              <h2 className="mt-3 text-2xl sm:text-3xl font-black text-white md:text-4xl">
                 Masih Bingung Mulai dari Mana? Obrolin Aja Dulu, Gratis Kok!
               </h2>
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/75">
+              <p className="mx-auto mt-3 max-w-xl text-xs sm:text-sm leading-relaxed text-white/75">
                 Isi detail singkat di bawah ini, nanti pesannya otomatis terformat rapi dan langsung masuk ke WhatsApp saya ({WA_DISPLAY}).
               </p>
             </div>
 
             {/* Form Input Brief Interaktif */}
-            <div className="rounded-2xl border border-white/10 bg-black/40 p-6 sm:p-8 backdrop-blur-xl max-w-2xl mx-auto shadow-inner">
+            <div className="rounded-2xl border border-white/10 bg-black/40 p-4 sm:p-6 md:p-8 backdrop-blur-xl max-w-2xl mx-auto shadow-inner">
               <form onSubmit={handleQuickFormSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>

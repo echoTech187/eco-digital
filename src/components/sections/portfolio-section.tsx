@@ -36,22 +36,22 @@ export function PortfolioSection() {
   }, [activeCategory]);
 
   return (
-    <div id="portofolio" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20">
+    <div id="portofolio" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-20">
       <div className="mx-auto max-w-6xl">
         <AnimateOnScroll preset="fade-up" className="mb-8 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
             BUKTI KARYA NYATA
           </span>
-          <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
             Jangan Percaya Janji Manis—Klik &amp; Coba Sendiri Sistem yang Sudah Live
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
+          <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm leading-relaxed text-white/60">
             Semua proyek di bawah ini asli hasil kodingan sendiri dan sudah di-<em>deploy</em>. Silakan klik tombol <em>Live Demo</em> untuk mencoba tampilannya langsung dari HP atau laptopmu.
           </p>
         </AnimateOnScroll>
 
         {/* Category Filter Tabs */}
-        <div className="mb-10 flex flex-wrap items-center justify-center gap-2">
+        <div className="mb-8 sm:mb-10 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
           {[
             { id: "all", label: "Semua Proyek", icon: Layers01Icon },
             { id: "sistem_informasi", label: "Sistem Informasi", icon: LaptopProgrammingIcon },
@@ -65,13 +65,13 @@ export function PortfolioSection() {
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id)}
-                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-bold transition-all duration-200 ${
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-bold transition-all duration-200 ${
                   isActive
                     ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/30 scale-105"
                     : "border border-white/10 bg-white/5 text-white/70 hover:border-white/20 hover:text-white"
                 }`}
               >
-                <HugeiconsIcon icon={TabIcon} size={14} />
+                <HugeiconsIcon icon={TabIcon} size={13} />
                 <span>{tab.label}</span>
               </button>
             );
@@ -134,7 +134,7 @@ export function PortfolioSection() {
                 </div>
 
                 {/* Card Body */}
-                <div className="p-5 flex-1 flex flex-col justify-between">
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
                   <div>
                     <h4 className="text-base font-bold text-white transition-colors group-hover:text-[#10B981]">
                       {p.title}
@@ -144,7 +144,7 @@ export function PortfolioSection() {
                     </p>
 
                     {/* Feature Badges */}
-                    <div className="mt-4 flex flex-wrap gap-1.5">
+                    <div className="mt-3.5 sm:mt-4 flex flex-wrap gap-1.5">
                       {p.features.map((f, fi) => (
                         <span
                           key={fi}
@@ -172,14 +172,14 @@ export function PortfolioSection() {
                   </div>
 
                   {/* Clean Action Buttons */}
-                  <div className="mt-5 pt-3.5 border-t border-white/10">
-                    <div className="grid grid-cols-2 gap-2">
+                  <div className="mt-4 sm:mt-5 pt-3.5 border-t border-white/10">
+                    <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
                       <button
                         onClick={() => setSelectedProject(p)}
-                        className="flex items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-white/5 py-2.5 px-3 text-xs font-semibold text-white/90 hover:bg-white/15 hover:text-white transition-all"
+                        className="flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl border border-white/15 bg-white/5 py-2 sm:py-2.5 px-2 sm:px-3 text-[11px] sm:text-xs font-semibold text-white/90 hover:bg-white/15 hover:text-white transition-all text-center"
                       >
-                        <HugeiconsIcon icon={Globe02Icon} size={14} className="text-emerald-400" />
-                        <span>Coba Live Demo</span>
+                        <HugeiconsIcon icon={Globe02Icon} size={13} className="text-emerald-400 shrink-0" />
+                        <span className="truncate">Coba Live Demo</span>
                       </button>
                       <a
                         href={getWaUrl(
@@ -187,10 +187,10 @@ export function PortfolioSection() {
                         )}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-2.5 px-3 text-xs font-bold text-white shadow-md shadow-emerald-950/40 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95"
+                        className="flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-2 sm:py-2.5 px-2 sm:px-3 text-[11px] sm:text-xs font-bold text-white shadow-md shadow-emerald-950/40 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95 text-center"
                       >
-                        <HugeiconsIcon icon={WhatsappIcon} size={14} />
-                        <span>Bikin Kayak Gini</span>
+                        <HugeiconsIcon icon={WhatsappIcon} size={13} className="shrink-0" />
+                        <span className="truncate">Bikin Kayak Gini</span>
                       </a>
                     </div>
                   </div>

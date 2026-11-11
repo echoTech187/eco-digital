@@ -16,7 +16,7 @@ import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen w-full bg-[#060A14] text-white selection:bg-emerald-500/30 selection:text-emerald-300">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-[#060A14] text-white selection:bg-emerald-500/30 selection:text-emerald-300">
       {/* 1. Sticky Navigation Bar */}
       <NavbarSection />
 

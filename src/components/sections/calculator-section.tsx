@@ -75,33 +75,33 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
   return (
     <div
       id="kalkulator-biaya"
-      className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20 border-t border-white/10"
+      className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-20 border-t border-white/10"
     >
       <div className="mx-auto max-w-4xl">
-        <AnimateOnScroll preset="fade-up" className="mb-10 text-center">
+        <AnimateOnScroll preset="fade-up" className="mb-8 sm:mb-10 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
             SIMULASI &amp; HITUNG MANDIRI
           </span>
-          <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
             Masih Ragu Biayanya? Hitung Sendiri Estimasi Kasarnya di Sini
           </h2>
-          <p className="mx-auto mt-2 max-w-lg text-sm text-white/60">
+          <p className="mx-auto mt-2 max-w-lg text-xs sm:text-sm text-white/60">
             Klik jenis sistem dan centang fitur tambahan yang kamu butuhkan, lalu kirim hasilnya ke WA saya untuk negosiasi santai.
           </p>
         </AnimateOnScroll>
 
-        <div className="rounded-3xl border border-emerald-400/30 bg-gradient-to-br from-emerald-950/20 via-white/[0.04] to-blue-950/20 p-6 sm:p-10 backdrop-blur-2xl shadow-2xl">
+        <div className="rounded-2xl sm:rounded-3xl border border-emerald-400/30 bg-gradient-to-br from-emerald-950/20 via-white/[0.04] to-blue-950/20 p-4 sm:p-8 lg:p-10 backdrop-blur-2xl shadow-2xl">
           {/* Step 1: Pilih Jenis Sistem */}
           <div>
             <label className="text-xs font-extrabold uppercase tracking-wider text-emerald-300 block mb-3">
               1. Pilih Kategori Sistem Anda:
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
               {Object.entries(CALCULATOR_BASE_OPTIONS).map(([key, item]) => (
                 <button
                   key={key}
                   onClick={() => setCalcProjectType(key)}
-                  className={`text-left p-4 rounded-2xl border transition-all ${
+                  className={`text-left p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border transition-all ${
                     calcProjectType === key
                       ? "border-emerald-400 bg-emerald-500/20 shadow-md shadow-emerald-500/20 scale-[1.01]"
                       : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/[0.08]"
@@ -118,11 +118,11 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
           </div>
 
           {/* Step 2: Pilih Fitur Tambahan */}
-          <div className="mt-8 pt-6 border-t border-white/10">
+          <div className="mt-6 sm:mt-8 pt-6 border-t border-white/10">
             <label className="text-xs font-extrabold uppercase tracking-wider text-cyan-300 block mb-3">
               2. Pilih Fitur &amp; Fasilitas Tambahan (Opsional):
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
               {Object.entries(CALCULATOR_ADDON_OPTIONS).map(([key, addon]) => {
                 const isChecked = calcAddons.includes(key);
                 return (
@@ -135,7 +135,7 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
                         setCalcAddons([...calcAddons, key]);
                       }
                     }}
-                    className={`flex items-center justify-between p-3.5 rounded-2xl border text-left transition-all ${
+                    className={`flex items-center justify-between p-3 sm:p-3.5 rounded-xl sm:rounded-2xl border text-left transition-all ${
                       isChecked
                         ? "border-cyan-400/60 bg-cyan-950/30 text-white"
                         : "border-white/10 bg-white/5 text-white/70 hover:border-white/20"
@@ -169,7 +169,7 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
           </div>
 
           {/* Ringkasan Instan (Instant Interactive Breakdown) */}
-          <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-5 backdrop-blur-md">
+          <div className="mt-6 sm:mt-8 rounded-xl sm:rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 sm:p-5 backdrop-blur-md">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex items-center gap-2">
                 <span className="relative flex h-2 w-2">
@@ -211,7 +211,7 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
             </div>
 
             {/* Quick Trust Badges */}
-            <div className="mt-4 pt-3 border-t border-white/5 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] text-emerald-300/80">
+            <div className="mt-4 pt-3 border-t border-white/5 flex flex-wrap items-center gap-x-3.5 sm:gap-x-4 gap-y-1.5 text-[11px] text-emerald-300/80">
               <span className="inline-flex items-center gap-1">
                 <HugeiconsIcon icon={CheckmarkCircle01Icon} size={12} className="text-emerald-400" />
                 100% Source Code &amp; Database Milik Anda
@@ -228,7 +228,7 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
           </div>
 
           {/* Step 3: Hasil Kalkulasi & Action CTA */}
-          <div className="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 bg-black/40 -mx-6 sm:-mx-10 -mb-6 sm:-mb-10 p-6 sm:p-8 rounded-b-3xl">
+          <div className="mt-6 sm:mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-5 sm:gap-6 bg-black/40 -mx-4 sm:-mx-8 lg:-mx-10 -mb-4 sm:-mb-8 lg:-mb-10 p-5 sm:p-8 rounded-b-2xl sm:rounded-b-3xl">
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-[11px] uppercase tracking-wider text-white/50 block">
@@ -239,7 +239,7 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
                 </span>
               </div>
               <div className="flex items-baseline gap-2 mt-1">
-                <span className="text-3xl sm:text-4xl font-black text-emerald-400 transition-all duration-300 drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-black text-emerald-400 transition-all duration-300 drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
                   {calculatedResult.totalPrice}
                 </span>
                 <span className="text-xs text-white/60">
@@ -255,7 +255,7 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
               href={calculatedResult.waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full md:w-auto flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-4 text-xs font-bold text-white shadow-xl shadow-emerald-500/30 transition-all hover:scale-105 active:scale-95"
+              className="w-full md:w-auto flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-5 sm:px-6 py-3.5 sm:py-4 text-xs font-bold text-white shadow-xl shadow-emerald-500/30 transition-all hover:scale-105 active:scale-95 text-center"
             >
               <HugeiconsIcon icon={WhatsappIcon} size={18} />
               <span>Kirim Hasil Simulasi ke WA →</span>

@@ -9,7 +9,7 @@ export function FloatingWhatsApp() {
     "https://wa.me/6287875856918?text=Halo%20Mas%20(ecoDigital)%2C%20saya%20mau%20konsultasi%20pembuatan%20website%20%2F%20aplikasi.";
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center">
       {/* Soft Breathing Ambient Glow Ring */}
       <span className="pointer-events-none absolute -inset-1 rounded-full bg-emerald-500/30 blur-md animate-pulse" />
 
@@ -18,7 +18,7 @@ export function FloatingWhatsApp() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Konsultasi Gratis via WhatsApp 0878-7585-6918"
-        className="group relative flex items-center gap-3 rounded-full border border-emerald-400/50 bg-[#060A14]/95 py-2.5 pl-4 pr-2.5 shadow-2xl shadow-emerald-950/80 backdrop-blur-xl transition-all duration-300 hover:border-emerald-400 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95"
+        className="group relative flex items-center gap-3 rounded-full border border-emerald-400/50 bg-[#060A14]/95 p-1.5 sm:py-2.5 sm:pl-4 sm:pr-2.5 shadow-2xl shadow-emerald-950/80 backdrop-blur-xl transition-all duration-300 hover:border-emerald-400 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95"
       >
         <div className="hidden sm:flex flex-col text-right">
           <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-300">

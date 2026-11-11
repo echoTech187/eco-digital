@@ -18,9 +18,9 @@ export function NavbarSection() {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-[#060A14]/90 backdrop-blur-xl transition-all">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-10 lg:px-14">
+      <div className="mx-auto flex h-16 sm:h-20 max-w-7xl items-center justify-between px-4 sm:px-8 lg:px-14">
         {/* Left: Brand Logo */}
-        <Link href="/" className="group flex items-center gap-3">
+        <Link href="/" className="group flex items-center gap-2 sm:gap-3 shrink-0">
           <Image
             src={logoMarkImg}
             alt="ecoDigital"
@@ -29,12 +29,12 @@ export function NavbarSection() {
             priority
             loading="eager"
             unoptimized
-            className="h-10 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-md"
+            className="h-8 sm:h-10 lg:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-md"
           />
         </Link>
 
-        {/* Center: Navigation Links */}
-        <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
+        {/* Center: Navigation Links (Desktop & Notebook) */}
+        <nav className="hidden items-center gap-4 xl:gap-8 lg:flex">
           <Link
             href="#layanan"
             className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300"
@@ -80,39 +80,40 @@ export function NavbarSection() {
           </Link>
         </nav>
 
-        {/* Right: Direct WhatsApp CTA Button & Mobile Hamburger */}
-        <div className="flex items-center gap-3">
+        {/* Right: Direct WhatsApp CTA Button & Mobile/Tablet Hamburger */}
+        <div className="flex items-center gap-2 sm:gap-3">
           <a
             href={getWaUrl(
               "Halo Mas (ecoDigital), saya mau konsultasi pembuatan website / sistem."
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-5 py-2.5 text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:from-emerald-400 hover:to-teal-400 hover:scale-105 active:scale-95"
+            className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-3 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:from-emerald-400 hover:to-teal-400 hover:scale-105 active:scale-95"
           >
-            <HugeiconsIcon icon={WhatsappIcon} size={16} />
-            <span>Chat Developer</span>
+            <HugeiconsIcon icon={WhatsappIcon} size={15} />
+            <span className="hidden sm:inline">Chat Developer</span>
+            <span className="sm:hidden">Chat WA</span>
           </a>
 
-          {/* Mobile Hamburger Toggle Button */}
+          {/* Mobile & Tablet Hamburger Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 transition-colors hover:bg-white/10 hover:text-white lg:hidden"
-            aria-label="Toggle Mobile Menu"
+            className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 transition-colors hover:bg-white/10 hover:text-white lg:hidden"
+            aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? (
-              <HugeiconsIcon icon={Cancel01Icon} size={20} />
+              <HugeiconsIcon icon={Cancel01Icon} size={18} />
             ) : (
-              <HugeiconsIcon icon={Menu01Icon} size={20} />
+              <HugeiconsIcon icon={Menu01Icon} size={18} />
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile & Tablet Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="border-b border-white/10 bg-[#060A14]/98 px-6 py-6 backdrop-blur-2xl lg:hidden animate-fade-in">
-          <nav className="flex flex-col gap-4 text-sm font-semibold">
+        <div className="border-b border-white/10 bg-[#060A14]/98 px-5 sm:px-8 py-5 backdrop-blur-2xl lg:hidden animate-fade-in max-h-[calc(100vh-64px)] overflow-y-auto">
+          <nav className="flex flex-col gap-3.5 text-sm font-semibold">
             <Link
               href="#layanan"
               onClick={() => setMobileMenuOpen(false)}

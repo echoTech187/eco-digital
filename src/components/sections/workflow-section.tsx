@@ -8,26 +8,26 @@ import { WORKFLOW_STEPS } from "@/data/landing-data";
 
 export function WorkflowSection() {
   return (
-    <div id="cara-kerja" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20">
+    <div id="cara-kerja" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-20">
       <div className="mx-auto max-w-5xl text-center">
-        <AnimateOnScroll preset="fade-up" className="mb-12">
+        <AnimateOnScroll preset="fade-up" className="mb-10 sm:mb-12">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
             CARA KERJA ANTI-GHOSTING
           </span>
-          <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
             4 Langkah Simpel, Tanpa Birokrasi Ribet
           </h2>
-          <p className="mt-2 text-sm text-white/60">
+          <p className="mt-2 text-xs sm:text-sm text-white/60">
             Dari obrolan pertama di WhatsApp sampai aplikasi jalan di laptopmu.
           </p>
         </AnimateOnScroll>
 
         {/* Workflow Sequence with Connecting Progress Indicators */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left">
           {WORKFLOW_STEPS.map((s, si) => (
             <div
               key={s.step}
-              className="relative rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-all hover:border-[#10B981]/40 hover:bg-white/[0.08]"
+              className="relative rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-md transition-all hover:border-[#10B981]/40 hover:bg-white/[0.08]"
             >
               {/* Connecting Arrow for Desktop Workflow */}
               {si < 3 && (

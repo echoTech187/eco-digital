@@ -14,23 +14,23 @@ import { getWaUrl } from "@/data/landing-data";
 
 export function ServicesSection() {
   return (
-    <div id="layanan" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20">
+    <div id="layanan" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-20">
       <div className="mx-auto max-w-6xl">
-        <AnimateOnScroll preset="fade-up" className="mb-12 text-center">
+        <AnimateOnScroll preset="fade-up" className="mb-10 sm:mb-12 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
             APA YANG BISA DIBANTU?
           </span>
-          <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
             Masuk di Kondisi Apa Pun, Pilih Sesuai Kebutuhanmu
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
+          <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm leading-relaxed text-white/60">
             Entah kamu baru punya ide kasar di kertas, atau sudah punya kodingan tapi berantakan dan <em>error</em> terus—saya siap masuk bantu beresin.
           </p>
         </AnimateOnScroll>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Card 1: Klinik Koding: Fix Error & Tambah Fitur */}
-          <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/50 hover:bg-white/[0.08]">
+          <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-7 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/50 hover:bg-white/[0.08]">
             <div>
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-[#10B981]">
                 <HugeiconsIcon icon={Wrench01Icon} size={28} />
@@ -72,7 +72,7 @@ export function ServicesSection() {
           </div>
 
           {/* Card 2: Partner Sistem Tugas Akhir, SPK & Riset */}
-          <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-md transition-all duration-300 hover:border-blue-500/50 hover:bg-white/[0.08]">
+          <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-7 backdrop-blur-md transition-all duration-300 hover:border-blue-500/50 hover:bg-white/[0.08]">
             <div>
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-400">
                 <HugeiconsIcon icon={Mortarboard01Icon} size={28} />
@@ -114,7 +114,7 @@ export function ServicesSection() {
           </div>
 
           {/* Card 3: Aplikasi Sekolah, Instansi & Bisnis UMKM */}
-          <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-md transition-all duration-300 hover:border-teal-500/50 hover:bg-white/[0.08]">
+          <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-7 backdrop-blur-md transition-all duration-300 hover:border-teal-500/50 hover:bg-white/[0.08]">
             <div>
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-500/10 text-teal-400">
                 <HugeiconsIcon icon={Building03Icon} size={28} />

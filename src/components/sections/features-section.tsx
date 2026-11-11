@@ -7,27 +7,27 @@ import { WHY_US_ITEMS } from "@/data/landing-data";
 
 export function FeaturesSection() {
   return (
-    <div id="keunggulan" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20">
+    <div id="keunggulan" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-20">
       <div className="mx-auto max-w-6xl">
-        <AnimateOnScroll preset="fade-up" className="mb-12 text-center">
+        <AnimateOnScroll preset="fade-up" className="mb-10 sm:mb-12 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
             STANDAR KERJA ECODIGITAL
           </span>
-          <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
             Kenapa Ngoding Bareng ecoDigital Jauh Lebih Tenang?
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
+          <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm leading-relaxed text-white/60">
             Empat jaminan nyata supaya kamu nggak kena drama joki lepas tangan atau proyek mangkrak.
           </p>
         </AnimateOnScroll>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {WHY_US_ITEMS.map((k, ki) => {
             const WhyUsIcon = k.icon;
             return (
               <div
                 key={ki}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/40 hover:bg-white/[0.08]"
+                className="rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/40 hover:bg-white/[0.08]"
               >
                 <div className="mb-4 flex items-center justify-between">
                   <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 text-emerald-400">

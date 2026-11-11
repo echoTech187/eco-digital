@@ -14,23 +14,23 @@ import { getWaUrl } from "@/data/landing-data";
 
 export function PricingSection() {
   return (
-    <div id="paket-harga" className="relative z-20 w-full bg-[#060A14] px-6 py-16 lg:px-14 scroll-mt-20">
+    <div id="paket-harga" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-20">
       <div className="mx-auto max-w-6xl">
-        <AnimateOnScroll preset="fade-up" className="mb-12 text-center">
+        <AnimateOnScroll preset="fade-up" className="mb-10 sm:mb-12 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
             HARGA TERBUKA &amp; TRANSPARAN
           </span>
-          <h2 className="mt-3 text-3xl font-black text-white lg:text-4xl">
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
             Pilih Paket Sesuai Kondisi Proyekmu Saat Ini
           </h2>
-          <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-white/60">
+          <p className="mx-auto mt-3 max-w-lg text-xs sm:text-sm leading-relaxed text-white/60">
             Nggak perlu takut kemahalan. Kalau cuma butuh benerin <em>error</em> sedikit, cukup ambil paket hemat mulai Rp150 ribuan.
           </p>
         </AnimateOnScroll>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Paket 1: Penyelamat Revisi & Fix Error */}
-          <div className="relative rounded-[32px] border border-white/15 bg-white/5 p-7 backdrop-blur-xl flex flex-col justify-between">
+          <div className="relative rounded-[32px] border border-white/15 bg-white/5 p-5 sm:p-7 backdrop-blur-xl flex flex-col justify-between">
             <div>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white/80">
                 <HugeiconsIcon icon={Wrench01Icon} size={12} className="text-emerald-400" />
@@ -79,7 +79,7 @@ export function PricingSection() {
           </div>
 
           {/* Paket 2: Bangun Web / Sistem Baru (Reguler) — Paling Banyak Dipilih */}
-          <div className="relative rounded-[32px] border-2 border-emerald-400/40 bg-gradient-to-b from-emerald-950/30 via-white/[0.06] to-black/40 p-7 backdrop-blur-xl shadow-2xl shadow-emerald-950/30 flex flex-col justify-between">
+          <div className="relative rounded-[32px] border-2 border-emerald-400/40 bg-gradient-to-b from-emerald-950/30 via-white/[0.06] to-black/40 p-5 sm:p-7 backdrop-blur-xl shadow-2xl shadow-emerald-950/30 flex flex-col justify-between">
             <span className="absolute -top-3.5 left-6 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-3.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/40">
               <HugeiconsIcon icon={FireIcon} size={12} className="text-amber-300" />
               <span>Paling Banyak Dipilih</span>
@@ -136,7 +136,7 @@ export function PricingSection() {
           </div>
 
           {/* Paket 3: Sistem Skala Penuh / Custom App */}
-          <div className="relative rounded-[32px] border border-blue-500/30 bg-gradient-to-b from-blue-950/40 via-white/[0.05] to-black/40 p-7 backdrop-blur-xl flex flex-col justify-between">
+          <div className="relative rounded-[32px] border border-blue-500/30 bg-gradient-to-b from-blue-950/40 via-white/[0.05] to-black/40 p-5 sm:p-7 backdrop-blur-xl flex flex-col justify-between">
             <div>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-blue-400">
                 <HugeiconsIcon icon={Building03Icon} size={12} />
