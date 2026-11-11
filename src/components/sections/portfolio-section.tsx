@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   Layers01Icon,
@@ -10,22 +11,19 @@ import {
   ShoppingBag01Icon,
   LockIcon,
   CheckmarkCircle01Icon,
-  Globe02Icon,
+  Search01Icon,
   WhatsappIcon,
 } from "@hugeicons/core-free-icons";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 import {
   PORTFOLIO_PROJECTS,
-  ProjectItem,
   PortfolioCategory,
   getWaUrl,
 } from "@/data/landing-data";
 import { ProjectScreenPreview } from "./project-screen-preview";
-import { ProjectDetailModal } from "./project-detail-modal";
 
 export function PortfolioSection() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   // Filtered Portfolio Projects
   const filteredProjects = useMemo(() => {
@@ -46,7 +44,7 @@ export function PortfolioSection() {
             Jangan Percaya Janji Manis—Klik &amp; Coba Sendiri Sistem yang Sudah Live
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm leading-relaxed text-white/60">
-            Semua proyek di bawah ini asli hasil kodingan sendiri dan sudah di-<em>deploy</em>. Silakan klik tombol <em>Live Demo</em> untuk mencoba tampilannya langsung dari HP atau laptopmu.
+            Semua proyek di bawah ini asli hasil kodingan sendiri dan sudah di-<em>deploy</em>. Silakan klik tombol <em>Lihat Spek</em> untuk membedah arsitektur sistem atau pesan sistem serupa langsung ke developer.
           </p>
         </AnimateOnScroll>
 
@@ -174,13 +172,13 @@ export function PortfolioSection() {
                   {/* Clean Action Buttons */}
                   <div className="mt-4 sm:mt-5 pt-3.5 border-t border-white/10">
                     <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
-                      <button
-                        onClick={() => setSelectedProject(p)}
+                      <Link
+                        href={`/portofolio/${p.id}`}
                         className="flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl border border-white/15 bg-white/5 py-2 sm:py-2.5 px-2 sm:px-3 text-[11px] sm:text-xs font-semibold text-white/90 hover:bg-white/15 hover:text-white transition-all text-center"
                       >
-                        <HugeiconsIcon icon={Globe02Icon} size={13} className="text-emerald-400 shrink-0" />
-                        <span className="truncate">Coba Live Demo</span>
-                      </button>
+                        <HugeiconsIcon icon={Search01Icon} size={13} className="text-emerald-400 shrink-0" />
+                        <span className="truncate">Lihat Spek</span>
+                      </Link>
                       <a
                         href={getWaUrl(
                           `Halo Mas (ecoDigital), saya tertarik bikin sistem seperti ${p.title} (${p.domain}). Boleh minta estimasi alur dan biayanya?`
@@ -190,7 +188,7 @@ export function PortfolioSection() {
                         className="flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-2 sm:py-2.5 px-2 sm:px-3 text-[11px] sm:text-xs font-bold text-white shadow-md shadow-emerald-950/40 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95 text-center"
                       >
                         <HugeiconsIcon icon={WhatsappIcon} size={13} className="shrink-0" />
-                        <span className="truncate">Bikin Kayak Gini</span>
+                        <span className="truncate">Pesan Serupa</span>
                       </a>
                     </div>
                   </div>
@@ -200,12 +198,6 @@ export function PortfolioSection() {
           })}
         </div>
       </div>
-
-      {/* Project Detail Interactive Modal */}
-      <ProjectDetailModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
     </div>
   );
 }
