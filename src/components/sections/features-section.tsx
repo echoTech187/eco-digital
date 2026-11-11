@@ -29,12 +29,12 @@ export function FeaturesSection() {
                 key={ki}
                 className="group flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/40 hover:bg-white/[0.08] hover:-translate-y-1"
               >
-                {/* Header Icon & Badge: di mobile ditengah dengan flex-column, di tablet/desktop flex-row justify-between */}
+                {/* Header Icon & Badge: di mobile ditengah & dibesarkan (h-16 w-16, icon 36px, badge text-[11px]), di tablet/desktop tetap proporsional & compact */}
                 <div className="mb-4 flex flex-col items-center justify-center gap-3 sm:w-full sm:flex-row sm:items-center sm:justify-between">
-                  <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 shadow-lg shadow-emerald-950/50 transition-transform duration-300 group-hover:scale-105">
-                    <HugeiconsIcon icon={WhyUsIcon} size={36} />
+                  <span className="flex h-16 w-16 sm:h-11 sm:w-11 items-center justify-center rounded-2xl sm:rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 shadow-lg shadow-emerald-950/50 sm:shadow-none transition-transform duration-300 group-hover:scale-105">
+                    <HugeiconsIcon icon={WhyUsIcon} className="h-9 w-9 sm:h-6 sm:w-6" />
                   </span>
-                  <span className="rounded-full border border-emerald-400/25 bg-emerald-950/50 px-3 py-1 text-[11px] font-semibold text-emerald-300 shadow-sm">
+                  <span className="rounded-full border border-emerald-400/25 bg-emerald-950/50 px-3 py-1 sm:px-2.5 sm:py-0.5 text-[11px] sm:text-[10px] font-semibold text-emerald-300 shadow-sm sm:shadow-none">
                     {k.badge}
                   </span>
                 </div>
