@@ -10,6 +10,14 @@ import {
   Cancel01Icon,
   Menu01Icon,
   FlashIcon,
+  Wrench01Icon,
+  Mortarboard01Icon,
+  Building03Icon,
+  ArrowDown01Icon,
+  ArrowRight01Icon,
+  CreditCardIcon,
+  ShieldCheckIcon,
+  HelpCircleIcon,
 } from "@hugeicons/core-free-icons";
 import logoMarkImg from "../../../public/images/logo/logo-vertical-transparent.png";
 import { getWaUrl, WA_DISPLAY } from "@/data/landing-data";
@@ -64,51 +72,248 @@ export function NavbarSection() {
             />
           </Link>
 
-          {/* Center: Navigation Links (Desktop & Widescreen) */}
-          <nav className="hidden items-center gap-3.5 xl:gap-6 2xl:gap-8 xl:flex whitespace-nowrap">
-            <Link
-              href="#layanan"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
-            >
-              Layanan
-            </Link>
+          {/* Center: Navigation Links with Sleek Dropdown Submenus */}
+          <nav className="hidden items-center gap-1.5 lg:gap-3 xl:gap-5 lg:flex whitespace-nowrap">
+            {/* Dropdown 1: Layanan */}
+            <div className="relative group/menu py-3">
+              <button
+                type="button"
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-white/80 transition-all hover:text-emerald-300 hover:bg-white/5 group-hover/menu:text-emerald-400 group-hover/menu:bg-white/5 cursor-pointer"
+              >
+                <span>Layanan</span>
+                <HugeiconsIcon
+                  icon={ArrowDown01Icon}
+                  size={12}
+                  className="text-white/40 transition-transform duration-200 group-hover/menu:rotate-180 group-hover/menu:text-emerald-400"
+                />
+              </button>
+
+              {/* Dropdown Panel */}
+              <div className="invisible group-hover/menu:visible opacity-0 group-hover/menu:opacity-100 translate-y-1 group-hover/menu:translate-y-0 transition-all duration-200 ease-out absolute top-full left-0 w-80 sm:w-[350px] pt-1.5 z-50 pointer-events-none group-hover/menu:pointer-events-auto">
+                <div className="rounded-2xl border border-white/15 bg-[#080D1A]/95 p-3 backdrop-blur-2xl shadow-2xl shadow-black/80 ring-1 ring-white/10">
+                  <div className="space-y-1">
+                    <Link
+                      href="#layanan"
+                      className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.08]"
+                    >
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 transition-colors group-hover/item:border-emerald-400/50 group-hover/item:bg-emerald-500/20">
+                        <HugeiconsIcon icon={Wrench01Icon} size={18} />
+                      </span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-white group-hover/item:text-emerald-300">
+                            Klinik Koding
+                          </span>
+                          <span className="rounded-full bg-emerald-950/60 border border-emerald-500/30 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-400">
+                            ⚡ Fix Error
+                          </span>
+                        </div>
+                        <p className="mt-0.5 text-[11px] leading-snug text-white/60">
+                          Perbaikan bug PHP, Laravel, JS, Flutter &amp; tambah fitur kilat.
+                        </p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="#layanan"
+                      className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.08]"
+                    >
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-400 transition-colors group-hover/item:border-blue-400/50 group-hover/item:bg-blue-500/20">
+                        <HugeiconsIcon icon={Mortarboard01Icon} size={18} />
+                      </span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-white group-hover/item:text-blue-300">
+                            Sistem TA &amp; Skripsi
+                          </span>
+                          <span className="rounded-full bg-blue-950/60 border border-blue-500/30 px-1.5 py-0.5 text-[9px] font-semibold text-blue-400">
+                            🎓 Riset
+                          </span>
+                        </div>
+                        <p className="mt-0.5 text-[11px] leading-snug text-white/60">
+                          Sistem informasi, SPK, bimbingan live &amp; bedah kode sampai paham.
+                        </p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="#layanan"
+                      className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.08]"
+                    >
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-400 transition-colors group-hover/item:border-teal-400/50 group-hover/item:bg-teal-500/20">
+                        <HugeiconsIcon icon={Building03Icon} size={18} />
+                      </span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-white group-hover/item:text-teal-300">
+                            Web Instansi &amp; Bisnis
+                          </span>
+                          <span className="rounded-full bg-teal-950/60 border border-teal-500/30 px-1.5 py-0.5 text-[9px] font-semibold text-teal-400">
+                            🏢 UMKM
+                          </span>
+                        </div>
+                        <p className="mt-0.5 text-[11px] leading-snug text-white/60">
+                          Sistem sekolah, profil instansi, kasir &amp; inventori siap online.
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+
+                  {/* Dropdown Footer: Alur Kerja */}
+                  <div className="mt-2 pt-2 border-t border-white/10">
+                    <Link
+                      href="#cara-kerja"
+                      className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] text-white/70 hover:text-emerald-300 hover:bg-white/5 transition-colors"
+                    >
+                      <span className="font-medium">Lihat 4 Langkah Alur Kerja Anti-Ghosting</span>
+                      <HugeiconsIcon icon={ArrowRight01Icon} size={13} className="text-emerald-400" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Link 2: Portofolio */}
             <Link
               href="#portofolio"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
+              className="px-2.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-white/80 transition-all hover:text-emerald-300 hover:bg-white/5 whitespace-nowrap"
             >
               Portofolio
             </Link>
-            <Link
-              href="#keunggulan"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
-            >
-              Keunggulan
-            </Link>
-            <Link
-              href="#cara-kerja"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
-            >
-              Alur Kerja
-            </Link>
-            <Link
-              href="#paket-harga"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
-            >
-              Paket Harga
-            </Link>
-            <Link
-              href="#kalkulator-biaya"
-              className="text-xs font-semibold uppercase tracking-wider text-emerald-400 transition-colors hover:text-emerald-300 flex items-center gap-1.5 whitespace-nowrap"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
-              Simulasi Biaya
-            </Link>
-            <Link
-              href="#faq"
-              className="text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:text-emerald-300 whitespace-nowrap"
-            >
-              FAQ
-            </Link>
+
+            {/* Dropdown 3: Biaya & Simulasi */}
+            <div className="relative group/menu py-3">
+              <button
+                type="button"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-white/80 transition-all hover:text-emerald-300 hover:bg-white/5 group-hover/menu:text-emerald-400 group-hover/menu:bg-white/5 cursor-pointer"
+              >
+                <span className="flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Biaya &amp; Paket</span>
+                </span>
+                <HugeiconsIcon
+                  icon={ArrowDown01Icon}
+                  size={12}
+                  className="text-white/40 transition-transform duration-200 group-hover/menu:rotate-180 group-hover/menu:text-emerald-400"
+                />
+              </button>
+
+              <div className="invisible group-hover/menu:visible opacity-0 group-hover/menu:opacity-100 translate-y-1 group-hover/menu:translate-y-0 transition-all duration-200 ease-out absolute top-full left-1/2 -translate-x-1/2 w-80 sm:w-[340px] pt-1.5 z-50 pointer-events-none group-hover/menu:pointer-events-auto">
+                <div className="rounded-2xl border border-white/15 bg-[#080D1A]/95 p-3 backdrop-blur-2xl shadow-2xl shadow-black/80 ring-1 ring-white/10">
+                  <div className="space-y-1">
+                    <Link
+                      href="#paket-harga"
+                      className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.08]"
+                    >
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white transition-colors group-hover/item:border-emerald-400/50 group-hover/item:bg-emerald-500/20 group-hover/item:text-emerald-400">
+                        <HugeiconsIcon icon={CreditCardIcon} size={18} />
+                      </span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-white group-hover/item:text-emerald-300">
+                            Paket Harga Transparan
+                          </span>
+                          <span className="rounded-full bg-emerald-950/60 border border-emerald-500/30 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-400">
+                            Mulai 150rb
+                          </span>
+                        </div>
+                        <p className="mt-0.5 text-[11px] leading-snug text-white/60">
+                          Fix Error hemat, Paket Reguler (499rb), hingga Skala Penuh.
+                        </p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="#kalkulator-biaya"
+                      className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.08] bg-emerald-950/20 border border-emerald-500/20"
+                    >
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-emerald-400/40 bg-emerald-500/20 text-emerald-300 transition-colors group-hover/item:scale-105">
+                        <HugeiconsIcon icon={FlashIcon} size={18} />
+                      </span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-emerald-300 group-hover/item:text-emerald-200">
+                            Simulasi Biaya Mandiri
+                          </span>
+                          <span className="flex h-2 w-2 relative">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+                          </span>
+                        </div>
+                        <p className="mt-0.5 text-[11px] leading-snug text-white/70">
+                          Hitung perkiraan biaya secara interaktif &amp; bawa hasil ke WA.
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Dropdown 4: Tentang & FAQ */}
+            <div className="relative group/menu py-3">
+              <button
+                type="button"
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-white/80 transition-all hover:text-emerald-300 hover:bg-white/5 group-hover/menu:text-emerald-400 group-hover/menu:bg-white/5 cursor-pointer"
+              >
+                <span>Tentang</span>
+                <HugeiconsIcon
+                  icon={ArrowDown01Icon}
+                  size={12}
+                  className="text-white/40 transition-transform duration-200 group-hover/menu:rotate-180 group-hover/menu:text-emerald-400"
+                />
+              </button>
+
+              <div className="invisible group-hover/menu:visible opacity-0 group-hover/menu:opacity-100 translate-y-1 group-hover/menu:translate-y-0 transition-all duration-200 ease-out absolute top-full right-0 w-80 sm:w-[340px] pt-1.5 z-50 pointer-events-none group-hover/menu:pointer-events-auto">
+                <div className="rounded-2xl border border-white/15 bg-[#080D1A]/95 p-3 backdrop-blur-2xl shadow-2xl shadow-black/80 ring-1 ring-white/10">
+                  <div className="space-y-1">
+                    <Link
+                      href="#keunggulan"
+                      className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.08]"
+                    >
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 transition-colors group-hover/item:border-emerald-400/50 group-hover/item:bg-emerald-500/20">
+                        <HugeiconsIcon icon={ShieldCheckIcon} size={18} />
+                      </span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-white group-hover/item:text-emerald-300">
+                            Keunggulan ecoDigital
+                          </span>
+                          <span className="rounded-full bg-emerald-950/60 border border-emerald-500/30 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-400">
+                            4 Jaminan
+                          </span>
+                        </div>
+                        <p className="mt-0.5 text-[11px] leading-snug text-white/60">
+                          Tanpa DP mengambang, source code 100% hak milik, cicil progres.
+                        </p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="#faq"
+                      className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.08]"
+                    >
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white transition-colors group-hover/item:border-emerald-400/50 group-hover/item:bg-emerald-500/20 group-hover/item:text-emerald-400">
+                        <HugeiconsIcon icon={HelpCircleIcon} size={18} />
+                      </span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-white group-hover/item:text-emerald-300">
+                            Tanya Jawab (FAQ)
+                          </span>
+                          <span className="rounded-full bg-white/10 border border-white/20 px-1.5 py-0.5 text-[9px] font-semibold text-white/70">
+                            Info Jujur
+                          </span>
+                        </div>
+                        <p className="mt-0.5 text-[11px] leading-snug text-white/60">
+                          Jawaban transparan seputar bimbingan, revisi, &amp; garansi.
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </nav>
 
           {/* Right: Direct WhatsApp CTA Button & Mobile/Tablet Hamburger */}
@@ -129,7 +334,7 @@ export function NavbarSection() {
             {/* Mobile & Tablet Hamburger Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 transition-colors hover:bg-white/10 hover:text-white xl:hidden cursor-pointer"
+              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 transition-colors hover:bg-white/10 hover:text-white lg:hidden cursor-pointer"
               aria-label="Buka Menu Navigasi"
               aria-expanded={mobileMenuOpen}
             >
@@ -143,7 +348,7 @@ export function NavbarSection() {
       {mounted &&
         createPortal(
           <div
-            className={`fixed inset-0 z-[999] xl:hidden transition-all duration-300 ${
+            className={`fixed inset-0 z-[999] lg:hidden transition-all duration-300 ${
               mobileMenuOpen
                 ? "pointer-events-auto opacity-100 visible"
                 : "pointer-events-none opacity-0 invisible"
