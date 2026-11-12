@@ -76,6 +76,41 @@ export function NavbarSection() {
     setOpenMenu(null);
   };
 
+  const handleAnchorClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetHash: string
+  ) => {
+    closeMenu();
+    setMobileMenuOpen(false);
+
+    if (typeof window !== "undefined") {
+      const isHome =
+        window.location.pathname === "/" || window.location.pathname === "";
+      if (isHome) {
+        const id = targetHash.replace(/^(\/)?#/, "");
+        const element = document.getElementById(id);
+        if (element) {
+          e.preventDefault();
+          const win = window as unknown as {
+            __lenis?: {
+              scrollTo: (
+                target: HTMLElement,
+                opts?: { offset?: number; duration?: number }
+              ) => void;
+            };
+          };
+          if (win.__lenis && typeof win.__lenis.scrollTo === "function") {
+            win.__lenis.scrollTo(element, { offset: -80, duration: 1.1 });
+          } else {
+            const top = element.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
+          window.history.pushState(null, "", `#${id}`);
+        }
+      }
+    }
+  };
+
   const isLayananOpen = openMenu === "layanan";
   const isBiayaOpen = openMenu === "biaya";
   const isTentangOpen = openMenu === "tentang";
@@ -125,9 +160,9 @@ export function NavbarSection() {
 
             {/* Menu 2: Portofolio */}
             <Link
-              href="#portofolio"
-              onClick={closeMenu}
-              className="px-3 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider text-white/80 transition-all hover:text-emerald-300 hover:bg-white/5 whitespace-nowrap"
+              href="/#portofolio"
+              onClick={(e) => handleAnchorClick(e, "#portofolio")}
+              className="px-3 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider text-white/80 transition-all hover:text-emerald-300 hover:bg-white/5 whitespace-nowrap cursor-pointer"
             >
               Portofolio
             </Link>
@@ -229,8 +264,8 @@ export function NavbarSection() {
               <div className="col-span-5 flex flex-col justify-between space-y-2">
                 <div className="space-y-2">
                   <Link
-                    href="#layanan"
-                    onClick={closeMenu}
+                    href="/#layanan"
+                    onClick={(e) => handleAnchorClick(e, "#layanan")}
                     className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 group-hover/item:bg-emerald-500/20 group-hover/item:border-emerald-400/50 transition-colors">
@@ -252,8 +287,8 @@ export function NavbarSection() {
                   </Link>
 
                   <Link
-                    href="#layanan"
-                    onClick={closeMenu}
+                    href="/#layanan"
+                    onClick={(e) => handleAnchorClick(e, "#layanan")}
                     className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-500/20 group-hover/item:border-blue-400/50 transition-colors">
@@ -275,8 +310,8 @@ export function NavbarSection() {
                   </Link>
 
                   <Link
-                    href="#layanan"
-                    onClick={closeMenu}
+                    href="/#layanan"
+                    onClick={(e) => handleAnchorClick(e, "#layanan")}
                     className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-400 group-hover/item:bg-teal-500/20 group-hover/item:border-teal-400/50 transition-colors">
@@ -301,8 +336,8 @@ export function NavbarSection() {
                 {/* Bottom Alur Kerja Link */}
                 <div className="pt-2 border-t border-white/10">
                   <Link
-                    href="#cara-kerja"
-                    onClick={closeMenu}
+                    href="/#cara-kerja"
+                    onClick={(e) => handleAnchorClick(e, "#cara-kerja")}
                     className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] text-white/70 hover:text-emerald-300 hover:bg-white/5 transition-colors"
                   >
                     <span className="font-medium">Lihat 4 Langkah Alur Kerja Anti-Ghosting</span>
@@ -359,8 +394,8 @@ export function NavbarSection() {
                   Pilihan Paket
                 </span>
                 <Link
-                  href="#paket-harga"
-                  onClick={closeMenu}
+                  href="/#paket-harga"
+                  onClick={(e) => handleAnchorClick(e, "#paket-harga")}
                   className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white transition-colors group-hover/item:border-emerald-400/50 group-hover/item:bg-emerald-500/20 group-hover/item:text-emerald-400">
@@ -382,8 +417,8 @@ export function NavbarSection() {
                 </Link>
 
                 <Link
-                  href="#paket-harga"
-                  onClick={closeMenu}
+                  href="/#paket-harga"
+                  onClick={(e) => handleAnchorClick(e, "#paket-harga")}
                   className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 transition-colors group-hover/item:scale-105">
@@ -405,8 +440,8 @@ export function NavbarSection() {
                 </Link>
 
                 <Link
-                  href="#paket-harga"
-                  onClick={closeMenu}
+                  href="/#paket-harga"
+                  onClick={(e) => handleAnchorClick(e, "#paket-harga")}
                   className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-400 transition-colors group-hover/item:scale-105">
@@ -453,8 +488,8 @@ export function NavbarSection() {
 
                 <div className="mt-4 pt-3 border-t border-white/10">
                   <Link
-                    href="#kalkulator-biaya"
-                    onClick={closeMenu}
+                    href="/#kalkulator-biaya"
+                    onClick={(e) => handleAnchorClick(e, "#kalkulator-biaya")}
                     className="flex items-center justify-center gap-2 rounded-xl bg-cyan-500 px-4 py-2.5 text-xs font-bold text-black hover:bg-cyan-400 transition-all hover:scale-[1.02]"
                   >
                     <HugeiconsIcon icon={FlashIcon} size={15} />
@@ -480,8 +515,8 @@ export function NavbarSection() {
                   Standar Kerja
                 </span>
                 <Link
-                  href="#keunggulan"
-                  onClick={closeMenu}
+                  href="/#keunggulan"
+                  onClick={(e) => handleAnchorClick(e, "#keunggulan")}
                   className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 transition-colors group-hover/item:border-emerald-400/50 group-hover/item:bg-emerald-500/20">
@@ -498,8 +533,8 @@ export function NavbarSection() {
                 </Link>
 
                 <Link
-                  href="#cara-kerja"
-                  onClick={closeMenu}
+                  href="/#cara-kerja"
+                  onClick={(e) => handleAnchorClick(e, "#cara-kerja")}
                   className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-400 transition-colors group-hover/item:scale-105">
@@ -522,8 +557,8 @@ export function NavbarSection() {
                   Bantuan &amp; Kontak
                 </span>
                 <Link
-                  href="#faq"
-                  onClick={closeMenu}
+                  href="/#faq"
+                  onClick={(e) => handleAnchorClick(e, "#faq")}
                   className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white transition-colors group-hover/item:border-emerald-400/50 group-hover/item:bg-emerald-500/20 group-hover/item:text-emerald-400">
@@ -640,8 +675,8 @@ export function NavbarSection() {
                   {/* Nav Links */}
                   <nav className="flex flex-col gap-2 text-base font-semibold">
                     <Link
-                      href="#layanan"
-                      onClick={() => setMobileMenuOpen(false)}
+                      href="/#layanan"
+                      onClick={(e) => handleAnchorClick(e, "#layanan")}
                       className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors"
                     >
                       <span>Layanan</span>
@@ -649,8 +684,8 @@ export function NavbarSection() {
                     </Link>
 
                     <Link
-                      href="#portofolio"
-                      onClick={() => setMobileMenuOpen(false)}
+                      href="/#portofolio"
+                      onClick={(e) => handleAnchorClick(e, "#portofolio")}
                       className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors"
                     >
                       <span>Portofolio</span>
@@ -658,8 +693,8 @@ export function NavbarSection() {
                     </Link>
 
                     <Link
-                      href="#keunggulan"
-                      onClick={() => setMobileMenuOpen(false)}
+                      href="/#keunggulan"
+                      onClick={(e) => handleAnchorClick(e, "#keunggulan")}
                       className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors"
                     >
                       <span>Keunggulan</span>
@@ -667,8 +702,8 @@ export function NavbarSection() {
                     </Link>
 
                     <Link
-                      href="#cara-kerja"
-                      onClick={() => setMobileMenuOpen(false)}
+                      href="/#cara-kerja"
+                      onClick={(e) => handleAnchorClick(e, "#cara-kerja")}
                       className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors"
                     >
                       <span>Alur Kerja</span>
@@ -676,8 +711,8 @@ export function NavbarSection() {
                     </Link>
 
                     <Link
-                      href="#paket-harga"
-                      onClick={() => setMobileMenuOpen(false)}
+                      href="/#paket-harga"
+                      onClick={(e) => handleAnchorClick(e, "#paket-harga")}
                       className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors"
                     >
                       <span>Paket Harga</span>
@@ -685,8 +720,8 @@ export function NavbarSection() {
                     </Link>
 
                     <Link
-                      href="#kalkulator-biaya"
-                      onClick={() => setMobileMenuOpen(false)}
+                      href="/#kalkulator-biaya"
+                      onClick={(e) => handleAnchorClick(e, "#kalkulator-biaya")}
                       className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 font-bold hover:bg-emerald-900/60 active:bg-emerald-800/60 transition-colors"
                     >
                       <span className="flex items-center gap-2.5">
@@ -697,8 +732,8 @@ export function NavbarSection() {
                     </Link>
 
                     <Link
-                      href="#faq"
-                      onClick={() => setMobileMenuOpen(false)}
+                      href="/#faq"
+                      onClick={(e) => handleAnchorClick(e, "#faq")}
                       className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors"
                     >
                       <span>Tanya Jawab (FAQ)</span>

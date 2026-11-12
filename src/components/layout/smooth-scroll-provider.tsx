@@ -15,18 +15,64 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       smoothWheel: true,
     });
 
+    // Attach instance to window for global access
+    const win = window as unknown as { __lenis?: Lenis };
+    win.__lenis = lenis;
+
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
+
+    // Global click listener to smoothly scroll to anchor links with Lenis
+    const handleAnchorClick = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement).closest("a");
+      if (!anchor) return;
+
+      const href = anchor.getAttribute("href");
+      if (!href) return;
+
+      // Match #section or /#section (when currently on homepage)
+      const isHashOnly = href.startsWith("#");
+      const isRootHash =
+        href.startsWith("/#") &&
+        (window.location.pathname === "/" || window.location.pathname === "");
+
+      if (isHashOnly || isRootHash) {
+        const hash = isRootHash ? href.substring(1) : href;
+        if (hash.length > 1) {
+          const targetEl = document.querySelector(hash);
+          if (targetEl) {
+            e.preventDefault();
+            lenis.scrollTo(targetEl as HTMLElement, { offset: -80, duration: 1.1 });
+            window.history.pushState(null, "", hash);
+          }
+        }
+      }
+    };
+
+    document.addEventListener("click", handleAnchorClick, { capture: true });
+
+    // Handle initial hash on page load (e.g. user opens site with #portofolio in URL)
+    if (window.location.hash) {
+      setTimeout(() => {
+        const initialTarget = document.querySelector(window.location.hash);
+        if (initialTarget) {
+          lenis.scrollTo(initialTarget as HTMLElement, { offset: -80, immediate: true });
+        }
+      }, 150);
+    }
 
     return () => {
+      cancelAnimationFrame(rafId);
+      document.removeEventListener("click", handleAnchorClick, { capture: true });
       lenis.destroy();
+      delete win.__lenis;
     };
   }, []);
 
   return <>{children}</>;
 }
-
