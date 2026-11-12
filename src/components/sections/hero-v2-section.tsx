@@ -9,10 +9,11 @@ import { getWaUrl, TECH_STACK_ITEMS } from "@/data/landing-data";
 import founderImg from "../../../public/images/founder.png";
 
 const HERO_BUBBLE_SCRIPTS = [
-  "Halo! Saya Eko Susanto. Di ecoDigital, kamu konsultasi langsung ke lead developer tanpa perantara—solusi lebih presisi, pengerjaan cepat, dan budget jauh lebih hemat.",
-  "Deadline sidang sudah dekat tapi sistem masih error? Kami tuntaskan kodingannya sampai lancar plus panduan bedah kode agar kamu 100% siap di depan dosen penguji.",
-  "Butuh web profil, sistem kasir, atau inventaris custom tanpa biaya langganan bulanan? Kami bangun sistem tangguh sesuai alur kerjamu, source code 100% jadi aset milikmu.",
-  "Punya ide sistem atau kendala kodingan yang ingin segera dibereskan? Pelajari rekam jejak portofolio kami di bawah atau klik Chat WA untuk konsultasi gratis hari ini!",
+  "Deadline sidang makin dekat, error belum kelar? Nota usaha makin menumpuk? Kadang, langkah pertama sesederhana berani bilang, halo.",
+  "Di ecoDigital, kamu langsung ngobrol dengan lead developer yang santai dan paham. Ceritakan masalahmu, kami dengarkan tanpa asal kasih harga.",
+  "Lewat bimbingan 1-on-1, kode dibenahi transparan & logika dijelaskan dengan bahasa manusia. Source code 100% diserahkan plus rekaman bedah kode.",
+  "Sistem lancar, sidang lebih tenang, pesanan pertama pun masuk. Karena solusi dari error paling rumit pun, selalu bermula dari satu sapaan santai.",
+  "Nggak perlu hadapi error sendirian. Temukan partner kodingmu di ecoDigital—dimulai dari sapaan 'Halo'!",
 ];
 
 export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
@@ -176,7 +177,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
                   <div className="mt-1.5 pt-1.5 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
                     <span className="font-semibold text-emerald-600 flex items-center gap-1">
                       <span>💬 Mas Eko</span>
-                      <span className="text-[9px] text-slate-400 font-normal">({currentScriptIdx + 1}/4)</span>
+                      <span className="text-[9px] text-slate-400 font-normal">({currentScriptIdx + 1}/{HERO_BUBBLE_SCRIPTS.length})</span>
                     </span>
                     <div className="flex items-center gap-1.5">
                       {HERO_BUBBLE_SCRIPTS.map((_, idx) => (
