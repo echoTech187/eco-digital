@@ -75,7 +75,7 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
   return (
     <div
       id="kalkulator-biaya"
-      className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-20 border-t border-white/10"
+      className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-0 border-t border-white/10"
     >
       <div className="mx-auto max-w-4xl">
         <AnimateOnScroll preset="fade-up" className="mb-8 sm:mb-10 text-center">

@@ -8,7 +8,7 @@ import { WORKFLOW_STEPS } from "@/data/landing-data";
 
 export function WorkflowSection() {
   return (
-    <div id="cara-kerja" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-20">
+    <div id="alur-kerja" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-16 sm:py-24 scroll-mt-0">
       <div className="mx-auto max-w-5xl text-center">
         <AnimateOnScroll preset="fade-up" className="mb-10 sm:mb-12">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">

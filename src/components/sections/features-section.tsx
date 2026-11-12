@@ -7,7 +7,7 @@ import { WHY_US_ITEMS } from "@/data/landing-data";
 
 export function FeaturesSection() {
   return (
-    <div id="keunggulan" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-20">
+    <div id="keunggulan" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-0">
       <div className="mx-auto max-w-6xl">
         <AnimateOnScroll preset="fade-up" className="mb-10 sm:mb-12 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">

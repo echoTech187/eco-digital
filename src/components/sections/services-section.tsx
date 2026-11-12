@@ -14,10 +14,11 @@ import { getWaUrl } from "@/data/landing-data";
 
 export function ServicesSection() {
   return (
-    <div id="layanan" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-20">
+    <div id="layanan" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 pt-6 sm:pt-8 lg:pt-8 pb-12 sm:pb-16 scroll-mt-0">
+      <span id="solusi" className="scroll-mt-0 block" />
       <div className="mx-auto max-w-6xl">
-        <AnimateOnScroll preset="fade-up" className="mb-10 sm:mb-12 text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
+        <AnimateOnScroll preset="fade-up" className="mt-6 mb-6 sm:mb-8 sm:mt-12 text-center">
+          <span className="text-2xl uppercase font-extrabold text-[#10B981] mb-4">
             APA YANG BISA DIBANTU?
           </span>
           <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
@@ -30,7 +31,7 @@ export function ServicesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Card 1: Klinik Koding: Fix Error & Tambah Fitur */}
-          <div className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-7 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/50 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-950/30">
+          <div className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 lg:p-6 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/50 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-950/30">
             <div>
               {/* Header: Icon & Category Badge */}
               <div className="flex items-center justify-between">
@@ -67,7 +68,7 @@ export function ServicesSection() {
               </ul>
             </div>
 
-            <div className="mt-8 pt-5 border-t border-white/10">
+            <div className="mt-6 pt-4 border-t border-white/10">
               <a
                 href={getWaUrl(
                   "Halo Mas (ecoDigital), saya mau konsultasi perbaikan error / tambah fitur kodingan."
@@ -83,7 +84,7 @@ export function ServicesSection() {
           </div>
 
           {/* Card 2: Partner Sistem Tugas Akhir, SPK & Riset */}
-          <div className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-7 backdrop-blur-md transition-all duration-300 hover:border-blue-500/50 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-950/30">
+          <div className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 lg:p-6 backdrop-blur-md transition-all duration-300 hover:border-blue-500/50 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-950/30">
             <div>
               {/* Header: Icon & Category Badge */}
               <div className="flex items-center justify-between">
@@ -120,7 +121,7 @@ export function ServicesSection() {
               </ul>
             </div>
 
-            <div className="mt-8 pt-5 border-t border-white/10">
+            <div className="mt-6 pt-4 border-t border-white/10">
               <a
                 href={getWaUrl(
                   "Halo Mas (ecoDigital), saya mau konsultasi pembuatan sistem Tugas Akhir / SPK / riset skripsi."
@@ -136,7 +137,7 @@ export function ServicesSection() {
           </div>
 
           {/* Card 3: Aplikasi Sekolah, Instansi & Bisnis UMKM */}
-          <div className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-7 backdrop-blur-md transition-all duration-300 hover:border-teal-500/50 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-950/30 md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none w-full">
+          <div className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 lg:p-6 backdrop-blur-md transition-all duration-300 hover:border-teal-500/50 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-950/30 md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none w-full">
             <div>
               {/* Header: Icon & Category Badge */}
               <div className="flex items-center justify-between">
@@ -173,7 +174,7 @@ export function ServicesSection() {
               </ul>
             </div>
 
-            <div className="mt-8 pt-5 border-t border-white/10">
+            <div className="mt-6 pt-4 border-t border-white/10">
               <a
                 href={getWaUrl(
                   "Halo Mas (ecoDigital), saya mau diskusi pembuatan aplikasi sekolah / instansi / bisnis UMKM."

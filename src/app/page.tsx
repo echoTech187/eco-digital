@@ -1,8 +1,9 @@
 import React from "react";
+import fs from "fs";
+import path from "path";
 import {
   NavbarSection,
-  HeroSection,
-  TechStackMarquee,
+  HeroV2Section,
   ServicesSection,
   PortfolioSection,
   FeaturesSection,
@@ -15,39 +16,44 @@ import {
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp";
 
 export default function Home() {
+  const videoWebm = path.join(process.cwd(), "public/videos/gani-talking.webm");
+  const videoMp4 = path.join(process.cwd(), "public/videos/gani-talking.mp4");
+  const videoSrc = fs.existsSync(videoWebm)
+    ? "/videos/gani-talking.webm"
+    : fs.existsSync(videoMp4)
+    ? "/videos/gani-talking.mp4"
+    : null;
+
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#060A14] text-white selection:bg-emerald-500/30 selection:text-emerald-300">
       {/* 1. Sticky Navigation Bar */}
       <NavbarSection />
 
-      {/* 2. Hero Section */}
-      <HeroSection />
+      {/* 2. Hero Section (Including Integrated Tech Stack) */}
+      <HeroV2Section videoSrc={videoSrc} />
 
-      {/* 3. Tech Stack Infinite Marquee */}
-      <TechStackMarquee />
-
-      {/* 4. Layanan (Apa yang Bisa Dibantu?) */}
+      {/* 3. Layanan (Apa yang Bisa Dibantu?) */}
       <ServicesSection />
 
-      {/* 5. Showcase Portofolio (Bukti Karya Nyata) */}
+      {/* 4. Portofolio (Showcase Portofolio Nyata) */}
       <PortfolioSection />
 
-      {/* 6. Keunggulan (Standar Kerja ecoDigital) */}
+      {/* 5. Keunggulan (Standar Kerja ecoDigital) */}
       <FeaturesSection />
 
-      {/* 7. Alur Pengerjaan (Cara Kerja Anti-Ghosting) */}
+      {/* 6. Alur Pengerjaan (Alur Pengerjaan Anti-Ghosting) */}
       <WorkflowSection />
 
-      {/* 8. Paket Harga (Harga Terbuka & Transparan) */}
+      {/* 7. Paket Harga (Paket Harga Terbuka & Transparan) */}
       <PricingSection />
 
-      {/* 9. Simulasi & Hitung Estimasi Biaya */}
+      {/* 10. Simulasi & Hitung Estimasi Biaya */}
       <CalculatorSection />
 
-      {/* 10. Tanya Jawab Santai (FAQ) */}
+      {/* 11. Tanya Jawab Santai (FAQ) */}
       <FaqSection />
 
-      {/* 11. Formulir Konsultasi Cepat & Footer */}
+      {/* 12. Formulir Konsultasi Cepat & Footer */}
       <ConsultationFormSection />
 
       {/* Floating Persistent WhatsApp Button */}

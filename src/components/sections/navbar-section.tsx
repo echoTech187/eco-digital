@@ -99,10 +99,11 @@ export function NavbarSection() {
               ) => void;
             };
           };
+          const offset = id === "layanan" || id === "solusi" ? 0 : 0;
           if (win.__lenis && typeof win.__lenis.scrollTo === "function") {
-            win.__lenis.scrollTo(element, { offset: -80, duration: 1.1 });
+            win.__lenis.scrollTo(element, { offset, duration: 1.1 });
           } else {
-            const top = element.getBoundingClientRect().top + window.scrollY - 80;
+            const top = element.getBoundingClientRect().top + window.scrollY + offset;
             window.scrollTo({ top, behavior: "smooth" });
           }
           window.history.pushState(null, "", `#${id}`);
@@ -117,7 +118,7 @@ export function NavbarSection() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#060A14] backdrop-blur-xl transition-all">
+      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#060A14]/85 backdrop-blur-xl transition-all">
         <div ref={navRef} className="mx-auto flex h-16 sm:h-20 max-w-7xl items-center justify-between px-4 sm:px-8 lg:px-14 relative">
           {/* Left: Brand Logo */}
           <Link href="/" onClick={closeMenu} className="group flex items-center gap-2 sm:gap-3 shrink-0">
@@ -234,22 +235,38 @@ export function NavbarSection() {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 block px-2 mb-2">
                     Kategori Layanan
                   </span>
-                  <div className="flex items-center gap-2 px-2.5 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+                  <Link
+                    href="/#layanan"
+                    onClick={(e) => handleAnchorClick(e, "#layanan")}
+                    className="flex items-center gap-2 px-2.5 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold hover:bg-emerald-500/20 transition-colors"
+                  >
                     <span>👨‍💻</span>
                     <span>Direct Developer</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 text-xs font-medium transition-colors">
+                  </Link>
+                  <Link
+                    href="/#layanan"
+                    onClick={(e) => handleAnchorClick(e, "#layanan")}
+                    className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 text-xs font-medium transition-colors"
+                  >
                     <span>⚡</span>
                     <span>Perbaikan Kilat</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 text-xs font-medium transition-colors">
+                  </Link>
+                  <Link
+                    href="/#layanan"
+                    onClick={(e) => handleAnchorClick(e, "#layanan")}
+                    className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 text-xs font-medium transition-colors"
+                  >
                     <span>🎓</span>
                     <span>Skripsi &amp; Riset</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 text-xs font-medium transition-colors">
+                  </Link>
+                  <Link
+                    href="/#layanan"
+                    onClick={(e) => handleAnchorClick(e, "#layanan")}
+                    className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 text-xs font-medium transition-colors"
+                  >
                     <span>🏢</span>
                     <span>Sistem Bisnis</span>
-                  </div>
+                  </Link>
                 </div>
 
                 {/* Bottom Hotline Info */}

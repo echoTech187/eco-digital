@@ -43,7 +43,7 @@ function PropellerStar({
 
 export function HeroSection() {
   return (
-    <section className="relative flex w-full flex-col justify-between overflow-hidden bg-[#060A14] xl:min-h-[calc(100vh-80px)]">
+    <section id="briefing" className="relative flex w-full flex-col justify-between overflow-hidden bg-[#060A14] xl:min-h-[calc(100vh-80px)]">
       {/* Ambient Radial Atmosphere (Seamless Mesh Glow) */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-28 top-1/4 h-[600px] w-[600px] rounded-full bg-emerald-500/20 blur-[140px]" />
@@ -64,15 +64,6 @@ export function HeroSection() {
           {/* Left Column: Headline, Sub-headline, Dual CTA, & Explore Button */}
           <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center text-left">
             <AnimateOnScroll preset="fade-right" duration={0.6} immediate>
-              {/* Status Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-950/60 px-3.5 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md shadow-md shadow-emerald-950/40 w-fit">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
-                </span>
-                <span>TERSEDIA UNTUK PROYEK BARU &amp; PERBAIKAN KILAT</span>
-              </div>
-
               {/* Headline Utama Sesuai Dokumen Blueprint */}
               <h1 className="mt-3.5 sm:mt-5 text-2xl sm:text-3xl md:text-[32px] lg:text-[38px] xl:text-[46px] font-black tracking-tight text-white leading-[1.22]">
                 Ngoding Mentok atau Mau Bikin Sistem dari Nol?{" "}
@@ -165,16 +156,7 @@ export function HeroSection() {
               {/* Soft Radial Ambient Behind Founder */}
               <div className="pointer-events-none absolute h-[260px] w-[260px] sm:h-[340px] sm:w-[340px] md:h-[400px] md:w-[400px] lg:h-[440px] lg:w-[440px] rounded-full bg-gradient-to-tr from-emerald-500/25 via-blue-600/30 to-cyan-400/25 blur-[90px] -z-10" />
 
-              {/* Floating Badge 1: Direct Developer (Tanpa Perantara) */}
-              <div className="hidden sm:flex absolute left-0 xl:-left-4 top-10 md:top-12 xl:top-16 z-20 items-center gap-2 sm:gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-3 sm:px-4 py-2 sm:py-2.5 shadow-xl backdrop-blur-xl animate-float">
-                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
-                  <HugeiconsIcon icon={LaptopProgrammingIcon} size={18} />
-                </span>
-                <div>
-                  <span className="block text-[11px] font-bold text-white">👨‍💻 Direct Developer</span>
-                  <span className="block text-[9px] text-emerald-300">Tanpa Perantara</span>
-                </div>
-              </div>
+        
 
               {/* Floating Badge 2: Sesi Bedah Kode */}
               <div className="hidden sm:flex absolute -right-1 sm:-right-2 bottom-14 md:bottom-18 xl:bottom-24 z-20 items-center gap-2 sm:gap-2.5 rounded-2xl border border-white/20 bg-black/60 px-3 sm:px-4 py-2 sm:py-2.5 shadow-xl backdrop-blur-xl animate-float-delayed">

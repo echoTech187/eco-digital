@@ -47,7 +47,8 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
           const targetEl = document.querySelector(hash);
           if (targetEl) {
             e.preventDefault();
-            lenis.scrollTo(targetEl as HTMLElement, { offset: -80, duration: 1.1 });
+            const offset = hash === "#layanan" || hash === "#solusi" ? 0 : 0;
+            lenis.scrollTo(targetEl as HTMLElement, { offset, duration: 1.1 });
             window.history.pushState(null, "", hash);
           }
         }
@@ -61,7 +62,8 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       setTimeout(() => {
         const initialTarget = document.querySelector(window.location.hash);
         if (initialTarget) {
-          lenis.scrollTo(initialTarget as HTMLElement, { offset: -80, immediate: true });
+          const offset = window.location.hash === "#layanan" || window.location.hash === "#solusi" ? 0 : 0;
+          lenis.scrollTo(initialTarget as HTMLElement, { offset, immediate: true });
         }
       }, 150);
     }

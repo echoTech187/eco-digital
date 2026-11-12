@@ -39,7 +39,94 @@ body {
 }
 
 .animate-float {
-  animation: float 4s ease-in-out infinite;
+  animation: floatSlow 4.2s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Clean Comic Cloud Bubble for Hero & Dialogues */
+.cloud-bubble {
+  position: relative;
+  background: #ffffff;
+  color: #0f172a;
+  border: 2.5px solid #0f172a;
+  border-radius: 26px;
+  box-shadow: 0 14px 30px -10px rgba(16, 185, 129, 0.35), 4px 4px 0px #10b981;
+}
+.cloud-dot-lg {
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border: 2.5px solid #0f172a;
+  border-radius: 9999px;
+  box-shadow: 2px 2px 0px #10b981;
+}
+.cloud-dot-sm {
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border: 2px solid #0f172a;
+  border-radius: 9999px;
+  box-shadow: 2px 2px 0px #10b981;
+}
+
+/* Clean Comic Speech Balloon inside Case Panels */
+.speech-problem {
+  position: relative;
+  background: #ffffff;
+  color: #0f172a;
+  border: 2px solid #0f172a;
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px rgba(244, 63, 94, 0.75);
+}
+.speech-problem::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 34px;
+  width: 18px;
+  height: 18px;
+  background: #ffffff;
+  border-right: 2px solid #0f172a;
+  border-bottom: 2px solid #0f172a;
+  transform: rotate(45deg);
+}
+
+.speech-solution {
+  position: relative;
+  background: #ecfdf5;
+  color: #064e3b;
+  border: 2px solid #0f172a;
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px #10b981;
+}
+.speech-solution::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: 38px;
+  width: 18px;
+  height: 18px;
+  background: #ecfdf5;
+  border-right: 2px solid #0f172a;
+  border-bottom: 2px solid #0f172a;
+  transform: rotate(45deg);
+}
+
+/* Typewriter Cursor */
+.typing-cursor::after {
+  content: '▋';
+  display: inline-block;
+  margin-left: 2px;
+  color: #10b981;
+  animation: blinkCursor 0.8s infinite;
+}
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .animate-float-delayed {
