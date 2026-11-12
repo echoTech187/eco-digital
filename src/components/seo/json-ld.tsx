@@ -54,22 +54,22 @@ export function JsonLd() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Klinik Koding: Fix Error & Tambah Fitur",
+            name: "Pembuatan Aplikasi Custom Tugas Akhir & Skripsi",
             description:
-              "Perbaikan bug/error PHP, Laravel, JS, Flutter, tambah modul baru, dan redesign tampilan UI.",
+              "Pembuatan aplikasi web & mobile untuk tugas akhir, skripsi, dan riset lengkap dengan source code 100% dan bimbingan bedah kode.",
           },
-          price: "150000",
+          price: "750000",
           priceCurrency: "IDR",
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Partner Sistem Tugas Akhir, SPK & Riset",
+            name: "Jasa API & Backend Development",
             description:
-              "Pembuatan website dan aplikasi mobile penelitian/skripsi lengkap dengan video bedah kode dan bimbingan 1-on-1.",
+              "Pembuatan REST API clean architecture, database design, query optimization, dan integrasi payment gateway / WhatsApp API.",
           },
-          price: "850000",
+          price: "500000",
           priceCurrency: "IDR",
         },
         {

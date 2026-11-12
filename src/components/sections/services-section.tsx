@@ -1,195 +1,388 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
-  Wrench01Icon,
-  Mortarboard01Icon,
+  LaptopProgrammingIcon,
+  ApiIcon,
   Building03Icon,
   CheckmarkCircle01Icon,
   WhatsappIcon,
 } from "@hugeicons/core-free-icons";
-import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
+import {
+  AnimateOnScroll,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/animate-on-scroll";
 import { getWaUrl } from "@/data/landing-data";
+import founderImg from "../../../public/images/founder.png";
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface KondisiSolusi {
+  id: string;
+  kondisiLabel: string;
+  visitorBubble: string;
+  accentColor: string;
+  accentBg: string;
+  accentBorder: string;
+  accentText: string;
+  accentShadow: string;
+  badgeText: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  icon: any;
+  serviceTitle: string;
+  serviceSubtitle: string;
+  masEkoReply: string;
+  checklistItems: string[];
+  ctaLabel: string;
+  waMessage: string;
+  isReversed: boolean;
+}
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const KONDISI_SOLUSI: KondisiSolusi[] = [
+  {
+    id: "pembuatan-aplikasi",
+    kondisiLabel: "Kondisi #1 — Mahasiswa / Skripsi",
+    visitorBubble:
+      "Mas, butuh bantu bikin aplikasi untuk TA. Deadline 3 minggu lagi, belum ada apa-apa. Dosen minta ada login, database, sama laporan. Nggak tau harus mulai dari mana... 😭",
+    accentColor: "#10B981",
+    accentBg: "bg-emerald-500/10",
+    accentBorder: "border-emerald-500/30",
+    accentText: "text-emerald-400",
+    accentShadow: "shadow-emerald-500/10",
+    badgeText: "🚀 Pembuatan Aplikasi",
+    icon: LaptopProgrammingIcon,
+    serviceTitle: "Pembuatan Aplikasi Custom",
+    serviceSubtitle: "Web, Mobile & Sistem Akademik",
+    masEkoReply:
+      "Oke, ceritakan detailnya — fitur apa yang dibutuhkan, teknologi yang diminta dosen, dan timeframe-nya. Kita susun plan-nya bareng, langsung eksekusi.",
+    checklistItems: [
+      "Aplikasi web / mobile sesuai kebutuhan TA & skripsi.",
+      "Teknologi bebas: Laravel, React, Flutter, Next.js, dll.",
+      "Source code 100% milikmu + rekaman bedah kode.",
+    ],
+    ctaLabel: "Diskusi Kebutuhan Aplikasi →",
+    waMessage:
+      "Halo Mas (ecoDigital), saya mau konsultasi pembuatan aplikasi custom untuk Tugas Akhir / skripsi saya.",
+    isReversed: false,
+  },
+  {
+    id: "jasa-api-backend",
+    kondisiLabel: "Kondisi #2 — Developer / Startup",
+    visitorBubble:
+      "Mas, lagi develop frontend tapi bingung setup backend-nya. Butuh REST API yang clean, ada dokumentasinya, dan bisa handle banyak user. Tim saya nggak ada yang spesialisasi backend... 😅",
+    accentColor: "#A78BFA",
+    accentBg: "bg-violet-500/10",
+    accentBorder: "border-violet-500/30",
+    accentText: "text-violet-400",
+    accentShadow: "shadow-violet-500/10",
+    badgeText: "⚙️ API & Backend",
+    icon: ApiIcon,
+    serviceTitle: "Jasa API & Backend",
+    serviceSubtitle: "REST API, Database & Integrasi",
+    masEkoReply:
+      "Gampang. Kasih tahu endpoint apa yang dibutuhkan, struktur data yang diinginkan, dan autentikasi yang dipakai — saya bangun backend-nya rapi, documented, dan siap produksi.",
+    checklistItems: [
+      "REST API clean architecture dengan dokumentasi Postman.",
+      "Database design & optimasi query (MySQL, PostgreSQL, dsb.).",
+      "Integrasi third-party: payment gateway, Midtrans, WhatsApp API.",
+    ],
+    ctaLabel: "Konsultasi Kebutuhan API →",
+    waMessage:
+      "Halo Mas (ecoDigital), saya mau konsultasi pembuatan REST API / backend untuk project saya.",
+    isReversed: true,
+  },
+  {
+    id: "aplikasi-sistem",
+    kondisiLabel: "Kondisi #3 — Bisnis / Instansi",
+    visitorBubble:
+      "Saya punya usaha kecil-kecilan tapi semua masih dicatat manual. Mau buat sistem tapi nggak tau harus minta apa ke developer. Pernah kecewa karena developer sebelumnya tiba-tiba ghosting... 😤",
+    accentColor: "#2DD4BF",
+    accentBg: "bg-teal-500/10",
+    accentBorder: "border-teal-500/30",
+    accentText: "text-teal-400",
+    accentShadow: "shadow-teal-500/10",
+    badgeText: "🏢 Skala Bisnis",
+    icon: Building03Icon,
+    serviceTitle: "Aplikasi Sistem",
+    serviceSubtitle: "Sekolah, Instansi & UMKM",
+    masEkoReply:
+      "Nggak perlu tau istilah teknisnya. Cukup ceritakan kondisi bisnis kamu sekarang — saya bantu terjemahkan jadi sistem yang langsung bisa dipakai, bukan sekadar template pajangan.",
+    checklistItems: [
+      "Sistem informasi sekolah, BK, & pelayanan publik.",
+      "Website profil usaha, katalog, hingga kasir/inventori.",
+      "Langsung online (termasuk setup domain/hosting/Vercel).",
+    ],
+    ctaLabel: "Diskusi Sistem Bisnis →",
+    waMessage:
+      "Halo Mas (ecoDigital), saya mau diskusi pembuatan aplikasi sekolah / instansi / bisnis UMKM.",
+    isReversed: false,
+  },
+];
+
+// ─── Visitor Cloud Bubble ─────────────────────────────────────────────────────
+
+function VisitorBubble({
+  item,
+}: {
+  item: KondisiSolusi;
+}) {
+  return (
+    <AnimateOnScroll
+      preset={item.isReversed ? "fade-left" : "fade-right"}
+      duration={0.6}
+      className="flex flex-col"
+    >
+      {/* Label kondisi */}
+      <p className="mb-3 text-[11px] font-bold uppercase tracking-widest text-white/30">
+        {item.kondisiLabel}
+      </p>
+
+      {/* Cloud bubble — same style as hero */}
+      <div
+        className="rounded-[22px] bg-white px-5 py-4 text-slate-900 max-w-md"
+        style={{
+          border: "2.5px solid #0f172a",
+          boxShadow:
+            "0 14px 30px -10px rgba(16, 185, 129, 0.35), 4px 4px 0px #10b981",
+        }}
+      >
+        <p className="text-sm font-medium leading-relaxed text-slate-800">
+          {item.visitorBubble}
+        </p>
+        <div className="mt-2.5 border-t border-slate-100 pt-2 flex items-center gap-1.5">
+          <span className="text-[11px] font-semibold text-slate-400">
+            👤 Guest
+          </span>
+          <span className="text-[10px] text-slate-300">· ecoDigital.id</span>
+        </div>
+      </div>
+
+      {/* Cloud trail dots */}
+      <div
+        className={`flex flex-col space-y-1 mt-0.5 ${item.isReversed ? "items-end pr-10" : "items-start pl-10"}`}
+      >
+        <div
+          className="w-3.5 h-3.5 rounded-full bg-white"
+          style={{
+            border: "2px solid #0f172a",
+            boxShadow: "1.5px 1.5px 0px #10b981",
+          }}
+        />
+        <div
+          className={`w-2 h-2 rounded-full bg-white ${item.isReversed ? "mr-1.5" : "ml-1.5"}`}
+          style={{
+            border: "1.5px solid #0f172a",
+            boxShadow: "1.5px 1.5px 0px #10b981",
+          }}
+        />
+      </div>
+
+      {/* Visitor avatar chip */}
+      <div
+        className={`mt-2 flex items-center gap-2.5 ${item.isReversed ? "justify-end" : ""}`}
+      >
+        <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-slate-700 bg-slate-800 text-base shadow-md">
+          🧑‍💻
+        </div>
+        <span className="text-xs text-white/40">Visitor yang butuh bantuan</span>
+      </div>
+    </AnimateOnScroll>
+  );
+}
+
+// ─── Mas Eko Solution Card ────────────────────────────────────────────────────
+
+function MasEkoCard({ item }: { item: KondisiSolusi }) {
+  return (
+    <AnimateOnScroll
+      preset={item.isReversed ? "fade-right" : "fade-left"}
+      duration={0.6}
+      delay={0.15}
+      className="w-full"
+    >
+      <div
+        className={`rounded-3xl border ${item.accentBorder} bg-white/[0.03] shadow-xl ${item.accentShadow} backdrop-blur-sm overflow-hidden`}
+      >
+        {/* Top accent bar */}
+        <div
+          className="h-[3px] w-full"
+          style={{
+            background: `linear-gradient(90deg, transparent, ${item.accentColor}80, ${item.accentColor}, ${item.accentColor}80, transparent)`,
+          }}
+        />
+
+        <div className="p-6 sm:p-7">
+          {/* Mas Eko header */}
+          <div className="flex items-center gap-3 mb-4">
+            <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border-2 border-emerald-400/60 shadow-lg">
+              <Image
+                src={founderImg}
+                alt="Mas Eko — Lead Developer ecoDigital"
+                fill
+                unoptimized
+                sizes="44px"
+                className="object-cover object-top scale-[1.4] translate-y-1"
+              />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-white">Mas Eko</p>
+              <p className={`text-[11px] font-semibold ${item.accentText}`}>
+                Lead Developer · ecoDigital
+              </p>
+            </div>
+            {/* Badge */}
+            <span
+              className={`ml-auto text-[11px] font-semibold px-3 py-1 rounded-full border ${item.accentBorder} ${item.accentBg} ${item.accentText}`}
+            >
+              {item.badgeText}
+            </span>
+          </div>
+
+          {/* Mas Eko reply bubble */}
+          <div
+            className={`mb-5 rounded-2xl ${item.accentBg} border ${item.accentBorder} px-4 py-3`}
+          >
+            <p className={`text-sm leading-relaxed text-white/85 italic`}>
+              &ldquo;{item.masEkoReply}&rdquo;
+            </p>
+          </div>
+
+          {/* Service title */}
+          <div className="flex items-center gap-3 mb-4">
+            <div
+              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${item.accentBorder} ${item.accentBg} ${item.accentText}`}
+            >
+              <HugeiconsIcon icon={item.icon} size={20} />
+            </div>
+            <div>
+              <h3 className={`text-base font-extrabold ${item.accentText}`}>
+                {item.serviceTitle}
+              </h3>
+              <p className="text-xs text-white/50">{item.serviceSubtitle}</p>
+            </div>
+          </div>
+
+          {/* Checklist */}
+          <StaggerContainer
+            staggerDelay={0.08}
+            delay={0.2}
+            className="mb-5 space-y-2"
+          >
+            {item.checklistItems.map((it, i) => (
+              <StaggerItem key={i} preset="fade-up">
+                <div className="flex items-start gap-2 text-xs text-white/75">
+                  <HugeiconsIcon
+                    icon={CheckmarkCircle01Icon}
+                    size={14}
+                    className={`${item.accentText} mt-0.5 shrink-0`}
+                  />
+                  <span>{it}</span>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          {/* CTA */}
+          <a
+            href={getWaUrl(item.waMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95"
+          >
+            <HugeiconsIcon icon={WhatsappIcon} size={16} />
+            <span>{item.ctaLabel}</span>
+          </a>
+        </div>
+      </div>
+    </AnimateOnScroll>
+  );
+}
+
+// ─── Main Export ──────────────────────────────────────────────────────────────
 
 export function ServicesSection() {
   return (
-    <div id="layanan" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 pt-6 sm:pt-8 lg:pt-8 pb-12 sm:pb-16 scroll-mt-0">
+    <>
       <span id="solusi" className="scroll-mt-0 block" />
-      <div className="mx-auto max-w-6xl">
-        <AnimateOnScroll preset="fade-up" className="mt-6 mb-6 sm:mb-8 sm:mt-12 text-center">
-          <span className="text-2xl uppercase font-extrabold text-[#10B981] mb-4">
-            APA YANG BISA DIBANTU?
+
+      {/* Section header */}
+      <div
+        id="layanan"
+        className="relative z-20 w-full bg-[#060A14] scroll-mt-0 px-4 sm:px-8 lg:px-14 pt-16 sm:pt-20"
+      >
+        <AnimateOnScroll
+          preset="fade-up"
+          className="mx-auto max-w-5xl text-center mb-4"
+        >
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-400">
+            Masuk dari Kondisi Mana Pun
           </span>
           <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
-            Masuk di Kondisi Apa Pun, Pilih Sesuai Kebutuhanmu
+            Ceritakan Masalahmu — Kami Punya Jawabannya
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm leading-relaxed text-white/60">
-            Entah kamu baru punya ide kasar di kertas, atau sudah punya kodingan tapi berantakan dan <em>error</em> terus—saya siap masuk bantu beresin.
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/50">
+            Scroll ke bawah. Temukan kondisi yang paling mirip dengan situasimu
+            sekarang.
           </p>
         </AnimateOnScroll>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 1: Klinik Koding: Fix Error & Tambah Fitur */}
-          <div className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 lg:p-6 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/50 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-950/30">
-            <div>
-              {/* Header: Icon & Category Badge */}
-              <div className="flex items-center justify-between">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-500/20 bg-emerald-500/10 text-[#10B981] shadow-lg shadow-emerald-950/40 transition-transform duration-300 group-hover:scale-105">
-                  <HugeiconsIcon icon={Wrench01Icon} size={32} />
-                </div>
-                <span className="rounded-full border border-emerald-400/25 bg-emerald-950/50 px-3 py-1 text-[11px] font-semibold text-emerald-300 shadow-sm">
-                  ⚡ Perbaikan Kilat
-                </span>
-              </div>
-
-              {/* Title with balanced accent */}
-              <h3 className="mt-4 text-[19px] sm:text-xl font-extrabold text-white leading-snug tracking-tight">
-                <span className="text-emerald-400">Klinik Koding:</span> Fix Error &amp; Tambah Fitur
-              </h3>
-
-              <p className="mt-2.5 text-xs sm:text-[13px] leading-relaxed text-white/70">
-                Kodingan lama macet, ditinggal <em>developer</em> sebelumnya, atau mendadak disuruh dosen tambah fitur? Nggak perlu bikin ulang dari nol.
-              </p>
-
-              <ul className="mt-5 space-y-2.5 text-xs text-white/80">
-                <li className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-[#10B981] shrink-0" />
-                  <span>Perbaikan bug/error PHP, Laravel, JS, Flutter, dll.</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-[#10B981] shrink-0" />
-                  <span>Tambah modul/fitur baru sesuai catatan revisi.</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-[#10B981] shrink-0" />
-                  <span>Redesign tampilan UI biar lebih modern &amp; rapi.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-white/10">
-              <a
-                href={getWaUrl(
-                  "Halo Mas (ecoDigital), saya mau konsultasi perbaikan error / tambah fitur kodingan."
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-3 text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95"
-              >
-                <HugeiconsIcon icon={WhatsappIcon} size={16} />
-                <span>Beresin Error Sekarang →</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Card 2: Partner Sistem Tugas Akhir, SPK & Riset */}
-          <div className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 lg:p-6 backdrop-blur-md transition-all duration-300 hover:border-blue-500/50 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-950/30">
-            <div>
-              {/* Header: Icon & Category Badge */}
-              <div className="flex items-center justify-between">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-blue-400 shadow-lg shadow-blue-950/40 transition-transform duration-300 group-hover:scale-105">
-                  <HugeiconsIcon icon={Mortarboard01Icon} size={32} />
-                </div>
-                <span className="rounded-full border border-blue-400/25 bg-blue-950/50 px-3 py-1 text-[11px] font-semibold text-blue-300 shadow-sm">
-                  🎓 Skripsi &amp; Riset
-                </span>
-              </div>
-
-              {/* Title with balanced accent */}
-              <h3 className="mt-4 text-[19px] sm:text-xl font-extrabold text-white leading-snug tracking-tight">
-                <span className="text-blue-400">Partner Sistem:</span> Tugas Akhir, SPK &amp; Riset
-              </h3>
-
-              <p className="mt-2.5 text-xs sm:text-[13px] leading-relaxed text-white/70">
-                Bikin aplikasi web/mobile untuk penelitian atau skripsi yang nggak cuma sekadar jalan, tapi juga bikin kamu siap menjawab pertanyaan penguji.
-              </p>
-
-              <ul className="mt-5 space-y-2.5 text-xs text-white/80">
-                <li className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-blue-400 shrink-0" />
-                  <span>Alur program &amp; database sesuai flowchart kamu.</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-blue-400 shrink-0" />
-                  <span>Bebas request metode (SPK, Sistem Informasi, dll.).</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-blue-400 shrink-0" />
-                  <span>Bonus: Video penjelasan alur kode &amp; bimbingan 1-on-1.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-white/10">
-              <a
-                href={getWaUrl(
-                  "Halo Mas (ecoDigital), saya mau konsultasi pembuatan sistem Tugas Akhir / SPK / riset skripsi."
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-3 text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95"
-              >
-                <HugeiconsIcon icon={WhatsappIcon} size={16} />
-                <span>Konsultasi Judul / Sistem →</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Card 3: Aplikasi Sekolah, Instansi & Bisnis UMKM */}
-          <div className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 lg:p-6 backdrop-blur-md transition-all duration-300 hover:border-teal-500/50 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-950/30 md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none w-full">
-            <div>
-              {/* Header: Icon & Category Badge */}
-              <div className="flex items-center justify-between">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-teal-500/20 bg-teal-500/10 text-teal-400 shadow-lg shadow-teal-950/40 transition-transform duration-300 group-hover:scale-105">
-                  <HugeiconsIcon icon={Building03Icon} size={32} />
-                </div>
-                <span className="rounded-full border border-teal-400/25 bg-teal-950/50 px-3 py-1 text-[11px] font-semibold text-teal-300 shadow-sm">
-                  🏢 Skala Bisnis
-                </span>
-              </div>
-
-              {/* Title with balanced accent */}
-              <h3 className="mt-4 text-[19px] sm:text-xl font-extrabold text-white leading-snug tracking-tight">
-                <span className="text-teal-400">Aplikasi Sistem:</span> Sekolah, Instansi &amp; UMKM
-              </h3>
-
-              <p className="mt-2.5 text-xs sm:text-[13px] leading-relaxed text-white/70">
-                Bangun sistem operasional yang siap pakai di lapangan—bukan sekadar <em>template</em> pajangan.
-              </p>
-
-              <ul className="mt-5 space-y-2.5 text-xs text-white/80">
-                <li className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-teal-400 shrink-0" />
-                  <span>Sistem informasi sekolah, BK, &amp; pelayanan publik.</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-teal-400 shrink-0" />
-                  <span>Website profil usaha, katalog, hingga kasir/inventori.</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-teal-400 shrink-0" />
-                  <span>Langsung online (termasuk setup domain/hosting/Vercel).</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-white/10">
-              <a
-                href={getWaUrl(
-                  "Halo Mas (ecoDigital), saya mau diskusi pembuatan aplikasi sekolah / instansi / bisnis UMKM."
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-3 text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95"
-              >
-                <HugeiconsIcon icon={WhatsappIcon} size={16} />
-                <span>Diskusi Sistem Bisnis →</span>
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+
+      {/* 3 Kondisi → Solusi sections */}
+      {KONDISI_SOLUSI.map((item, index) => (
+        <section
+          key={item.id}
+          id={index === 0 ? undefined : item.id}
+          className="relative w-full bg-[#060A14] scroll-mt-0"
+        >
+          {/* Subtle ambient glow per section */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-30"
+            style={{
+              background: `radial-gradient(ellipse 60% 50% at ${item.isReversed ? "75%" : "25%"} 50%, ${item.accentColor}18 0%, transparent 70%)`,
+            }}
+          />
+
+          {/* Divider */}
+          {index > 0 && (
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+          )}
+
+          <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-8 lg:px-14 py-16 sm:py-20 lg:py-24">
+            <div
+              className={`flex flex-col gap-8 lg:gap-12 lg:items-center ${
+                item.isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
+              }`}
+            >
+              {/* Visitor Bubble — 5/12 */}
+              <div className="w-full lg:w-5/12">
+                <VisitorBubble item={item} />
+              </div>
+
+              {/* Connecting arrow — only on desktop */}
+              <div className="hidden lg:flex flex-col items-center justify-center w-auto shrink-0 gap-1">
+                <div className="h-px w-10 bg-white/20" />
+                <span className="text-white/20 text-lg">
+                  {item.isReversed ? "←" : "→"}
+                </span>
+                <div className="h-px w-10 bg-white/20" />
+              </div>
+
+              {/* Mas Eko Solution Card — 6/12 */}
+              <div className="w-full lg:flex-1">
+                <MasEkoCard item={item} />
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* Bottom spacing */}
+      <div className="bg-[#060A14] pb-6" />
+    </>
   );
 }

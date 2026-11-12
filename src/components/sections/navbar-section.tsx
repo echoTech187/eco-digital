@@ -10,8 +10,8 @@ import {
   Cancel01Icon,
   Menu01Icon,
   FlashIcon,
-  Wrench01Icon,
-  Mortarboard01Icon,
+  LaptopProgrammingIcon,
+  ApiIcon,
   Building03Icon,
   ArrowDown01Icon,
   ArrowRight01Icon,
@@ -248,16 +248,16 @@ export function NavbarSection() {
                     onClick={(e) => handleAnchorClick(e, "#layanan")}
                     className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 text-xs font-medium transition-colors"
                   >
-                    <span>⚡</span>
-                    <span>Perbaikan Kilat</span>
+                    <span>🚀</span>
+                    <span>Aplikasi Custom</span>
                   </Link>
                   <Link
                     href="/#layanan"
                     onClick={(e) => handleAnchorClick(e, "#layanan")}
                     className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 text-xs font-medium transition-colors"
                   >
-                    <span>🎓</span>
-                    <span>Skripsi &amp; Riset</span>
+                    <span>⚙️</span>
+                    <span>API &amp; Backend</span>
                   </Link>
                   <Link
                     href="/#layanan"
@@ -273,7 +273,7 @@ export function NavbarSection() {
                 <div className="mt-4 pt-3 border-t border-white/10 px-1">
                   <span className="text-[10px] text-white/40 block">WhatsApp Resmi:</span>
                   <span className="text-xs font-bold text-emerald-400 block mt-0.5">{WA_DISPLAY}</span>
-                  <span className="text-[10px] text-white/50 block mt-0.5">Respon cepat &amp; cek error gratis</span>
+                  <span className="text-[10px] text-white/50 block mt-0.5">Respon cepat &amp; konsultasi gratis</span>
                 </div>
               </div>
 
@@ -286,19 +286,19 @@ export function NavbarSection() {
                     className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 group-hover/item:bg-emerald-500/20 group-hover/item:border-emerald-400/50 transition-colors">
-                      <HugeiconsIcon icon={Wrench01Icon} size={18} />
+                      <HugeiconsIcon icon={LaptopProgrammingIcon} size={18} />
                     </span>
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-bold text-white group-hover/item:text-emerald-300">
-                          Klinik Koding: Fix Error
+                          Aplikasi Custom
                         </span>
                         <span className="rounded-full bg-emerald-950/80 border border-emerald-500/40 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-400">
-                          ⚡ Kilat
+                          🚀 Skripsi/TA
                         </span>
                       </div>
                       <p className="mt-0.5 text-[11px] leading-relaxed text-white/60">
-                        Perbaikan bug PHP, Laravel, JS, Flutter, query macet &amp; tambah fitur.
+                        Bikin aplikasi web &amp; mobile skripsi, TA, riset, siap sidang &amp; source code 100%.
                       </p>
                     </div>
                   </Link>
@@ -308,20 +308,20 @@ export function NavbarSection() {
                     onClick={(e) => handleAnchorClick(e, "#layanan")}
                     className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-400 group-hover/item:bg-blue-500/20 group-hover/item:border-blue-400/50 transition-colors">
-                      <HugeiconsIcon icon={Mortarboard01Icon} size={18} />
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-violet-500/30 bg-violet-500/10 text-violet-400 group-hover/item:bg-violet-500/20 group-hover/item:border-violet-400/50 transition-colors">
+                      <HugeiconsIcon icon={ApiIcon} size={18} />
                     </span>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-white group-hover/item:text-blue-300">
-                          Partner Sistem: TA &amp; Skripsi
+                        <span className="text-xs font-bold text-white group-hover/item:text-violet-300">
+                          Jasa API &amp; Backend
                         </span>
-                        <span className="rounded-full bg-blue-950/80 border border-blue-500/40 px-1.5 py-0.5 text-[9px] font-semibold text-blue-400">
-                          🎓 Siap Sidang
+                        <span className="rounded-full bg-violet-950/80 border border-violet-500/40 px-1.5 py-0.5 text-[9px] font-semibold text-violet-400">
+                          ⚙️ Developer
                         </span>
                       </div>
                       <p className="mt-0.5 text-[11px] leading-relaxed text-white/60">
-                        Sistem informasi, SPK, bimbingan live &amp; video bedah kode sampai paham.
+                        REST API clean architecture, database design, integrasi Midtrans &amp; WA API.
                       </p>
                     </div>
                   </Link>
