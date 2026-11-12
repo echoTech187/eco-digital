@@ -59,10 +59,10 @@ export function HeroSection() {
 
       {/* Hero Interactive Stage (Headline & CTA di Kiri, Foto di Kanan) */}
       <div className="relative z-20 flex flex-1 items-center px-4 sm:px-8 md:px-10 lg:px-12 xl:px-16 py-8 sm:py-10 md:py-12 lg:py-14 xl:py-6">
-        <div className="mx-auto w-full max-w-7xl grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-10 items-center">
+        <div className="mx-auto w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* Left Column: Headline, Sub-headline, Dual CTA, & Explore Button */}
-          <div className="md:col-span-7 xl:col-span-7 flex flex-col justify-center text-left">
+          <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center text-left">
             <AnimateOnScroll preset="fade-right" duration={0.6} immediate>
               {/* Status Eyebrow Badge */}
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-950/60 px-3.5 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md shadow-md shadow-emerald-950/40 w-fit">
@@ -140,8 +140,8 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* Highlight Direct Developer Tambahan di Mobile (Hidden di Tablet/Desktop karena sudah ada di foto) */}
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-white/60 md:hidden">
+              {/* Highlight Direct Developer Tambahan di Mobile & Tablet (<1024px) */}
+              <div className="mt-3.5 flex flex-wrap items-center gap-2 text-[11px] text-white/60 lg:hidden">
                 <span className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-950/40 border border-emerald-500/20 px-2.5 py-1 text-emerald-300 font-medium">
                   <span>👨‍💻</span>
                   <span>Direct Developer (Tanpa Perantara Sales)</span>
@@ -154,8 +154,8 @@ export function HeroSection() {
             </AnimateOnScroll>
           </div>
 
-          {/* Right Column: Founder Photo & Mockup Preview (Adaptive: muncul dari tablet md:flex hingga desktop) */}
-          <div className="hidden md:flex md:col-span-5 xl:col-span-5 relative items-end justify-center md:justify-end mt-4 md:mt-0">
+          {/* Right Column: Founder Photo & Mockup Preview (Hanya tampil di layar >= 1024px / lg) */}
+          <div className="hidden lg:flex lg:col-span-5 xl:col-span-5 relative items-end justify-center lg:justify-end mt-4 lg:mt-0">
             <AnimateOnScroll
               preset="fade-left"
               duration={0.7}
