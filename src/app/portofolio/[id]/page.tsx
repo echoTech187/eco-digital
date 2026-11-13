@@ -428,7 +428,7 @@ export default async function ProjectDetailPage({
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-emerald-600 dark:text-emerald-400 font-bold">✓</span>
-                  <span>Garansi revisi &amp; pendampingan teknis sampai aplikasi live / ACC</span>
+                  <span>Garansi revisi &amp; pendampingan teknis sampai aplikasi live &amp; tuntas</span>
                 </li>
               </ul>
             </div>

@@ -137,7 +137,7 @@ export function ProjectScreenPreview({ project }: { project: ProjectItem }) {
               <div className="text-white/60">M. Ridwan (351608...)</div>
             </div>
             <span className="text-emerald-400 font-bold border border-emerald-400/40 px-1.5 py-0.5 rounded bg-emerald-950/40">
-              ✓ ACC Kades
+              ✓ Disetujui Kades
             </span>
           </div>
         </div>

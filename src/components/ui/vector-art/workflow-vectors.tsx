@@ -316,8 +316,8 @@ export function VectorStepStaging() {
 }
 
 /**
- * ─── VECTOR ART 04: DEMO, BEDAH KODE & SERAH TERIMA TOGA ──────────────────────
- * Ilustrasi Vektor Interaktif: Topi Toga Wisuda, Video Bedah Kode player, dan Brankas Source Code.
+ * ─── VECTOR ART 04: CLOUD DEPLOYMENT, VIDEO TUTORIAL & SERAH TERIMA TUNTAS ─────
+ * Ilustrasi Vektor Interaktif: Cloud Server Go-Live, Video Panduan Admin player, dan Brankas Source Code.
  */
 export function VectorStepHandover() {
   return (
@@ -329,13 +329,13 @@ export function VectorStepHandover() {
         className="w-full h-full object-contain"
       >
         <defs>
-          <linearGradient id="togaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="serverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#1E293B" />
-            <stop offset="100%" stopColor="#090D16" />
+            <stop offset="100%" stopColor="#0B132B" />
           </linearGradient>
-          <linearGradient id="goldTassel" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FDE047" />
-            <stop offset="100%" stopColor="#CA8A04" />
+          <linearGradient id="cloudGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#34D399" />
+            <stop offset="100%" stopColor="#10B981" />
           </linearGradient>
         </defs>
 
@@ -347,28 +347,25 @@ export function VectorStepHandover() {
           <line x1="-38" y1="38" x2="38" y2="-38" />
         </g>
 
-        {/* Graduation Toga Cap (Left Badge) */}
-        <g transform="translate(32, 22)">
-          {/* Toga Base Cap */}
-          <ellipse cx="36" cy="34" rx="22" ry="10" fill="#0F172A" stroke="#334155" strokeWidth="1" />
-          {/* Diamond Top Cap */}
-          <polygon
-            points="36,12 68,26 36,40 4,26"
-            fill="url(#togaGrad)"
-            stroke="#10B981"
-            strokeWidth="1.5"
-          />
-          {/* Cap Button */}
-          <circle cx="36" cy="26" r="3" fill="url(#goldTassel)" />
-          {/* Golden Tassel String */}
-          <path d="M36 26 C46 28, 54 35, 56 46" stroke="url(#goldTassel)" strokeWidth="1.8" fill="none" />
-          <ellipse cx="56" cy="48" rx="2" ry="3.5" fill="url(#goldTassel)" />
+        {/* Production Cloud / Server Go-Live (Left Badge) */}
+        <g transform="translate(24, 20)">
+          {/* Server Unit */}
+          <rect x="8" y="10" width="56" height="38" rx="8" fill="url(#serverGrad)" stroke="#10B981" strokeWidth="1.2" />
+          {/* Server Rack Slot 1 */}
+          <rect x="14" y="16" width="36" height="4" rx="2" fill="#334155" />
+          <circle cx="56" cy="18" r="2" fill="#34D399" />
+          {/* Server Rack Slot 2 */}
+          <rect x="14" y="24" width="36" height="4" rx="2" fill="#334155" />
+          <circle cx="56" cy="26" r="2" fill="#38BDF8" />
+          {/* Server Rack Slot 3 */}
+          <rect x="14" y="32" width="28" height="4" rx="2" fill="#334155" />
+          <circle cx="56" cy="34" r="2" fill="#34D399" />
 
-          {/* ACC Nilai A Ribbon Banner */}
-          <g transform="translate(14, 52)">
-            <rect x="0" y="0" width="44" height="15" rx="7.5" fill="#065F46" stroke="#34D399" strokeWidth="1" />
-            <text x="9" y="11" fill="#FFFFFF" fontSize="8" fontWeight="bold" fontFamily="sans-serif">
-              ACC A ⭐
+          {/* GO-LIVE 🚀 Ribbon Banner */}
+          <g transform="translate(6, 44)">
+            <rect x="0" y="0" width="60" height="16" rx="8" fill="#065F46" stroke="#34D399" strokeWidth="1" />
+            <text x="7" y="11.5" fill="#FFFFFF" fontSize="8" fontWeight="bold" fontFamily="sans-serif">
+              GO-LIVE 🚀
             </text>
           </g>
         </g>

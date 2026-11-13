@@ -74,7 +74,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
       <div className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 my-0 lg:my-auto py-2 lg:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
-          {/* ── LEFT COLUMN: Headline, Deskripsi Persuasif, CTA, & Value Points (7 cols di desktop, full di mobile & tablet) ── */}
+          {/* ── LEFT COLUMN: Headline, Uraian Persuasif, CTA, & Value Points (7 cols di desktop, full di mobile & tablet) ── */}
           <div className="lg:col-span-7 flex flex-col justify-center items-center text-center lg:items-start lg:text-left space-y-4 sm:space-y-5 lg:space-y-6 w-full">
             <AnimateOnScroll preset="fade-right" once={false} duration={0.6} delay={0.15}>
               {/* Primary H1 Heading */}

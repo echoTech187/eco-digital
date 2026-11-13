@@ -41,7 +41,7 @@ export default function Home() {
       {/* 5. Keunggulan (Standar Kerja ecoDigital) */}
       <FeaturesSection />
 
-      {/* 6. Testimoni Klien & Mahasiswa (Sosial Proof Nyata) */}
+      {/* 6. Testimoni Klien Instansi & Bisnis (Sosial Proof Nyata) */}
       <TestimonialsSection />
 
       {/* 7. Alur Pengerjaan (Alur Pengerjaan Anti-Ghosting) */}
