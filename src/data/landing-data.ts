@@ -299,26 +299,26 @@ export const TECH_STACK_ITEMS = [
 export const WHY_US_ITEMS = [
   {
     icon: LaptopProgrammingIcon,
-    title: "Bukan Joki Lepas Tangan (Dapat Video Bedah Kode)",
-    desc: "Saya nggak cuma kirim file .ZIP lalu menghilang. Kamu bakal dikasih video rekaman penjelasan cara kerja database dan alur kodingannya sampai benar-benar paham saat ditanya dosen atau atasan.",
+    title: "Bukan Sekadar Kirim Kode (Dapat Bedah Logika)",
+    desc: "Kami nggak cuma kirim file .ZIP lalu menghilang. Kamu mendapatkan rekaman video penjelasan alur logika, relasi database, dan cara kerja sistem sampai kamu paham luar-dalam saat ditanya dosen atau pimpinan.",
     badge: "Video Bedah Kode",
   },
   {
     icon: Globe02Icon,
-    title: "Pantau Progres Lewat Link Live",
-    desc: "Nggak perlu nebak-nebak apakah proyekmu sudah dikerjakan atau belum. Kamu bakal dapat link preview untuk cek perkembangan aplikasimu langsung dari browser kapan saja.",
+    title: "Progres Transparan via Link Demo Live",
+    desc: "Nggak perlu menebak-nebak apakah proyekmu sudah jalan atau belum. Kamu diberikan tautan staging live untuk memantau perkembangan sistem langsung dari browser kapan saja.",
     badge: "Live Staging Preview",
   },
   {
     icon: WhatsappIcon,
-    title: "Ngobrol Langsung Sama Eksekutornya",
-    desc: "Tanpa admin atau sales yang gagap teknis. Mau ubah alur tabel, konsultasi logika algoritma, atau tanya solusi error—kamu ngobrol langsung di WA bareng saya yang nulis kodingannya.",
+    title: "Diskusi Langsung dengan Lead Developer",
+    desc: "Tanpa perantara admin atau pihak yang kaku. Mau ubah struktur tabel, diskusi algoritma, atau konsultasi solusi error—kamu ngobrol langsung via WhatsApp dengan developer yang merancang kodenya.",
     badge: "Direct Developer",
   },
   {
     icon: CreditCardIcon,
-    title: "Bayar Bertahap Sesuai Progres",
-    desc: "Uangmu aman. Cukup DP untuk mulai pengerjaan, dan pelunasan baru dilakukan setelah sistem selesai didemokan di depanmu dengan lancar.",
+    title: "Pembayaran Bertahap Sesuai Progres",
+    desc: "Uang dan investasimu aman. Cukup DP awal untuk mulai pengerjaan, dan pelunasan hanya dilakukan setelah sistem selesai didemokan serta terbukti berjalan lancar.",
     badge: "Pembayaran Bertahap",
   },
 ];

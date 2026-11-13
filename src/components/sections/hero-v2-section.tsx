@@ -76,7 +76,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
 
           {/* ── LEFT COLUMN: Headline, Deskripsi Persuasif, CTA, & Value Points (7 cols di desktop, full di mobile & tablet) ── */}
           <div className="lg:col-span-7 flex flex-col justify-center items-center text-center lg:items-start lg:text-left space-y-4 sm:space-y-5 lg:space-y-6 w-full">
-            <AnimateOnScroll preset="fade-right" duration={0.6} delay={0.15} immediate>
+            <AnimateOnScroll preset="fade-right" once={false} duration={0.6} delay={0.15}>
               {/* Primary H1 Heading */}
               <h1
                 id="heroMainHeading"
@@ -89,7 +89,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
               </h1>
             </AnimateOnScroll>
 
-            <AnimateOnScroll preset="fade-right" duration={0.6} delay={0.3} immediate>
+            <AnimateOnScroll preset="fade-right" once={false} duration={0.6} delay={0.3}>
               {/* Persuasive Description Subheadline */}
               <p className="text-slate-300 text-xs sm:text-sm md:text-base lg:text-[17px] leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Nggak perlu pusing hadapi <span className="text-white font-medium">error</span> sendirian atau bayar mahal ke agensi. Di{" "}
@@ -98,7 +98,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
               </p>
             </AnimateOnScroll>
 
-            <AnimateOnScroll preset="fade-right" duration={0.6} delay={0.45} immediate>
+            <AnimateOnScroll preset="fade-right" once={false} duration={0.6} delay={0.45}>
               {/* Action CTA Buttons */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-3.5 pt-1 w-full sm:w-auto">
                 <a
@@ -123,7 +123,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
               </div>
             </AnimateOnScroll>
 
-            <AnimateOnScroll preset="fade-right" duration={0.6} delay={0.6} immediate>
+            <AnimateOnScroll preset="fade-right" once={false} duration={0.6} delay={0.6}>
               {/* 3 Core Value / Trust Guarantees */}
               <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-400">
                 <span className="inline-flex items-center gap-1.5">
@@ -144,7 +144,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
 
           {/* ── RIGHT COLUMN: Foto Founder Alami + Cloud Speech Bubble (Hanya tampil di Desktop lg ke atas) ── */}
           <div className="hidden lg:flex lg:col-span-5 relative flex-col items-center justify-end mt-0 w-full">
-            <AnimateOnScroll preset="fade-left" duration={0.7} immediate className="w-full flex flex-col items-center justify-end">
+            <AnimateOnScroll preset="fade-left" once={false} duration={0.7} className="w-full flex flex-col items-center justify-end">
 
               {/* Soft Ambient Radial Behind Founder */}
               <div className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[380px] sm:w-[380px] lg:h-[440px] lg:w-[440px] rounded-full bg-gradient-to-tr from-emerald-500/20 via-blue-600/25 to-cyan-400/20 blur-[90px] -z-10" />

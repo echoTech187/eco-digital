@@ -244,24 +244,24 @@ export function NavbarSection() {
                     <span>Direct Developer</span>
                   </Link>
                   <Link
-                    href="/#layanan"
-                    onClick={(e) => handleAnchorClick(e, "#layanan")}
+                    href="/#pembuatan-aplikasi"
+                    onClick={(e) => handleAnchorClick(e, "#pembuatan-aplikasi")}
                     className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 text-xs font-medium transition-colors"
                   >
                     <span>🚀</span>
                     <span>Aplikasi Custom</span>
                   </Link>
                   <Link
-                    href="/#layanan"
-                    onClick={(e) => handleAnchorClick(e, "#layanan")}
+                    href="/#jasa-api-backend"
+                    onClick={(e) => handleAnchorClick(e, "#jasa-api-backend")}
                     className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 text-xs font-medium transition-colors"
                   >
                     <span>⚙️</span>
                     <span>API &amp; Backend</span>
                   </Link>
                   <Link
-                    href="/#layanan"
-                    onClick={(e) => handleAnchorClick(e, "#layanan")}
+                    href="/#aplikasi-sistem"
+                    onClick={(e) => handleAnchorClick(e, "#aplikasi-sistem")}
                     className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 text-xs font-medium transition-colors"
                   >
                     <span>🏢</span>
@@ -281,8 +281,8 @@ export function NavbarSection() {
               <div className="col-span-5 flex flex-col justify-between space-y-2">
                 <div className="space-y-2">
                   <Link
-                    href="/#layanan"
-                    onClick={(e) => handleAnchorClick(e, "#layanan")}
+                    href="/#pembuatan-aplikasi"
+                    onClick={(e) => handleAnchorClick(e, "#pembuatan-aplikasi")}
                     className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 group-hover/item:bg-emerald-500/20 group-hover/item:border-emerald-400/50 transition-colors">
@@ -304,8 +304,8 @@ export function NavbarSection() {
                   </Link>
 
                   <Link
-                    href="/#layanan"
-                    onClick={(e) => handleAnchorClick(e, "#layanan")}
+                    href="/#jasa-api-backend"
+                    onClick={(e) => handleAnchorClick(e, "#jasa-api-backend")}
                     className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-violet-500/30 bg-violet-500/10 text-violet-400 group-hover/item:bg-violet-500/20 group-hover/item:border-violet-400/50 transition-colors">
@@ -327,8 +327,8 @@ export function NavbarSection() {
                   </Link>
 
                   <Link
-                    href="/#layanan"
-                    onClick={(e) => handleAnchorClick(e, "#layanan")}
+                    href="/#aplikasi-sistem"
+                    onClick={(e) => handleAnchorClick(e, "#aplikasi-sistem")}
                     className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-400 group-hover/item:bg-teal-500/20 group-hover/item:border-teal-400/50 transition-colors">

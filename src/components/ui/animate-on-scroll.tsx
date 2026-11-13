@@ -61,22 +61,29 @@ export function AnimateOnScroll({
   delay = 0,
   duration = 0.5,
   threshold = "some",
-  once = true,
-  immediate = false,
+  once = false,
   className,
   ...props
 }: AnimateOnScrollProps) {
-  const selectedVariants = variants ?? presets[preset];
+  const baseVariant = variants ?? presets[preset];
+  const computedVariants: Variants = {
+    hidden: {
+      ...baseVariant.hidden,
+      transition: { duration: 0.15, ease: "easeIn" },
+    },
+    visible: {
+      ...baseVariant.visible,
+      transition: { duration, delay, ease: "easeOut" },
+    },
+  };
 
   return (
     <motion.div
       className={className}
       initial="hidden"
-      animate={immediate ? "visible" : undefined}
-      whileInView={immediate ? undefined : "visible"}
-      viewport={immediate ? undefined : { once, amount: threshold }}
-      variants={selectedVariants}
-      transition={{ duration, delay, ease: "easeOut" }}
+      whileInView="visible"
+      viewport={{ once, amount: threshold }}
+      variants={computedVariants}
       {...props}
     >
       {children}
