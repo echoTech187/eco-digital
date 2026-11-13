@@ -19,7 +19,7 @@ export function SiteFooter() {
   return (
     <footer className="relative z-20 w-full border-t border-slate-200 dark:border-white/10 bg-white dark:bg-[#040810] pt-12 sm:pt-16 pb-12 px-4 sm:px-8 lg:px-14 transition-colors">
       <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-left pb-12 border-b border-slate-200 dark:border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
           {/* Col 1: Brand & Bio */}
           <div className="md:col-span-2 space-y-4">
             <Link href="/" prefetch={false} className="inline-flex items-center gap-2 sm:gap-3">
