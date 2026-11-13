@@ -8,19 +8,26 @@ import {
   LaptopProgrammingIcon,
   ShieldCheckIcon,
   ArrowRight01Icon,
+  CheckmarkCircle01Icon,
 } from "@hugeicons/core-free-icons";
 import { NavbarSection } from "@/components/sections/navbar-section";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { WA_NUMBER, WA_DISPLAY, getWaUrl } from "@/data/landing-data";
+import { WA_NUMBER, WA_DISPLAY, getWaUrl, LEADS_WEBHOOK_URL } from "@/data/landing-data";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [waOrEmail, setWaOrEmail] = useState("");
   const [category, setCategory] = useState("Aplikasi Custom (Web & Mobile)");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [lastSubmittedWaUrl, setLastSubmittedWaUrl] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === "submitting") return;
+
+    setStatus("submitting");
+
     const safeName = name.trim().slice(0, 100) || "Calon Klien";
     const safeContact = waOrEmail.trim().slice(0, 80) || "-";
     const safeCategory = category.slice(0, 100);
@@ -32,7 +39,34 @@ export default function ContactPage() {
 • Kategori: ${safeCategory}
 • Pesan/Kebutuhan: ${safeMessage}`;
 
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(formatted)}`, "_blank", "noopener,noreferrer");
+    const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(formatted)}`;
+    setLastSubmittedWaUrl(waUrl);
+
+    // 1. Rekam data ke Google Sheets / Webhook jika URL sudah dikonfigurasi
+    if (LEADS_WEBHOOK_URL) {
+      try {
+        await fetch(LEADS_WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+          body: JSON.stringify({
+            name: safeName,
+            contact: safeContact,
+            category: safeCategory,
+            message: safeMessage,
+            source: "Formulir Halaman Konsultasi (/contact)",
+          }),
+        });
+      } catch (err) {
+        console.warn("Gagal mengirim ke webhook leads:", err);
+      }
+    }
+
+    // 2. Buka WhatsApp di tab baru
+    window.open(waUrl, "_blank", "noopener,noreferrer");
+    setStatus("success");
   };
 
   return (
@@ -125,91 +159,140 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <div className="rounded-[32px] border border-slate-200 dark:border-white/20 bg-white dark:bg-white/[0.06] p-8 shadow-xl dark:shadow-2xl backdrop-blur-2xl md:col-span-3">
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white">Kirim Formulir Brief</h2>
-            <p className="mt-1 text-xs text-slate-600 dark:text-white/60">
-              Isi formulir di bawah ini untuk tersambung ke WhatsApp developer ecoDigital dengan rincian kebutuhan Anda.
-            </p>
-
-            <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="contact-name" className="text-xs font-semibold text-slate-700 dark:text-white/80">
-                  Nama Lengkap
-                </label>
-                <input
-                  id="contact-name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  required
-                  maxLength={100}
-                  placeholder="Nama Anda atau Instansi"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="mt-1 w-full rounded-2xl border border-slate-300 dark:border-white/20 bg-slate-50 dark:bg-black/40 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
-                />
+            {status === "success" ? (
+              <div className="py-6 text-center space-y-4">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={36} />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                  Formulir Berhasil Terkirim &amp; Tercatat!
+                </h3>
+                <p className="mx-auto max-w-md text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-white/70">
+                  Terima kasih, <strong>{name || "Bapak/Ibu"}</strong>. Rincian kebutuhan proyek Anda telah otomatis tercatat di sistem kami dan jendela WhatsApp telah dibuka untuk terhubung langsung dengan Lead Developer.
+                </p>
+                <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <a
+                    href={lastSubmittedWaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-950 shadow-xl shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-95"
+                  >
+                    <HugeiconsIcon icon={WhatsappIcon} size={18} />
+                    <span>Buka Chat WhatsApp Sekarang</span>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setStatus("idle");
+                      setName("");
+                      setWaOrEmail("");
+                      setMessage("");
+                    }}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-300 dark:border-white/20 bg-slate-100 dark:bg-white/10 px-6 py-3.5 text-xs font-bold text-slate-700 dark:text-white/80 hover:bg-slate-200 dark:hover:bg-white/15 transition-all cursor-pointer"
+                  >
+                    <span>Kirim Pesan Lain</span>
+                  </button>
+                </div>
               </div>
+            ) : (
+              <>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white">Kirim Formulir Brief</h2>
+                <p className="mt-1 text-xs text-slate-600 dark:text-white/60">
+                  Isi formulir di bawah ini untuk tersambung ke WhatsApp developer ecoDigital dengan rincian kebutuhan Anda.
+                </p>
 
-              <div>
-                <label htmlFor="contact-info" className="text-xs font-semibold text-slate-700 dark:text-white/80">
-                  Nomor WhatsApp / Email Kontak
-                </label>
-                <input
-                  id="contact-info"
-                  name="contact"
-                  type="text"
-                  autoComplete="tel email"
-                  required
-                  maxLength={80}
-                  placeholder="0812xxxxxx atau email@anda.com"
-                  value={waOrEmail}
-                  onChange={(e) => setWaOrEmail(e.target.value)}
-                  className="mt-1 w-full rounded-2xl border border-slate-300 dark:border-white/20 bg-slate-50 dark:bg-black/40 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
-                />
-              </div>
+                <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+                  <div>
+                    <label htmlFor="contact-name" className="text-xs font-semibold text-slate-700 dark:text-white/80">
+                      Nama Lengkap
+                    </label>
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      required
+                      maxLength={100}
+                      placeholder="Nama Anda atau Instansi"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="mt-1 w-full rounded-2xl border border-slate-300 dark:border-white/20 bg-slate-50 dark:bg-black/40 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                    />
+                  </div>
 
-              <div>
-                <label htmlFor="contact-category" className="text-xs font-semibold text-slate-700 dark:text-white/80">
-                  Kategori Proyek
-                </label>
-                <select
-                  id="contact-category"
-                  name="category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  className="mt-1 w-full rounded-2xl border border-slate-300 dark:border-white/20 bg-slate-50 dark:bg-[#060A14] px-4 py-3 text-sm text-slate-900 dark:text-white focus:border-emerald-500 focus:outline-none cursor-pointer"
-                >
-                  <option value="Aplikasi Custom (Web & Mobile)">Aplikasi Custom (Web &amp; Mobile)</option>
-                  <option value="Jasa API & Backend Architecture">Jasa API &amp; Backend Architecture</option>
-                  <option value="Web Instansi & Bisnis (Siap Online)">Web Instansi &amp; Bisnis (Siap Online)</option>
-                  <option value="Perbaikan Bug & Optimasi Sistem">Perbaikan Bug &amp; Optimasi Sistem</option>
-                </select>
-              </div>
+                  <div>
+                    <label htmlFor="contact-info" className="text-xs font-semibold text-slate-700 dark:text-white/80">
+                      Nomor WhatsApp / Email Kontak
+                    </label>
+                    <input
+                      id="contact-info"
+                      name="contact"
+                      type="text"
+                      autoComplete="tel email"
+                      required
+                      maxLength={80}
+                      placeholder="0812xxxxxx atau email@anda.com"
+                      value={waOrEmail}
+                      onChange={(e) => setWaOrEmail(e.target.value)}
+                      className="mt-1 w-full rounded-2xl border border-slate-300 dark:border-white/20 bg-slate-50 dark:bg-black/40 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                    />
+                  </div>
 
-              <div>
-                <label htmlFor="contact-message" className="text-xs font-semibold text-slate-700 dark:text-white/80">
-                  Rincian Kebutuhan / Gambaran Proyek
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  rows={4}
-                  required
-                  maxLength={1500}
-                  placeholder="Ceritakan gambaran sistem, alur proses operasional, atau fitur yang ingin dibangun..."
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="mt-1 w-full rounded-2xl border border-slate-300 dark:border-white/20 bg-slate-50 dark:bg-black/40 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
-                />
-              </div>
+                  <div>
+                    <label htmlFor="contact-category" className="text-xs font-semibold text-slate-700 dark:text-white/80">
+                      Kategori Proyek
+                    </label>
+                    <select
+                      id="contact-category"
+                      name="category"
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
+                      className="mt-1 w-full rounded-2xl border border-slate-300 dark:border-white/20 bg-slate-50 dark:bg-[#060A14] px-4 py-3 text-sm text-slate-900 dark:text-white focus:border-emerald-500 focus:outline-none cursor-pointer"
+                    >
+                      <option value="Aplikasi Custom (Web & Mobile)">Aplikasi Custom (Web &amp; Mobile)</option>
+                      <option value="Jasa API & Backend Architecture">Jasa API &amp; Backend Architecture</option>
+                      <option value="Web Instansi & Bisnis (Siap Online)">Web Instansi &amp; Bisnis (Siap Online)</option>
+                      <option value="Perbaikan Bug & Optimasi Sistem">Perbaikan Bug &amp; Optimasi Sistem</option>
+                    </select>
+                  </div>
 
-              <button
-                type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-950 shadow-xl shadow-emerald-500/25 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95 cursor-pointer"
-              >
-                <HugeiconsIcon icon={WhatsappIcon} size={18} />
-                <span>Kirim Brief ke WhatsApp ecoDigital →</span>
-              </button>
-            </form>
+                  <div>
+                    <label htmlFor="contact-message" className="text-xs font-semibold text-slate-700 dark:text-white/80">
+                      Rincian Kebutuhan / Gambaran Proyek
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      rows={4}
+                      required
+                      maxLength={1500}
+                      placeholder="Ceritakan gambaran sistem, alur proses operasional, atau fitur yang ingin dibangun..."
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      className="mt-1 w-full rounded-2xl border border-slate-300 dark:border-white/20 bg-slate-50 dark:bg-black/40 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={status === "submitting"}
+                    className="w-full flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-950 shadow-xl shadow-emerald-500/25 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {status === "submitting" ? (
+                      <>
+                        <span className="h-4 w-4 rounded-full border-2 border-slate-950 border-t-transparent animate-spin" />
+                        <span>Mencatat &amp; Menghubungkan ke WhatsApp...</span>
+                      </>
+                    ) : (
+                      <>
+                        <HugeiconsIcon icon={WhatsappIcon} size={18} />
+                        <span>Kirim Brief ke WhatsApp ecoDigital →</span>
+                      </>
+                    )}
+                  </button>
+                </form>
+              </>
+            )}
           </div>
         </div>
       </main>
