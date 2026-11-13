@@ -148,7 +148,7 @@ export function FeaturesSection() {
                 </div>
                 <div className="flex items-center gap-2">
                   <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span>Panduan instalasi langkah demi langkah agar sistem langsung jalan di laptopmu</span>
+                  <span>Panduan instalasi dan deployment langkah demi langkah agar sistem langsung aktif di server / perangkat Anda</span>
                 </div>
               </div>
             </div>
@@ -173,7 +173,7 @@ export function FeaturesSection() {
                 </h3>
 
                 <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300/85">
-                  Nggak perlu menebak-nebak apakah proyekmu sudah dikerjakan atau belum. Kamu diberikan tautan staging live aktif untuk mencoba alur aplikasi langsung dari browser HP &amp; laptop kapan saja.
+                  Tidak perlu menebak-nebak apakah proyek Anda sudah dikerjakan atau belum. Anda diberikan tautan staging live aktif untuk mencoba alur aplikasi langsung dari browser HP &amp; laptop kapan saja.
                 </p>
               </div>
 
@@ -353,7 +353,7 @@ export function FeaturesSection() {
                 </h3>
 
                 <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300/85">
-                  Uangmu aman tanpa DP mengambang. Pembayaran dibagi bertahap sesuai milestone pengerjaan, dan pelunasan hanya dilakukan setelah sistem selesai didemokan serta terbukti jalan di laptopmu.
+                  Dana Anda aman tanpa DP mengambang. Pembayaran dibagi bertahap sesuai milestone pengerjaan, dan pelunasan hanya dilakukan setelah sistem selesai didemokan serta terbukti berjalan lancar di staging / perangkat Anda.
                 </p>
               </div>
 

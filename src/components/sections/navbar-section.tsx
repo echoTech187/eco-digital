@@ -378,7 +378,7 @@ export function NavbarSection() {
                   </h4>
 
                   <p className="mt-2 text-xs leading-relaxed text-white/70">
-                    Bayar bertahap sesuai progres yang jalan di laptopmu. Diskusi santai langsung dengan developer tanpa perantara sales.
+                    Bayar bertahap sesuai progres live staging yang terbukti jalan normal. Diskusi langsung bersama lead developer tanpa perantara sales.
                   </p>
                 </div>
 

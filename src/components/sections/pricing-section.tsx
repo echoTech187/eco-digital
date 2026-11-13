@@ -185,7 +185,7 @@ export function PricingSection() {
                   Punya Kebutuhan Fitur Spesifik? Hitung Estimasinya di Sini
                 </h4>
                 <p className="mt-1 text-xs text-slate-600 dark:text-white/60 max-w-xl leading-relaxed">
-                  Pilih kategori sistemmu dan centang fitur tambahan yang kamu inginkan di halaman simulasi biaya interaktif kami. Hasil estimasi langsung terhitung secara transparan.
+                  Pilih kategori sistem Anda dan centang fitur tambahan yang diinginkan di halaman simulasi biaya interaktif kami. Hasil estimasi langsung terhitung secara transparan.
                 </p>
               </div>
             </div>

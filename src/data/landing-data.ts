@@ -363,7 +363,7 @@ export const PRICING_PACKAGES = [
       "Konfigurasi deployment ke server/hosting",
       "Panel Admin CMS kelola berita/pengumuman",
       "Integrasi Form Kontak & WhatsApp Otomatis",
-      "Garansi bug fixing & pendampingan teknis",
+      "Garansi bebas bug & panduan operasional admin",
     ],
     ctaText: "Pilih Web Instansi & Bisnis",
     ctaMsg: "Halo Mas (ecoDigital), saya tertarik konsultasi paket Web Instansi & Bisnis (mulai Rp499.000).",
@@ -400,11 +400,11 @@ export const PRICING_PACKAGES = [
     desc: "Sistem aplikasi custom sesuai alur operasional unik, multi-user, dan arsitektur modular terstandar.",
     features: [
       "Pilihan platform: Web Custom atau Android (Flutter)",
-      "100% Custom alur logika & proses bisnismu",
+      "100% Custom alur logika & proses bisnis Anda",
       "Clean Architecture & struktur modular",
       "Akses demo Staging Live 24/7 pantau progres",
       "Penyerahan berkas kode lengkap & database",
-      "Garansi pendampingan & garansi pengerjaan",
+      "Garansi tuntas & video tutorial operasional admin",
     ],
     ctaText: "Pilih Aplikasi Custom",
     ctaMsg: "Halo Mas (ecoDigital), saya tertarik konsultasi paket Aplikasi Custom (Web / Android).",
@@ -499,20 +499,28 @@ export const CALCULATOR_ADDON_OPTIONS: Record<
 // ─── FAQ Items (7 Q&A Sesuai Master Copy) ─────────────────────────────────────
 export const FAQ_ITEMS = [
   {
-    q: "Saya baru punya judul atau ide kasar aja, belum tahu alur sistemnya. Bisa dibantu?",
-    a: "Bisa banget! Kamu nggak perlu nunggu punya flowchart atau rancangan database yang sempurna. Cukup ceritakan gambaran kasarnya lewat WA, nanti kita bedah bareng fitur apa saja yang paling masuk akal, sesuai dengan kebutuhan riset/bisnismu, dan pastinya aman buat dikejar sesuai deadline.",
+    q: "Saya baru punya ide kasar atau kebutuhan alur kerja operasional, belum ada dokumen teknis. Bisa dibantu?",
+    a: "Bisa banget! Anda tidak perlu menunggu punya flowchart rumit atau rancangan database yang sempurna. Cukup ceritakan kebutuhan operasional atau masalah kerja yang ingin diselesaikan via WhatsApp, nanti kita bedah bersama arsitektur fitur apa saja yang paling tepat, efisien, dan siap dikejar sesuai jadwal instansi/bisnis Anda.",
   },
   {
-    q: "Kodingan saya sudah setengah jalan tapi mentok error / ditinggal developer lama. Bisa lanjutin tanpa bikin ulang?",
-    a: "Sangat bisa. Justru itu alasan saya menyediakan paket Penyelamat Revisi & Fix Error (Mulai Rp150.000). Kirim saja source code lamamu untuk saya cek dulu kerusakannya secara gratis. Kalau memang masih layak pakai dan cuma butuh benerin bug atau tambah 1–2 fitur penyesuaian, Anda nggak perlu buang uang buat bangun ulang dari nol.",
+    q: "Kodingan kami sudah setengah jalan tapi mentok error / ditinggal developer lama. Bisa dilanjutkan tanpa bikin ulang?",
+    a: "Sangat bisa. Justru itu alasan kami menyediakan layanan Penyelamat Revisi & Fix Error (Mulai Rp150.000). Kirimkan saja repositori kode Anda untuk kami audit kerusakannya secara gratis. Jika modulnya masih layak pakai dan hanya butuh perbaikan bug atau penyesuaian fitur, Anda tidak perlu membuang anggaran untuk membangun ulang dari nol.",
   },
   {
     q: "Bagaimana jika tim kami atau stakeholder butuh memahami alur kodingannya?",
     a: "ecoDigital mengutamakan transparansi penuh. Kami bukan pengembang yang cuma kirim file .ZIP lalu hilang kontak. Setiap serah terima proyek sistem baru sudah mencakup dokumentasi arsitektur, panduan deployment, dan skema database lengkap. Kodenya terstruktur modular sehingga mudah dipahami dan dikembangkan lanjut oleh tim internal Anda.",
   },
   {
-    q: "Berapa lama proses pengerjaannya? Bisa bantu kejar deadline yang sudah mepet?",
-    a: "Durasi pengerjaan menyesuaikan tingkat kerumitan: Fix Error / Tambah Fitur Ringan (1–3 hari beres), Landing Page / Web Standar (3–7 hari kerja), dan Sistem Informasi / Aplikasi Custom (1–3 minggu). Infokan jadwal deadline-mu di awal chat supaya kita bisa memprioritaskan modul utamanya agar siap didemokan tepat waktu.",
+    q: "Apakah ada biaya siluman atau tagihan tambahan di tengah jalan?",
+    a: "Nol rupiah biaya siluman. Seluruh estimasi biaya yang Anda lihat di kalkulator resmi atau kesepakatan SOW awal sudah final mencakup pengerjaan, konfigurasi server cloud, dan panduan deployment. Kami memegang teguh transparansi penuh tanpa ada biaya tak terduga.",
+  },
+  {
+    q: "Bagaimana jika admin atau staf kantor kami awam teknologi, apakah diajari cara mengoperasikannya?",
+    a: "Pasti diajari sampai lancar. Selain dokumentasi teknis dan skema database, setiap serah terima sistem sudah menyertakan rekaman video tutorial singkat (5–10 menit) yang memandu langkah demi langkah cara pemakaian menu dashboard untuk admin kantor Anda, sehingga tim Anda bisa langsung mengoperasikannya tanpa kebingungan.",
+  },
+  {
+    q: "Berapa lama proses pengerjaannya? Bisa bantu jika jadwal peluncuran sudah mendesak?",
+    a: "Durasi pengerjaan menyesuaikan tingkat kerumitan: Fix Error / Tambah Fitur Ringan (1–3 hari kerja), Web Instansi / Profil Bisnis (3–7 hari kerja), dan Aplikasi Custom / Sistem Informasi Skala Penuh (1–3 minggu). Infokan target tanggal operasional Anda di awal diskusi agar kami dapat menyusun milestone prioritas modul utama tepat waktu.",
   },
   {
     q: "Apa saja yang bakal saya dapatkan saat proyek selesai?",
@@ -523,8 +531,8 @@ export const FAQ_ITEMS = [
     a: "Semua paket sudah dilindungi Garansi Revisi. Selama revisi tersebut masih berada di dalam kesepakatan alur fitur awal atau perbaikan bug tampilan/fungsi, akan kami selesaikan gratis tanpa biaya tambahan. Namun, jika ada penambahan fitur/modul baru di luar kesepakatan awal, biayanya tinggal menyesuaikan paket tambah fitur terjangkau.",
   },
   {
-    q: "Sistem pembayarannya gimana? Apakah uang saya aman?",
-    a: "Transparan dan dibayar bertahap sesuai progres. Khusus Paket Fix Error Ringan: Saya perbaiki dulu error-nya di laptop saya, lalu saya kirimkan bukti video/screen record bahwa fitur sudah berjalan normal; setelah kamu lihat buktinya beres, baru lakukan pembayaran dan file dikirim. Pembuatan Sistem Baru: Cukup bayar DP 50% untuk mulai pengerjaan (progres bisa dipantau lewat link live preview), dan pelunasan 50% sisanya baru dilakukan setelah sistem selesai didemokan.",
+    q: "Sistem pembayarannya bagaimana? Apakah dana kami aman?",
+    a: "Sangat aman, transparan, dan dibayar bertahap sesuai progres (tanpa DP mengambang). Khusus Paket Fix Error Ringan: Kami perbaiki dulu di environment staging kami, lalu kami kirimkan video bukti bahwa fitur sudah berjalan normal; setelah Anda melihat buktinya tuntas, baru lakukan pembayaran. Pembuatan Sistem Baru: Cukup bayar DP 50% untuk mulai pengerjaan (progres dipantau via link live staging), dan pelunasan 50% sisanya baru dibayar setelah sistem selesai didemokan berjalan normal.",
   },
 ];
 

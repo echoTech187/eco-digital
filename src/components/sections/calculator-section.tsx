@@ -228,11 +228,15 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
               </span>
               <span className="inline-flex items-center gap-1">
                 <HugeiconsIcon icon={CheckmarkCircle01Icon} size={12} className="text-emerald-600 dark:text-emerald-400" />
-                Garansi Revisi Sampai ACC
+                Garansi Bebas Bug &amp; Tuntas
               </span>
               <span className="inline-flex items-center gap-1">
                 <HugeiconsIcon icon={CheckmarkCircle01Icon} size={12} className="text-emerald-600 dark:text-emerald-400" />
-                Bisa Dicicil Sesuai Progres
+                Garansi Nol Biaya Siluman
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <HugeiconsIcon icon={CheckmarkCircle01Icon} size={12} className="text-emerald-600 dark:text-emerald-400" />
+                Bayar Bertahap Sesuai Progres
               </span>
             </div>
           </div>
@@ -257,7 +261,7 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
                 </span>
               </div>
               <p className="text-[11px] text-slate-500 dark:text-white/50 mt-1">
-                *Garansi revisi sampai ACC &amp; full source code tanpa enkripsi.
+                *Garansi tuntas bebas bug, pendampingan deployment, dan kode sumber utuh tanpa enkripsi.
               </p>
             </div>
 

@@ -29,10 +29,10 @@ export function ConsultationFormSection() {
                 MULAI DISKUSI SEKARANG
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-                Masih Bingung Mulai dari Mana? Obrolin Aja Dulu, Gratis Kok!
+                Punya Kebutuhan Sistem Khusus? Diskusikan Langsung Bersama Lead Developer.
               </h2>
               <p className="mt-3 sm:mt-4 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300/80">
-                Ingin membangun <strong>Aplikasi Custom</strong>, integrasi <strong>API &amp; Backend</strong>, atau <strong>Web Instansi &amp; Bisnis</strong>? Anda bisa mengisi formulir brief kebutuhan di halaman konsultasi atau berdiskusi langsung via WhatsApp bersama lead developer.
+                Ingin membangun <strong>Aplikasi Custom</strong>, integrasi <strong>API &amp; Backend</strong>, atau <strong>Web Instansi &amp; Bisnis</strong>? Anda bisa mengisi formulir kebutuhan di halaman konsultasi atau berdiskusi langsung via WhatsApp bersama lead developer.
               </p>
 
               {/* Action Button Duo */}
@@ -44,7 +44,7 @@ export function ConsultationFormSection() {
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 px-6 sm:px-8 py-3.5 text-xs sm:text-sm font-bold text-slate-950 shadow-xl shadow-emerald-500/25 transition-all duration-200 hover:from-emerald-400 hover:to-teal-400 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                 >
                   <HugeiconsIcon icon={PencilEdit02Icon} size={18} />
-                  <span>Isi Formulir Brief Konsultasi</span>
+                  <span>Isi Formulir</span>
                   <HugeiconsIcon icon={ArrowRight01Icon} size={15} />
                 </Link>
 

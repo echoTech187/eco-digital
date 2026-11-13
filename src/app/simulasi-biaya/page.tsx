@@ -101,11 +101,11 @@ export default function SimulasiBiayaPage() {
           </div>
 
           <h1 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
-            Hitung Estimasi Biaya Sistemmu <span className="text-emerald-600 dark:text-emerald-400">Secara Terbuka</span>
+            Hitung Estimasi Biaya Sistem Anda <span className="text-emerald-600 dark:text-emerald-400">Secara Terbuka</span>
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-white/70">
-            Pilih kategori sistem dan centang fitur tambahan yang kamu perlukan. Total estimasi biaya dan durasi pengerjaan langsung terhitung otomatis tanpa biaya siluman.
+            Pilih kategori sistem dan centang fitur tambahan yang Anda butuhkan. Total estimasi biaya dan durasi pengerjaan langsung terhitung otomatis tanpa biaya siluman.
           </p>
         </div>
 
@@ -186,7 +186,7 @@ export default function SimulasiBiayaPage() {
                 Apakah hasil kalkulator ini sudah harga pasti (fixed)?
               </h4>
               <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-white/60">
-                Kalkulator ini memberikan estimasi acuan transparan di awal. Jika sistemmu punya alur khusus atau algoritma rumit, kita sepakati penyesuaian adilnya saat diskusi WA—namun tetap bersifat harga flat tanpa biaya siluman.
+                Kalkulator ini memberikan estimasi acuan transparan di awal. Jika sistem Anda memiliki alur khusus atau integrasi kompleks, kita sepakati penyesuaian adilnya saat diskusi WA—namun tetap bersifat harga flat tanpa biaya siluman.
               </p>
             </div>
 
@@ -195,7 +195,7 @@ export default function SimulasiBiayaPage() {
                 Bagaimana jika kodingan saya cuma error sedikit?
               </h4>
               <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-white/60">
-                Kamu tidak perlu memesan paket sistem baru! Cukup pilih kategori &ldquo;Fix Error &amp; Tambah Fitur&rdquo; mulai Rp150.000. Kami cek sumber masalahnya secara gratis terlebih dahulu.
+                Anda tidak perlu memesan paket sistem baru! Cukup pilih kategori &ldquo;Troubleshoot &amp; Fix Bug&rdquo; mulai Rp150.000. Kami cek sumber masalahnya secara gratis terlebih dahulu.
               </p>
             </div>
 
@@ -204,7 +204,7 @@ export default function SimulasiBiayaPage() {
                 Apakah pembayaran bisa dicicil (sistem termin)?
               </h4>
               <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-white/60">
-                Sangat bisa. Kami menerapkan sistem termin yang adil: cukup DP awal untuk memulai proses koding dan setup server staging, sedangkan sisa pelunasan hanya dibayar setelah demo sistem terbukti lancar di laptopmu.
+                Sangat bisa. Kami menerapkan sistem termin yang adil: cukup DP awal untuk memulai proses koding dan setup server staging, sedangkan sisa pelunasan hanya dibayar setelah demo sistem terbukti berjalan lancar di live staging / environment Anda.
               </p>
             </div>
 
@@ -213,7 +213,7 @@ export default function SimulasiBiayaPage() {
                 Bagaimana jika deadline saya sudah sangat mepet?
               </h4>
               <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-white/60">
-                Langsung kirim draft kebutuhan atau proposal ke WhatsApp kami. Kami akan cek ketersediaan slot pengerjaan kilat dan berikan timeline realistis agar targetmu tetap aman tercapai.
+                Langsung kirim draft kebutuhan atau proposal ke WhatsApp kami. Kami akan cek ketersediaan slot pengerjaan kilat dan berikan timeline realistis agar target operasional Anda tetap aman tercapai.
               </p>
             </div>
           </div>
@@ -247,7 +247,7 @@ export default function SimulasiBiayaPage() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-300 dark:border-white/20 bg-slate-100 dark:bg-white/10 px-6 py-3.5 text-xs font-bold text-slate-900 dark:text-white transition-all hover:bg-slate-200 dark:hover:bg-white/20 hover:scale-105 active:scale-95"
             >
               <HugeiconsIcon icon={PencilEdit02Icon} size={15} />
-              <span>Isi Formulir Brief Proyek</span>
+              <span>Isi Formulir</span>
             </Link>
           </div>
         </div>
