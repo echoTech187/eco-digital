@@ -18,7 +18,7 @@ export function FloatingWhatsApp() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Konsultasi Gratis via WhatsApp 0878-7585-6918"
-        className="group relative flex items-center rounded-full border border-emerald-400/50 bg-[#060A14]/95 shadow-2xl shadow-emerald-950/80 backdrop-blur-xl transition-all duration-300 hover:border-emerald-400 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95"
+        className="group relative flex items-center rounded-full border border-emerald-500/40 bg-white/95 dark:bg-[#060A14]/95 shadow-xl shadow-emerald-900/10 dark:shadow-2xl dark:shadow-emerald-950/80 backdrop-blur-xl transition-all duration-300 hover:border-emerald-500 hover:shadow-emerald-500/30 hover:scale-105 active:scale-95"
       >
        
 

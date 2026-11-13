@@ -48,13 +48,13 @@ interface EditorialChapter {
 
 const CHAPTERS: EditorialChapter[] = [
   {
-    id: "pembuatan-aplikasi",
+    id: "aplikasi-custom",
     chapterNumber: "01",
-    categoryLabel: "UNTUK MAHASISWA, PENELITI & TUGAS AKHIR",
-    headlineMain: "Dari Deadline yang Bikin Cemas,",
-    headlineAccent: "Menjadi Hari Sidang yang Paling Kamu Nantikan.",
+    categoryLabel: "LAYANAN 01 • APLIKASI WEB & MOBILE",
+    headlineMain: "Dari Spesifikasi Alur yang Rumit,",
+    headlineAccent: "Menjadi Aplikasi Custom Handal Siap Go-Live.",
     subheadline:
-      "Tugas akhir bukan sekadar kodingan yang harus jalan. Ini tentang ketenangan pikiran dan rasa percaya diri saat melangkah ke ruang sidang.",
+      "Solusi aplikasi berbasis web dan mobile (Flutter/React Native) yang dibangun khusus dari nol sesuai kebutuhan unik operasional, manajemen data, maupun riset Anda.",
     accentColor: "#10B981",
     accentGlow: "rgba(16, 185, 129, 0.15)",
     accentText: "text-emerald-400",
@@ -62,40 +62,40 @@ const CHAPTERS: EditorialChapter[] = [
     accentBorder: "border-emerald-500/30",
     accentGradient: "from-emerald-500 to-teal-400",
     icon: LaptopProgrammingIcon,
-    serviceTitle: "Pembuatan Aplikasi Custom Tugas Akhir",
+    serviceTitle: "Aplikasi Custom (Web & Mobile)",
     conditionPrompt:
-      "Mas, butuh bantu bikin aplikasi untuk TA. Deadline 3 minggu lagi, belum ada apa-apa. Dosen minta ada login, database, sama laporan. Nggak tau harus mulai dari mana... 😭",
+      "Halo Mas Eko, kami butuh aplikasi kustom dengan hak akses berjenjang (multi-role), alur verifikasi berkas, dan dashboard pemantau. Butuh yang kodenya bersih dan mudah dikembangkan lanjut.",
     masEkoResolution:
-      "Oke, ceritakan detailnya — fitur apa yang dibutuhkan, teknologi yang diminta dosen, dan timeframe-nya. Kita susun plan-nya bareng, langsung eksekusi.",
+      "Siap, kirimkan rancangan fitur atau diagram alurnya. Kita formulasikan arsitekturnya, rancang struktur datanya, dan bangun bertahap dengan pantauan staging live.",
     reliefPillars: [
       {
         num: "01",
-        title: "Alur & Metodologi Sesuai Permintaan Dosen",
-        desc: "Sistem informasi, SPK (AHP/TOPSIS/SAW), machine learning, atau mobile Flutter yang dibangun dari nol sesuai flowchart kamu.",
+        title: "Alur & Fitur 100% Custom",
+        desc: "Dibangun khusus sesuai alur proses bisnis atau riset Anda tanpa batasan template kaku.",
       },
       {
         num: "02",
-        title: "Source Code 100% Milikmu & Bersih",
-        desc: "Tanpa enkripsi, tanpa ketergantungan. Seluruh database dan kode diserahkan utuh untuk masa depanmu.",
+        title: "Clean Architecture & Modular",
+        desc: "Struktur kode teratur, modular, dan memisahkan logika domain, service, dan antarmuka.",
       },
       {
         num: "03",
-        title: "Video Bedah Kode & Sesi Bimbingan 1-on-1",
-        desc: "Bukan cuma menerima file jadi. Mas Eko menjelaskan bagaimana setiap logika bekerja agar kamu siap menjawab penguji.",
+        title: "Penyerahan File & Dokumentasi Utuh",
+        desc: "Seluruh database dan berkas kode diserahkan utuh tanpa kunci enkripsi, siap di-deploy secara mandiri.",
       },
     ],
-    ctaText: "Ngobrol Santai Soal TA-mu",
+    ctaText: "Konsultasi Aplikasi Custom",
     waMessage:
-      "Halo Mas Eko (ecoDigital), saya mau konsultasi santai seputar pembuatan sistem aplikasi Tugas Akhir / skripsi saya.",
+      "Halo Mas Eko (ecoDigital), saya mau konsultasi pembuatan Aplikasi Custom untuk kebutuhan sistem saya.",
   },
   {
     id: "jasa-api-backend",
     chapterNumber: "02",
-    categoryLabel: "UNTUK DEVELOPER, STARTUP & TIM TEKNIS",
+    categoryLabel: "LAYANAN 02 • REST API & CLOUD BACKEND",
     headlineMain: "Tampilan Frontend Sudah Memukau,",
     headlineAccent: "Tapi Fondasi Backend Belum Ada? Serahkan ke Kami.",
     subheadline:
-      "Fokus pada pengalaman pengguna yang luar biasa. Biarkan kami merancang arsitektur API, relasi database, dan keamanan data di belakang layar.",
+      "Fokus pada pengalaman pengguna yang luar biasa. Biarkan kami merancang arsitektur API yang cepat, relasi database teroptimasi, dan keamanan data di belakang layar.",
     accentColor: "#A78BFA",
     accentGlow: "rgba(167, 139, 250, 0.15)",
     accentText: "text-violet-400",
@@ -103,9 +103,9 @@ const CHAPTERS: EditorialChapter[] = [
     accentBorder: "border-violet-500/30",
     accentGradient: "from-violet-500 to-indigo-400",
     icon: ApiIcon,
-    serviceTitle: "Jasa REST API & Backend Architecture",
+    serviceTitle: "Jasa API & Backend Architecture",
     conditionPrompt:
-      "Mas, lagi develop frontend tapi bingung setup backend-nya. Butuh REST API yang clean, ada dokumentasinya, dan bisa handle banyak user. Tim saya nggak ada yang spesialisasi backend... 😅",
+      "Mas, lagi develop frontend tapi bingung setup backend-nya. Butuh REST API yang clean, ada dokumentasinya, dan bisa handle banyak user. Tim saya butuh backend engineer.",
     masEkoResolution:
       "Gampang. Kasih tahu endpoint apa yang dibutuhkan, struktur data yang diinginkan, dan autentikasi yang dipakai — saya bangun backend-nya rapi, documented, dan siap produksi.",
     reliefPillars: [
@@ -121,22 +121,22 @@ const CHAPTERS: EditorialChapter[] = [
       },
       {
         num: "03",
-        title: "Integrasi Payment Gateway & Notifikasi",
+        title: "Integrasi Payment Gateway & WhatsApp API",
         desc: "Terkoneksi langsung ke Midtrans, Xendit, atau WhatsApp Gateway resmi untuk otomasi transaksi bisnis.",
       },
     ],
-    ctaText: "Diskusi Kebutuhan Backend",
+    ctaText: "Diskusi Kebutuhan Backend & API",
     waMessage:
       "Halo Mas Eko (ecoDigital), saya mau diskusi kebutuhan pembuatan REST API & arsitektur backend untuk project saya.",
   },
   {
-    id: "aplikasi-sistem",
+    id: "web-instansi-bisnis",
     chapterNumber: "03",
-    categoryLabel: "UNTUK SEKOLAH, INSTANSI & PELAKU USAHA",
-    headlineMain: "Tinggalkan Cara Manual yang Melelahkan.",
-    headlineAccent: "Hadirkan Sistem yang Nyata & Membantu Sehari-hari.",
+    categoryLabel: "LAYANAN 03 • WEB INSTANSI, SEKOLAH & BISNIS",
+    headlineMain: "Tinggalkan Cara Manual & Tampilan Usang.",
+    headlineAccent: "Hadirkan Website Resmi & Sistem Siap Online.",
     subheadline:
-      "Bukan template pajangan yang rumit digunakan. Kami membangun sistem operasional yang praktis, ramah pengguna, dan benar-benar bekerja di lapangan.",
+      "Bukan template pajangan yang lambat dan kaku. Kami membangun website profil resmi sekolah/instansi dinas, portal pelayanan publik, serta sistem kasir (POS) & inventori bisnis yang langsung siap beroperasi.",
     accentColor: "#2DD4BF",
     accentGlow: "rgba(45, 212, 191, 0.15)",
     accentText: "text-teal-400",
@@ -144,31 +144,31 @@ const CHAPTERS: EditorialChapter[] = [
     accentBorder: "border-teal-500/30",
     accentGradient: "from-teal-400 to-emerald-400",
     icon: Building03Icon,
-    serviceTitle: "Aplikasi Sistem Operasional & Bisnis",
+    serviceTitle: "Web Instansi & Bisnis (Siap Online)",
     conditionPrompt:
-      "Saya punya usaha kecil-kecilan tapi semua masih dicatat manual. Mau buat sistem tapi nggak tau harus minta apa ke developer. Pernah kecewa karena developer sebelumnya tiba-tiba ghosting... 😤",
+      "Kami butuh website profil resmi instansi / sekolah yang terhubung portal pengumuman dan arsip digital, atau sistem web bisnis yang langsung jalan online tanpa ribet setup hosting.",
     masEkoResolution:
-      "Nggak perlu tau istilah teknisnya. Cukup ceritakan kondisi bisnis kamu sekarang — saya bantu terjemahkan jadi sistem yang langsung bisa dipakai, bukan sekadar template pajangan.",
+      "Tentu. Cukup ceritakan profil lembaga atau operasional usaha Anda — kami siapkan website elegan yang responsif, cepat, terstruktur rapi, dan siap dipublikasikan.",
     reliefPillars: [
       {
         num: "01",
-        title: "Sistem Operasional yang Siap Pakai",
-        desc: "Sistem informasi sekolah, arsip digital instansi, maupun aplikasi kasir (POS) & stok barang yang disesuaikan kebutuhan usahamu.",
+        title: "Web Resmi Instansi & Sekolah Elegan",
+        desc: "Desain modern, mobile-friendly, kredibel, dan mudah dikelola admin melalui panel CMS.",
       },
       {
         num: "02",
-        title: "Komitmen Transparansi Anti-Ghosting",
-        desc: "Update progress rutin setiap minggu. Anda memegang kendali penuh tanpa rasa waswas ditinggal di tengah jalan.",
+        title: "Sistem Bisnis, Kasir (POS) & Inventori",
+        desc: "Otomasi pencatatan transaksi, cetak nota, stok barang, dan laporan penjualan berkala.",
       },
       {
         num: "03",
-        title: "Langsung Online & Siap Pakai",
-        desc: "Termasuk pengaturan domain resmi, server cloud cepat, hingga sesi panduan pengoperasian untuk staf Anda.",
+        title: "Setup Deployment & Panduan Siap Pakai",
+        desc: "Dukungan konfigurasi server/hosting pilihan Anda, migrasi database, hingga panduan pengoperasian mandiri.",
       },
     ],
-    ctaText: "Mulai Transformasi Sistem Usaha",
+    ctaText: "Konsultasi Web Instansi & Bisnis",
     waMessage:
-      "Halo Mas Eko (ecoDigital), saya mau diskusi pembuatan aplikasi sistem operasional untuk sekolah / instansi / bisnis saya.",
+      "Halo Mas Eko (ecoDigital), saya mau diskusi pembuatan Web Instansi & Bisnis siap online.",
   },
 ];
 
@@ -303,12 +303,14 @@ function EditorialChapterSection({
       ref={sectionRef}
       id={chapter.id}
       className={`relative w-full ${
-        index === 0 ? "border-t-0 pt-16 sm:pt-20 lg:pt-24" : "border-t border-white/[0.08] pt-20 sm:pt-28 lg:pt-32"
+        index === 0 ? "border-t-0 pt-16 sm:pt-20 lg:pt-24" : "border-t border-slate-200 dark:border-white/[0.08] pt-20 sm:pt-28 lg:pt-32"
       } pb-24 sm:pb-32 lg:pb-40 overflow-hidden scroll-mt-0`}
     >
+      {chapter.id === "aplikasi-custom" && <span id="pembuatan-aplikasi" className="scroll-mt-20 block" />}
+      {chapter.id === "web-instansi-bisnis" && <span id="aplikasi-sistem" className="scroll-mt-20 block" />}
       {/* 1. Atmospheric Ambient Lighting Pools */}
       <div
-        className="pointer-events-none absolute -top-40 right-1/4 h-[550px] w-[550px] rounded-full blur-[140px] opacity-20"
+        className="pointer-events-none absolute -top-40 right-1/4 h-[550px] w-[550px] rounded-full blur-[140px] opacity-15 dark:opacity-20"
         style={{ backgroundColor: chapter.accentColor }}
       />
       <div className="pointer-events-none absolute bottom-0 left-10 h-[380px] w-[380px] rounded-full bg-blue-600/10 blur-[120px]" />
@@ -316,7 +318,7 @@ function EditorialChapterSection({
       {/* 2. Giant Watermark Chapter Counter with Scroll Parallax */}
       <motion.div
         style={{ y: watermarkY }}
-        className="pointer-events-none absolute top-8 right-6 sm:right-12 lg:right-24 font-black tracking-tighter text-white/[0.028] select-none text-[120px] sm:text-[180px] lg:text-[240px] leading-none"
+        className="pointer-events-none absolute top-8 right-6 sm:right-12 lg:right-24 font-black tracking-tighter text-slate-900/[0.04] dark:text-white/[0.028] select-none text-[120px] sm:text-[180px] lg:text-[240px] leading-none"
         aria-hidden="true"
       >
         {chapter.chapterNumber}
@@ -325,19 +327,19 @@ function EditorialChapterSection({
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ─── CHAPTER HEADER (Bold Editorial Kicker) ─── */}
         <AnimateOnScroll preset="fade-up" once={false} className="max-w-4xl mb-14 sm:mb-20">
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-[1.18] sm:leading-[1.15]">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.15]">
             {chapter.headlineMain}{" "}
             <span
               className="bg-clip-text text-transparent bg-gradient-to-r"
               style={{
-                backgroundImage: `linear-gradient(90deg, #ffffff, ${chapter.accentColor})`,
+                backgroundImage: `linear-gradient(90deg, #10B981, ${chapter.accentColor})`,
               }}
             >
               {chapter.headlineAccent}
             </span>
           </h2>
 
-          <p className="mt-5 text-sm sm:text-base lg:text-lg text-white/60 leading-relaxed max-w-3xl">
+          <p className="mt-5 text-sm sm:text-base lg:text-lg text-slate-600 dark:text-white/60 leading-relaxed max-w-3xl">
             {chapter.subheadline}
           </p>
         </AnimateOnScroll>
@@ -410,7 +412,7 @@ function EditorialChapterSection({
               whileInView="visible"
               viewport={{ once: false, amount: 0.25 }}
               variants={ekoAnswerVariants}
-              className="rounded-2xl border border-white/10 bg-white/[0.035] p-5 backdrop-blur-md"
+              className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.035] p-5 shadow-xs dark:shadow-none backdrop-blur-md"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border-2 border-emerald-400 shadow-md">
@@ -426,18 +428,18 @@ function EditorialChapterSection({
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-bold text-white">Mas Eko</span>
-                    <span className="inline-flex items-center gap-1 rounded-md bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-500/20">
+                    <span className="text-sm font-bold text-slate-900 dark:text-white">Mas Eko</span>
+                    <span className="inline-flex items-center gap-1 rounded-md bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                       Lead Developer
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono text-emerald-400/80 uppercase font-semibold">
+                  <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400/80 uppercase font-semibold">
                     JAWABAN DARI MAS EKO:
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-white/90 leading-relaxed italic pl-0.5">
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-white/90 leading-relaxed italic pl-0.5">
                 &ldquo;{chapter.masEkoResolution}&rdquo;
               </p>
             </motion.div>
@@ -449,27 +451,27 @@ function EditorialChapterSection({
             whileInView="visible"
             viewport={{ once: false, amount: 0.2 }}
             variants={elevationCardVariants}
-            className="lg:col-span-7 flex flex-col justify-between rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.045] to-white/[0.01] p-6 sm:p-10 backdrop-blur-xl shadow-2xl relative overflow-hidden"
+            className="lg:col-span-7 flex flex-col justify-between rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-transparent dark:bg-gradient-to-b dark:from-white/[0.045] dark:to-white/[0.01] p-6 sm:p-10 backdrop-blur-xl shadow-xl dark:shadow-2xl relative overflow-hidden"
           >
             {/* Soft inner glow */}
             <div
-              className="pointer-events-none absolute top-0 right-0 h-44 w-44 rounded-full blur-3xl opacity-20"
+              className="pointer-events-none absolute top-0 right-0 h-44 w-44 rounded-full blur-3xl opacity-15 dark:opacity-20"
               style={{ backgroundColor: chapter.accentColor }}
             />
 
             <div>
               {/* Service Category Tag & Title */}
-              <div className="flex items-center gap-3.5 mb-8 pb-6 border-b border-white/10">
+              <div className="flex items-center gap-3.5 mb-8 pb-6 border-b border-slate-200 dark:border-white/10">
                 <div
                   className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border ${chapter.accentBorder} ${chapter.accentBg} ${chapter.accentText} shadow-md`}
                 >
                   <HugeiconsIcon icon={chapter.icon} size={24} />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-white/40 block">
+                  <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-slate-400 dark:text-white/40 block">
                     PAKET LAYANAN TERFOKUS
                   </span>
-                  <h3 className="text-lg sm:text-xl font-extrabold text-white leading-tight">
+                  <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white leading-tight">
                     {chapter.serviceTitle}
                   </h3>
                 </div>
@@ -490,15 +492,15 @@ function EditorialChapterSection({
                     className="group flex items-start gap-4 sm:gap-5"
                   >
                     <span
-                      className={`font-mono text-sm sm:text-base font-bold text-white/30 transition-colors group-hover:${chapter.accentText} pt-0.5`}
+                      className={`font-mono text-sm sm:text-base font-bold text-slate-400 dark:text-white/30 transition-colors group-hover:${chapter.accentText} pt-0.5`}
                     >
                       {pillar.num}
                     </span>
                     <div className="space-y-1">
-                      <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-white transition-colors">
+                      <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-white transition-colors">
                         {pillar.title}
                       </h4>
-                      <p className="text-xs sm:text-sm text-white/60 leading-relaxed">{pillar.desc}</p>
+                      <p className="text-xs sm:text-sm text-slate-500 dark:text-white/60 leading-relaxed">{pillar.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -506,7 +508,7 @@ function EditorialChapterSection({
             </div>
 
             {/* Bottom Action Footer (Relaxed, High Trust) */}
-            <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            <div className="pt-6 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
               <a
                 href={getWaUrl(chapter.waMessage)}
                 target="_blank"
@@ -529,7 +531,7 @@ function EditorialChapterSection({
 
 export function ServicesSection() {
   return (
-    <section id="layanan" className="relative z-20 w-full bg-[#060A14] scroll-mt-0">
+    <section id="layanan" className="relative z-20 w-full bg-slate-50 dark:bg-[#060A14] scroll-mt-0 transition-colors duration-200">
       <span id="solusi" className="scroll-mt-0 block" />
 
       {/* ─── 3 EDITORIAL CHAPTERS ─── */}

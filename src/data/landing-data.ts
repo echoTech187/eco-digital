@@ -20,7 +20,6 @@ import {
   Building03Icon,
   CreditCardIcon,
   WhatsappIcon,
-  Wrench01Icon,
 } from "@hugeicons/core-free-icons";
 
 // ─── WhatsApp Constants & Helpers ────────────────────────────────────────────
@@ -120,7 +119,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
         "Export laporan rekapitulasi kehadiran bulanan ke Excel dan PDF ber-kop surat",
       ],
       techStack: ["Next.js 15 (React 19)", "TypeScript Strict", "Tailwind CSS", "Prisma ORM", "PostgreSQL 16"],
-      deliverables: ["Full Source Code Next.js & API", "Database Setup Script", "Sesi Bedah Koding 1-on-1", "Garansi Penyesuaian Alur"],
+      deliverables: ["Full Source Code Next.js & API", "Database Setup Script", "Dokumentasi Arsitektur & Panduan Setup", "Garansi Penyesuaian Alur"],
     },
   },
   {
@@ -205,7 +204,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     categories: ["instansi"],
     badge: "Web Instansi Pelayanan Publik",
     desc: "Sistem Informasi Manajemen Operasional & Pelayanan Masyarakat untuk pengajuan surat online, verifikasi berkas dinamis, dan pelaporan terpadu.",
-    impact: "Selesai tepat waktu & lulus uji sistem sidang, antrean warga terpangkas.",
+    impact: "Selesai tepat waktu & lulus uji sistem operasional, antrean warga terpangkas.",
     features: ["TypeScript Strict", "Tailwind Design System", "Dokumen Generator PDF", "Verifikasi QR Code"],
     mockupGradient: "from-amber-600/30 to-emerald-950/40",
     mockupIcon: City01Icon,
@@ -224,28 +223,28 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     },
   },
   {
-    id: "spk-ahp-topsis",
-    title: "SPK AHP & TOPSIS",
-    domain: "spk-topsis.ecodigital.id",
+    id: "evaluasi-kinerja",
+    title: "Sistem Evaluasi Kinerja & KPI",
+    domain: "evaluasi-kinerja.ecodigital.id",
     categories: ["sistem_informasi"],
-    badge: "Sistem Informasi Riset SPK",
-    desc: "Sistem Pendukung Keputusan penentuan kelayakan penerima bantuan & beasiswa menggunakan kombinasi pembobotan AHP dan perangkingan TOPSIS.",
-    impact: "Lulus sidang skripsi nilai A, rumus matematis step-by-step tervalidasi dosen.",
-    features: ["PHP / Laravel / Python", "Algoritma AHP & TOPSIS", "Matriks Keputusan", "Export Bab 4 Skripsi"],
+    badge: "Dashboard Analitik & KPI",
+    desc: "Platform evaluasi kinerja pegawai & audit berkala dengan visualisasi metrik performa, laporan otomatis, dan pembobotan kriteria terukur.",
+    impact: "Otomasi rekapitulasi penilaian berkala, efisiensi waktu audit hingga 80%, dan laporan terstruktur siap cetak.",
+    features: ["PHP / Laravel / Inertia", "Matriks Penilaian Terukur", "Dashboard Grafik Real-Time", "Export Rekap PDF & Excel"],
     mockupGradient: "from-teal-600/30 to-cyan-950/40",
     mockupIcon: Analytics01Icon,
-    mockupSubtitle: "Decision Support System & Sensitivity Analysis",
+    mockupSubtitle: "Performance Analytics & Automated Evaluation Dashboard",
     fullSpecs: {
       overview:
-        "Sistem pendukung keputusan akademik dengan rumus matematis transparan langkah demi langkah (step-by-step), sangat ideal untuk materi skripsi/tugas akhir jurusan Teknik Informatika atau Sistem Informasi.",
+        "Sistem informasi evaluasi kinerja terpadu berbasis web yang mengotomasi proses penilaian, pembobotan indikator performa, dan rekapitulasi hasil secara transparan dan akurat.",
       keyModules: [
-        "Perhitungan bobot kriteria AHP dengan uji konsistensi (Consistency Ratio CR < 0.1)",
-        "Normalisasi matriks TOPSIS, solusi ideal positif & negatif, serta nilai preferensi",
-        "Tampilan tabel proses matematis lengkap yang bisa langsung disalin ke Bab 4 Skripsi",
-        "Dilengkapi sesi bedah koding khusus agar mahasiswa paham 100% saat ditanya dosen penguji",
+        "Perhitungan pembobotan kriteria penilaian dengan matriks terstruktur",
+        "Kalkulasi skor otomatis dan perangkingan performa transparan",
+        "Visualisasi grafik performa dan komparasi target vs realisasi real-time",
+        "Otomasi ekspor laporan evaluasi lengkap format PDF dan Excel",
       ],
-      techStack: ["PHP 8.2 / Laravel / Python", "MySQL Database", "Chart.js Visualisasi", "Tailwind CSS"],
-      deliverables: ["Source Code Bersih & Berkomentar", "Database .sql", "Sesi Bimbingan Bedah Kode 1-on-1", "Garansi Sampai ACC"],
+      techStack: ["PHP 8.2 / Laravel", "MySQL Database", "Chart.js Visualisasi", "Tailwind CSS"],
+      deliverables: ["Full Source Code Terstruktur", "Database .sql", "Dokumentasi & Panduan Setup", "Garansi Perbaikan"],
     },
   },
   {
@@ -299,9 +298,9 @@ export const TECH_STACK_ITEMS = [
 export const WHY_US_ITEMS = [
   {
     icon: LaptopProgrammingIcon,
-    title: "Bukan Sekadar Kirim Kode (Dapat Bedah Logika)",
-    desc: "Kami nggak cuma kirim file .ZIP lalu menghilang. Kamu mendapatkan rekaman video penjelasan alur logika, relasi database, dan cara kerja sistem sampai kamu paham luar-dalam saat ditanya dosen atau pimpinan.",
-    badge: "Video Bedah Kode",
+    title: "Clean Architecture & Dokumentasi Rapi",
+    desc: "Kami nggak cuma kirim file .ZIP lalu menghilang. Anda mendapatkan dokumentasi arsitektur rapi, skema database, dan panduan instalasi lengkap agar sistem siap dijalankan dan dikembangkan tim Anda kapan saja.",
+    badge: "Clean Architecture",
   },
   {
     icon: Globe02Icon,
@@ -351,106 +350,113 @@ export const WORKFLOW_STEPS = [
   },
 ];
 
-// ─── Paket Harga (3 Kartu Utama) ─────────────────────────────────────────────
+// ─── Paket Harga (3 Kartu Utama Selaras dengan 3 Fokus Layanan) ─────────────
 export const PRICING_PACKAGES = [
   {
-    name: "Penyelamat Revisi & Fix Error",
-    price: "Rp 150.000",
-    badgeLabel: "Paket Fix Error & Modul",
-    badgeIcon: Wrench01Icon,
-    desc: "Cocok buat kodingan yang mentok error, benerin tampilan berantakan, atau tambah 1–2 fitur cepat.",
-    features: [
-      "Cek sumber error/bug gratis di awal",
-      "Perbaikan fungsi / query database macet",
-      "Tambah fitur / modul revisi dosen",
-      "Bayar setelah bukti error beres dikirim",
-    ],
-    ctaText: "Tanya Biaya Fix Error",
-    ctaMsg: "Halo Mas (ecoDigital), saya mau tanya biaya fix error / revisi kodingan saya.",
-    isPopular: false,
-    theme: "default",
-  },
-  {
-    name: "Bangun Web / Sistem Baru (Reguler)",
+    name: "Web Instansi & Bisnis",
     price: "Rp 499.000",
-    badgeLabel: "Paket Reguler Standar",
-    badgeIcon: FireIcon,
-    desc: "Cocok buat Tugas Akhir, SPK, Sistem Informasi standar, atau Landing Page UMKM siap online.",
+    badgeLabel: "Paket Siap Online",
+    badgeIcon: Building03Icon,
+    desc: "Website resmi sekolah, profil instansi/dinas, portal usaha, kasir POS & inventori langsung online.",
     features: [
-      "100% Custom sesuai alur/flowchart",
-      "Desain responsif (rapi di HP & Laptop)",
-      "Full Source Code & Database lengkap",
-      "Bonus: Video penjelasan kode & bimbingan",
-      "Garansi revisi & bug fixing",
+      "Desain modern, mobile-friendly & SEO-ready",
+      "Konfigurasi deployment ke server/hosting",
+      "Panel Admin CMS kelola berita/pengumuman",
+      "Integrasi Form Kontak & WhatsApp Otomatis",
+      "Garansi bug fixing & pendampingan teknis",
     ],
-    ctaText: "Ambil Paket Reguler",
-    ctaMsg: "Halo Mas (ecoDigital), saya tertarik ambil Paket Reguler (mulai Rp499.000) untuk sistem / web saya.",
-    isPopular: true,
-    theme: "emerald",
+    ctaText: "Pilih Web Instansi & Bisnis",
+    ctaMsg: "Halo Mas (ecoDigital), saya tertarik konsultasi paket Web Instansi & Bisnis (mulai Rp499.000).",
+    isPopular: false,
+    theme: "teal",
   },
   {
-    name: "Sistem Skala Penuh / Custom App",
-    price: "Penawaran Tertulis",
-    badgeLabel: "Paket Enterprise & Scale-Up",
-    badgeIcon: Building03Icon,
-    desc: "Cocok buat Aplikasi Sekolah/Instansi, Mobile App (Android), atau integrasi sistem kompleks.",
+    name: "Jasa API & Backend",
+    price: "Rp 899.000",
+    badgeLabel: "High Performance",
+    badgeIcon: ApiIcon,
+    desc: "Fondasi RESTful API kencang, perancangan skema database teroptimasi, dan integrasi pihak ketiga.",
     features: [
-      "Web System + Mobile App (Flutter/Android)",
-      "Integrasi Open API / Payment Gateway",
-      "Deployment ke Server / Cloud / Vercel",
-      "Dokumentasi teknis & maintenance berkala",
+      "RESTful API Clean Architecture & Modular",
+      "Desain relasi database (PostgreSQL/MySQL)",
+      "Integrasi Midtrans / Xendit & WA Gateway",
+      "Dokumentasi interaktif Postman / Swagger",
+      "Keamanan JWT Auth & Role-Based Access Control",
     ],
-    ctaText: "Diskusi Proyek Custom",
-    ctaMsg: "Halo Mas (ecoDigital), saya ingin diskusi proyek custom untuk sistem skala penuh / aplikasi instansi.",
+    ctaText: "Pilih Jasa API & Backend",
+    ctaMsg: "Halo Mas (ecoDigital), saya tertarik konsultasi paket Jasa API & Backend Architecture.",
     isPopular: false,
     theme: "blue",
   },
+  {
+    name: "Aplikasi Custom",
+    price: "Mulai Rp 999.000",
+    priceDetail: {
+      web: "Mulai Rp 999rb",
+      mobile: "Mulai Rp 1.49jt",
+    },
+    badgeLabel: "Paling Banyak Dipilih",
+    badgeIcon: LaptopProgrammingIcon,
+    desc: "Sistem aplikasi custom sesuai alur operasional unik, multi-user, dan arsitektur modular terstandar.",
+    features: [
+      "Pilihan platform: Web Custom atau Android (Flutter)",
+      "100% Custom alur logika & proses bisnismu",
+      "Clean Architecture & struktur modular",
+      "Akses demo Staging Live 24/7 pantau progres",
+      "Penyerahan berkas kode lengkap & database",
+      "Garansi pendampingan & garansi pengerjaan",
+    ],
+    ctaText: "Pilih Aplikasi Custom",
+    ctaMsg: "Halo Mas (ecoDigital), saya tertarik konsultasi paket Aplikasi Custom (Web / Android).",
+    isPopular: true,
+    theme: "emerald",
+  },
 ];
 
-// ─── Kalkulator Simulasi Biaya Options ────────────────────────────────────────
+// ─── Kalkulator Simulasi Biaya Options (Selaras 3 Fokus Layanan) ─────────────
 export const CALCULATOR_BASE_OPTIONS: Record<
   string,
   { name: string; label: string; desc: string; base: string; price: number; days: string }
 > = {
-  fix_error: {
-    name: "Fix Error & Tambah Fitur",
-    label: "Penyelamat Revisi & Fix Error",
-    desc: "Perbaikan bug, error query, revisi",
-    base: "Mulai 150rb",
-    price: 150000,
-    days: "1–3 Hari Kerja",
-  },
-  skripsi: {
-    name: "Bangun Web / TA / SPK Reguler",
-    label: "Bangun Web / Sistem Baru (Reguler / TA)",
-    desc: "Custom alur, database & bimbingan",
-    base: "Mulai 499rb",
-    price: 499000,
-    days: "3–7 Hari Kerja",
-  },
-  umkm: {
-    name: "Website Profil UMKM / Bisnis",
-    label: "Website Profil UMKM / Bisnis",
-    desc: "Company profile resmi & WhatsApp",
-    base: "Mulai 499rb",
-    price: 499000,
-    days: "3–7 Hari Kerja",
-  },
-  custom_admin: {
-    name: "Sistem Info & Dashboard Admin",
-    label: "Sistem Informasi & Dashboard Admin Custom",
-    desc: "Operasional kantor, multi-user RBAC",
+  aplikasi_custom: {
+    name: "Aplikasi Custom (Web)",
+    label: "Aplikasi Web Custom & Sistem Informasi",
+    desc: "Sistem operasional, alur custom & multi-role RBAC",
     base: "Mulai 999rb",
     price: 999000,
     days: "1–3 Minggu",
   },
   mobile_app: {
-    name: "Aplikasi Mobile Flutter",
-    label: "Aplikasi Mobile Android (Flutter)",
-    desc: "Android APK, backend API & cloud",
+    name: "Aplikasi Custom (Mobile)",
+    label: "Aplikasi Mobile Custom (Flutter/Android)",
+    desc: "Aplikasi mobile kustom, terhubung API & cloud",
     base: "Mulai 1.49jt",
     price: 1499000,
     days: "2–4 Minggu",
+  },
+  api_backend: {
+    name: "Jasa API & Backend",
+    label: "REST API & Backend Architecture",
+    desc: "RESTful API modular, database & payment gateway",
+    base: "Mulai 899rb",
+    price: 899000,
+    days: "1–2 Minggu",
+  },
+  web_instansi: {
+    name: "Web Instansi & Bisnis",
+    label: "Web Instansi, Sekolah & Bisnis (Siap Online)",
+    desc: "Website resmi, profil sekolah/dinas & usaha siap online",
+    base: "Mulai 499rb",
+    price: 499000,
+    days: "3–7 Hari Kerja",
+  },
+  fix_error: {
+    name: "Troubleshoot & Fix Bug",
+    label: "Troubleshoot & Optimasi Sistem",
+    desc: "Perbaikan bug, error query, revisi modul",
+    base: "Mulai 150rb",
+    price: 150000,
+    days: "1–3 Hari Kerja",
   },
 };
 
@@ -458,18 +464,8 @@ export const CALCULATOR_ADDON_OPTIONS: Record<
   string,
   { label: string; price: number; priceFormatted: string }
 > = {
-  spk_algo: {
-    label: "Algoritma SPK (AHP, TOPSIS, SAW, KNN)",
-    price: 200000,
-    priceFormatted: "+Rp 200rb",
-  },
-  bedah_kode: {
-    label: "Video Bedah Kode & Sesi Bimbingan 1-on-1",
-    price: 150000,
-    priceFormatted: "+Rp 150rb",
-  },
-  domain_hosting: {
-    label: "Domain Resmi (.com/.id) & Cloud Hosting Siap Online",
+  payment_gateway: {
+    label: "Integrasi Payment Gateway Otomatis (Midtrans / Xendit)",
     price: 250000,
     priceFormatted: "+Rp 250rb",
   },
@@ -478,15 +474,25 @@ export const CALCULATOR_ADDON_OPTIONS: Record<
     price: 200000,
     priceFormatted: "+Rp 200rb",
   },
-  export_pdf: {
-    label: "Modul Ekspor Laporan Otomatis (PDF & Excel)",
-    price: 150000,
-    priceFormatted: "+Rp 150rb",
+  complex_logic: {
+    label: "Algoritma Khusus & Logika Alur Kompleks",
+    price: 200000,
+    priceFormatted: "+Rp 200rb",
   },
   multi_role: {
     label: "Sistem Hak Akses Berjenjang (Multi-Role RBAC)",
     price: 200000,
     priceFormatted: "+Rp 200rb",
+  },
+  export_pdf: {
+    label: "Modul Ekspor Laporan Otomatis (PDF & Excel)",
+    price: 150000,
+    priceFormatted: "+Rp 150rb",
+  },
+  setup_dampingan: {
+    label: "Dokumentasi Lengkap & Pendampingan Deployment",
+    price: 150000,
+    priceFormatted: "+Rp 150rb",
   },
 };
 
@@ -498,23 +504,23 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Kodingan saya sudah setengah jalan tapi mentok error / ditinggal developer lama. Bisa lanjutin tanpa bikin ulang?",
-    a: "Sangat bisa. Justru itu alasan saya menyediakan paket Penyelamat Revisi & Fix Error (Mulai Rp150.000). Kirim saja source code lamamu untuk saya cek dulu kerusakannya secara gratis. Kalau memang masih layak pakai dan cuma butuh benerin bug atau tambah 1–2 fitur revisi dosen, kamu nggak perlu buang uang buat bangun ulang dari nol.",
+    a: "Sangat bisa. Justru itu alasan saya menyediakan paket Penyelamat Revisi & Fix Error (Mulai Rp150.000). Kirim saja source code lamamu untuk saya cek dulu kerusakannya secara gratis. Kalau memang masih layak pakai dan cuma butuh benerin bug atau tambah 1–2 fitur penyesuaian, Anda nggak perlu buang uang buat bangun ulang dari nol.",
   },
   {
-    q: "Nanti kalau ditanya dosen penguji pas sidang gimana? Saya takut nggak paham kodingannya.",
-    a: "Tenang, saya bukan joki lepas tangan yang cuma kirim file .ZIP lalu hilang kontak. Setiap serah terima proyek sistem baru sudah termasuk video rekaman penjelasan alur kodingan & struktur database khusus untuk aplikasimu, ditambah sesi tanya-jawab 1-on-1. Kamu bisa putar ulang videonya kapan saja sampai benar-benar siap maju sidang.",
+    q: "Bagaimana jika tim kami atau stakeholder butuh memahami alur kodingannya?",
+    a: "ecoDigital mengutamakan transparansi penuh. Kami bukan pengembang yang cuma kirim file .ZIP lalu hilang kontak. Setiap serah terima proyek sistem baru sudah mencakup dokumentasi arsitektur, panduan deployment, dan skema database lengkap. Kodenya terstruktur modular sehingga mudah dipahami dan dikembangkan lanjut oleh tim internal Anda.",
   },
   {
     q: "Berapa lama proses pengerjaannya? Bisa bantu kejar deadline yang sudah mepet?",
-    a: "Durasi pengerjaan menyesuaikan tingkat kerumitan: Fix Error / Tambah Fitur Ringan (1–3 hari beres), Landing Page / Web Standar (3–7 hari kerja), dan Sistem Informasi / SPK / Aplikasi Custom (1–3 minggu). Kalau jadwal bimbingan atau sidangmu sudah mepet dalam hitungan hari, infokan saja jujur di awal chat supaya kita bisa memprioritaskan modul utamanya agar siap didemokan tepat waktu.",
+    a: "Durasi pengerjaan menyesuaikan tingkat kerumitan: Fix Error / Tambah Fitur Ringan (1–3 hari beres), Landing Page / Web Standar (3–7 hari kerja), dan Sistem Informasi / Aplikasi Custom (1–3 minggu). Infokan jadwal deadline-mu di awal chat supaya kita bisa memprioritaskan modul utamanya agar siap didemokan tepat waktu.",
   },
   {
     q: "Apa saja yang bakal saya dapatkan saat proyek selesai?",
-    a: "Komplit dan menjadi hak milikmu 100% tanpa ada kode yang dikunci (enkripsi): Full Source Code asli yang rapi, file database lengkap (.sql), panduan/bantuan instalasi sampai aplikasi jalan normal di laptopmu sendiri (localhost / Android), link live preview, serta video penjelasan alur program.",
+    a: "Komplit tanpa ada kode yang dikunci atau dienkripsi: Berkas kode sumber asli yang terstruktur rapi, file database lengkap (.sql), panduan deployment sampai sistem jalan normal di environment Anda (localhost / VPS / Android), link live preview, serta garansi perbaikan teknis.",
   },
   {
-    q: "Gimana kalau setelah aplikasi jadi, tiba-tiba ada revisi dari dosen atau atasan?",
-    a: "Semua paket sudah dilindungi Garansi Revisi. Selama revisi tersebut masih berada di dalam kesepakatan alur fitur awal atau perbaikan bug tampilan/fungsi, akan saya bereskan gratis tanpa biaya tambahan. Namun, jika di tengah jalan dosen atau atasan meminta penambahan fitur/modul baru di luar kesepakatan awal, biayanya tinggal menyesuaikan paket tambah fitur ringan.",
+    q: "Gimana kalau setelah aplikasi jadi, tiba-tiba ada penyesuaian atau revisi fitur?",
+    a: "Semua paket sudah dilindungi Garansi Revisi. Selama revisi tersebut masih berada di dalam kesepakatan alur fitur awal atau perbaikan bug tampilan/fungsi, akan kami selesaikan gratis tanpa biaya tambahan. Namun, jika ada penambahan fitur/modul baru di luar kesepakatan awal, biayanya tinggal menyesuaikan paket tambah fitur terjangkau.",
   },
   {
     q: "Sistem pembayarannya gimana? Apakah uang saya aman?",

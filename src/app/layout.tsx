@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/layout/smooth-scroll-provider";
+import { ThemeProvider } from "@/components/theme/theme-context";
 import { JsonLd } from "@/components/seo/json-ld";
 import "./globals.css";
 
@@ -25,7 +26,7 @@ export const viewport: Viewport = {
 const SITE_URL = "https://eco.co-id.id";
 const SITE_TITLE = "ecoDigital — Jasa Pembuatan Website & Aplikasi Custom | Direct Developer";
 const SITE_DESC =
-  "Jasa pembuatan website & sistem aplikasi custom terpercaya. Diskusi langsung sama developer tanpa perantara sales. Melayani tugas akhir/skripsi, sistem informasi instansi, web sekolah, aplikasi UMKM, dan perbaikan bug/error kodingan. Bergaransi & transparan.";
+  "Jasa pembuatan Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis profesional. Diskusi langsung bersama lead developer tanpa perantara sales. Arsitektur bersih, transparan, dan serah terima tuntas bergaransi.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -40,11 +41,14 @@ export const metadata: Metadata = {
   keywords: [
     "jasa pembuatan website",
     "jasa bikin web",
-    "jasa website custom",
+    "jasa aplikasi custom",
+    "jasa api dan backend",
+    "jasa pembuatan rest api",
+    "jasa web instansi dan bisnis",
+    "jasa aplikasi custom web dan mobile",
     "jasa pembuatan aplikasi",
-    "jasa tugas akhir informatika",
-    "jasa skripsi sistem informasi",
-    "jasa bimbingan koding",
+    "jasa sistem informasi instansi",
+    "jasa arsitektur software",
     "jasa perbaikan error koding",
     "jasa fix bug php laravel",
     "jasa web sekolah",
@@ -52,10 +56,9 @@ export const metadata: Metadata = {
     "jasa coding direct developer",
     "ecoDigital",
     "jasa sistem informasi",
-    "jasa pembuatan sistem spk",
-    "jasa web murah profesional",
-    "buat website tugas akhir",
-    "joki coding amanah terpercaya",
+    "jasa website instansi",
+    "jasa web profesional",
+    "software house custom web",
   ],
   creator: "ecoDigital",
   publisher: "ecoDigital",
@@ -117,13 +120,37 @@ export default function RootLayout({
     <html
       lang="id"
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      data-theme="dark"
+      suppressHydrationWarning
     >
       <head>
         <JsonLd />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('eco_theme');
+                  var theme = stored === 'light' ? 'light' : 'dark';
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                  } else {
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
+                  }
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
       </head>
-      <body className="min-h-full bg-background text-foreground selection:bg-emerald-500/30 selection:text-emerald-300">
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      <body className="min-h-full bg-slate-50 dark:bg-[#060A14] text-slate-900 dark:text-white transition-colors duration-200 selection:bg-emerald-500/30 selection:text-emerald-400">
+        <ThemeProvider>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

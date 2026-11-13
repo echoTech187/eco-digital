@@ -143,23 +143,23 @@ export function ProjectScreenPreview({ project }: { project: ProjectItem }) {
         </div>
       );
 
-    case "spk-ahp-topsis":
+    case "evaluasi-kinerja":
       return (
         <div className="relative z-10 rounded-xl border border-white/15 bg-black/60 p-2 backdrop-blur-md text-[10px]">
           <div className="flex items-center justify-between border-b border-white/10 pb-1 mb-1">
-            <span className="font-bold text-white text-[9px]">MATRIKS KEPUTUSAN SPK</span>
+            <span className="font-bold text-white text-[9px]">MATRIKS EVALUASI KINERJA</span>
             <span className="rounded bg-teal-500/20 px-1.5 py-0.2 text-[8px] font-mono text-teal-300">
-              CR: 0.041 (Valid)
+              Audit Status: Verified
             </span>
           </div>
           <div className="space-y-1 font-mono text-[8px]">
             <div className="flex items-center justify-between rounded bg-white/5 px-2 py-0.5 text-white/80">
-              <span>Bobot Kriteria: C1(0.4) C2(0.35)</span>
-              <span className="text-white/50">AHP</span>
+              <span>Indikator: KPI-1(40%) KPI-2(35%)</span>
+              <span className="text-white/50">Target 100%</span>
             </div>
             <div className="flex items-center justify-between rounded bg-emerald-950/40 border border-emerald-400/30 px-2 py-0.5 text-emerald-300">
-              <span>Rank #1: Alternatif A3</span>
-              <span className="font-bold">V = 0.892</span>
+              <span>Peringkat #1: Divisi Teknis</span>
+              <span className="font-bold">Skor: 94.2/100</span>
             </div>
           </div>
         </div>

@@ -9,11 +9,11 @@ import { getWaUrl, TECH_STACK_ITEMS } from "@/data/landing-data";
 import founderImg from "../../../public/images/founder.png";
 
 const HERO_BUBBLE_SCRIPTS = [
-  "Deadline sidang makin dekat, error belum kelar? Nota usaha makin menumpuk? Kadang, langkah pertama sesederhana berani bilang, halo.",
-  "Di ecoDigital, kamu langsung ngobrol dengan lead developer yang santai dan paham. Ceritakan masalahmu, kami dengarkan tanpa asal kasih harga.",
-  "Lewat bimbingan 1-on-1, kode dibenahi transparan & logika dijelaskan dengan bahasa manusia. Source code 100% diserahkan plus rekaman bedah kode.",
-  "Sistem lancar, sidang lebih tenang, pesanan pertama pun masuk. Karena solusi dari error paling rumit pun, selalu bermula dari satu sapaan santai.",
-  "Nggak perlu hadapi error sendirian. Temukan partner kodingmu di ecoDigital—dimulai dari sapaan 'Halo'!",
+  "Butuh aplikasi custom yang modular, fondasi REST API kencang, atau web instansi siap pakai? Semua bermula dari satu sapaan santai.",
+  "Di ecoDigital, Anda langsung berdiskusi dengan lead developer. Ceritakan alur sistem atau spesifikasi teknismu tanpa perantara sales.",
+  "Clean architecture rapi, relasi database teroptimasi, serta integrasi payment gateway & WhatsApp API yang handal.",
+  "Progres terpantau lewat staging live 24/7, sistem stabil, arsitektur bersih, dan tanpa biaya tersembunyi.",
+  "Solusi rekayasa software tepat guna: Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis — dimulai dari sapaan 'Halo'!",
 ];
 
 export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
@@ -64,11 +64,11 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
   return (
     <section
       id="hero"
-      className="relative flex w-full flex-col justify-center bg-[#060A14] pt-8 pb-16 sm:pt-12 sm:pb-20 lg:pt-0 lg:pb-14 lg:h-[calc(100dvh-80px)] lg:max-h-[calc(100dvh-80px)] lg:overflow-hidden"
+      className="relative flex w-full flex-col justify-center bg-slate-50 dark:bg-[#060A14] pt-24 sm:pt-28 lg:pt-20 pb-16 sm:pb-20 lg:pb-14 lg:h-screen lg:max-h-screen lg:overflow-hidden transition-colors duration-200"
     >
       {/* Ambient background glows */}
-      <div className="pointer-events-none absolute -top-28 -left-28 w-96 h-96 rounded-full bg-emerald-500/15 blur-3xl" />
-      <div className="pointer-events-none absolute top-1/4 right-0 w-[450px] h-[450px] rounded-full bg-cyan-500/10 blur-3xl" />
+      <div className="pointer-events-none absolute -top-10 -left-20 w-[480px] h-[480px] rounded-full bg-emerald-500/15 dark:bg-emerald-500/25 blur-[120px]" />
+      <div className="pointer-events-none absolute -top-10 right-0 w-[520px] h-[520px] rounded-full bg-cyan-500/15 dark:bg-cyan-500/20 blur-[130px]" />
 
       {/* ─── 1. TOP/MIDDLE STAGE: HEADLINE + FOUNDER + BUBBLE ─────────────────── */}
       <div className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 my-0 lg:my-auto py-2 lg:py-0">
@@ -80,21 +80,21 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
               {/* Primary H1 Heading */}
               <h1
                 id="heroMainHeading"
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-extrabold tracking-tight text-white leading-[1.2] lg:leading-[1.18] max-w-2xl mx-auto lg:mx-0"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.2] lg:leading-[1.18] max-w-2xl mx-auto lg:mx-0"
               >
-                Wujudkan Sistem Website &amp; Aplikasi Custom{" "}
-                <span className="text-emerald-400">
-                  untuk Riset, Tugas Akhir, hingga Bisnis Anda.
+                Wujudkan Aplikasi Custom, API &amp; Backend Handal,{" "}
+                <span className="text-emerald-600 dark:text-emerald-400">
+                  hingga Web Instansi &amp; Bisnis Anda.
                 </span>
               </h1>
             </AnimateOnScroll>
 
             <AnimateOnScroll preset="fade-right" once={false} duration={0.6} delay={0.3}>
               {/* Persuasive Description Subheadline */}
-              <p className="text-slate-300 text-xs sm:text-sm md:text-base lg:text-[17px] leading-relaxed max-w-xl mx-auto lg:mx-0">
-                Nggak perlu pusing hadapi <span className="text-white font-medium">error</span> sendirian atau bayar mahal ke agensi. Di{" "}
-                <strong className="text-emerald-400 font-semibold">ecoDigital</strong>, kamu diskusi langsung sama{" "}
-                <span className="text-white font-medium">developer-nya</span> — mulai dari perbaikan <em>bug</em>, aplikasi Tugas Akhir, hingga sistem sekolah &amp; bisnis.
+              <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm md:text-base lg:text-[17px] leading-relaxed max-w-xl mx-auto lg:mx-0">
+                Nggak perlu pusing hadapi arsitektur sistem sendirian atau bayar mahal ke agensi kaku. Di{" "}
+                <strong className="text-emerald-600 dark:text-emerald-400 font-semibold">ecoDigital</strong>, Anda diskusi langsung sama{" "}
+                <span className="text-slate-900 dark:text-white font-medium">lead developer-nya</span> — mulai dari rancang bangun <strong>Aplikasi Custom</strong>, fondasi <strong>Jasa API &amp; Backend</strong>, hingga <strong>Web Instansi &amp; Bisnis</strong> siap online.
               </p>
             </AnimateOnScroll>
 
@@ -116,7 +116,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
 
                 <a
                   href="#portofolio"
-                  className="px-6 py-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 hover:border-slate-600 font-semibold text-sm sm:text-base transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 shadow-sm dark:bg-slate-900/90 dark:hover:bg-slate-800 dark:text-slate-200 dark:border-slate-700/80 font-semibold text-sm sm:text-base transition-all transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Lihat Portofolio
                 </a>
@@ -125,18 +125,18 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
 
             <AnimateOnScroll preset="fade-right" once={false} duration={0.6} delay={0.6}>
               {/* 3 Core Value / Trust Guarantees */}
-              <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-400">
+              <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="text-emerald-400 font-bold text-sm">✓</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">✓</span>
                   <span>Anti-Ghosting &amp; Transparan</span>
                 </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="text-emerald-400 font-bold text-sm">✓</span>
-                  <span>Bebas Konsultasi &amp; Bimbingan</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">✓</span>
+                  <span>Konsultasi Langsung Developer</span>
                 </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="text-emerald-400 font-bold text-sm">✓</span>
-                  <span>Source Code 100% Milikmu</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">✓</span>
+                  <span>Garansi Sistem &amp; Tanpa DP Mengambang</span>
                 </span>
               </div>
             </AnimateOnScroll>
@@ -147,7 +147,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
             <AnimateOnScroll preset="fade-left" once={false} duration={0.7} className="w-full flex flex-col items-center justify-end">
 
               {/* Soft Ambient Radial Behind Founder */}
-              <div className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[380px] sm:w-[380px] lg:h-[440px] lg:w-[440px] rounded-full bg-gradient-to-tr from-emerald-500/20 via-blue-600/25 to-cyan-400/20 blur-[90px] -z-10" />
+              <div className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[380px] sm:w-[380px] lg:h-[440px] lg:w-[440px] rounded-full bg-gradient-to-tr from-emerald-500/10 via-sky-500/15 to-teal-400/10 dark:from-emerald-500/20 dark:via-blue-600/25 dark:to-cyan-400/20 blur-[100px] -z-10" />
 
               {/* 1. Clean Comic Cloud Bubble (Floating above Eko) */}
               <div
@@ -221,27 +221,21 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
               </div>
 
               {/* 2. Founder Photo Standing Tall (Besar & Mantap, menjulang ke bawah hingga dipotong rapi oleh Tech Stack Bar di bottom: 0) */}
-              <div
-                className="relative h-[260px] sm:h-[320px] md:h-[360px] lg:h-[410px] xl:h-[450px] w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[360px] xl:max-w-[400px]"
-                style={{
-                  maskImage:
-                    "linear-gradient(to top, transparent 0%, rgba(0,0,0,0.6) 4%, black 14%, black 100%)",
-                  WebkitMaskImage:
-                    "linear-gradient(to top, transparent 0%, rgba(0,0,0,0.6) 4%, black 14%, black 100%)",
-                }}
-              >
-
-                <Image
-                  src={founderImg}
-                  alt="Eko Susanto — Developer & Systems Architect ecoDigital"
-                  fill
-                  priority
-                  loading="eager"
-                  unoptimized
-                  sizes="(max-width: 768px) 80vw, (max-width: 1200px) 450px, 500px"
-                  className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)] select-none aspect-[400/450]"
-                  style={{ aspectRatio: "400 / 450" }}
-                />
+              <div className="relative w-full max-w-[260px] sm:max-w-[300px] md:max-w-[340px] lg:max-w-[380px] xl:max-w-[420px] flex justify-center items-end">
+                <div className="relative h-[270px] sm:h-[330px] md:h-[370px] lg:h-[420px] xl:h-[460px] w-full">
+                  <Image
+                    src={founderImg}
+                    alt="Eko Susanto — Developer & Systems Architect ecoDigital"
+                    fill
+                    priority
+                    loading="eager"
+                    unoptimized
+                    sizes="(max-width: 768px) 80vw, (max-width: 1200px) 450px, 500px"
+                    className="object-contain object-bottom drop-shadow-[0_12px_28px_rgba(15,23,42,0.10)] dark:drop-shadow-[0_20px_40px_rgba(0,0,0,0.75)] select-none pointer-events-none"
+                  />
+                  {/* Smooth bottom fade overlay to cleanly blend the waist cutoff into background & Tech Stack Bar */}
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-20 bg-gradient-to-t from-slate-50 via-slate-50/70 to-transparent dark:from-[#060A14] dark:via-[#060A14]/70 dark:to-transparent z-10" />
+                </div>
               </div>
             </AnimateOnScroll>
           </div>
@@ -249,7 +243,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
       </div>
 
       {/* ─── 2. INTEGRATED TECH STACK BAR (ABSOLUTE BOTTOM: 0, OVERLAY DI ATAS BAGIAN BAWAH FOTO FOUNDER) ─── */}
-      <div className="absolute bottom-0 inset-x-0 z-30 w-full border-t border-slate-800/80 bg-slate-950/85 py-3 sm:py-3.5 backdrop-blur-xl">
+      <div className="absolute bottom-0 inset-x-0 z-30 w-full border-t border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-slate-950/85 py-3 sm:py-3.5 backdrop-blur-xl transition-colors duration-200">
         <div
           className="relative flex overflow-x-hidden"
           style={{
@@ -265,9 +259,9 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
               return (
                 <div
                   key={idx}
-                  className="flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-white/15 bg-white/[0.05] px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white/90 shadow-md transition-all hover:scale-105 hover:border-emerald-400 hover:bg-emerald-500/10 hover:text-white"
+                  className="flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-slate-200 dark:border-white/15 bg-white dark:bg-white/[0.05] px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold text-slate-800 dark:text-white/90 shadow-xs dark:shadow-md transition-all hover:scale-105 hover:border-emerald-500 dark:hover:border-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 hover:text-emerald-700 dark:hover:text-white"
                 >
-                  <span className="text-emerald-400 shrink-0">
+                  <span className="text-emerald-600 dark:text-emerald-400 shrink-0">
                     <HugeiconsIcon icon={IconComp} size={18} />
                   </span>
                   <span>{t.name}</span>

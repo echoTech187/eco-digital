@@ -1,162 +1,267 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   ArrowRight01Icon,
   WhatsappIcon,
   ShieldCheckIcon,
+  CheckmarkCircle01Icon,
+  Globe02Icon,
+  FileCodeIcon,
+  LockIcon,
+  Message01Icon,
+  ComputerIcon,
+  Award01Icon,
+  SparklesIcon,
 } from "@hugeicons/core-free-icons";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 import { getWaUrl } from "@/data/landing-data";
-import {
-  VectorStepChat,
-  VectorStepScope,
-  VectorStepStaging,
-  VectorStepHandover,
-} from "@/components/ui/vector-art/workflow-vectors";
 
-interface StepConfig {
+interface MilestoneDeliverable {
+  icon: React.ComponentProps<typeof HugeiconsIcon>["icon"];
+  label: string;
+  highlight?: boolean;
+}
+
+interface Milestone {
   step: string;
-  badge: string;
+  phase: string;
   title: string;
+  highlight: string;
   desc: string;
-  renderWidget: () => React.ReactNode;
+  deliverables: MilestoneDeliverable[];
+  tag: string;
 }
 
 export function WorkflowSection() {
-  const steps: StepConfig[] = [
+  const [activeStep, setActiveStep] = useState<number>(0);
+
+  const milestones: Milestone[] = [
     {
       step: "01",
-      badge: "Gratis di WA",
-      title: "Curhat Kebutuhan & Ide",
-      desc: "Kirim judul, alur, atau kendala kodinganmu. Belum punya gambaran teknis? Kita bedah bareng tanpa biaya.",
-      renderWidget: () => <VectorStepChat />,
+      phase: "MILESTONE 01 • DISCOVERY & CURHAT",
+      title: "Curhat Kebutuhan",
+      highlight: "& Eksplorasi Solusi",
+      desc: "Kirim ide aplikasi custom, rancangan endpoint API, atau kebutuhan web instansi & bisnismu. Kita bedah langsung bersama developer tanpa perantara sales yang kaku.",
+      tag: "Gratis di WhatsApp",
+      deliverables: [
+        { icon: Message01Icon, label: "Chat / Call Langsung Mas Eko" },
+        { icon: SparklesIcon, label: "Rekomendasi Arsitektur Database & Stack" },
+        { icon: CheckmarkCircle01Icon, label: "Biaya: Rp 0 (Konsultasi Bebas)", highlight: true },
+      ],
     },
     {
       step: "02",
-      badge: "Tanpa Biaya Siluman",
-      title: "Kunci Fitur & Estimasi Biaya",
-      desc: "Fitur, deadline, dan biaya disepakati tertulis di awal. Tidak ada biaya mendadak di tengah pengerjaan.",
-      renderWidget: () => <VectorStepScope />,
+      phase: "MILESTONE 02 • SPEC & COST LOCK",
+      title: "Kunci Fitur, Deadline",
+      highlight: "& Estimasi Biaya",
+      desc: "Semua modul, alur logika, tenggat waktu, dan total biaya disepakati tertulis di awal. Sistem pembayaran bertahap per-progres nyata, tanpa DP mengambang dan tanpa biaya siluman.",
+      tag: "Transparan & Tertulis",
+      deliverables: [
+        { icon: LockIcon, label: "Dokumen Kesepakatan Fitur Tertulis" },
+        { icon: CheckmarkCircle01Icon, label: "Deadline Rilis / Go-Live Terkunci" },
+        { icon: ShieldCheckIcon, label: "Bayar Bertahap (No DP Mengambang)", highlight: true },
+      ],
     },
     {
       step: "03",
-      badge: "Link Staging Live",
-      title: "Eksekusi & Pantau Live",
-      desc: "Koding berjalan teratur. Kamu diberikan link staging aktif untuk memantau progres langsung dari HP/laptop.",
-      renderWidget: () => <VectorStepStaging />,
+      phase: "MILESTONE 03 • BUILD & LIVE STAGING",
+      title: "Eksekusi Koding",
+      highlight: "& Pantau Progres 24/7",
+      desc: "Kodingan dikerjakan rapi berbasis clean architecture. Kamu diberikan tautan staging aktif yang bisa kamu buka dari HP maupun laptop kapan saja untuk menguji alur aplikasimu secara nyata.",
+      tag: "Live Demo URL Aktif",
+      deliverables: [
+        { icon: Globe02Icon, label: "staging.ecodigital.id (Akses Demo 24/7)" },
+        { icon: ComputerIcon, label: "Uji Coba Alur Langsung dari HP & Laptop" },
+        { icon: CheckmarkCircle01Icon, label: "Laporan Progres Transparan", highlight: true },
+      ],
     },
     {
       step: "04",
-      badge: "Garansi Revisi",
-      title: "Demo & Serah Terima Penuh",
-      desc: "Sistem didemokan bareng sampai mantap. Diberikan video bedah kode, full file source code, dan garansi.",
-      renderWidget: () => <VectorStepHandover />,
+      phase: "MILESTONE 04 • LAUNCH & WARRANTY",
+      title: "Demo Bareng, Serah Terima",
+      highlight: "& Garansi Penuh",
+      desc: "Sistem didemokan bersama sampai tuntas dan dipastikan berjalan mulus di lingkungan Anda. Seluruh berkas sistem dan database diserahkan utuh, didukung sesi pendampingan dan garansi perbaikan.",
+      tag: "Serah Terima Tuntas & Garansi",
+      deliverables: [
+        { icon: FileCodeIcon, label: "Berkas Sistem & Database Lengkap (Git + Zip)" },
+        { icon: CheckmarkCircle01Icon, label: "Panduan Setup & Dokumentasi Menjalankan Sistem" },
+        { icon: Award01Icon, label: "Garansi Revisi & Pendampingan Penuh", highlight: true },
+      ],
     },
   ];
 
   return (
-    <div id="cara-kerja" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 pt-16 sm:pt-20 pb-8 sm:pb-12 scroll-mt-20 overflow-hidden">
+    <section
+      id="cara-kerja"
+      className="relative z-20 w-full bg-slate-50 dark:bg-[#060A14] px-4 sm:px-8 lg:px-14 pt-20 sm:pt-28 pb-16 sm:pb-24 scroll-mt-20 overflow-hidden transition-colors duration-200"
+    >
       <span id="alur-kerja" className="scroll-mt-24 block" />
-      {/* Background Ambient Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[800px] rounded-full bg-emerald-500/[0.04] blur-[120px]" />
 
-      <div className="relative mx-auto max-w-6xl">
+      {/* Atmospheric Background Glows */}
+      <div className="pointer-events-none absolute left-1/2 top-1/4 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 blur-[180px]" />
+      <div className="pointer-events-none absolute right-10 bottom-10 h-80 w-80 rounded-full bg-cyan-500/10 blur-[150px]" />
+
+      <div className="relative mx-auto max-w-5xl">
         {/* Section Header */}
-        <AnimateOnScroll preset="fade-up" className="mb-12 sm:mb-16 text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.25em] text-emerald-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Alur Kerja Anti-Ghosting
-          </span>
-          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white">
-            4 Langkah Terarah, <span className="text-emerald-400">Dari Ide Sampai Beres</span>
+        <AnimateOnScroll preset="fade-up" className="mb-16 sm:mb-24 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400 mb-4 backdrop-blur-md shadow-xs">
+            <span className="h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
+            <span>ROADMAP PENGERJAAN SISTEM</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            Alur Kerja Modern,{" "}
+            <span className="bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent">
+              Dari Ide Sampai Beres
+            </span>
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-white/60 max-w-xl mx-auto">
-            Komunikasi to the point langsung dengan developer. Tanpa perantara sales yang kaku, tanpa biaya siluman.
+
+          <p className="mt-4 text-xs sm:text-sm lg:text-base text-slate-600 dark:text-slate-300/80 max-w-2xl mx-auto leading-relaxed">
+            Transparan di setiap milestone. Anda tahu persis apa yang sedang dikerjakan untuk <strong>Aplikasi Custom</strong>, <strong>API &amp; Backend</strong>, atau <strong>Web Instansi</strong> Anda — progresnya bisa dicoba sendiri via staging live 24/7.
           </p>
         </AnimateOnScroll>
 
-        {/* Connected Bento Pipeline Grid */}
-        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {/* Subtle connecting track line on desktop behind the cards */}
-          <div className="hidden lg:block absolute top-[44px] left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent pointer-events-none z-0" />
+        {/* ─── ROADMAP SPINE & MILESTONES (Central Rail on Desktop, Left Rail on Mobile) ─── */}
+        <div className="relative">
+          {/* Central Connecting Timeline Rail (Desktop) */}
+          <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-8 bottom-8 w-[2px] bg-gradient-to-b from-emerald-500/20 via-emerald-500/60 to-emerald-500/20 pointer-events-none z-0">
+            {/* Animated Light Pulse traveling down the track */}
+            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-transparent via-emerald-400 to-transparent blur-[1px] animate-pulse" />
+          </div>
 
-          {steps.map((s, idx) => (
-            <div
-              key={s.step}
-              className="group relative flex flex-col justify-between rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 backdrop-blur-md transition-all duration-300 hover:border-emerald-500/40 hover:bg-white/[0.06] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)] z-10"
-            >
-              {/* Connecting Node Icon for Desktop (between cards) */}
-              {idx < steps.length - 1 && (
-                <span className="hidden lg:flex absolute -right-3 top-10 z-20 h-6 w-6 items-center justify-center rounded-full bg-[#081220] border border-emerald-500/40 text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.25)]">
-                  <HugeiconsIcon icon={ArrowRight01Icon} size={12} />
-                </span>
-              )}
+          {/* Left Connecting Timeline Rail (Mobile & Tablet) */}
+          <div className="lg:hidden absolute left-5 sm:left-7 top-6 bottom-6 w-[2px] bg-gradient-to-b from-emerald-500/20 via-emerald-500/60 to-emerald-500/20 pointer-events-none z-0" />
 
-              {/* Step Header */}
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono font-black text-sm shadow-[0_0_15px_rgba(16,185,129,0.15)] group-hover:scale-105 group-hover:border-emerald-400 transition-all">
-                      {s.step}
-                    </span>
-                    <span className="rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 text-[9.5px] font-bold text-emerald-300 uppercase tracking-wide">
-                      {s.badge}
-                    </span>
+          {/* Milestones Stack */}
+          <div className="space-y-12 sm:space-y-16 lg:space-y-20 relative z-10">
+            {milestones.map((m, idx) => {
+              const isEven = idx % 2 === 1; // 0 = left, 1 = right, 2 = left, 3 = right
+              const isSelected = activeStep === idx;
+
+              return (
+                <div
+                  key={m.step}
+                  onMouseEnter={() => setActiveStep(idx)}
+                  className="relative flex flex-col lg:flex-row items-start lg:items-center group"
+                >
+                  {/* ─── Central Node Circle (Desktop: Middle, Mobile: Left Rail) ─── */}
+                  <div className="lg:absolute lg:left-1/2 lg:-translate-x-1/2 flex items-center justify-center shrink-0 z-20 mb-4 lg:mb-0">
+                    <div
+                      className={`relative flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl font-mono font-black text-sm transition-all duration-300 border-2 ${
+                        isSelected
+                          ? "bg-emerald-500 text-slate-950 border-emerald-400 shadow-[0_0_25px_rgba(16,185,129,0.5)] scale-110"
+                          : "bg-white dark:bg-[#070D18] text-emerald-600 dark:text-emerald-400 border-emerald-500/40 shadow-md group-hover:border-emerald-400 group-hover:scale-105"
+                      }`}
+                    >
+                      <span>{m.step}</span>
+                      {isSelected && (
+                        <span className="absolute -inset-1 rounded-2xl border border-emerald-400 animate-ping opacity-40 pointer-events-none" />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* ─── Milestone Card (Alternating on Desktop) ─── */}
+                  <div
+                    className={`w-full lg:w-[calc(50%-48px)] pl-12 sm:pl-16 lg:pl-0 ${
+                      isEven ? "lg:ml-auto lg:text-left" : "lg:mr-auto lg:text-left"
+                    }`}
+                  >
+                    <div
+                      className={`relative rounded-[28px] border bg-white dark:bg-slate-900/80 p-6 sm:p-7 backdrop-blur-xl transition-all duration-300 ${
+                        isSelected
+                          ? "border-emerald-500/70 shadow-2xl shadow-emerald-500/10 -translate-y-1 dark:bg-slate-900/95"
+                          : "border-slate-200/90 dark:border-white/10 shadow-sm hover:border-emerald-500/40 hover:shadow-lg"
+                      }`}
+                    >
+                      {/* Top Meta Bar */}
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-3.5">
+                        <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-wider text-emerald-600 dark:text-emerald-400 uppercase">
+                          {m.phase}
+                        </span>
+                        <span className="rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/25 px-2.5 py-0.5 text-[9.5px] font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wide">
+                          {m.tag}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-lg sm:text-xl font-black text-slate-900 dark:text-white leading-snug tracking-tight">
+                        <span>{m.title} </span>
+                        <span className="text-emerald-600 dark:text-emerald-400">{m.highlight}</span>
+                      </h3>
+
+                      {/* Description */}
+                      <p className="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300/85 leading-relaxed">
+                        {m.desc}
+                      </p>
+
+                      {/* Deliverables / Output Nyata Checklist */}
+                      <div className="mt-5 pt-4 border-t border-slate-100 dark:border-white/10 space-y-2">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-white/40 block mb-1.5">
+                          Output Nyata Milestone:
+                        </span>
+                        <div className="grid grid-cols-1 gap-1.5">
+                          {m.deliverables.map((d, dIdx) => (
+                            <div
+                              key={dIdx}
+                              className={`flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-medium transition-colors ${
+                                d.highlight
+                                  ? "bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/30 text-emerald-800 dark:text-emerald-200 font-semibold"
+                                  : "bg-slate-50 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/5 text-slate-700 dark:text-slate-300"
+                              }`}
+                            >
+                              <HugeiconsIcon
+                                icon={d.icon}
+                                size={15}
+                                className={d.highlight ? "text-emerald-600 dark:text-emerald-400 shrink-0" : "text-slate-400 dark:text-white/40 shrink-0"}
+                              />
+                              <span className="leading-snug">{d.label}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                {/* Content */}
-                <h3 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
-                  {s.title}
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-white/60 min-h-[52px]">
-                  {s.desc}
-                </p>
-              </div>
-
-              {/* Micro-Visual Widget */}
-              <div className="mt-5 pt-4 border-t border-white/5">
-                {s.renderWidget()}
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
 
-        {/* Reassurance Banner at the Bottom */}
-        <AnimateOnScroll preset="fade-up" className="mt-8 sm:mt-12">
-          <div className="rounded-2xl border border-emerald-500/20 bg-gradient-to-r from-emerald-950/40 via-emerald-900/15 to-[#060A14] p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
-            <div className="flex items-center gap-3.5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
-                <HugeiconsIcon icon={ShieldCheckIcon} size={20} />
+        {/* ─── Bottom Reassurance Roadmap Banner ─── */}
+        <AnimateOnScroll preset="fade-up" className="mt-16 sm:mt-24">
+          <div className="rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-emerald-50 via-white to-teal-50 dark:from-emerald-950/50 dark:via-slate-900 dark:to-teal-950/40 p-5 sm:p-7 flex flex-col md:flex-row items-center justify-between gap-5 text-left shadow-xl shadow-emerald-500/5">
+            <div className="flex items-start sm:items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/30">
+                <HugeiconsIcon icon={ShieldCheckIcon} size={24} />
               </div>
               <div>
-                <div className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
-                  Garansi Ketenangan & Transparansi 100%
-                  <span className="hidden sm:inline-block rounded-full bg-emerald-500/20 px-2 py-0.5 text-[9.5px] text-emerald-300 font-semibold">
-                    Bebas Cemas
+                <div className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2 flex-wrap">
+                  <span>Siap Mulai Milestone 01 Hari Ini?</span>
+                  <span className="rounded-full bg-emerald-500/20 border border-emerald-500/30 px-2.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:text-emerald-300">
+                    Bebas Cemas &amp; Tanpa Biaya
                   </span>
                 </div>
-                <p className="text-[11px] sm:text-xs text-white/60 mt-0.5">
-                  Seluruh source code jadi milikmu penuh. Didukung video rekaman bedah kodingan dan pendampingan sampai sistem siap jalan.
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300/80 mt-1">
+                  Ceritakan kebutuhan Aplikasi Custom, API &amp; Backend, atau Web Instansi &amp; Bisnis Anda. Kita diskusikan solusinya secara gratis di awal.
                 </p>
               </div>
             </div>
 
             <a
-              href={getWaUrl("Halo Mas (ecoDigital), saya mau konsultasi alur pengerjaan kodingan / sistem saya.")}
+              href={getWaUrl("Halo Mas Eko (ecoDigital), saya mau mulai diskusi dari Milestone 01 untuk sistem saya.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-xs font-bold text-gray-950 shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all hover:bg-emerald-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] active:scale-95"
+              className="shrink-0 inline-flex items-center gap-2.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 px-6 py-3.5 text-xs sm:text-sm font-bold text-slate-950 shadow-xl shadow-emerald-500/25 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
             >
-              <HugeiconsIcon icon={WhatsappIcon} size={15} />
+              <HugeiconsIcon icon={WhatsappIcon} size={18} />
               <span>Mulai Curhat Kebutuhan (Gratis)</span>
-              <HugeiconsIcon icon={ArrowRight01Icon} size={13} />
+              <HugeiconsIcon icon={ArrowRight01Icon} size={15} />
             </a>
           </div>
         </AnimateOnScroll>
       </div>
-    </div>
+    </section>
   );
 }

@@ -12,7 +12,7 @@ export function JsonLd() {
     logo: "https://eco.co-id.id/images/logo/logo-transparent.png",
     image: "https://eco.co-id.id/images/logo/logo-transparent.png",
     description:
-      "Jasa pembuatan website dan aplikasi custom terpercaya langsung diskusi dengan developer tanpa perantara. Melayani tugas akhir/skripsi, sistem informasi instansi, web sekolah, aplikasi UMKM, dan perbaikan bug kodingan.",
+      "Jasa pembuatan Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis profesional langsung diskusi dengan lead developer tanpa perantara. Transparan, arsitektur bersih, dan serah terima tuntas bergaransi.",
     telephone: "+6287875856918",
     priceRange: "Rp 150.000 - Rp 3.500.000",
     currenciesAccepted: "IDR",
@@ -54,33 +54,33 @@ export function JsonLd() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Pembuatan Aplikasi Custom Tugas Akhir & Skripsi",
+            name: "Aplikasi Custom (Web & Mobile)",
             description:
-              "Pembuatan aplikasi web & mobile untuk tugas akhir, skripsi, dan riset lengkap dengan source code 100% dan bimbingan bedah kode.",
+              "Pembuatan aplikasi web & mobile custom dengan clean architecture, modularitas tinggi, dan dokumentasi lengkap.",
           },
-          price: "750000",
+          price: "1499000",
           priceCurrency: "IDR",
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Jasa API & Backend Development",
+            name: "Jasa API & Backend Architecture",
             description:
               "Pembuatan REST API clean architecture, database design, query optimization, dan integrasi payment gateway / WhatsApp API.",
           },
-          price: "500000",
+          price: "899000",
           priceCurrency: "IDR",
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Aplikasi Sistem Sekolah, Instansi & Bisnis UMKM",
+            name: "Web Instansi & Bisnis (Siap Online)",
             description:
-              "Website profil usaha, sistem informasi sekolah, katalog produk, kasir/inventori siap online.",
+              "Website profil resmi instansi, sistem informasi sekolah, profil perusahaan, dan kasir POS inventori siap online.",
           },
-          price: "1500000",
+          price: "499000",
           priceCurrency: "IDR",
         },
       ],

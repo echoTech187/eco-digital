@@ -25,7 +25,7 @@ export default function Home() {
     : null;
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-clip bg-[#060A14] text-white selection:bg-emerald-500/30 selection:text-emerald-300">
+    <div className="relative min-h-screen w-full overflow-x-clip bg-slate-50 dark:bg-[#060A14] text-slate-900 dark:text-white transition-colors duration-200 selection:bg-emerald-500/30 selection:text-emerald-400">
       {/* 1. Sticky Navigation Bar */}
       <NavbarSection />
 
