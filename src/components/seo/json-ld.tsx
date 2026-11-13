@@ -5,12 +5,12 @@ export function JsonLd() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "@id": "https://eco.co-id.id/#organization",
+    "@id": "https://www.ecodigitalindo.com/#organization",
     name: "ecoDigital",
     alternateName: "ecoDigital Custom Web & Ecosystem",
-    url: "https://eco.co-id.id",
-    logo: "https://eco.co-id.id/images/logo/logo-transparent.png",
-    image: "https://eco.co-id.id/images/logo/logo-transparent.png",
+    url: "https://www.ecodigitalindo.com",
+    logo: "https://www.ecodigitalindo.com/images/logo/logo-transparent.png",
+    image: "https://www.ecodigitalindo.com/images/logo/logo-transparent.png",
     description:
       "Jasa pembuatan Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis profesional langsung diskusi dengan lead developer tanpa perantara. Transparan, arsitektur bersih, dan serah terima tuntas bergaransi.",
     telephone: "+6287875856918",
@@ -104,10 +104,10 @@ export function JsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "ecoDigital",
-    url: "https://eco.co-id.id",
+    url: "https://www.ecodigitalindo.com",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://eco.co-id.id/?q={search_term_string}",
+      target: "https://www.ecodigitalindo.com/?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

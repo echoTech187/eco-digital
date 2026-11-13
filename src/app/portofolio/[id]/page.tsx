@@ -22,7 +22,7 @@ import { ProjectScreenPreview } from "@/components/sections/project-screen-previ
 import { NavbarSection } from "@/components/sections/navbar-section";
 import { SiteFooter } from "@/components/layout/site-footer";
 
-const BASE_URL = "https://eco.co-id.id";
+const BASE_URL = "https://www.ecodigitalindo.com";
 
 // 1. Generate Static Params for Next.js Static Export
 export function generateStaticParams() {

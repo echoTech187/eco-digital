@@ -16,7 +16,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp";
 import { getWaUrl, WA_DISPLAY } from "@/data/landing-data";
 
-const BASE_URL = "https://eco.co-id.id";
+const BASE_URL = "https://www.ecodigitalindo.com";
 
 export const metadata: Metadata = {
   title: "Simulasi & Hitung Estimasi Biaya Pembuatan Website & Aplikasi | ecoDigital",

@@ -23,7 +23,7 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
-const SITE_URL = "https://eco.co-id.id";
+const SITE_URL = "https://www.ecodigitalindo.com";
 const SITE_TITLE = "ecoDigital — Jasa Pembuatan Website & Aplikasi Custom | Direct Developer";
 const SITE_DESC =
   "Jasa pembuatan Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis profesional. Diskusi langsung bersama lead developer tanpa perantara sales. Arsitektur bersih, transparan, dan serah terima tuntas bergaransi.";

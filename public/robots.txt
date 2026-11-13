@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eco.co-id.id/sitemap.xml
+Sitemap: https://www.ecodigitalindo.com/sitemap.xml
 
