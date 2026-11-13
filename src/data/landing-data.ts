@@ -26,6 +26,10 @@ import {
 export const WA_NUMBER = "6287875856918";
 export const WA_DISPLAY = "0878-7585-6918";
 
+// ─── Leads Webhook (Google Apps Script / Formspree) ──────────────────────────
+export const LEADS_WEBHOOK_URL =
+  process.env.NEXT_PUBLIC_LEADS_WEBHOOK_URL || "";
+
 export function getWaUrl(message?: string) {
   const defaultMsg =
     "Halo Mas (ecoDigital), saya mau konsultasi pembuatan website / aplikasi custom.";
