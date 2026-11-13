@@ -41,14 +41,14 @@ function applyThemeToDocument(newTheme: Theme) {
 }
 
 function getStoredTheme(): Theme {
-  if (typeof window === "undefined") return "dark";
+  if (typeof window === "undefined") return "light";
   try {
     const saved = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null;
     if (saved === "light" || saved === "dark") return saved;
   } catch {
     // ignore
   }
-  return "dark";
+  return "light";
 }
 
 let listeners: Array<() => void> = [];
@@ -67,7 +67,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const theme = useSyncExternalStore(
     subscribeTheme,
     getStoredTheme,
-    () => "dark" as Theme
+    () => "light" as Theme
   );
 
   const setTheme = (newTheme: Theme) => {
@@ -104,9 +104,9 @@ export function useTheme() {
   const context = useContext(ThemeContext);
   if (!context) {
     return {
-      theme: "dark" as Theme,
-      isDark: true,
-      isLight: false,
+      theme: "light" as Theme,
+      isDark: false,
+      isLight: true,
       setTheme: () => {},
       toggleTheme: () => {},
     };

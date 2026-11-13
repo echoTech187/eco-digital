@@ -19,8 +19,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#060A14",
-  colorScheme: "dark",
+  themeColor: "#F8FAFC",
+  colorScheme: "light dark",
 };
 
 const SITE_URL = "https://www.ecodigitalindo.com";
@@ -120,8 +120,8 @@ export default function RootLayout({
     <html
       lang="id"
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
-      data-theme="dark"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased light`}
+      data-theme="light"
       suppressHydrationWarning
     >
       <head>
@@ -132,7 +132,7 @@ export default function RootLayout({
               (function() {
                 try {
                   var stored = localStorage.getItem('eco_theme');
-                  var theme = stored === 'light' ? 'light' : 'dark';
+                  var theme = stored === 'dark' ? 'dark' : 'light';
                   if (theme === 'dark') {
                     document.documentElement.classList.add('dark');
                     document.documentElement.classList.remove('light');
