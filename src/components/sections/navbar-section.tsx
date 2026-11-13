@@ -18,6 +18,8 @@ import {
   CreditCardIcon,
   ShieldCheckIcon,
   HelpCircleIcon,
+  PencilEdit02Icon,
+  StarIcon,
 } from "@hugeicons/core-free-icons";
 import logoMarkImg from "../../../public/images/logo/logo-vertical-transparent.png";
 import { getWaUrl, WA_DISPLAY } from "@/data/landing-data";
@@ -83,11 +85,12 @@ export function NavbarSection() {
     closeMenu();
     setMobileMenuOpen(false);
 
+    const id = targetHash.replace(/^(\/)?#/, "");
+
     if (typeof window !== "undefined") {
       const isHome =
         window.location.pathname === "/" || window.location.pathname === "";
       if (isHome) {
-        const id = targetHash.replace(/^(\/)?#/, "");
         const element = document.getElementById(id);
         if (element) {
           e.preventDefault();
@@ -99,14 +102,22 @@ export function NavbarSection() {
               ) => void;
             };
           };
-          const offset = id === "layanan" || id === "solusi" ? 0 : 0;
+          const targetOffset = id === "paket-harga" || id === "harga" ? 0 : -70;
           if (win.__lenis && typeof win.__lenis.scrollTo === "function") {
-            win.__lenis.scrollTo(element, { offset, duration: 1.1 });
+            win.__lenis.scrollTo(element, { offset: targetOffset, duration: 1.1 });
           } else {
-            const top = element.getBoundingClientRect().top + window.scrollY + offset;
+            const top = element.getBoundingClientRect().top + window.scrollY + targetOffset;
             window.scrollTo({ top, behavior: "smooth" });
           }
           window.history.pushState(null, "", `#${id}`);
+        }
+      } else {
+        // Cross-page navigation: user is on /simulasi-biaya or /contact
+        // Store target ID in sessionStorage so when homepage mounts it scrolls down
+        try {
+          sessionStorage.setItem("ecodigital_scroll_target", id);
+        } catch {
+          // ignore
         }
       }
     }
@@ -130,7 +141,8 @@ export function NavbarSection() {
               priority
               loading="eager"
               unoptimized
-              className="h-8 sm:h-10 lg:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-md"
+              className="h-8 sm:h-10 lg:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-md aspect-[320/100]"
+              style={{ aspectRatio: "320 / 100" }}
             />
           </Link>
 
@@ -505,12 +517,13 @@ export function NavbarSection() {
 
                 <div className="mt-4 pt-3 border-t border-white/10">
                   <Link
-                    href="/#kalkulator-biaya"
-                    onClick={(e) => handleAnchorClick(e, "#kalkulator-biaya")}
+                    href="/simulasi-biaya"
+                    prefetch={false}
+                    onClick={closeMenu}
                     className="flex items-center justify-center gap-2 rounded-xl bg-cyan-500 px-4 py-2.5 text-xs font-bold text-black hover:bg-cyan-400 transition-all hover:scale-[1.02]"
                   >
                     <HugeiconsIcon icon={FlashIcon} size={15} />
-                    <span>Coba Kalkulator Biaya ↓</span>
+                    <span>Coba Kalkulator Biaya →</span>
                   </Link>
                 </div>
               </div>
@@ -566,6 +579,24 @@ export function NavbarSection() {
                     </p>
                   </div>
                 </Link>
+
+                <Link
+                  href="/#testimoni"
+                  onClick={(e) => handleAnchorClick(e, "#testimoni")}
+                  className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-400 transition-colors group-hover/item:border-amber-400/50 group-hover/item:bg-amber-500/20">
+                    <HugeiconsIcon icon={StarIcon} size={18} className="fill-amber-400" />
+                  </span>
+                  <div className="flex-1">
+                    <span className="text-xs font-bold text-white group-hover/item:text-amber-300 block">
+                      Testimoni Klien
+                    </span>
+                    <p className="mt-0.5 text-[11px] leading-snug text-white/60">
+                      Rating 5.0 ★ &amp; cerita sukses lolos sidang/live.
+                    </p>
+                  </div>
+                </Link>
               </div>
 
               {/* Col 2: Bantuan & FAQ */}
@@ -573,6 +604,25 @@ export function NavbarSection() {
                 <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400 block px-2 mb-2">
                   Bantuan &amp; Kontak
                 </span>
+                <Link
+                  href="/contact"
+                  prefetch={false}
+                  onClick={closeMenu}
+                  className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-white/[0.06]"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 transition-colors group-hover/item:border-cyan-400/50 group-hover/item:bg-cyan-500/20">
+                    <HugeiconsIcon icon={PencilEdit02Icon} size={18} />
+                  </span>
+                  <div className="flex-1">
+                    <span className="text-xs font-bold text-white group-hover/item:text-cyan-300 block">
+                      Formulir Brief Proyek
+                    </span>
+                    <p className="mt-0.5 text-[11px] leading-snug text-white/60">
+                      Isi rincian kebutuhan di halaman konsultasi terpisah.
+                    </p>
+                  </div>
+                </Link>
+
                 <Link
                   href="/#faq"
                   onClick={(e) => handleAnchorClick(e, "#faq")}
@@ -625,8 +675,8 @@ export function NavbarSection() {
               className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-3 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:from-emerald-400 hover:to-teal-400 hover:scale-105 active:scale-95 whitespace-nowrap shrink-0"
             >
               <HugeiconsIcon icon={WhatsappIcon} size={15} />
-              <span className="hidden sm:inline">Chat Developer</span>
-              <span className="sm:hidden">Ngobrol Yuk!</span>
+              <span className="hidden sm:inline">Konsultasi Sekarang</span>
+              <span className="sm:hidden">Konsultasi</span>
             </a>
 
             {/* Mobile & Tablet Hamburger Toggle Button */}
@@ -675,8 +725,11 @@ export function NavbarSection() {
                         alt="ecoDigital — Jasa Pembuatan Website & Aplikasi Custom"
                         width={180}
                         height={56}
+                        priority
+                        loading="eager"
                         unoptimized
-                        className="h-8 w-auto object-contain"
+                        className="h-8 w-auto object-contain aspect-[180/56]"
+                        style={{ aspectRatio: "180 / 56" }}
                       />
                     </Link>
 
@@ -719,6 +772,18 @@ export function NavbarSection() {
                     </Link>
 
                     <Link
+                      href="/#testimoni"
+                      onClick={(e) => handleAnchorClick(e, "#testimoni")}
+                      className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-amber-300 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors font-semibold"
+                    >
+                      <span className="flex items-center gap-2">
+                        <HugeiconsIcon icon={StarIcon} size={16} className="fill-amber-400 text-amber-400" />
+                        <span>Testimoni Klien</span>
+                      </span>
+                      <span className="text-xs text-amber-400/70 font-mono">5.0 ★</span>
+                    </Link>
+
+                    <Link
                       href="/#cara-kerja"
                       onClick={(e) => handleAnchorClick(e, "#cara-kerja")}
                       className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors"
@@ -737,8 +802,12 @@ export function NavbarSection() {
                     </Link>
 
                     <Link
-                      href="/#kalkulator-biaya"
-                      onClick={(e) => handleAnchorClick(e, "#kalkulator-biaya")}
+                      href="/simulasi-biaya"
+                      prefetch={false}
+                      onClick={() => {
+                        closeMenu();
+                        setMobileMenuOpen(false);
+                      }}
                       className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 font-bold hover:bg-emerald-900/60 active:bg-emerald-800/60 transition-colors"
                     >
                       <span className="flex items-center gap-2.5">
@@ -746,6 +815,21 @@ export function NavbarSection() {
                         <span>Simulasi Biaya</span>
                       </span>
                       <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+                    </Link>
+
+                    <Link
+                      href="/contact"
+                      prefetch={false}
+                      onClick={closeMenu}
+                      className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors"
+                    >
+                      <span className="flex items-center gap-2.5">
+                        <HugeiconsIcon icon={PencilEdit02Icon} size={18} className="text-cyan-400" />
+                        <span>Formulir Brief Proyek</span>
+                      </span>
+                      <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300">
+                        Baru
+                      </span>
                     </Link>
 
                     <Link

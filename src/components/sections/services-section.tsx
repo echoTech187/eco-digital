@@ -417,10 +417,11 @@ function EditorialChapterSection({
                   <Image
                     src={founderImg}
                     alt="Mas Eko — Lead Developer ecoDigital"
-                    fill
+                    width={44}
+                    height={44}
                     unoptimized
-                    sizes="44px"
-                    className="object-cover object-top scale-[1.35] translate-y-1"
+                    className="h-full w-full object-cover object-top scale-[1.35] translate-y-1 aspect-square"
+                    style={{ aspectRatio: "1 / 1" }}
                   />
                 </div>
                 <div>

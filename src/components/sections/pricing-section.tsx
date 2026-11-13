@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   Wrench01Icon,
@@ -8,22 +9,27 @@ import {
   Building03Icon,
   CheckmarkCircle01Icon,
   WhatsappIcon,
+  CalculatorIcon,
+  ArrowRight01Icon,
 } from "@hugeicons/core-free-icons";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 import { getWaUrl } from "@/data/landing-data";
 
 export function PricingSection() {
   return (
-    <div id="harga" className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-16 sm:py-24 scroll-mt-0">
+    <div className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 pt-2 sm:pt-4 pb-16 sm:pb-24">
       <div className="mx-auto max-w-6xl">
-        <AnimateOnScroll preset="fade-up" className="mb-10 sm:mb-12 text-center">
+        {/* Anchor targets placed exactly at top of pricing content */}
+        <div id="paket-harga" className="scroll-mt-0" />
+        <span id="harga" className="scroll-mt-0 block" />
+        <AnimateOnScroll preset="fade-up" className="mb-6 sm:mb-8 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
             HARGA TERBUKA &amp; TRANSPARAN
           </span>
-          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
             Pilih Paket Sesuai Kondisi Proyekmu Saat Ini
           </h2>
-          <p className="mx-auto mt-3 max-w-lg text-xs sm:text-sm leading-relaxed text-white/60">
+          <p className="mx-auto mt-2 max-w-lg text-xs sm:text-sm leading-relaxed text-white/60">
             Nggak perlu takut kemahalan. Kalau cuma butuh benerin <em>error</em> sedikit, cukup ambil paket hemat mulai Rp150 ribuan.
           </p>
         </AnimateOnScroll>
@@ -184,6 +190,38 @@ export function PricingSection() {
             </a>
           </div>
         </div>
+
+        {/* Interactive Calculator Promotion Banner */}
+        <AnimateOnScroll preset="fade-up" className="mt-12 sm:mt-16">
+          <div className="relative rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-emerald-950/40 via-white/[0.03] to-blue-950/30 p-6 sm:p-8 backdrop-blur-xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl overflow-hidden">
+            <div className="flex items-start sm:items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                <HugeiconsIcon icon={CalculatorIcon} size={24} />
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Kalkulator Mandiri
+                </div>
+                <h4 className="mt-1.5 text-base sm:text-lg font-bold text-white">
+                  Punya Kebutuhan Fitur Spesifik? Hitung Estimasinya di Sini
+                </h4>
+                <p className="mt-1 text-xs text-white/60 max-w-xl leading-relaxed">
+                  Pilih kategori sistemmu dan centang fitur tambahan yang kamu inginkan di halaman simulasi biaya interaktif kami. Hasil estimasi langsung terhitung secara transparan.
+                </p>
+              </div>
+            </div>
+
+            <Link
+              href="/simulasi-biaya"
+              prefetch={false}
+              className="shrink-0 w-full md:w-auto inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-3.5 text-xs font-bold text-gray-950 shadow-lg shadow-emerald-500/30 transition-all hover:scale-105 active:scale-95"
+            >
+              <span>Buka Kalkulator Biaya</span>
+              <HugeiconsIcon icon={ArrowRight01Icon} size={15} />
+            </Link>
+          </div>
+        </AnimateOnScroll>
       </div>
     </div>
   );

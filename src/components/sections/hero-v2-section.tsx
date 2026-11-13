@@ -239,7 +239,8 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
                   loading="eager"
                   unoptimized
                   sizes="(max-width: 768px) 80vw, (max-width: 1200px) 450px, 500px"
-                  className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)] select-none"
+                  className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)] select-none aspect-[400/450]"
+                  style={{ aspectRatio: "400 / 450" }}
                 />
               </div>
             </AnimateOnScroll>

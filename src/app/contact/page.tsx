@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
@@ -10,8 +9,9 @@ import {
   ShieldCheckIcon,
   ArrowRight01Icon,
 } from "@hugeicons/core-free-icons";
-import logoMarkImg from "../../../public/images/logo/logo-mark.png";
-import { WA_NUMBER, WA_DISPLAY } from "@/data/landing-data";
+import { NavbarSection } from "@/components/sections/navbar-section";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { WA_NUMBER, WA_DISPLAY, getWaUrl } from "@/data/landing-data";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -26,7 +26,7 @@ export default function ContactPage() {
     const safeCategory = category.slice(0, 100);
     const safeMessage = message.trim().slice(0, 1500) || "Mohon info estimasi dan ketersediaan waktu.";
 
-    const formatted = `Halo EcoDigital, saya ingin konsultasi sistem melalui formulir web:
+    const formatted = `Halo ecoDigital, saya ingin konsultasi sistem melalui formulir web:
 • Nama: ${safeName}
 • Kontak: ${safeContact}
 • Kategori: ${safeCategory}
@@ -41,47 +41,30 @@ export default function ContactPage() {
       <div className="pointer-events-none absolute -left-40 top-1/4 h-[600px] w-[600px] rounded-full bg-emerald-500/15 blur-[140px]" />
       <div className="pointer-events-none absolute -right-40 bottom-1/4 h-[600px] w-[600px] rounded-full bg-blue-500/15 blur-[140px]" />
 
-      {/* Header */}
-      <header className="relative z-30 flex h-20 w-full items-center justify-between px-6 sm:px-10 lg:px-14 border-b border-white/10 bg-[#060A14]/90 backdrop-blur-xl">
-        <Link href="/" prefetch={false} className="group flex items-center gap-3">
-          <Image
-            src={logoMarkImg}
-            alt="ecoDigital — Hubungi Kami untuk Jasa Pembuatan Website & Aplikasi"
-            width={80}
-            height={94}
-            priority
-            unoptimized
-            className="h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-md"
-          />
-          <div className="flex flex-col">
-            <span className="text-base font-black tracking-tight text-white group-hover:text-emerald-300 transition-colors">
-              EcoDigital
-            </span>
-            <span className="text-[10px] font-semibold tracking-wider text-emerald-400/90 -mt-0.5">
-              Software & IT Partner
-            </span>
-          </div>
-        </Link>
-        <Link
-          href="/"
-          prefetch={false}
-          className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold text-white/90 backdrop-blur-md transition-all hover:bg-white/20 hover:text-white"
-        >
-          ← Kembali ke Beranda
-        </Link>
-      </header>
+      {/* Standard Sticky Global Navigation */}
+      <NavbarSection />
 
       {/* Main Content */}
-      <main className="relative z-20 mx-auto max-w-5xl px-6 py-12 lg:py-16">
+      <main className="relative z-20 mx-auto max-w-5xl px-4 sm:px-8 py-10 lg:py-14">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-white/50">
+          <Link href="/" prefetch={false} className="hover:text-emerald-400 transition-colors">
+            Beranda
+          </Link>
+          <span>/</span>
+          <span className="text-emerald-400 font-medium">Konsultasi</span>
+        </nav>
+
         <div className="text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
-            Hubungi Tim EcoDigital
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.25em] text-emerald-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            Hubungi Tim ecoDigital
           </span>
-          <h1 className="mt-3 text-3xl font-black text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 text-3xl font-black text-white sm:text-4xl lg:text-5xl">
             Konsultasikan Kebutuhan Sistem Anda
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/70">
-            Mulai dari ide awal riset tugas akhir/skripsi, otomasi operasional instansi dinas & sekolah, hingga prototipe aplikasi mobile dan startup bisnis Anda.
+            Mulai dari ide awal riset tugas akhir/skripsi, otomasi operasional instansi dinas &amp; sekolah, hingga prototipe aplikasi mobile dan sistem bisnis Anda.
           </p>
         </div>
 
@@ -93,19 +76,17 @@ export default function ContactPage() {
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400">
                 <HugeiconsIcon icon={WhatsappIcon} size={24} />
               </div>
-              <h3 className="mt-3 text-base font-bold text-white">WhatsApp Resmi EcoDigital</h3>
+              <h3 className="mt-3 text-base font-bold text-white">WhatsApp Resmi ecoDigital</h3>
               <p className="mt-1 text-xs text-white/70">
                 Respon cepat untuk diskusi fitur, estimasi biaya, dan jadwal pengerjaan.
               </p>
               <a
-                href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-                  "Halo EcoDigital, saya ingin konsultasi kebutuhan pembuatan website / aplikasi."
-                )}`}
+                href={getWaUrl("Halo ecoDigital, saya ingin konsultasi kebutuhan pembuatan website / aplikasi.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#10B981] hover:underline"
               >
-                <span>Ngobrol via Whatsapp : {WA_DISPLAY}</span>
+                <span>Ngobrol via WhatsApp : {WA_DISPLAY}</span>
                 <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
               </a>
             </div>
@@ -120,9 +101,7 @@ export default function ContactPage() {
                 Konsultasikan rancangan arsitektur, pemilihan tech stack, hingga sesi bimbingan teknis 1-on-1 sampai paham.
               </p>
               <a
-                href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-                  "Halo EcoDigital, saya ingin konsultasi teknis & jadwal sesi bedah koding sistem."
-                )}`}
+                href={getWaUrl("Halo ecoDigital, saya ingin konsultasi teknis & jadwal sesi bedah koding sistem.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:underline"
@@ -137,7 +116,7 @@ export default function ContactPage() {
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400">
                 <HugeiconsIcon icon={ShieldCheckIcon} size={24} />
               </div>
-              <h3 className="mt-3 text-base font-bold text-white">Garansi & Sesi Bimbingan</h3>
+              <h3 className="mt-3 text-base font-bold text-white">Garansi &amp; Sesi Bimbingan</h3>
               <p className="mt-1 text-xs text-white/60">
                 100% full source code tanpa enkripsi, garansi bug fixing, dan bimbingan bedah koding 1-on-1 sampai paham.
               </p>
@@ -148,14 +127,19 @@ export default function ContactPage() {
           <div className="rounded-[32px] border border-white/20 bg-white/[0.06] p-8 shadow-2xl backdrop-blur-2xl md:col-span-3">
             <h2 className="text-xl font-bold text-white">Kirim Formulir Brief</h2>
             <p className="mt-1 text-xs text-white/60">
-              Isi formulir di bawah ini untuk tersambung ke WhatsApp developer EcoDigital dengan rincian kebutuhan Anda.
+              Isi formulir di bawah ini untuk tersambung ke WhatsApp developer ecoDigital dengan rincian kebutuhan Anda.
             </p>
 
             <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
               <div>
-                <label className="text-xs font-semibold text-white/80">Nama Lengkap</label>
+                <label htmlFor="contact-name" className="text-xs font-semibold text-white/80">
+                  Nama Lengkap
+                </label>
                 <input
+                  id="contact-name"
+                  name="name"
                   type="text"
+                  autoComplete="name"
                   required
                   maxLength={100}
                   placeholder="Nama Anda atau Instansi"
@@ -166,9 +150,14 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-white/80">Nomor WhatsApp / Email Kontak</label>
+                <label htmlFor="contact-info" className="text-xs font-semibold text-white/80">
+                  Nomor WhatsApp / Email Kontak
+                </label>
                 <input
+                  id="contact-info"
+                  name="contact"
                   type="text"
+                  autoComplete="tel email"
                   required
                   maxLength={80}
                   placeholder="0812xxxxxx atau email@anda.com"
@@ -179,23 +168,31 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-white/80">Kategori Proyek</label>
+                <label htmlFor="contact-category" className="text-xs font-semibold text-white/80">
+                  Kategori Proyek
+                </label>
                 <select
+                  id="contact-category"
+                  name="category"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="mt-1 w-full rounded-2xl border border-white/20 bg-[#060A14] px-4 py-3 text-sm text-white focus:border-[#10B981] focus:outline-none"
+                  className="mt-1 w-full rounded-2xl border border-white/20 bg-[#060A14] px-4 py-3 text-sm text-white focus:border-[#10B981] focus:outline-none cursor-pointer"
                 >
-                  <option value="Riset & Tugas Akhir (SPK)">Riset & Tugas Akhir / Skripsi (SPK / Algoritma)</option>
-                  <option value="Website Profil UMKM / Bisnis">Website Profil UMKM & Bisnis</option>
-                  <option value="Sistem Informasi & Dashboard Admin">Sistem Informasi & Dashboard Admin Operasional</option>
+                  <option value="Riset & Tugas Akhir (SPK)">Riset &amp; Tugas Akhir / Skripsi (SPK / Algoritma)</option>
+                  <option value="Website Profil UMKM / Bisnis">Website Profil UMKM &amp; Bisnis</option>
+                  <option value="Sistem Informasi & Dashboard Admin">Sistem Informasi &amp; Dashboard Admin Operasional</option>
                   <option value="Aplikasi Mobile Android (Flutter)">Aplikasi Mobile Android (Flutter)</option>
-                  <option value="Perbaikan Bug / Modul Tambahan">Perbaikan Bug & Penambahan Modul Koding</option>
+                  <option value="Perbaikan Bug / Modul Tambahan">Perbaikan Bug &amp; Penambahan Modul Koding</option>
                 </select>
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-white/80">Rincian Kebutuhan / Judul Proyek</label>
+                <label htmlFor="contact-message" className="text-xs font-semibold text-white/80">
+                  Rincian Kebutuhan / Judul Proyek
+                </label>
                 <textarea
+                  id="contact-message"
+                  name="message"
                   rows={4}
                   required
                   maxLength={1500}
@@ -208,15 +205,18 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-xl shadow-emerald-950/40 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95"
+                className="w-full flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-950 shadow-xl shadow-emerald-950/40 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 active:scale-95 cursor-pointer"
               >
                 <HugeiconsIcon icon={WhatsappIcon} size={18} />
-                <span>Kirim Brief ke WhatsApp EcoDigital →</span>
+                <span>Kirim Brief ke WhatsApp ecoDigital →</span>
               </button>
             </form>
           </div>
         </div>
       </main>
+
+      {/* Global Clean 3-Column Footer */}
+      <SiteFooter />
     </div>
   );
 }

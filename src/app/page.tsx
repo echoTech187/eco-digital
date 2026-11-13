@@ -7,9 +7,9 @@ import {
   ServicesSection,
   PortfolioSection,
   FeaturesSection,
+  TestimonialsSection,
   WorkflowSection,
   PricingSection,
-  CalculatorSection,
   FaqSection,
   ConsultationFormSection,
 } from "@/components/sections";
@@ -25,7 +25,7 @@ export default function Home() {
     : null;
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-[#060A14] text-white selection:bg-emerald-500/30 selection:text-emerald-300">
+    <div className="relative min-h-screen w-full overflow-x-clip bg-[#060A14] text-white selection:bg-emerald-500/30 selection:text-emerald-300">
       {/* 1. Sticky Navigation Bar */}
       <NavbarSection />
 
@@ -41,16 +41,16 @@ export default function Home() {
       {/* 5. Keunggulan (Standar Kerja ecoDigital) */}
       <FeaturesSection />
 
-      {/* 6. Alur Pengerjaan (Alur Pengerjaan Anti-Ghosting) */}
+      {/* 6. Testimoni Klien & Mahasiswa (Sosial Proof Nyata) */}
+      <TestimonialsSection />
+
+      {/* 7. Alur Pengerjaan (Alur Pengerjaan Anti-Ghosting) */}
       <WorkflowSection />
 
-      {/* 7. Paket Harga (Paket Harga Terbuka & Transparan) */}
+      {/* 8. Paket Harga (Paket Harga Terbuka & Transparan + Banner Simulasi) */}
       <PricingSection />
 
-      {/* 10. Simulasi & Hitung Estimasi Biaya */}
-      <CalculatorSection />
-
-      {/* 11. Tanya Jawab Santai (FAQ) */}
+      {/* 9. Tanya Jawab Santai (FAQ) */}
       <FaqSection />
 
       {/* 12. Formulir Konsultasi Cepat & Footer */}

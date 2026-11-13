@@ -13,7 +13,11 @@ import {
   WA_NUMBER,
 } from "@/data/landing-data";
 
-export function CalculatorSection() {
+interface CalculatorSectionProps {
+  isStandalone?: boolean;
+}
+
+export function CalculatorSection({ isStandalone = false }: CalculatorSectionProps) {
   const [calcProjectType, setCalcProjectType] = useState<string>("skripsi");
   const [calcAddons, setCalcAddons] = useState<string[]>([
     "bedah_kode",
@@ -75,20 +79,26 @@ Boleh diskusi lebih lanjut untuk detail alur dan pengerjaannya?`;
   return (
     <div
       id="kalkulator-biaya"
-      className="relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-0 border-t border-white/10"
+      className={
+        isStandalone
+          ? "relative z-20 w-full scroll-mt-0"
+          : "relative z-20 w-full bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-0 border-t border-white/10"
+      }
     >
-      <div className="mx-auto max-w-4xl">
-        <AnimateOnScroll preset="fade-up" className="mb-8 sm:mb-10 text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
-            SIMULASI &amp; HITUNG MANDIRI
-          </span>
-          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
-            Masih Ragu Biayanya? Hitung Sendiri Estimasi Kasarnya di Sini
-          </h2>
-          <p className="mx-auto mt-2 max-w-lg text-xs sm:text-sm text-white/60">
-            Klik jenis sistem dan centang fitur tambahan yang kamu butuhkan, lalu kirim hasilnya ke WA saya untuk negosiasi santai.
-          </p>
-        </AnimateOnScroll>
+      <div className={isStandalone ? "w-full" : "mx-auto max-w-4xl"}>
+        {!isStandalone && (
+          <AnimateOnScroll preset="fade-up" className="mb-8 sm:mb-10 text-center">
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#10B981]">
+              SIMULASI &amp; HITUNG MANDIRI
+            </span>
+            <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+              Masih Ragu Biayanya? Hitung Sendiri Estimasi Kasarnya di Sini
+            </h2>
+            <p className="mx-auto mt-2 max-w-lg text-xs sm:text-sm text-white/60">
+              Klik jenis sistem dan centang fitur tambahan yang kamu butuhkan, lalu kirim hasilnya ke WA saya untuk negosiasi santai.
+            </p>
+          </AnimateOnScroll>
+        )}
 
         <div className="rounded-2xl sm:rounded-3xl border border-emerald-400/30 bg-gradient-to-br from-emerald-950/20 via-white/[0.04] to-blue-950/20 p-4 sm:p-8 lg:p-10 backdrop-blur-2xl shadow-2xl">
           {/* Step 1: Pilih Jenis Sistem */}

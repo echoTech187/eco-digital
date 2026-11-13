@@ -170,16 +170,20 @@ export function PortfolioSection() {
                   </div>
                 </div>
 
-                {/* Horizontal Scroll Track (Clean App Store Cards) */}
+                {/* Horizontal Scroll Track (Clean App Store Cards with Cinematic Right Fade Mask) */}
                 <div
                   ref={scrollRef}
-                  className="flex items-stretch gap-4 overflow-x-auto scrollbar-none snap-x py-2 scroll-smooth"
+                  className="flex items-stretch gap-4 overflow-x-auto scrollbar-none snap-x py-3.5 pl-3 sm:pl-4 pr-16 sm:pr-24 scroll-smooth"
                   style={{
                     scrollbarWidth: "none",
                     msOverflowStyle: "none",
+                    maskImage:
+                      "linear-gradient(to right, black 0%, black calc(100% - 80px), transparent 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(to right, black 0%, black calc(100% - 80px), transparent 100%)",
                   }}
                 >
-                  {PORTFOLIO_PROJECTS.map((project) => {
+                  {PORTFOLIO_PROJECTS.map((project, idx) => {
                     const ProjectIcon = project.mockupIcon;
                     const cardGradient = APP_GRADIENTS[project.id] || "from-blue-600 via-indigo-700 to-slate-900";
                     const isSelected = displayedProject?.id === project.id;
@@ -191,6 +195,8 @@ export function PortfolioSection() {
                         onMouseLeave={handleCardMouseLeave}
                         onClick={(e) => handleCardClick(e, project)}
                         className={`group flex flex-col justify-between w-[190px] sm:w-[210px] shrink-0 snap-start rounded-2xl overflow-hidden border transition-all duration-300 select-none cursor-pointer ${
+                          idx === 0 ? "ml-1 sm:ml-2" : ""
+                        } ${
                           isSelected
                             ? "border-emerald-400 bg-[#111c33] shadow-2xl shadow-emerald-500/25 scale-[1.03]"
                             : "border-white/10 bg-[#0d1527] hover:scale-[1.03] hover:border-emerald-400/60 hover:shadow-2xl hover:shadow-emerald-950/40"

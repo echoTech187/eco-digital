@@ -1,11 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
-  ArrowLeft02Icon,
   CheckmarkCircle01Icon,
   LockIcon,
   WhatsappIcon,
@@ -21,7 +19,8 @@ import {
   getWaUrl,
 } from "@/data/landing-data";
 import { ProjectScreenPreview } from "@/components/sections/project-screen-preview";
-import logoMarkImg from "../../../../public/images/logo/logo-mark.png";
+import { NavbarSection } from "@/components/sections/navbar-section";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 const BASE_URL = "https://eco.co-id.id";
 
@@ -181,53 +180,8 @@ export default async function ProjectDetailPage({
       <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-emerald-500/15 blur-[160px]" />
       <div className="pointer-events-none absolute top-1/3 -right-40 h-[500px] w-[500px] rounded-full bg-teal-500/10 blur-[150px]" />
 
-      {/* Top Header / Navigation Bar */}
-      <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-[#060A14]/90 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-8">
-          <Link href="/" prefetch={false} className="group flex items-center gap-3">
-            <Image
-              src={logoMarkImg}
-              alt="ecoDigital Logo"
-              width={70}
-              height={82}
-              priority
-              unoptimized
-              className="h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
-            />
-            <div className="flex flex-col">
-              <span className="text-base font-black tracking-tight text-white group-hover:text-emerald-300 transition-colors">
-                ecoDigital
-              </span>
-              <span className="text-[10px] font-semibold tracking-wider text-emerald-400 -mt-0.5">
-                Studi Kasus Sistem
-              </span>
-            </div>
-          </Link>
-
-          <div className="flex items-center gap-2 sm:gap-3">
-            <Link
-              href="/#portofolio"
-              prefetch={false}
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 sm:px-4 py-2 text-xs font-semibold text-white/80 hover:bg-white/15 hover:text-white transition-all"
-            >
-              <HugeiconsIcon icon={ArrowLeft02Icon} size={14} />
-              <span className="hidden sm:inline">Semua Portofolio</span>
-              <span className="sm:hidden">Kembali</span>
-            </Link>
-            <a
-              href={getWaUrl(
-                `Halo Mas (ecoDigital), saya sedang lihat spek portofolio ${project.title} (${project.domain}). Boleh tanya-tanya estimasi pengerjaan serupa?`
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-3.5 sm:px-4 py-2 text-xs font-bold text-white shadow-md shadow-emerald-950/40 hover:from-emerald-400 hover:to-teal-400 transition-all"
-            >
-              <HugeiconsIcon icon={WhatsappIcon} size={14} />
-              <span>Konsultasi WA</span>
-            </a>
-          </div>
-        </div>
-      </header>
+      {/* Top Header / Global Navigation Bar */}
+      <NavbarSection />
 
       {/* Main Content Container */}
       <main className="relative z-20 mx-auto max-w-6xl px-4 sm:px-8 py-8 sm:py-12">
@@ -575,26 +529,8 @@ export default async function ProjectDetailPage({
         </div>
       </main>
 
-      {/* Footer minimal */}
-      <footer className="mt-20 border-t border-white/10 bg-[#060A14] py-8 text-center text-xs text-white/50">
-        <div className="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} ecoDigital. Seluruh hak cipta dilindungi.</p>
-          <div className="flex items-center gap-4">
-            <Link href="/" prefetch={false} className="hover:text-white transition-colors">
-              Beranda
-            </Link>
-            <Link href="/#portofolio" prefetch={false} className="hover:text-white transition-colors">
-              Portofolio
-            </Link>
-            <Link href="/#layanan" prefetch={false} className="hover:text-white transition-colors">
-              Layanan
-            </Link>
-            <Link href="/contact" prefetch={false} className="hover:text-white transition-colors">
-              Kontak
-            </Link>
-          </div>
-        </div>
-      </footer>
+      {/* Global Clean 3-Column Footer */}
+      <SiteFooter />
     </div>
   );
 }
