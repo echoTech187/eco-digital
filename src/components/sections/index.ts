@@ -10,4 +10,5 @@ export { CalculatorSection } from "./calculator-section";
 export { FaqSection } from "./faq-section";
 export { TestimonialsSection } from "./testimonials-section";
 export { ConsultationFormSection } from "./consultation-form-section";
+export { ManifestoRevealSection } from "./manifesto-reveal-section";
 

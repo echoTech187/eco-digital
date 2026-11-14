@@ -12,6 +12,7 @@ import {
   PricingSection,
   FaqSection,
   ConsultationFormSection,
+  ManifestoRevealSection,
 } from "@/components/sections";
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp";
 
@@ -34,6 +35,9 @@ export default function Home() {
 
       {/* 3. Layanan (Apa yang Bisa Dibantu?) */}
       <ServicesSection />
+
+      {/* 3.5 Transisi Sinematik Inova Style: Sticky Pinning + Clip-Path Zoom + Text Scrubber */}
+      <ManifestoRevealSection />
 
       {/* 4. Portofolio (Showcase Portofolio Nyata) */}
       <PortfolioSection />

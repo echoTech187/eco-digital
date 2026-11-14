@@ -61,3 +61,4 @@ NEXT_PUBLIC_LEADS_WEBHOOK_URL=https://script.google.com/macros/s/AKfycb.../exec
 2. Isi nama, nomor WA, kategori, dan pesan uji coba.
 3. Klik **Kirim Brief ke WhatsApp ecoDigital**.
 4. Cek Google Sheets Anda: baris baru akan muncul seketika lengkap dengan waktu WIB, dan HP Anda akan menerima notifikasi email Gmail!
+
