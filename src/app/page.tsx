@@ -29,32 +29,39 @@ export default function Home() {
       {/* 1. Sticky Navigation Bar */}
       <NavbarSection />
 
-      {/* 2. Hero Section (Including Integrated Tech Stack) */}
-      <HeroV2Section videoSrc={videoSrc} />
+      {/* 2. Hero Section (Inova-style Sticky Pinning Stage) */}
+      <div className="relative w-full lg:h-[135vh]">
+        <div className="lg:sticky lg:top-0 z-10 w-full lg:h-screen lg:overflow-hidden">
+          <HeroV2Section videoSrc={videoSrc} />
+        </div>
+      </div>
 
-      {/* 3. Layanan (Apa yang Bisa Dibantu?) */}
-      <ServicesSection />
+      {/* 3. Main Content Sheets (Inova-style Rising Plinth Curtain Overlap) */}
+      <main className="relative z-30 w-full -mt-20 sm:-mt-24 lg:-mt-28 rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#060A14] shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.18)] dark:shadow-[0_-35px_80px_-25px_rgba(0,0,0,0.9)]">
+        {/* 3. Layanan (Apa yang Bisa Dibantu?) */}
+        <ServicesSection />
 
-      {/* 4. Portofolio (Showcase Portofolio Nyata) */}
-      <PortfolioSection />
+        {/* 4. Portofolio (Showcase Portofolio Nyata) */}
+        <PortfolioSection />
 
-      {/* 5. Keunggulan (Standar Kerja ecoDigital) */}
-      <FeaturesSection />
+        {/* 5. Keunggulan (Standar Kerja ecoDigital) */}
+        <FeaturesSection />
 
-      {/* 6. Testimoni Klien Instansi & Bisnis (Sosial Proof Nyata) */}
-      <TestimonialsSection />
+        {/* 6. Testimoni Klien Instansi & Bisnis (Sosial Proof Nyata) */}
+        <TestimonialsSection />
 
-      {/* 7. Alur Pengerjaan (Alur Pengerjaan Anti-Ghosting) */}
-      <WorkflowSection />
+        {/* 7. Alur Pengerjaan (Alur Pengerjaan Anti-Ghosting) */}
+        <WorkflowSection />
 
-      {/* 8. Paket Harga (Paket Harga Terbuka & Transparan + Banner Simulasi) */}
-      <PricingSection />
+        {/* 8. Paket Harga (Paket Harga Terbuka & Transparan + Banner Simulasi) */}
+        <PricingSection />
 
-      {/* 9. Tanya Jawab Santai (FAQ) */}
-      <FaqSection />
+        {/* 9. Tanya Jawab Santai (FAQ) */}
+        <FaqSection />
 
-      {/* 12. Formulir Konsultasi Cepat & Footer */}
-      <ConsultationFormSection />
+        {/* 12. Formulir Konsultasi Cepat & Footer */}
+        <ConsultationFormSection />
+      </main>
 
       {/* Floating Persistent WhatsApp Button */}
       <FloatingWhatsApp />

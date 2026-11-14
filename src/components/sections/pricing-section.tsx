@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   CheckmarkCircle01Icon,
@@ -11,12 +12,30 @@ import {
   FireIcon,
 } from "@hugeicons/core-free-icons";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
+import { SplitWordsTitle } from "@/components/ui/split-words-title";
 import { getWaUrl, PRICING_PACKAGES } from "@/data/landing-data";
 
 export function PricingSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [0.4, 1]);
+
   return (
-    <div className="relative z-20 w-full bg-slate-50 dark:bg-[#060A14] px-4 sm:px-8 lg:px-14 pt-2 sm:pt-4 pb-16 sm:pb-24 transition-colors">
-      <div className="mx-auto max-w-6xl">
+    <div
+      ref={sectionRef}
+      className="relative z-20 w-full -mt-10 sm:-mt-14 rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 bg-slate-50 dark:bg-[#060A14] px-4 sm:px-8 lg:px-14 pt-16 sm:pt-20 pb-16 sm:pb-24 shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.08)] dark:shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.6)] transition-colors duration-300"
+    >
+      <motion.div
+        style={{ scale, y, opacity }}
+        className="mx-auto max-w-6xl will-change-transform origin-top"
+      >
         {/* Anchor targets placed exactly at top of pricing content */}
         <div id="paket-harga" className="scroll-mt-0" />
         <span id="harga" className="scroll-mt-0 block" />
@@ -24,9 +43,11 @@ export function PricingSection() {
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-emerald-600 dark:text-[#10B981]">
             HARGA TERBUKA &amp; TRANSPARAN
           </span>
-          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white">
-            Pilih Paket Sesuai Kebutuhan Sistem Anda
-          </h2>
+          <SplitWordsTitle
+            text="Pilih Paket Sesuai Kebutuhan Sistem Anda"
+            as="h2"
+            className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white justify-center"
+          />
           <p className="mx-auto mt-2 max-w-xl text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-white/70">
             Tiga paket terarah yang selaras dengan 3 fokus layanan kami: <strong>Web Instansi &amp; Bisnis</strong>, <strong>Jasa API &amp; Backend</strong>, dan <strong>Aplikasi Custom</strong>.
           </p>
@@ -200,7 +221,7 @@ export function PricingSection() {
             </Link>
           </div>
         </AnimateOnScroll>
-      </div>
+      </motion.div>
     </div>
   );
 }

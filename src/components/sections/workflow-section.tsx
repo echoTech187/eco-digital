@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   ArrowRight01Icon,
@@ -16,6 +17,7 @@ import {
   SparklesIcon,
 } from "@hugeicons/core-free-icons";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
+import { SplitWordsTitle } from "@/components/ui/split-words-title";
 import { getWaUrl } from "@/data/landing-data";
 
 interface MilestoneDeliverable {
@@ -35,7 +37,24 @@ interface Milestone {
 }
 
 export function WorkflowSection() {
+  const sectionRef = useRef<HTMLElement>(null);
   const [activeStep, setActiveStep] = useState<number>(0);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [0.93, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [0.4, 1]);
+
+  // Dynamic progress line tracking scroll through milestones
+  const { scrollYProgress: trackProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start center", "end center"],
+  });
+  const trackHeight = useTransform(trackProgress, [0, 1], ["0%", "100%"]);
 
   const milestones: Milestone[] = [
     {
@@ -95,7 +114,8 @@ export function WorkflowSection() {
   return (
     <section
       id="cara-kerja"
-      className="relative z-20 w-full bg-slate-50 dark:bg-[#060A14] px-4 sm:px-8 lg:px-14 pt-20 sm:pt-28 pb-16 sm:pb-24 scroll-mt-20 overflow-hidden transition-colors duration-200"
+      ref={sectionRef}
+      className="relative z-20 w-full -mt-10 sm:-mt-14 rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#060A14] px-4 sm:px-8 lg:px-14 pt-20 sm:pt-28 pb-16 sm:pb-24 shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.08)] dark:shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.6)] scroll-mt-20 overflow-hidden transition-colors duration-300"
     >
       <span id="alur-kerja" className="scroll-mt-24 block" />
 
@@ -103,7 +123,10 @@ export function WorkflowSection() {
       <div className="pointer-events-none absolute left-1/2 top-1/4 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 blur-[180px]" />
       <div className="pointer-events-none absolute right-10 bottom-10 h-80 w-80 rounded-full bg-cyan-500/10 blur-[150px]" />
 
-      <div className="relative mx-auto max-w-5xl">
+      <motion.div
+        style={{ scale, y, opacity }}
+        className="relative mx-auto max-w-5xl will-change-transform origin-top"
+      >
         {/* Section Header */}
         <AnimateOnScroll preset="fade-up" className="mb-16 sm:mb-24 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400 mb-4 backdrop-blur-md shadow-xs">
@@ -111,12 +134,13 @@ export function WorkflowSection() {
             <span>ROADMAP PENGERJAAN SISTEM</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.15]">
-            Alur Kerja Modern,{" "}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent">
-              Dari Ide Sampai Beres
-            </span>
-          </h2>
+          <SplitWordsTitle
+            text="Alur Kerja Modern, Dari Ide Sampai Beres"
+            as="h2"
+            highlightWords={["Dari", "Ide", "Sampai", "Beres"]}
+            highlightClassName="bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.15] justify-center"
+          />
 
           <p className="mt-4 text-xs sm:text-sm lg:text-base text-slate-600 dark:text-slate-300/80 max-w-2xl mx-auto leading-relaxed">
             Transparan di setiap milestone. Anda tahu persis apa yang sedang dikerjakan untuk <strong>Aplikasi Custom</strong>, <strong>API &amp; Backend</strong>, atau <strong>Web Instansi</strong> Anda — progresnya bisa dicoba sendiri via staging live 24/7.
@@ -125,14 +149,21 @@ export function WorkflowSection() {
 
         {/* ─── ROADMAP SPINE & MILESTONES (Central Rail on Desktop, Left Rail on Mobile) ─── */}
         <div className="relative">
-          {/* Central Connecting Timeline Rail (Desktop) */}
-          <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-8 bottom-8 w-[2px] bg-gradient-to-b from-emerald-500/20 via-emerald-500/60 to-emerald-500/20 pointer-events-none z-0">
-            {/* Animated Light Pulse traveling down the track */}
-            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-transparent via-emerald-400 to-transparent blur-[1px] animate-pulse" />
+          {/* Central Connecting Timeline Rail (Desktop) with Inova scroll-fill progress */}
+          <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-8 bottom-8 w-[3px] bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden pointer-events-none z-0">
+            <motion.div
+              style={{ height: trackHeight }}
+              className="w-full bg-gradient-to-b from-emerald-500 via-teal-400 to-cyan-400 shadow-[0_0_12px_#10b981]"
+            />
           </div>
 
-          {/* Left Connecting Timeline Rail (Mobile & Tablet) */}
-          <div className="lg:hidden absolute left-5 sm:left-7 top-6 bottom-6 w-[2px] bg-gradient-to-b from-emerald-500/20 via-emerald-500/60 to-emerald-500/20 pointer-events-none z-0" />
+          {/* Left Connecting Timeline Rail (Mobile & Tablet) with Inova scroll-fill progress */}
+          <div className="lg:hidden absolute left-5 sm:left-7 top-6 bottom-6 w-[3px] bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden pointer-events-none z-0">
+            <motion.div
+              style={{ height: trackHeight }}
+              className="w-full bg-gradient-to-b from-emerald-500 via-teal-400 to-cyan-400 shadow-[0_0_12px_#10b981]"
+            />
+          </div>
 
           {/* Milestones Stack */}
           <div className="space-y-12 sm:space-y-16 lg:space-y-20 relative z-10">
@@ -261,7 +292,7 @@ export function WorkflowSection() {
             </a>
           </div>
         </AnimateOnScroll>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   ArrowLeft01Icon,
@@ -122,8 +123,23 @@ const BADGE_COLOR_MAP: Record<string, string> = {
 };
 
 export function TestimonialsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center"],
+  });
+
+  const shelfScale = useTransform(scrollYProgress, [0, 1], [0.90, 1]);
+  const shelfY = useTransform(scrollYProgress, [0, 1], [60, 0]);
+  const shelfOpacity = useTransform(scrollYProgress, [0, 0.6], [0.4, 1]);
+  const shelfClipPath = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["inset(3% 2% 3% 2% round 36px)", "inset(0% 0% 0% 0% round 36px)"]
+  );
 
   // Tripled items (3 sets) for truly seamless, infinite circular looping
   const marqueeItems = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
@@ -205,13 +221,17 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimoni"
-      className="relative z-20 w-full bg-slate-50 dark:bg-[#060A14] px-4 sm:px-6 lg:px-10 py-16 sm:py-20 lg:py-24 scroll-mt-20 transition-colors duration-200"
+      ref={sectionRef}
+      className="relative z-20 w-full -mt-10 sm:-mt-14 rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 bg-slate-50 dark:bg-[#060A14] px-4 sm:px-6 lg:px-10 py-16 sm:py-20 lg:py-24 shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.08)] dark:shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.6)] scroll-mt-20 transition-colors duration-300"
     >
       <span id="ulasan" className="scroll-mt-24 block" />
       <div className="mx-auto max-w-7xl">
         <AnimateOnScroll preset="fade-up" once={false} duration={0.6}>
           {/* ─── Panoramic Showcase Shelf Container ─── */}
-          <div className="relative overflow-hidden rounded-[28px] sm:rounded-[36px] border border-slate-200 dark:border-white/10 bg-white dark:bg-transparent dark:bg-gradient-to-r dark:from-slate-950 dark:via-[#0a1120] dark:to-[#070d18] p-6 sm:p-8 lg:p-10 shadow-xl dark:shadow-2xl backdrop-blur-2xl min-h-[480px] lg:min-h-[520px] flex flex-col justify-center">
+          <motion.div
+            style={{ scale: shelfScale, y: shelfY, opacity: shelfOpacity, clipPath: shelfClipPath }}
+            className="relative overflow-hidden rounded-[28px] sm:rounded-[36px] border border-slate-200 dark:border-white/10 bg-white dark:bg-transparent dark:bg-gradient-to-r dark:from-slate-950 dark:via-[#0a1120] dark:to-[#070d18] p-6 sm:p-8 lg:p-10 shadow-xl dark:shadow-2xl backdrop-blur-2xl min-h-[480px] lg:min-h-[520px] flex flex-col justify-center will-change-transform origin-top"
+          >
             {/* Ambient Background Glows */}
             <div className="pointer-events-none absolute -top-24 -left-20 h-80 w-80 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 blur-3xl" />
             <div className="pointer-events-none absolute top-1/2 right-1/4 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
@@ -370,7 +390,7 @@ export function TestimonialsSection() {
               </div>
 
             </div>
-          </div>
+          </motion.div>
         </AnimateOnScroll>
       </div>
     </section>

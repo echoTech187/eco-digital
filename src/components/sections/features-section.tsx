@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   Globe02Icon,
@@ -10,418 +11,349 @@ import {
   CheckmarkCircle01Icon,
   ShieldCheckIcon,
   LockIcon,
-  FlashIcon,
-  CpuIcon,
   CodeSquareIcon,
-  CheckmarkSquare02Icon,
+  ArrowRight01Icon,
+  Layers01Icon,
+  CpuIcon,
+  FlashIcon,
+  CheckmarkBadge01Icon,
 } from "@hugeicons/core-free-icons";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
-import founderImg from "../../../public/images/founder.png";
+import { SplitWordsTitle } from "@/components/ui/split-words-title";
 
 export function FeaturesSection() {
-  const [activeArchTab, setActiveArchTab] = useState<number>(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [activeItem, setActiveItem] = useState(0);
 
-  const archLayers = [
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [0.96, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [30, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [0.4, 1]);
+
+  const features = [
     {
       id: 0,
-      name: "Domain & Business Logic",
-      desc: "Struktur data, aturan alur sistem, dan validasi logika murni.",
-      badge: "Clean Architecture",
+      step: "01",
+      tag: "TRANSPARANSI PENUH",
+      title: "Pantau Progres Lewat Link Demo Live (24/7)",
+      desc: "Tautan staging aktif diberikan sejak awal pengerjaan. Coba langsung alur aplikasi dari browser HP & laptop kapan saja tanpa tebak-tebakan.",
+      icon: Globe02Icon,
+      actionText: "Uji Coba",
+      actionHref: "#portofolio",
     },
     {
       id: 1,
-      name: "Service & Controller Layer",
-      desc: "RESTful API, modular routing, dan query database teroptimasi.",
-      badge: "High Performance",
+      step: "02",
+      tag: "KOMUNIKASI LANGSUNG",
+      title: "Diskusi Langsung Sama Developer (Tanpa Sales)",
+      desc: "Bebas drama salah paham karena perantara yang tidak paham teknis. Mau ubah struktur database, konsultasi alur, atau solusi error langsung to-the-point bersama pembuat kodenya.",
+      icon: WhatsappIcon,
+      actionText: "Chat WA",
+      actionHref: "https://wa.me/6285183003780?text=Halo%20Mas%20Eko%2C%20saya%20mau%20konsultasi%20kebutuhan%20proyek",
+      isExternal: true,
     },
     {
       id: 2,
-      name: "Presentation & Database",
-      desc: "Antarmuka responsif modern & skema migrasi database siap pakai.",
-      badge: "Production Ready",
+      step: "03",
+      tag: "ARSITEKTUR BERSIH",
+      title: "Clean Architecture & Dokumentasi Rapi",
+      desc: "Kode dibangun modular dengan pemisahan layer yang jelas: terstruktur rapi, mudah dibaca, dan siap dikembangkan lanjut. Bukan sekadar file .zip tanpa panduan.",
+      icon: CodeSquareIcon,
+      actionText: "Lihat Spek",
+      actionHref: "#biaya",
+    },
+    {
+      id: 3,
+      step: "04",
+      tag: "KEAMANAN INVESTASI",
+      title: "Bayar Bertahap Sesuai Milestone (30-40-30)",
+      desc: "Dana Anda aman tanpa DP mengambang. Pembayaran dibagi bertahap, dan pelunasan hanya dilakukan setelah sistem selesai didemokan serta terbukti berjalan lancar di staging.",
+      icon: ShieldCheckIcon,
+      actionText: "Garansi",
+      actionHref: "#faq",
     },
   ];
 
   return (
     <section
       id="keunggulan"
-      className="relative z-20 w-full bg-slate-50 dark:bg-[#060A14] px-4 sm:px-8 lg:px-14 py-20 sm:py-28 lg:py-32 scroll-mt-0 overflow-hidden transition-colors duration-200"
+      ref={sectionRef}
+      className="relative z-20 w-full -mt-10 sm:-mt-14 rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#060A14] px-4 sm:px-8 lg:px-14 py-20 sm:py-28 lg:py-32 shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.08)] dark:shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.6)] scroll-mt-0 overflow-hidden transition-colors duration-300"
     >
-      {/* Dynamic Ambient Glow Pools */}
-      <div className="pointer-events-none absolute -top-40 left-1/4 h-[550px] w-[550px] rounded-full bg-emerald-500/10 blur-[180px]" />
-      <div className="pointer-events-none absolute bottom-0 right-1/4 h-[500px] w-[500px] rounded-full bg-cyan-500/10 blur-[180px]" />
-      <div className="pointer-events-none absolute top-1/2 left-10 h-72 w-72 rounded-full bg-blue-500/5 blur-[140px]" />
+      {/* Dynamic Keyframes for Buttery-Smooth Auto-Scroll in Device Mockups */}
+      <style jsx global>{`
+        @keyframes scrollDesktopLive {
+          0%, 20% { transform: translateY(0); }
+          50%, 70% { transform: translateY(-16%); }
+          100% { transform: translateY(0); }
+        }
+        @keyframes scrollTabletLive {
+          0%, 20% { transform: translateY(0); }
+          50%, 70% { transform: translateY(-18%); }
+          100% { transform: translateY(0); }
+        }
+        @keyframes scrollMobileLive {
+          0%, 20% { transform: translateY(0); }
+          50%, 70% { transform: translateY(-22%); }
+          100% { transform: translateY(0); }
+        }
+        .anim-scroll-desktop {
+          animation: scrollDesktopLive 14s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+        .anim-scroll-tablet {
+          animation: scrollTabletLive 13s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+        .anim-scroll-mobile {
+          animation: scrollMobileLive 11s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+        .device-screen-hover:hover img {
+          animation-play-state: paused !important;
+        }
+      `}</style>
 
-      <div className="mx-auto max-w-6xl relative z-10">
-        {/* Section Header */}
-        <AnimateOnScroll preset="fade-up" once={false} className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400 mb-4 backdrop-blur-md shadow-xs">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
-            <span>STANDAR KERJA ECODIGITAL</span>
-          </div>
+      {/* Ambient Glow Pools */}
+      <div className="pointer-events-none absolute -top-40 left-1/4 h-[550px] w-[550px] rounded-full bg-emerald-500/8 blur-[180px]" />
+      <div className="pointer-events-none absolute bottom-0 right-1/4 h-[500px] w-[500px] rounded-full bg-cyan-500/8 blur-[180px]" />
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
-            Kenapa Ngoding Bareng ecoDigital{" "}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent">
-              Jauh Lebih Tenang?
-            </span>
-          </h2>
-
-          <p className="mt-4 text-xs sm:text-sm lg:text-base leading-relaxed text-slate-600 dark:text-slate-300/80">
-            Empat standar kualitas rekayasa software untuk menjamin proyek <strong>Aplikasi Custom</strong>, <strong>Jasa API &amp; Backend</strong>, dan <strong>Web Instansi &amp; Bisnis</strong> Anda selesai tepat waktu, terstruktur rapi, dan transparan.
-          </p>
-        </AnimateOnScroll>
-
-        {/* ─── 2x2 Bento Grid (Clean, Themed, No Hardcoded Pitch-Black Boxes) ─── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      <motion.div
+        style={{ scale, y, opacity }}
+        className="mx-auto max-w-7xl relative z-10 will-change-transform origin-top"
+      >
+        {/* ─── AERVA-STYLE SPLIT LAYOUT (Two Columns) ─── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           
-          {/* ─── BENTO CARD 1: Clean Architecture & Dokumentasi Rapi ─── */}
-          <AnimateOnScroll preset="fade-up" once={false} delay={0.1} duration={0.6} className="h-full">
-            <div className="group relative flex flex-col justify-between h-full rounded-[32px] border border-slate-200 dark:border-emerald-500/20 bg-white dark:bg-transparent dark:bg-gradient-to-b dark:from-[#0e1726]/95 dark:via-[#09101c]/95 dark:to-[#050912]/98 p-7 sm:p-9 shadow-xl dark:shadow-2xl backdrop-blur-2xl transition-all duration-500 hover:border-emerald-500/50 dark:hover:border-emerald-400/50 hover:shadow-[0_20px_60px_rgba(16,185,129,0.15)]">
-              {/* Glow Accent Top Rim */}
-              <div className="pointer-events-none absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent" />
-
-              {/* 1. Header Information */}
-              <div className="mb-6">
-                <div className="mb-3.5 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300">
-                  <HugeiconsIcon icon={CodeSquareIcon} size={12} />
-                  <span>STANDAR #1: ARSITEKTUR BERSIH</span>
-                </div>
-
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
-                  Clean Architecture &amp; Dokumentasi Rapi{" "}
-                  <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">(Bukan Sekadar .ZIP)</span>
-                </h3>
-
-                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300/85">
-                  Kode dibangun modular dengan arsitektur bersih: terstruktur rapi, mudah dibaca, dan siap dikembangkan lanjut. Dilengkapi panduan instalasi serta skema database lengkap.
-                </p>
+          {/* ══════════════════════════════════════════════════════════════════
+              LEFT COLUMN: Main Headline + 4 Clean Row Items (7 cols)
+             ══════════════════════════════════════════════════════════════════ */}
+          <div className="lg:col-span-7 flex flex-col justify-between">
+            {/* Kicker Tag */}
+            <div className="mb-4">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400 backdrop-blur-md shadow-xs">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
+                <span>STANDAR KERJA ECODIGITAL</span>
               </div>
+            </div>
 
-              {/* 2. Visual Showcase: Architecture Specimen Inspector */}
-              <div className="relative w-full rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.04] p-4 shadow-xs">
-                <div className="flex items-center justify-between border-b border-slate-200/80 dark:border-white/10 pb-2.5 mb-3 text-[10px] font-mono">
-                  <div className="flex items-center gap-2 text-slate-800 dark:text-white/80">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="font-semibold text-slate-900 dark:text-white">architecture-spec.ts</span>
-                  </div>
-                  <span className="rounded-md bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/25 px-2 py-0.5 text-[9px] font-bold text-emerald-700 dark:text-emerald-300">
-                    Clean &amp; Modular
-                  </span>
-                </div>
+            {/* Large Clean Headline (AERVA Style) */}
+            <SplitWordsTitle
+              text="Kenapa Ngoding Bareng ecoDigital Jauh Lebih Tenang?"
+              as="h2"
+              highlightWords={["Jauh", "Lebih", "Tenang?"]}
+              highlightClassName="bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent"
+              className="text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-900 dark:text-white tracking-tight leading-[1.18] mb-8 lg:mb-12"
+            />
 
-                {/* Layer Selector */}
-                <div className="space-y-1.5">
-                  {archLayers.map((layer, lIdx) => (
-                    <button
-                      key={layer.id}
-                      type="button"
-                      onClick={() => setActiveArchTab(lIdx)}
-                      className={`w-full flex items-center justify-between p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
-                        activeArchTab === lIdx
-                          ? "bg-white dark:bg-slate-900 border-emerald-500/40 shadow-xs text-slate-900 dark:text-white"
-                          : "bg-white/50 dark:bg-white/[0.02] border-slate-200/60 dark:border-white/5 text-slate-600 dark:text-white/60 hover:bg-white dark:hover:bg-white/[0.06]"
-                      }`}
-                    >
-                      <div>
-                        <div className="text-[11px] font-bold flex items-center gap-1.5">
-                          <HugeiconsIcon icon={CheckmarkSquare02Icon} size={12} className={activeArchTab === lIdx ? "text-emerald-600 dark:text-emerald-400" : "text-slate-400 dark:text-white/30"} />
-                          <span>{layer.name}</span>
+            {/* 4 Clean Editorial Feature Rows with Dividers */}
+            <div className="border-t border-slate-200/90 dark:border-white/10 divide-y divide-slate-200/80 dark:divide-white/10">
+              {features.map((item) => {
+                const isSelected = activeItem === item.id;
+
+                return (
+                  <div
+                    key={item.id}
+                    onMouseEnter={() => setActiveItem(item.id)}
+                    className={`group relative py-6 sm:py-7 flex items-center justify-between gap-4 sm:gap-6 cursor-pointer transition-all duration-300 rounded-2xl px-3 sm:px-4 -mx-3 sm:-mx-4 ${
+                      isSelected
+                        ? "bg-slate-50/80 dark:bg-white/[0.03]"
+                        : "hover:bg-slate-50/50 dark:hover:bg-white/[0.02]"
+                    }`}
+                  >
+                    {/* Left: Icon Squircle + Content */}
+                    <div className="flex items-start gap-4 sm:gap-5 flex-1 min-w-0">
+                      {/* Icon Squircle (AERVA Style) */}
+                      <div
+                        className={`h-12 w-12 sm:h-14 sm:w-14 rounded-2xl border flex items-center justify-center shrink-0 transition-all duration-300 shadow-xs ${
+                          isSelected
+                            ? "bg-emerald-500 text-slate-950 border-emerald-500 scale-105 shadow-md shadow-emerald-500/20"
+                            : "bg-white dark:bg-slate-900 border-slate-200/90 dark:border-white/10 text-slate-700 dark:text-slate-300 group-hover:border-slate-400 dark:group-hover:border-white/30"
+                        }`}
+                      >
+                        <HugeiconsIcon icon={item.icon} size={22} />
+                      </div>
+
+                      {/* Text Details */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="font-mono text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">
+                            {item.step}
+                          </span>
+                          <span className="text-slate-300 dark:text-slate-700">•</span>
+                          <span className="font-mono text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                            {item.tag}
+                          </span>
                         </div>
-                        <p className="text-[9.5px] text-slate-500 dark:text-white/50 mt-0.5">
-                          {layer.desc}
+
+                        <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
+                          {item.title}
+                        </h3>
+
+                        <p className="mt-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
+                          {item.desc}
                         </p>
                       </div>
-                      <span className="text-[8.5px] font-mono font-semibold px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 shrink-0">
-                        {layer.badge}
+                    </div>
+
+                    {/* Right: "Action ↗" Button (AERVA Style) */}
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="hidden sm:inline-block text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+                        {item.actionText}
                       </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* 3. Proof Guarantee Bullets */}
-              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-white/10 space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                <div className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span>Struktur kode modular dan terdokumentasi lengkap tanpa dependensi aneh</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span>Panduan instalasi dan deployment langkah demi langkah agar sistem langsung aktif di server / perangkat Anda</span>
-                </div>
-              </div>
-            </div>
-          </AnimateOnScroll>
-
-          {/* ─── BENTO CARD 2: Live Staging Preview (Akses 24/7) ─── */}
-          <AnimateOnScroll preset="fade-up" once={false} delay={0.2} duration={0.6} className="h-full">
-            <div className="group relative flex flex-col justify-between h-full rounded-[32px] border border-slate-200 dark:border-cyan-500/20 bg-white dark:bg-transparent dark:bg-gradient-to-b dark:from-[#0e1726]/95 dark:via-[#09101c]/95 dark:to-[#050912]/98 p-7 sm:p-9 shadow-xl dark:shadow-2xl backdrop-blur-2xl transition-all duration-500 hover:border-cyan-500/50 dark:hover:border-cyan-400/50 hover:shadow-[0_20px_60px_rgba(6,182,212,0.15)]">
-              {/* Glow Accent Top Rim */}
-              <div className="pointer-events-none absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
-
-              {/* 1. Header Information */}
-              <div className="mb-6">
-                <div className="mb-3.5 inline-flex items-center gap-1.5 rounded-full border border-cyan-500/25 bg-cyan-50 dark:bg-cyan-950/40 px-3 py-1 text-[11px] font-semibold text-cyan-700 dark:text-cyan-300">
-                  <HugeiconsIcon icon={Globe02Icon} size={12} />
-                  <span>STANDAR #2: TRANSPARANSI PENUH</span>
-                </div>
-
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
-                  Pantau Progres Lewat Link Demo Live{" "}
-                  <span className="text-cyan-600 dark:text-cyan-400 font-extrabold">(Akses 24/7)</span>
-                </h3>
-
-                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300/85">
-                  Tidak perlu menebak-nebak apakah proyek Anda sudah dikerjakan atau belum. Anda diberikan tautan staging live aktif untuk mencoba alur aplikasi langsung dari browser HP &amp; laptop kapan saja.
-                </p>
-              </div>
-
-              {/* 2. Visual Showcase: Cloud Staging Telemetry */}
-              <div className="relative w-full rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.04] p-4 shadow-xs">
-                {/* Safari Omnibar */}
-                <div className="flex items-center justify-between gap-2 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 px-3 py-1.5 mb-3">
-                  <div className="flex items-center gap-1.5">
-                    <span className="h-2 w-2 rounded-full bg-rose-500/80" />
-                    <span className="h-2 w-2 rounded-full bg-amber-500/80" />
-                    <span className="h-2 w-2 rounded-full bg-emerald-500/80" />
-                  </div>
-                  <div className="flex items-center gap-1.5 truncate text-[10px] font-mono text-cyan-700 dark:text-cyan-200">
-                    <HugeiconsIcon icon={LockIcon} size={11} className="text-cyan-600 dark:text-cyan-400 shrink-0" />
-                    <span className="truncate">staging-proyekmu.ecodigital.id</span>
-                  </div>
-                  <span className="flex items-center gap-1 rounded bg-cyan-500/10 dark:bg-cyan-500/20 px-2 py-0.5 text-[9px] font-mono font-bold text-cyan-700 dark:text-cyan-300 shrink-0">
-                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 animate-ping" />
-                    LIVE
-                  </span>
-                </div>
-
-                {/* Staging Metrics Box */}
-                <div className="rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 p-3 space-y-2 font-mono text-[9.5px]">
-                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-white/5 pb-1.5">
-                    <span className="text-slate-500 dark:text-white/50 flex items-center gap-1.5">
-                      <HugeiconsIcon icon={CpuIcon} size={12} className="text-cyan-600 dark:text-cyan-400" />
-                      <span>Status Build:</span>
-                    </span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">
-                      ✓ Deployed &amp; Active
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-white/5 pb-1.5">
-                    <span className="text-slate-500 dark:text-white/50 flex items-center gap-1.5">
-                      <HugeiconsIcon icon={FlashIcon} size={12} className="text-amber-500" />
-                      <span>Cloud Deployment:</span>
-                    </span>
-                    <span className="text-slate-800 dark:text-white font-semibold">Fast Global Edge CDN</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 dark:text-white/50">Uji Coba Multi-Role:</span>
-                    <span className="text-emerald-600 dark:text-emerald-300">Admin, User, &amp; Tamu Siap</span>
-                  </div>
-                </div>
-
-                <div className="mt-3 flex items-center justify-between text-[10px] text-slate-500 dark:text-white/60">
-                  <span className="flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    <span>Bebas coba alur sistem tanpa repot setup server</span>
-                  </span>
-                  <span className="font-mono text-cyan-600 dark:text-cyan-400 font-bold">Akses 24/7</span>
-                </div>
-              </div>
-
-              {/* 3. Proof Guarantee Bullets */}
-              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-white/10 space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                <div className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-cyan-600 dark:text-cyan-400 shrink-0" />
-                  <span>Link demo live aktif dapat dites langsung fiturnya setiap perkembangan</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-cyan-600 dark:text-cyan-400 shrink-0" />
-                  <span>Keluarga, atasan, atau rekan bisa langsung mencoba tanpa instalasi rumit</span>
-                </div>
-              </div>
-            </div>
-          </AnimateOnScroll>
-
-          {/* ─── BENTO CARD 3: Direct Developer Chat (Tanpa Perantara) ─── */}
-          <AnimateOnScroll preset="fade-up" once={false} delay={0.3} duration={0.6} className="h-full">
-            <div className="group relative flex flex-col justify-between h-full rounded-[32px] border border-slate-200 dark:border-emerald-500/20 bg-white dark:bg-transparent dark:bg-gradient-to-b dark:from-[#0e1726]/95 dark:via-[#09101c]/95 dark:to-[#050912]/98 p-7 sm:p-9 shadow-xl dark:shadow-2xl backdrop-blur-2xl transition-all duration-500 hover:border-emerald-500/50 dark:hover:border-emerald-400/50 hover:shadow-[0_20px_60px_rgba(16,185,129,0.15)]">
-              {/* Glow Accent Top Rim */}
-              <div className="pointer-events-none absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent" />
-
-              {/* 1. Header Information */}
-              <div className="mb-6">
-                <div className="mb-3.5 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300">
-                  <HugeiconsIcon icon={WhatsappIcon} size={12} />
-                  <span>STANDAR #3: KOMUNIKASI LANGSUNG</span>
-                </div>
-
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
-                  Diskusi Langsung Sama Developer{" "}
-                  <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">(Tanpa Perantara Sales)</span>
-                </h3>
-
-                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300/85">
-                  Bebas drama salah paham karena perantara yang tidak paham teknis. Mau ubah struktur tabel, diskusi arsitektur sistem, atau konsultasi solusi error—kamu ngobrol langsung sama developer yang menulis kodenya.
-                </p>
-              </div>
-
-              {/* 2. Visual Showcase: WhatsApp Dialogue Card */}
-              <div className="relative w-full rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.04] p-4 shadow-xs">
-                {/* Chat Top Bar */}
-                <div className="flex items-center justify-between border-b border-slate-200/80 dark:border-white/10 pb-2.5 mb-3">
-                  <div className="flex items-center gap-2.5">
-                    <div className="relative h-8 w-8 rounded-full overflow-hidden border border-emerald-500/40 shrink-0">
-                      <Image
-                        src={founderImg}
-                        alt="Mas Eko Susanto - Lead Developer"
-                        width={32}
-                        height={32}
-                        className="h-full w-full object-cover object-top aspect-square"
-                        style={{ aspectRatio: "1 / 1" }}
-                      />
-                    </div>
-                    <div>
-                      <div className="text-[11px] font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                        <span>Mas Eko</span>
-                        <span className="text-[9px] font-semibold text-emerald-600 dark:text-emerald-400">✓ Developer</span>
-                      </div>
-                      <div className="text-[9px] text-emerald-600 dark:text-emerald-300/80 flex items-center gap-1">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        <span>Online • Respon cepat &amp; solutif</span>
-                      </div>
+                      <a
+                        href={item.actionHref}
+                        target={item.isExternal ? "_blank" : undefined}
+                        rel={item.isExternal ? "noopener noreferrer" : undefined}
+                        className={`h-8 w-8 sm:h-9 sm:w-9 rounded-lg flex items-center justify-center transition-all ${
+                          isSelected
+                            ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 shadow-sm"
+                            : "bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-slate-950"
+                        }`}
+                        title={item.actionText}
+                      >
+                        <span className="font-mono text-sm leading-none">↗</span>
+                      </a>
                     </div>
                   </div>
-                  <span className="rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 text-[9px] font-mono font-semibold text-emerald-700 dark:text-emerald-300">
-                    Direct Contact
-                  </span>
-                </div>
+                );
+              })}
+            </div>
+          </div>
 
-                {/* Simulated Chat Dialogue */}
-                <div className="space-y-2 text-[10.5px]">
-                  <div className="flex justify-end">
-                    <div className="max-w-[85%] rounded-2xl rounded-tr-xs bg-slate-200/80 dark:bg-white/10 px-3.5 py-2 text-slate-800 dark:text-white/90">
-                      <p>Mas Eko, kalau ada penyesuaian alur sebelum rilis bisa dibantu cek?</p>
-                      <span className="block text-[8px] text-slate-500 dark:text-white/40 text-right mt-0.5">09:41</span>
-                    </div>
+          {/* ══════════════════════════════════════════════════════════════════
+              RIGHT COLUMN: Subtitle Description + REAL RESPONSIVE COVER ANIMATION (5 cols)
+             ══════════════════════════════════════════════════════════════════ */}
+          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-5">
+            {/* Top Editorial Subtext (AERVA Style) */}
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300/80 leading-relaxed">
+              Empat standar kualitas rekayasa software untuk menjamin proyek <strong>Aplikasi Custom</strong>, <strong>Jasa API &amp; Backend</strong>, dan <strong>Web Instansi &amp; Bisnis</strong> Anda selesai tepat waktu, terstruktur rapi, dan transparan.
+            </p>
+
+            {/* ─── REAL MULTI-DEVICE RESPONSIVE VISUAL (Ultra-Crisp Vector Retina Devices, Floating Cleanly) ─── */}
+            <div className="relative w-full pt-4 sm:pt-6 flex flex-col items-center justify-center">
+              
+              {/* Subtle ambient backglow to ground the hardware */}
+              <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[340px] w-[340px] sm:h-[420px] sm:w-[420px] rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 blur-[100px]" />
+              <div className="pointer-events-none absolute top-1/2 right-10 -translate-y-1/2 h-[260px] w-[260px] rounded-full bg-cyan-500/10 dark:bg-cyan-500/15 blur-[90px]" />
+
+              {/* Multi-Device Cluster Stage: MacBook + iPad + iPhone */}
+              <div className="relative w-full max-w-[560px] aspect-[560/340] select-none mx-auto device-screen-hover">
+                
+                {/* 1. MACBOOK LAPTOP (Back Layer: z-10) */}
+                <div
+                  className="absolute left-0 top-[6%] w-[78%] aspect-[567/326] z-10"
+                >
+                  {/* Laptop Screen Viewport */}
+                  <div
+                    className="absolute overflow-hidden bg-slate-900 shadow-inner"
+                    style={{
+                      left: "11.224%",
+                      top: "6.180%",
+                      width: "77.565%",
+                      height: "84.630%",
+                      borderRadius: "2px",
+                    }}
+                  >
+                    <Image
+                      src="/images/showcase/preview-desktop.png"
+                      alt="ecoDigital Responsive Desktop Preview"
+                      width={1200}
+                      height={1320}
+                      className="w-full h-auto object-cover object-top anim-scroll-desktop will-change-transform"
+                      priority
+                    />
                   </div>
+                  {/* MacBook Hardware Bezel & Keyboard Base Frame */}
+                  <Image
+                    src="/images/showcase/device-macbook-frame.png"
+                    alt="ecoDigital MacBook Frame"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 440px"
+                    className="object-contain pointer-events-none z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_20px_45px_rgba(0,0,0,0.6)]"
+                    priority
+                  />
+                </div>
 
-                  <div className="flex justify-start">
-                    <div className="max-w-[90%] rounded-2xl rounded-tl-xs bg-emerald-500/15 dark:bg-emerald-500/20 border border-emerald-500/30 px-3.5 py-2 text-slate-900 dark:text-white">
-                      <p className="text-slate-800 dark:text-emerald-100 font-medium leading-relaxed">
-                        Bisa banget Mas. Langsung kita sesuaikan logikanya hari ini, nanti link staging-nya otomatis ter-update ya 👍
-                      </p>
-                      <span className="flex items-center justify-end gap-1 text-[8px] text-emerald-600 dark:text-emerald-400 mt-1">
-                        <span>09:42</span>
-                        <span className="font-bold">✓✓</span>
-                      </span>
-                    </div>
+                {/* 2. IPAD TABLET (Middle Layer: z-20) */}
+                <div
+                  className="absolute right-0 top-[14%] w-[32%] aspect-[257/337] z-20"
+                >
+                  {/* iPad Screen Viewport */}
+                  <div
+                    className="absolute overflow-hidden bg-slate-900 shadow-inner"
+                    style={{
+                      left: "4.317%",
+                      top: "3.266%",
+                      width: "88.724%",
+                      height: "93.309%",
+                      borderRadius: "6px",
+                    }}
+                  >
+                    <Image
+                      src="/images/showcase/preview-tablet.png"
+                      alt="ecoDigital Responsive Tablet Preview"
+                      width={768}
+                      height={1320}
+                      className="w-full h-auto object-cover object-top anim-scroll-tablet will-change-transform"
+                      priority
+                    />
                   </div>
+                  {/* iPad Hardware Bezel Frame with Soft Shadow */}
+                  <Image
+                    src="/images/showcase/device-ipad-frame.png"
+                    alt="ecoDigital iPad Frame"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 180px"
+                    className="object-contain pointer-events-none z-10 drop-shadow-[-8px_18px_30px_rgba(0,0,0,0.22)] dark:drop-shadow-[-10px_20px_35px_rgba(0,0,0,0.7)]"
+                    priority
+                  />
                 </div>
-              </div>
 
-              {/* 3. Proof Guarantee Bullets */}
-              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-white/10 space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                <div className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span>Diskusi to the point di WhatsApp langsung dengan eksekutor proyek</span>
+                {/* 3. IPHONE (Front Layer: z-30) */}
+                <div
+                  className="absolute right-[21%] bottom-0 w-[17%] aspect-[101/203] z-30"
+                >
+                  {/* iPhone Screen Viewport */}
+                  <div
+                    className="absolute overflow-hidden bg-slate-900 shadow-inner"
+                    style={{
+                      left: "6.337%",
+                      top: "3.547%",
+                      width: "86.733%",
+                      height: "91.133%",
+                      borderRadius: "14px",
+                    }}
+                  >
+                    <Image
+                      src="/images/showcase/preview-mobile.png"
+                      alt="ecoDigital Responsive iPhone Preview"
+                      width={390}
+                      height={1300}
+                      className="w-full h-auto object-cover object-top anim-scroll-mobile will-change-transform"
+                      priority
+                    />
+                  </div>
+                  {/* iPhone Hardware Frame with Notch & Stainless Rim */}
+                  <Image
+                    src="/images/showcase/device-iphone-frame.png"
+                    alt="ecoDigital iPhone Frame"
+                    fill
+                    sizes="(max-width: 768px) 30vw, 95px"
+                    className="object-contain pointer-events-none z-10 drop-shadow-[-6px_20px_35px_rgba(0,0,0,0.3)] dark:drop-shadow-[-8px_22px_40px_rgba(0,0,0,0.8)]"
+                    priority
+                  />
                 </div>
-                <div className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span>Komunikasi teknis transparan tanpa risiko pesan nyangkut di sales</span>
-                </div>
+
+                {/* Realistic Soft Contact Floor Shadow */}
+                <div className="pointer-events-none absolute -bottom-3 left-1/2 -translate-x-1/2 w-4/5 h-6 bg-slate-900/10 dark:bg-black/50 blur-xl rounded-full" />
               </div>
             </div>
-          </AnimateOnScroll>
-
-          {/* ─── BENTO CARD 4: Pembayaran Bertahap Sesuai Milestone (Dana Aman) ─── */}
-          <AnimateOnScroll preset="fade-up" once={false} delay={0.4} duration={0.6} className="h-full">
-            <div className="group relative flex flex-col justify-between h-full rounded-[32px] border border-slate-200 dark:border-amber-500/20 bg-white dark:bg-transparent dark:bg-gradient-to-b dark:from-[#0e1726]/95 dark:via-[#09101c]/95 dark:to-[#050912]/98 p-7 sm:p-9 shadow-xl dark:shadow-2xl backdrop-blur-2xl transition-all duration-500 hover:border-amber-500/50 dark:hover:border-amber-400/50 hover:shadow-[0_20px_60px_rgba(245,158,11,0.15)]">
-              {/* Glow Accent Top Rim */}
-              <div className="pointer-events-none absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-amber-400/60 to-transparent" />
-
-              {/* 1. Header Information */}
-              <div className="mb-6">
-                <div className="mb-3.5 inline-flex items-center gap-1.5 rounded-full border border-amber-500/25 bg-amber-50 dark:bg-amber-950/40 px-3 py-1 text-[11px] font-semibold text-amber-700 dark:text-amber-300">
-                  <HugeiconsIcon icon={CreditCardIcon} size={12} />
-                  <span>STANDAR #4: KEAMANAN INVESTASI</span>
-                </div>
-
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
-                  Bayar Bertahap Sesuai Milestone{" "}
-                  <span className="text-amber-600 dark:text-amber-400 font-extrabold">(Dana 100% Aman)</span>
-                </h3>
-
-                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300/85">
-                  Dana Anda aman tanpa DP mengambang. Pembayaran dibagi bertahap sesuai milestone pengerjaan, dan pelunasan hanya dilakukan setelah sistem selesai didemokan serta terbukti berjalan lancar di staging / perangkat Anda.
-                </p>
-              </div>
-
-              {/* 2. Visual Showcase: 3-Step Milestone Progress Bar */}
-              <div className="relative w-full rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.04] p-4 shadow-xs">
-                {/* Milestone Security Header */}
-                <div className="flex items-center justify-between border-b border-slate-200/80 dark:border-white/10 pb-2.5 mb-3">
-                  <span className="text-[10px] font-mono text-slate-600 dark:text-white/70 flex items-center gap-1.5">
-                    <HugeiconsIcon icon={ShieldCheckIcon} size={13} className="text-amber-500" />
-                    <span className="font-bold text-slate-900 dark:text-white">SISTEM TERMIN ANTI-CANGGUNG</span>
-                  </span>
-                  <span className="rounded bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/30 px-2 py-0.5 text-[9px] font-mono font-bold text-amber-700 dark:text-amber-300">
-                    Bebas Risiko
-                  </span>
-                </div>
-
-                {/* 3 Step Milestone Visual Progress */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 px-3 py-2 text-[10px]">
-                    <span className="flex items-center gap-2 text-slate-800 dark:text-white font-medium">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-slate-950 text-[9px] font-bold">1</span>
-                      <span>DP Awal (Mulai Pengerjaan &amp; Basis Data)</span>
-                    </span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-mono text-[9px] font-bold">30% · Aktif ✓</span>
-                  </div>
-
-                  <div className="flex items-center justify-between rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 px-3 py-2 text-[10px]">
-                    <span className="flex items-center gap-2 text-slate-800 dark:text-white font-medium">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-slate-950 text-[9px] font-bold">2</span>
-                      <span>Demo Live Staging &amp; Uji Fitur Utama</span>
-                    </span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-mono text-[9px] font-bold">40% · Tervalidasi ✓</span>
-                  </div>
-
-                  <div className="flex items-center justify-between rounded-xl bg-amber-500/10 border border-amber-500/30 px-3 py-2 text-[10px]">
-                    <span className="flex items-center gap-2 text-amber-800 dark:text-amber-200 font-semibold">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-500 text-slate-950 text-[9px] font-bold">3</span>
-                      <span>Pelunasan &amp; Serah Terima Full Source Code</span>
-                    </span>
-                    <span className="text-amber-700 dark:text-amber-300 font-mono text-[9px] font-bold">30% · Final</span>
-                  </div>
-                </div>
-
-                <div className="mt-3 flex items-center justify-between text-[10px] text-slate-500 dark:text-white/50">
-                  <span className="flex items-center gap-1">
-                    <HugeiconsIcon icon={LockIcon} size={11} className="text-emerald-600 dark:text-emerald-400" />
-                    <span>Bayar bertahap setelah melihat progres nyata</span>
-                  </span>
-                  <span className="text-amber-600 dark:text-amber-400 font-mono text-[9px]">Garansi 100%</span>
-                </div>
-              </div>
-
-              {/* 3. Proof Guarantee Bullets */}
-              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-white/10 space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                <div className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-amber-600 dark:text-amber-400 shrink-0" />
-                  <span>Tanpa biaya siluman atau kenaikan tarif sepihak di tengah jalan</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={15} className="text-amber-600 dark:text-amber-400 shrink-0" />
-                  <span>Penyerahan file sistem lengkap dengan database &amp; panduan instalasi</span>
-                </div>
-              </div>
-            </div>
-          </AnimateOnScroll>
+          </div>
 
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

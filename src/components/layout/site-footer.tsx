@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   WhatsappIcon,
@@ -16,9 +17,25 @@ import logoLightImg from "../../../public/images/logo/logo-vertical-light.png";
 import { getWaUrl, WA_DISPLAY } from "@/data/landing-data";
 
 export function SiteFooter() {
+  const footerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: footerRef,
+    offset: ["start end", "end end"],
+  });
+
+  // Inova-style footer drawer reveal
+  const footerY = useTransform(scrollYProgress, [0, 1], [-50, 0]);
+  const footerOpacity = useTransform(scrollYProgress, [0, 0.7], [0.5, 1]);
+
   return (
-    <footer className="relative z-20 w-full border-t border-slate-200 dark:border-white/10 bg-white dark:bg-[#040810] pt-12 sm:pt-16 pb-12 px-4 sm:px-8 lg:px-14 transition-colors">
-      <div className="mx-auto max-w-6xl">
+    <footer
+      ref={footerRef}
+      className="relative z-20 w-full -mt-8 sm:-mt-10 rounded-t-[36px] sm:rounded-t-[48px] border-t border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#040810] pt-14 sm:pt-20 pb-12 px-4 sm:px-8 lg:px-14 shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.06)] dark:shadow-[0_-25px_60px_-20px_rgba(0,0,0,0.5)] transition-colors duration-300"
+    >
+      <motion.div
+        style={{ y: footerY, opacity: footerOpacity }}
+        className="mx-auto max-w-6xl will-change-transform"
+      >
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
           {/* Col 1: Brand & Bio */}
           <div className="md:col-span-2 space-y-4">
@@ -174,7 +191,7 @@ export function SiteFooter() {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 }

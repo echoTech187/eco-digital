@@ -14,7 +14,10 @@ import { getWaUrl } from "@/data/landing-data";
 
 export function ConsultationFormSection() {
   return (
-    <div id="kontak" className="relative z-20 w-full bg-slate-50 dark:bg-[#060A14] pt-8 border-t border-slate-200 dark:border-white/10 scroll-mt-20 transition-colors">
+    <div
+      id="kontak"
+      className="relative z-20 w-full -mt-10 sm:-mt-14 rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 bg-slate-50 dark:bg-[#060A14] pt-14 sm:pt-20 shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.08)] dark:shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.6)] scroll-mt-20 transition-colors duration-300"
+    >
       <span id="konsultasi" className="scroll-mt-24 block" />
       {/* ─── High-Converting Closing Section (CTA Banner -> /contact & WhatsApp) ─── */}
       <div className="mx-auto max-w-4xl px-4 sm:px-8 mb-14 sm:mb-20">

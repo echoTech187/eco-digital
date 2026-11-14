@@ -8,7 +8,10 @@ import { FAQ_ITEMS } from "@/data/landing-data";
 
 export function FaqSection() {
   return (
-    <div id="faq" className="relative z-20 w-full bg-slate-50 dark:bg-[#060A14] px-4 sm:px-8 lg:px-14 py-12 sm:py-16 scroll-mt-0 transition-colors">
+    <div
+      id="faq"
+      className="relative z-20 w-full -mt-10 sm:-mt-14 rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#060A14] px-4 sm:px-8 lg:px-14 py-16 sm:py-20 shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.08)] dark:shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.6)] scroll-mt-0 transition-colors duration-300"
+    >
       <div className="mx-auto max-w-4xl">
         <AnimateOnScroll preset="fade-up" className="mb-8 sm:mb-10 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-emerald-600 dark:text-[#10B981]">

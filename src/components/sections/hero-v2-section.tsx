@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { WhatsappIcon } from "@hugeicons/core-free-icons";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
@@ -18,6 +19,14 @@ const HERO_BUBBLE_SCRIPTS = [
 
 export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
   void videoSrc;
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollY } = useScroll();
+
+  // Inova-style receding parallax: scale down, fade, and sink as user scrolls into Layanan
+  const heroScale = useTransform(scrollY, [0, 480], [1, 0.90]);
+  const heroOpacity = useTransform(scrollY, [0, 480], [1, 0.35]);
+  const heroY = useTransform(scrollY, [0, 480], [0, 90]);
+
   const [currentScriptIdx, setCurrentScriptIdx] = useState(0);
   const [typewriterText, setTypewriterText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
@@ -64,6 +73,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
   return (
     <section
       id="hero"
+      ref={heroRef}
       className="relative flex w-full flex-col justify-center bg-slate-50 dark:bg-[#060A14] pt-24 sm:pt-28 lg:pt-20 pb-16 sm:pb-20 lg:pb-14 lg:h-screen lg:max-h-screen lg:overflow-hidden transition-colors duration-200"
     >
       {/* Ambient background glows */}
@@ -71,7 +81,10 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
       <div className="pointer-events-none absolute -top-10 right-0 w-[520px] h-[520px] rounded-full bg-cyan-500/15 dark:bg-cyan-500/20 blur-[130px]" />
 
       {/* ─── 1. TOP/MIDDLE STAGE: HEADLINE + FOUNDER + BUBBLE ─────────────────── */}
-      <div className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 my-0 lg:my-auto py-2 lg:py-0">
+      <motion.div
+        style={{ scale: heroScale, opacity: heroOpacity, y: heroY }}
+        className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 my-0 lg:my-auto py-2 lg:py-0 will-change-transform origin-top"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
           {/* ── LEFT COLUMN: Headline, Uraian Persuasif, CTA, & Value Points (7 cols di desktop, full di mobile & tablet) ── */}
@@ -240,10 +253,10 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
             </AnimateOnScroll>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ─── 2. INTEGRATED TECH STACK BAR (ABSOLUTE BOTTOM: 0, OVERLAY DI ATAS BAGIAN BAWAH FOTO FOUNDER) ─── */}
-      <div className="absolute bottom-0 inset-x-0 z-30 w-full border-t border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-slate-950/85 py-3 sm:py-3.5 backdrop-blur-xl transition-colors duration-200">
+      <div className="absolute bottom-0 inset-x-0 z-10 w-full border-t border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-slate-950/85 py-3 sm:py-3.5 backdrop-blur-xl transition-colors duration-200">
         <div
           className="relative flex overflow-x-hidden"
           style={{

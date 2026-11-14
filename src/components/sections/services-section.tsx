@@ -298,13 +298,29 @@ function EditorialChapterSection({
   // Parallax subtle drift for giant background watermark
   const watermarkY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
 
+  // Receding exit parallax as next chapter/section slides up and covers this chapter
+  const { scrollYProgress: exitProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const contentScale = useTransform(exitProgress, [0, 0.7, 1], [1, 0.98, 0.92]);
+  const contentOpacity = useTransform(exitProgress, [0, 0.65, 1], [1, 0.75, 0.25]);
+  const contentY = useTransform(exitProgress, [0, 1], [0, 50]);
+
+  const isFirst = index === 0;
+  const zIndex = 10 + index * 10; // Ch 01: 10, Ch 02: 20, Ch 03: 30
+
   return (
     <article
       ref={sectionRef}
       id={chapter.id}
-      className={`relative w-full ${
-        index === 0 ? "border-t-0 pt-16 sm:pt-20 lg:pt-24" : "border-t border-slate-200 dark:border-white/[0.08] pt-20 sm:pt-28 lg:pt-32"
-      } pb-24 sm:pb-32 lg:pb-40 overflow-hidden scroll-mt-0`}
+      style={{ zIndex }}
+      className={`relative w-full lg:sticky lg:top-0 min-h-screen flex flex-col justify-center ${
+        isFirst
+          ? "pt-24 sm:pt-28 lg:pt-24"
+          : "rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.22)] dark:shadow-[0_-35px_80px_-25px_rgba(0,0,0,0.95)] pt-24 sm:pt-28 lg:pt-24"
+      } pb-10 sm:pb-14 lg:pb-10 bg-white dark:bg-[#060A14] overflow-hidden scroll-mt-20 sm:scroll-mt-24 transition-colors duration-300`}
     >
       {chapter.id === "aplikasi-custom" && <span id="pembuatan-aplikasi" className="scroll-mt-20 block" />}
       {chapter.id === "web-instansi-bisnis" && <span id="aplikasi-sistem" className="scroll-mt-20 block" />}
@@ -324,10 +340,13 @@ function EditorialChapterSection({
         {chapter.chapterNumber}
       </motion.div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <motion.div
+        style={{ scale: contentScale, opacity: contentOpacity, y: contentY }}
+        className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 will-change-transform origin-top w-full my-auto"
+      >
         {/* ─── CHAPTER HEADER (Bold Editorial Kicker) ─── */}
-        <AnimateOnScroll preset="fade-up" once={false} className="max-w-4xl mb-14 sm:mb-20">
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.15]">
+        <AnimateOnScroll preset="fade-up" once={false} className="max-w-4xl mb-4 sm:mb-6 lg:mb-5">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-[34px] font-black tracking-tight text-slate-900 dark:text-white leading-[1.2]">
             {chapter.headlineMain}{" "}
             <span
               className="bg-clip-text text-transparent bg-gradient-to-r"
@@ -339,15 +358,15 @@ function EditorialChapterSection({
             </span>
           </h2>
 
-          <p className="mt-5 text-sm sm:text-base lg:text-lg text-slate-600 dark:text-white/60 leading-relaxed max-w-3xl">
+          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-white/60 leading-relaxed max-w-3xl">
             {chapter.subheadline}
           </p>
         </AnimateOnScroll>
 
         {/* ─── THE CINEMATIC DIALOGUE STAGE ─── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-stretch">
           {/* ── SISI KIRI (5/12): COMIC POP & DIRECT DIALOGUE ── */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-3 sm:space-y-4">
             {/* 💬 Cloud Speech Bubble: Suara Tamu dengan Spring Pop-in Physics */}
             <div className="relative pt-1">
               {/* The Comic Speech Bubble Box */}
@@ -356,24 +375,24 @@ function EditorialChapterSection({
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.25 }}
                 variants={comicBubbleVariants}
-                className="rounded-[24px] p-6 text-slate-900 transition-transform duration-300 hover:scale-[1.01]"
+                className="rounded-[18px] sm:rounded-[22px] p-4 sm:p-5 text-slate-900 transition-transform duration-300 hover:scale-[1.01]"
                 style={{
                   backgroundColor: "#ffffff",
                   color: "#0f172a",
                   border: "2.5px solid #0f172a",
-                  boxShadow: `0 18px 40px -10px rgba(0,0,0,0.7), 5px 5px 0px ${chapter.accentColor}`,
+                  boxShadow: `0 16px 36px -10px rgba(0,0,0,0.7), 4px 4px 0px ${chapter.accentColor}`,
                 }}
               >
-                <p className="text-sm sm:text-[15px] font-bold leading-relaxed text-slate-900">
+                <p className="text-xs sm:text-[13px] font-bold leading-relaxed text-slate-900">
                   &ldquo;{chapter.conditionPrompt}&rdquo;
                 </p>
 
-                <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+                <div className="mt-2.5 pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-500">
                   <span className="font-semibold text-slate-700 flex items-center gap-1.5">
                     <span>👤</span>
                     <span>Guest Visitor</span>
                   </span>
-                  <span className="font-mono text-[11px] text-slate-400">ecoDigital.id</span>
+                  <span className="font-mono text-[10px] text-slate-400">ecoDigital.id</span>
                 </div>
               </motion.div>
 
@@ -385,7 +404,7 @@ function EditorialChapterSection({
                   viewport={{ once: false, amount: 0.25 }}
                   custom={0}
                   variants={dotTrailVariants}
-                  className="w-3.5 h-3.5 rounded-full bg-white"
+                  className="w-3 h-3 rounded-full bg-white"
                   style={{
                     border: "2px solid #0f172a",
                     boxShadow: `1.5px 1.5px 0px ${chapter.accentColor}`,
@@ -397,7 +416,7 @@ function EditorialChapterSection({
                   viewport={{ once: false, amount: 0.25 }}
                   custom={1}
                   variants={dotTrailVariants}
-                  className="w-2 h-2 ml-1.5 rounded-full bg-white"
+                  className="w-2 h-2 ml-1 rounded-full bg-white"
                   style={{
                     border: "1.5px solid #0f172a",
                     boxShadow: `1.5px 1.5px 0px ${chapter.accentColor}`,
@@ -412,15 +431,15 @@ function EditorialChapterSection({
               whileInView="visible"
               viewport={{ once: false, amount: 0.25 }}
               variants={ekoAnswerVariants}
-              className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.035] p-5 shadow-xs dark:shadow-none backdrop-blur-md"
+              className="rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.035] p-3.5 sm:p-4 shadow-xs dark:shadow-none backdrop-blur-md"
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border-2 border-emerald-400 shadow-md">
+              <div className="flex items-center gap-2.5 mb-2">
+                <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full border-2 border-emerald-400 shadow-md">
                   <Image
                     src={founderImg}
                     alt="Mas Eko — Lead Developer ecoDigital"
-                    width={44}
-                    height={44}
+                    width={36}
+                    height={36}
                     unoptimized
                     className="h-full w-full object-cover object-top scale-[1.35] translate-y-1 aspect-square"
                     style={{ aspectRatio: "1 / 1" }}
@@ -428,18 +447,18 @@ function EditorialChapterSection({
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-bold text-slate-900 dark:text-white">Mas Eko</span>
-                    <span className="inline-flex items-center gap-1 rounded-md bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                    <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Mas Eko</span>
+                    <span className="inline-flex items-center gap-1 rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[9px] font-bold text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                       Lead Developer
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400/80 uppercase font-semibold">
+                  <span className="text-[9px] font-mono text-emerald-600 dark:text-emerald-400/80 uppercase font-semibold">
                     JAWABAN DARI MAS EKO:
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-slate-700 dark:text-white/90 leading-relaxed italic pl-0.5">
+              <p className="text-[11px] sm:text-xs text-slate-700 dark:text-white/90 leading-relaxed italic pl-0.5">
                 &ldquo;{chapter.masEkoResolution}&rdquo;
               </p>
             </motion.div>
@@ -451,7 +470,7 @@ function EditorialChapterSection({
             whileInView="visible"
             viewport={{ once: false, amount: 0.2 }}
             variants={elevationCardVariants}
-            className="lg:col-span-7 flex flex-col justify-between rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-transparent dark:bg-gradient-to-b dark:from-white/[0.045] dark:to-white/[0.01] p-6 sm:p-10 backdrop-blur-xl shadow-xl dark:shadow-2xl relative overflow-hidden"
+            className="lg:col-span-7 flex flex-col justify-between rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-transparent dark:bg-gradient-to-b dark:from-white/[0.045] dark:to-white/[0.01] p-4 sm:p-6 lg:p-6 backdrop-blur-xl shadow-xl dark:shadow-2xl relative overflow-hidden"
           >
             {/* Soft inner glow */}
             <div
@@ -461,17 +480,17 @@ function EditorialChapterSection({
 
             <div>
               {/* Service Category Tag & Title */}
-              <div className="flex items-center gap-3.5 mb-8 pb-6 border-b border-slate-200 dark:border-white/10">
+              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-slate-200 dark:border-white/10">
                 <div
-                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border ${chapter.accentBorder} ${chapter.accentBg} ${chapter.accentText} shadow-md`}
+                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${chapter.accentBorder} ${chapter.accentBg} ${chapter.accentText} shadow-md`}
                 >
-                  <HugeiconsIcon icon={chapter.icon} size={24} />
+                  <HugeiconsIcon icon={chapter.icon} size={20} />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-slate-400 dark:text-white/40 block">
+                  <span className="text-[9px] font-mono font-semibold tracking-wider uppercase text-slate-400 dark:text-white/40 block">
                     PAKET LAYANAN TERFOKUS
                   </span>
-                  <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                  <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">
                     {chapter.serviceTitle}
                   </h3>
                 </div>
@@ -483,24 +502,24 @@ function EditorialChapterSection({
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.2 }}
                 variants={pillarsContainerVariants}
-                className="space-y-6 sm:space-y-7 mb-10"
+                className="space-y-3 sm:space-y-3 mb-5"
               >
                 {chapter.reliefPillars.map((pillar, pIdx) => (
                   <motion.div
                     key={pIdx}
                     variants={pillarItemVariants}
-                    className="group flex items-start gap-4 sm:gap-5"
+                    className="group flex items-start gap-3 sm:gap-3.5"
                   >
                     <span
-                      className={`font-mono text-sm sm:text-base font-bold text-slate-400 dark:text-white/30 transition-colors group-hover:${chapter.accentText} pt-0.5`}
+                      className={`font-mono text-xs sm:text-sm font-bold text-slate-400 dark:text-white/30 transition-colors group-hover:${chapter.accentText} pt-0.5`}
                     >
                       {pillar.num}
                     </span>
-                    <div className="space-y-1">
-                      <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-white transition-colors">
+                    <div className="space-y-0.5">
+                      <h4 className="text-xs sm:text-[13px] font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-white transition-colors">
                         {pillar.title}
                       </h4>
-                      <p className="text-xs sm:text-sm text-slate-500 dark:text-white/60 leading-relaxed">{pillar.desc}</p>
+                      <p className="text-[11px] sm:text-xs text-slate-500 dark:text-white/60 leading-relaxed">{pillar.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -508,21 +527,21 @@ function EditorialChapterSection({
             </div>
 
             {/* Bottom Action Footer (Relaxed, High Trust) */}
-            <div className="pt-6 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            <div className="pt-3.5 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
               <a
                 href={getWaUrl(chapter.waMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r ${chapter.accentGradient} px-7 py-4 text-xs sm:text-sm font-bold text-slate-950 shadow-xl shadow-emerald-500/20 transition-all hover:scale-[1.02] hover:shadow-2xl active:scale-[0.98] font-sans`}
+                className={`inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r ${chapter.accentGradient} px-5 py-2.5 text-xs sm:text-[13px] font-bold text-slate-950 shadow-xl shadow-emerald-500/20 transition-all hover:scale-[1.02] hover:shadow-2xl active:scale-[0.98] font-sans`}
               >
-                <HugeiconsIcon icon={WhatsappIcon} size={18} />
+                <HugeiconsIcon icon={WhatsappIcon} size={16} />
                 <span>{chapter.ctaText}</span>
-                <HugeiconsIcon icon={ArrowRight01Icon} size={16} />
+                <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
               </a>
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </article>
   );
 }
@@ -531,7 +550,10 @@ function EditorialChapterSection({
 
 export function ServicesSection() {
   return (
-    <section id="layanan" className="relative z-20 w-full bg-slate-50 dark:bg-[#060A14] scroll-mt-0 transition-colors duration-200">
+    <section
+      id="layanan"
+      className="relative z-10 w-full pt-0 rounded-t-[36px] sm:rounded-t-[56px] scroll-mt-0 transition-colors duration-300"
+    >
       <span id="solusi" className="scroll-mt-0 block" />
 
       {/* ─── 3 EDITORIAL CHAPTERS ─── */}
@@ -539,6 +561,8 @@ export function ServicesSection() {
         {CHAPTERS.map((chapter, index) => (
           <EditorialChapterSection key={chapter.id} chapter={chapter} index={index} />
         ))}
+        {/* Scroll buffer runway so Chapter 03 stays pinned and readable without being cut off prematurely */}
+        <div className="hidden lg:block w-full h-[45vh]" aria-hidden="true" />
       </div>
     </section>
   );
