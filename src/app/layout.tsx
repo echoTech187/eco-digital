@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/layout/smooth-scroll-provider";
 import { ThemeProvider } from "@/components/theme/theme-context";
 import { JsonLd } from "@/components/seo/json-ld";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 
 const geistSans = Geist({
@@ -148,6 +149,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full bg-slate-50 dark:bg-[#060A14] text-slate-900 dark:text-white transition-colors duration-200 selection:bg-emerald-500/30 selection:text-emerald-400">
+        <Analytics />
         <ThemeProvider>
           <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </ThemeProvider>
