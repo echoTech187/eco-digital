@@ -8,7 +8,6 @@ import {
   PortfolioSection,
   FeaturesSection,
   TestimonialsSection,
-  WorkflowSection,
   PricingSection,
   FaqSection,
   ConsultationFormSection,
@@ -37,7 +36,7 @@ export default function Home() {
       </div>
 
       {/* 3. Main Content Sheets (Inova-style Rising Plinth Curtain Overlap) */}
-      <main className="relative z-30 w-full -mt-20 sm:-mt-24 lg:-mt-28 rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#060A14] shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.18)] dark:shadow-[0_-35px_80px_-25px_rgba(0,0,0,0.9)]">
+      <main className="relative z-30 w-full mt-0 lg:-mt-28 rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#060A14] shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.18)] dark:shadow-[0_-35px_80px_-25px_rgba(0,0,0,0.9)]">
         {/* 3. Layanan (Apa yang Bisa Dibantu?) */}
         <ServicesSection />
 
@@ -50,10 +49,7 @@ export default function Home() {
         {/* 6. Testimoni Klien Instansi & Bisnis (Sosial Proof Nyata) */}
         <TestimonialsSection />
 
-        {/* 7. Alur Pengerjaan (Alur Pengerjaan Anti-Ghosting) */}
-        <WorkflowSection />
-
-        {/* 8. Paket Harga (Paket Harga Terbuka & Transparan + Banner Simulasi) */}
+        {/* 7. Paket Harga (Paket Harga Terbuka & Transparan + Banner Simulasi) */}
         <PricingSection />
 
         {/* 9. Tanya Jawab Santai (FAQ) */}

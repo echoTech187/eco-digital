@@ -251,13 +251,11 @@ export function PortfolioSection() {
     <div
       ref={containerRef}
       id="portofolio"
-      className="relative w-full h-auto lg:h-[250vh] scroll-mt-20"
+      className="relative w-full h-auto "
     >
       {/* ─── STICKY PINNED STAGE (DESKTOP) & NATURAL EXPANSIVE SECTION (MOBILE) ─── */}
-      <section className="relative z-40 w-full lg:sticky lg:top-0 lg:h-screen lg:overflow-hidden flex flex-col justify-between rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 bg-slate-50 dark:bg-[#060A14] pt-20 sm:pt-24 lg:pt-20 pb-6 sm:pb-8 shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.18)] dark:shadow-[0_-35px_80px_-25px_rgba(0,0,0,0.9)] transition-colors duration-300">
-        {/* Ambient atmospheric glows */}
-        <div className="pointer-events-none absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-emerald-500/10 blur-[130px]" />
-        <div className="pointer-events-none absolute bottom-10 right-10 h-80 w-80 rounded-full bg-cyan-500/10 blur-[120px]" />
+      <section className="relative z-40 w-full lg:overflow-hidden flex flex-col justify-between border-t border-slate-200/90 dark:border-white/10 bg-slate-50 dark:bg-[#060A14] pt-20 sm:pt-24 lg:pt-20 pb-6 sm:pb-8 shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.18)] dark:shadow-[0_-35px_80px_-25px_rgba(0,0,0,0.9)] transition-colors duration-300">
+
 
         {/* ─── 1. TOP HEADER BAR: TITLE & LIVE SCROLL PROGRESS ─── */}
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 mb-2 lg:mb-3">

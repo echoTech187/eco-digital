@@ -30,11 +30,11 @@ export function SiteFooter() {
   return (
     <footer
       ref={footerRef}
-      className="relative z-20 w-full -mt-8 sm:-mt-10 rounded-t-[36px] sm:rounded-t-[48px] border-t border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#040810] pt-14 sm:pt-20 pb-12 px-4 sm:px-8 lg:px-14 shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.06)] dark:shadow-[0_-25px_60px_-20px_rgba(0,0,0,0.5)] transition-colors duration-300"
+      className="relative z-20 w-full -mt-8 sm:-mt-10 border-t border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#040810] pt-14 sm:pt-20 pb-12 px-4 sm:px-8 lg:px-14 shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.06)] dark:shadow-[0_-25px_60px_-20px_rgba(0,0,0,0.5)] transition-colors duration-300"
     >
       <motion.div
         style={{ y: footerY, opacity: footerOpacity }}
-        className="mx-auto max-w-6xl will-change-transform"
+        className="mx-auto max-w-7xl will-change-transform"
       >
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
           {/* Col 1: Brand & Bio */}

@@ -12,14 +12,20 @@ import {
   ShieldCheckIcon,
   LockIcon,
   CodeSquareIcon,
+  Analytics01Icon,
   ArrowRight01Icon,
   Layers01Icon,
   CpuIcon,
   FlashIcon,
   CheckmarkBadge01Icon,
+  ChevronRightIcon,
 } from "@hugeicons/core-free-icons";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 import { SplitWordsTitle } from "@/components/ui/split-words-title";
+import { getWaUrl } from "@/data/landing-data";
+import { DirectDeveloperChatShowcase } from "./direct-developer-chat";
+import { DashboardAnalyticsShowcase } from "./dashboard-analytics-showcase";
+import { MilestonePaymentShowcase } from "./milestone-payment-showcase";
 
 export function FeaturesSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -39,42 +45,33 @@ export function FeaturesSection() {
       id: 0,
       step: "01",
       tag: "TRANSPARANSI PENUH",
-      title: "Pantau Progres Lewat Link Demo Live (24/7)",
+      title: "Pantau Progres Lewat Link Demo Live",
       desc: "Tautan staging aktif diberikan sejak awal pengerjaan. Coba langsung alur aplikasi dari browser HP & laptop kapan saja tanpa tebak-tebakan.",
       icon: Globe02Icon,
-      actionText: "Uji Coba",
-      actionHref: "#portofolio",
     },
     {
       id: 1,
       step: "02",
       tag: "KOMUNIKASI LANGSUNG",
-      title: "Diskusi Langsung Sama Developer (Tanpa Sales)",
+      title: "Diskusi Langsung Sama Developer",
       desc: "Bebas drama salah paham karena perantara yang tidak paham teknis. Mau ubah struktur database, konsultasi alur, atau solusi error langsung to-the-point bersama pembuat kodenya.",
       icon: WhatsappIcon,
-      actionText: "Chat WA",
-      actionHref: "https://wa.me/6285183003780?text=Halo%20Mas%20Eko%2C%20saya%20mau%20konsultasi%20kebutuhan%20proyek",
-      isExternal: true,
     },
     {
       id: 2,
       step: "03",
-      tag: "ARSITEKTUR BERSIH",
-      title: "Clean Architecture & Dokumentasi Rapi",
-      desc: "Kode dibangun modular dengan pemisahan layer yang jelas: terstruktur rapi, mudah dibaca, dan siap dikembangkan lanjut. Bukan sekadar file .zip tanpa panduan.",
-      icon: CodeSquareIcon,
-      actionText: "Lihat Spek",
-      actionHref: "#biaya",
+      tag: "KONTROL & ANALITIK",
+      title: "Dilengkapi Dashboard Analitik: Pantau Performa Bisnis Real-Time",
+      desc: "Kendalikan bisnis langsung dari layar ponsel. Sistem otomatis menyajikan grafik tren penjualan, laporan omset cabang, dan ringkasan data penting untuk membantu Anda mengambil keputusan bisnis lebih cepat.",
+      icon: Analytics01Icon,
     },
     {
       id: 3,
       step: "04",
       tag: "KEAMANAN INVESTASI",
-      title: "Bayar Bertahap Sesuai Milestone (30-40-30)",
+      title: "Bayar Bertahap Sesuai Milestone",
       desc: "Dana Anda aman tanpa DP mengambang. Pembayaran dibagi bertahap, dan pelunasan hanya dilakukan setelah sistem selesai didemokan serta terbukti berjalan lancar di staging.",
       icon: ShieldCheckIcon,
-      actionText: "Garansi",
-      actionHref: "#faq",
     },
   ];
 
@@ -84,36 +81,8 @@ export function FeaturesSection() {
       ref={sectionRef}
       className="relative z-20 w-full -mt-10 sm:-mt-14 rounded-t-[36px] sm:rounded-t-[56px] border-t border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#060A14] px-4 sm:px-8 lg:px-14 py-20 sm:py-28 lg:py-32 shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.08)] dark:shadow-[0_-30px_70px_-20px_rgba(0,0,0,0.6)] scroll-mt-0 overflow-hidden transition-colors duration-300"
     >
-      {/* Dynamic Keyframes for Buttery-Smooth Auto-Scroll in Device Mockups */}
-      <style jsx global>{`
-        @keyframes scrollDesktopLive {
-          0%, 20% { transform: translateY(0); }
-          50%, 70% { transform: translateY(-16%); }
-          100% { transform: translateY(0); }
-        }
-        @keyframes scrollTabletLive {
-          0%, 20% { transform: translateY(0); }
-          50%, 70% { transform: translateY(-18%); }
-          100% { transform: translateY(0); }
-        }
-        @keyframes scrollMobileLive {
-          0%, 20% { transform: translateY(0); }
-          50%, 70% { transform: translateY(-22%); }
-          100% { transform: translateY(0); }
-        }
-        .anim-scroll-desktop {
-          animation: scrollDesktopLive 14s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-        }
-        .anim-scroll-tablet {
-          animation: scrollTabletLive 13s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-        }
-        .anim-scroll-mobile {
-          animation: scrollMobileLive 11s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-        }
-        .device-screen-hover:hover img {
-          animation-play-state: paused !important;
-        }
-      `}</style>
+      <span id="cara-kerja" className="scroll-mt-24 block" />
+      <span id="alur-kerja" className="scroll-mt-24 block" />
 
       {/* Ambient Glow Pools */}
       <div className="pointer-events-none absolute -top-40 left-1/4 h-[550px] w-[550px] rounded-full bg-emerald-500/8 blur-[180px]" />
@@ -129,7 +98,7 @@ export function FeaturesSection() {
           {/* ══════════════════════════════════════════════════════════════════
               LEFT COLUMN: Main Headline + 4 Clean Row Items (7 cols)
              ══════════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
+          <div className="lg:col-span-6 flex flex-col justify-between">
             {/* Kicker Tag */}
             <div className="mb-4">
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400 backdrop-blur-md shadow-xs">
@@ -144,8 +113,13 @@ export function FeaturesSection() {
               as="h2"
               highlightWords={["Jauh", "Lebih", "Tenang?"]}
               highlightClassName="bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent"
-              className="text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-900 dark:text-white tracking-tight leading-[1.18] mb-8 lg:mb-12"
+              className="text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-900 dark:text-white tracking-tight leading-[1.18] mb-4 lg:mb-12"
             />
+
+            {/* Subheading Mobile (Dipindahkan tepat di bawah heading pada mobile) */}
+            <p className="block lg:hidden text-xs sm:text-sm text-slate-600 dark:text-slate-300/80 leading-relaxed mb-8">
+              Empat standar kualitas rekayasa software untuk menjamin proyek <strong>Aplikasi Custom</strong>, <strong>Jasa API &amp; Backend</strong>, dan <strong>Web Instansi &amp; Bisnis</strong> Anda selesai tepat waktu, terstruktur rapi, dan transparan.
+            </p>
 
             {/* 4 Clean Editorial Feature Rows with Dividers */}
             <div className="border-t border-slate-200/90 dark:border-white/10 divide-y divide-slate-200/80 dark:divide-white/10">
@@ -156,6 +130,7 @@ export function FeaturesSection() {
                   <div
                     key={item.id}
                     onMouseEnter={() => setActiveItem(item.id)}
+                    onClick={() => setActiveItem(item.id)}
                     className={`group relative py-6 sm:py-7 flex items-center justify-between gap-4 sm:gap-6 cursor-pointer transition-all duration-300 rounded-2xl px-3 sm:px-4 -mx-3 sm:-mx-4 ${
                       isSelected
                         ? "bg-slate-50/80 dark:bg-white/[0.03]"
@@ -197,24 +172,17 @@ export function FeaturesSection() {
                       </div>
                     </div>
 
-                    {/* Right: "Action ↗" Button (AERVA Style) */}
-                    <div className="flex items-center gap-2 shrink-0">
-                      <span className="hidden sm:inline-block text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-                        {item.actionText}
-                      </span>
-                      <a
-                        href={item.actionHref}
-                        target={item.isExternal ? "_blank" : undefined}
-                        rel={item.isExternal ? "noopener noreferrer" : undefined}
-                        className={`h-8 w-8 sm:h-9 sm:w-9 rounded-lg flex items-center justify-center transition-all ${
+                    {/* Right: Chevron-Right Indicator (Hanya tampil di desktop) */}
+                    <div className="shrink-0 hidden lg:flex items-center justify-center pl-2">
+                      <div
+                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center transition-all duration-300 ${
                           isSelected
-                            ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 shadow-sm"
-                            : "bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-slate-950"
+                            ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 shadow-xs translate-x-1"
+                            : "bg-slate-100/70 dark:bg-white/5 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300 group-hover:bg-slate-200/70 dark:group-hover:bg-white/10 group-hover:translate-x-0.5"
                         }`}
-                        title={item.actionText}
                       >
-                        <span className="font-mono text-sm leading-none">↗</span>
-                      </a>
+                        <HugeiconsIcon icon={ChevronRightIcon} size={18} />
+                      </div>
                     </div>
                   </div>
                 );
@@ -224,135 +192,246 @@ export function FeaturesSection() {
 
           {/* ══════════════════════════════════════════════════════════════════
               RIGHT COLUMN: Subtitle Description + REAL RESPONSIVE COVER ANIMATION (5 cols)
+              (Hidden pada layar mobile, hanya aktif di desktop lg+)
              ══════════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-5">
+          <div className="hidden lg:block lg:col-span-6 lg:sticky lg:top-28 space-y-4">
             {/* Top Editorial Subtext (AERVA Style) */}
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300/80 leading-relaxed">
               Empat standar kualitas rekayasa software untuk menjamin proyek <strong>Aplikasi Custom</strong>, <strong>Jasa API &amp; Backend</strong>, dan <strong>Web Instansi &amp; Bisnis</strong> Anda selesai tepat waktu, terstruktur rapi, dan transparan.
             </p>
 
-            {/* ─── REAL MULTI-DEVICE RESPONSIVE VISUAL (Ultra-Crisp Vector Retina Devices, Floating Cleanly) ─── */}
-            <div className="relative w-full pt-4 sm:pt-6 flex flex-col items-center justify-center">
+            {/* ─── REAL MULTI-DEVICE RESPONSIVE VISUAL & INTERACTIVE TABS (Ultra-Crisp Vector Retina Devices & Direct Chat) ─── */}
+            <div className="relative w-full h-[510px] flex items-center justify-center select-none">
               
               {/* Subtle ambient backglow to ground the hardware */}
               <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[340px] w-[340px] sm:h-[420px] sm:w-[420px] rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 blur-[100px]" />
               <div className="pointer-events-none absolute top-1/2 right-10 -translate-y-1/2 h-[260px] w-[260px] rounded-full bg-cyan-500/10 dark:bg-cyan-500/15 blur-[90px]" />
 
-              {/* Multi-Device Cluster Stage: MacBook + iPad + iPhone */}
-              <div className="relative w-full max-w-[560px] aspect-[560/340] select-none mx-auto device-screen-hover">
-                
-                {/* 1. MACBOOK LAPTOP (Back Layer: z-10) */}
-                <div
-                  className="absolute left-0 top-[6%] w-[78%] aspect-[567/326] z-10"
-                >
-                  {/* Laptop Screen Viewport */}
-                  <div
-                    className="absolute overflow-hidden bg-slate-900 shadow-inner"
-                    style={{
-                      left: "11.224%",
-                      top: "6.180%",
-                      width: "77.565%",
-                      height: "84.630%",
-                      borderRadius: "2px",
-                    }}
+              <AnimatePresence mode="wait">
+                {activeItem === 0 ? (
+                  <motion.div
+                    key="tab-devices"
+                    initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -12, scale: 0.98 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="w-full flex items-center justify-center"
                   >
-                    <Image
-                      src="/images/showcase/preview-desktop.png"
-                      alt="ecoDigital Responsive Desktop Preview"
-                      width={1200}
-                      height={1320}
-                      className="w-full h-auto object-cover object-top anim-scroll-desktop will-change-transform"
-                      priority
-                    />
-                  </div>
-                  {/* MacBook Hardware Bezel & Keyboard Base Frame */}
-                  <Image
-                    src="/images/showcase/device-macbook-frame.png"
-                    alt="ecoDigital MacBook Frame"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 440px"
-                    className="object-contain pointer-events-none z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_20px_45px_rgba(0,0,0,0.6)]"
-                    priority
-                  />
-                </div>
+                    {/* Multi-Device Cluster Stage: MacBook + iPad + iPhone with Real Live Screen Recordings */}
+                    <div
+                      className="relative w-full max-w-[560px] aspect-[560/340] select-none mx-auto cursor-pointer"
+                      onMouseEnter={(e) => {
+                        const videos = e.currentTarget.querySelectorAll('video');
+                        videos.forEach((v) => v.pause());
+                      }}
+                      onMouseLeave={(e) => {
+                        const videos = e.currentTarget.querySelectorAll('video');
+                        videos.forEach((v) => v.play().catch(() => {}));
+                      }}
+                    >
+                      
+                      {/* 1. MACBOOK LAPTOP (Back Layer: z-10) */}
+                      <div
+                        className="absolute left-0 top-[6%] w-[80%] aspect-[16/9] z-10 overflow-hidden"
+                      >
+                        {/* Laptop Screen Viewport */}
+                        <div
+                          className="absolute overflow-hidden bg-slate-900 shadow-inner w-[70%] aspect-[16/9]"
+                          style={{
+                            left: "11.224%",
+                            top: "6.180%",
+                            width: "77%",
+                            height: "86%",
+                            borderRadius: "0px",
+                          }}
+                        >
+                          <video
+                            ref={(el) => {
+                              if (el) {
+                                el.muted = true;
+                                el.play().catch(() => {});
+                              }
+                            }}
+                            src="/videos/showcase/desktop.mp4"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            preload="auto"
+                            className="w-full h-full object-fill pointer-events-none select-none"
+                          />
+                        </div>
+                        {/* MacBook Hardware Bezel & Keyboard Base Frame */}
+                        <Image
+                          src="/images/showcase/device-macbook-frame.png"
+                          alt="ecoDigital MacBook Frame"
+                          fill
+                          sizes="(max-width: 789px) 100vw, 440px"
+                          className="object-contain pointer-events-none z-10 drop-shadow-[0_15px_30px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_20px_45px_rgba(0,0,0,0.6)]"
+                          priority
+                        />
+                      </div>
 
-                {/* 2. IPAD TABLET (Middle Layer: z-20) */}
-                <div
-                  className="absolute right-0 top-[14%] w-[32%] aspect-[257/337] z-20"
-                >
-                  {/* iPad Screen Viewport */}
-                  <div
-                    className="absolute overflow-hidden bg-slate-900 shadow-inner"
-                    style={{
-                      left: "4.317%",
-                      top: "3.266%",
-                      width: "88.724%",
-                      height: "93.309%",
-                      borderRadius: "6px",
-                    }}
+                      {/* 2. IPAD TABLET (Middle Layer: z-20) */}
+                      <div
+                        className="absolute right-0 top-[14%] w-[32%] aspect-[256/335] z-20"
+                      >
+                        {/* iPad Screen Viewport */}
+                        <div
+                          className="absolute overflow-hidden bg-slate-900 shadow-none"
+                          style={{
+                            left: "4.797%",
+                            top: "2.985%",
+                            width: "91.406%",
+                            height: "95%",
+                            borderRadius: "0px",
+                          }}
+                        >
+                          <video
+                            ref={(el) => {
+                              if (el) {
+                                el.muted = true;
+                                el.play().catch(() => {});
+                              }
+                            }}
+                            src="/videos/showcase/tablet.mp4"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            preload="auto"
+                            className="w-full h-full object-cover object-top pointer-events-none select-none"
+                          />
+                        </div>
+                        {/* iPad Hardware Bezel Frame with Soft Shadow */}
+                        <Image
+                          src="/images/showcase/device-ipad-frame.png"
+                          alt="ecoDigital iPad Frame"
+                          fill
+                          sizes="(max-width: 768px) 50vw, 180px"
+                          className="object-contain pointer-events-none z-10 drop-shadow-[-8px_18px_30px_rgba(0,0,0,0.22)] dark:drop-shadow-[-10px_20px_35px_rgba(0,0,0,0.7)]"
+                          priority
+                        />
+                      </div>
+
+                      {/* 3. IPHONE (Front Layer: z-30) */}
+                      <div
+                        className="absolute right-[21%] bottom-0 w-[17%] aspect-[95/200] z-30"
+                      >
+                        {/* iPhone Screen Viewport */}
+                        <div
+                          className="absolute overflow-hidden bg-slate-900 shadow-inner"
+                          style={{
+                            left: "6.436%",
+                            top: "5.448%",
+                            width: "87%",
+                            height: "89.450%",
+                            borderRadius: "2px",
+                          }}
+                        >
+                          <video
+                            ref={(el) => {
+                              if (el) {
+                                el.muted = true;
+                                el.play().catch(() => {});
+                              }
+                            }}
+                            src="/videos/showcase/mobile.mp4"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            preload="auto"
+                            className="w-full h-full object-cover object-top pointer-events-none select-none"
+                          />
+                        </div>
+                        {/* iPhone Hardware Frame with Notch & Stainless Rim */}
+                        <Image
+                          src="/images/showcase/device-iphone-frame.png"
+                          alt="ecoDigital iPhone Frame"
+                          fill
+                          sizes="(max-width: 768px) 30vw, 95px"
+                          className="object-contain pointer-events-none z-10 drop-shadow-[-6px_20px_35px_rgba(0,0,0,0.3)] dark:drop-shadow-[-8px_22px_40px_rgba(0,0,0,0.8)]"
+                          priority
+                        />
+                      </div>
+
+                      {/* Realistic Soft Contact Floor Shadow */}
+                      <div className="pointer-events-none absolute -bottom-3 left-1/2 -translate-x-1/2 w-4/5 h-6 bg-slate-900/10 dark:bg-black/50 blur-xl rounded-full" />
+                    </div>
+                  </motion.div>
+                ) : activeItem === 1 ? (
+                  <motion.div
+                    key="tab-chat"
+                    initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -12, scale: 0.98 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="w-full flex items-center justify-center"
                   >
-                    <Image
-                      src="/images/showcase/preview-tablet.png"
-                      alt="ecoDigital Responsive Tablet Preview"
-                      width={768}
-                      height={1320}
-                      className="w-full h-auto object-cover object-top anim-scroll-tablet will-change-transform"
-                      priority
-                    />
-                  </div>
-                  {/* iPad Hardware Bezel Frame with Soft Shadow */}
-                  <Image
-                    src="/images/showcase/device-ipad-frame.png"
-                    alt="ecoDigital iPad Frame"
-                    fill
-                    sizes="(max-width: 768px) 50vw, 180px"
-                    className="object-contain pointer-events-none z-10 drop-shadow-[-8px_18px_30px_rgba(0,0,0,0.22)] dark:drop-shadow-[-10px_20px_35px_rgba(0,0,0,0.7)]"
-                    priority
-                  />
-                </div>
-
-                {/* 3. IPHONE (Front Layer: z-30) */}
-                <div
-                  className="absolute right-[21%] bottom-0 w-[17%] aspect-[101/203] z-30"
-                >
-                  {/* iPhone Screen Viewport */}
-                  <div
-                    className="absolute overflow-hidden bg-slate-900 shadow-inner"
-                    style={{
-                      left: "6.337%",
-                      top: "3.547%",
-                      width: "86.733%",
-                      height: "91.133%",
-                      borderRadius: "14px",
-                    }}
+                    <DirectDeveloperChatShowcase />
+                  </motion.div>
+                ) : activeItem === 2 ? (
+                  <motion.div
+                    key="tab-analytics"
+                    initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -12, scale: 0.98 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="w-full flex items-center justify-center"
                   >
-                    <Image
-                      src="/images/showcase/preview-mobile.png"
-                      alt="ecoDigital Responsive iPhone Preview"
-                      width={390}
-                      height={1300}
-                      className="w-full h-auto object-cover object-top anim-scroll-mobile will-change-transform"
-                      priority
-                    />
-                  </div>
-                  {/* iPhone Hardware Frame with Notch & Stainless Rim */}
-                  <Image
-                    src="/images/showcase/device-iphone-frame.png"
-                    alt="ecoDigital iPhone Frame"
-                    fill
-                    sizes="(max-width: 768px) 30vw, 95px"
-                    className="object-contain pointer-events-none z-10 drop-shadow-[-6px_20px_35px_rgba(0,0,0,0.3)] dark:drop-shadow-[-8px_22px_40px_rgba(0,0,0,0.8)]"
-                    priority
-                  />
-                </div>
-
-                {/* Realistic Soft Contact Floor Shadow */}
-                <div className="pointer-events-none absolute -bottom-3 left-1/2 -translate-x-1/2 w-4/5 h-6 bg-slate-900/10 dark:bg-black/50 blur-xl rounded-full" />
-              </div>
+                    <DashboardAnalyticsShowcase />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="tab-milestone"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="w-full flex items-center justify-center transform-gpu"
+                  >
+                    <MilestonePaymentShowcase />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
 
         </div>
+
+        {/* ─── Bottom Reassurance Roadmap Banner ─── */}
+        <AnimateOnScroll preset="fade-up" className="mt-14 sm:mt-20">
+          <div className="rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-emerald-50 via-white to-teal-50 dark:from-emerald-950/50 dark:via-slate-900 dark:to-teal-950/40 p-5 sm:p-7 flex flex-col md:flex-row items-center justify-between gap-5 text-left shadow-xl shadow-emerald-500/5">
+            <div className="flex items-start sm:items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/30">
+                <HugeiconsIcon icon={ShieldCheckIcon} size={24} />
+              </div>
+              <div>
+                <div className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2 flex-wrap">
+                  <span>Siap Mulai Milestone 01 Hari Ini?</span>
+                  <span className="rounded-full bg-emerald-500/20 border border-emerald-500/30 px-2.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:text-emerald-300">
+                    Bebas Cemas &amp; Tanpa Biaya
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300/80 mt-1">
+                  Ceritakan kebutuhan Aplikasi Custom, API &amp; Backend, atau Web Instansi &amp; Bisnis Anda. Kita diskusikan solusinya secara gratis di awal.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href={getWaUrl("Halo Mas Eko (ecoDigital), saya mau mulai diskusi dari Milestone 01 untuk sistem saya.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 w-full md:w-auto inline-flex items-center justify-center gap-2.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 px-6 py-3.5 text-xs sm:text-sm font-bold text-slate-950 shadow-xl shadow-emerald-500/25 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <HugeiconsIcon icon={WhatsappIcon} size={18} />
+              <span>Mulai Curhat Kebutuhan (Gratis)</span>
+              <HugeiconsIcon icon={ArrowRight01Icon} size={15} />
+            </a>
+          </div>
+        </AnimateOnScroll>
       </motion.div>
     </section>
   );

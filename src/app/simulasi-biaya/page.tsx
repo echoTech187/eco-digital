@@ -81,7 +81,7 @@ export default function SimulasiBiayaPage() {
       <NavbarSection />
 
       {/* Main Container */}
-      <main className="relative z-20 mx-auto max-w-5xl px-4 sm:px-8 pt-24 sm:pt-28 pb-10 lg:pb-14">
+      <main className="relative z-20 mx-auto max-w-7xl px-4 sm:px-8 pt-24 sm:pt-28 pb-10 lg:pb-14">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-slate-500 dark:text-white/50">
           <Link href="/" prefetch={false} className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">

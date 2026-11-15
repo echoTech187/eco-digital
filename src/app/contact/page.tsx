@@ -79,7 +79,7 @@ export default function ContactPage() {
       <NavbarSection />
 
       {/* Main Content */}
-      <main className="relative z-20 mx-auto max-w-5xl px-4 sm:px-8 pt-24 sm:pt-28 pb-10 lg:pb-14">
+      <main className="relative z-20 mx-auto max-w-7xl px-4 sm:px-8 pt-24 sm:pt-28 pb-10 lg:pb-14">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-slate-500 dark:text-white/50">
           <Link href="/" prefetch={false} className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
@@ -120,7 +120,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-[#10B981] hover:underline"
               >
-                <span>Ngobrol via WhatsApp : {WA_DISPLAY}</span>
+                <span>Konsultasi Gratis</span>
                 <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
               </a>
             </div>

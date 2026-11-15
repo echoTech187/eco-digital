@@ -352,14 +352,14 @@ export function NavbarSection() {
                   </Link>
                 </div>
 
-                {/* Bottom Alur Kerja Link */}
+                {/* Bottom Standar Kerja Link */}
                 <div className="pt-2 border-t border-slate-200 dark:border-white/10">
                   <Link
-                    href="/#cara-kerja"
-                    onClick={(e) => handleAnchorClick(e, "#cara-kerja")}
+                    href="/#keunggulan"
+                    onClick={(e) => handleAnchorClick(e, "#keunggulan")}
                     className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] text-slate-600 dark:text-white/70 hover:text-emerald-600 dark:hover:text-emerald-300 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
                   >
-                    <span className="font-medium">Lihat 4 Langkah Alur Kerja Anti-Ghosting</span>
+                    <span className="font-medium">Lihat 4 Standar Kerja &amp; Alur Anti-Ghosting</span>
                     <HugeiconsIcon icon={ArrowRight01Icon} size={13} className="text-emerald-600 dark:text-emerald-400" />
                   </Link>
                 </div>
@@ -544,28 +544,10 @@ export function NavbarSection() {
                   </span>
                   <div className="flex-1">
                     <span className="text-xs font-bold text-slate-900 group-hover/item:text-emerald-600 dark:text-white dark:group-hover/item:text-emerald-300 block">
-                      4 Jaminan Nyata
+                      Standar Kerja Anti-Ghosting
                     </span>
                     <p className="mt-0.5 text-[11px] leading-snug text-slate-500 dark:text-white/60">
-                      Tanpa DP mengambang &amp; progres transparan bergaransi.
-                    </p>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/#cara-kerja"
-                  onClick={(e) => handleAnchorClick(e, "#cara-kerja")}
-                  className="group/item flex items-start gap-3 rounded-xl p-2.5 transition-all hover:bg-slate-100 dark:hover:bg-white/[0.06]"
-                >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400 transition-colors group-hover/item:scale-105">
-                    <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
-                  </span>
-                  <div className="flex-1">
-                    <span className="text-xs font-bold text-slate-900 group-hover/item:text-blue-600 dark:text-white dark:group-hover/item:text-blue-300 block">
-                      Alur Anti-Ghosting
-                    </span>
-                    <p className="mt-0.5 text-[11px] leading-snug text-slate-500 dark:text-white/60">
-                      Bisa dipantau live dari awal sampai serah terima tuntas.
+                      Live demo 24/7, tanpa DP mengambang &amp; garansi tuntas.
                     </p>
                   </div>
                 </Link>
@@ -656,26 +638,28 @@ export function NavbarSection() {
 
           {/* Right: Theme Switcher, Direct WhatsApp CTA Button & Mobile/Tablet Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Theme Toggle Button */}
-            <ThemeToggle variant="navbar" />
+            {/* Theme Toggle Button (Hidden on Mobile & Tablet, available in Drawer) */}
+            <div className="hidden lg:block">
+              <ThemeToggle variant="navbar" />
+            </div>
 
+            {/* Direct WhatsApp CTA Button (Hidden on Mobile & Tablet, available in Drawer) */}
             <a
               href={getWaUrl(
                 "Halo Mas (ecoDigital), saya mau konsultasi pembuatan website / sistem."
               )}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-3 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:from-emerald-400 hover:to-teal-400 hover:scale-105 active:scale-95 whitespace-nowrap shrink-0"
+              className="hidden lg:inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-3 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:from-emerald-400 hover:to-teal-400 hover:scale-105 active:scale-95 whitespace-nowrap shrink-0"
             >
               <HugeiconsIcon icon={WhatsappIcon} size={15} />
-              <span className="hidden sm:inline">Konsultasi Sekarang</span>
-              <span className="sm:hidden">Konsultasi</span>
+              <span>Konsultasi Sekarang</span>
             </a>
 
             {/* Mobile & Tablet Hamburger Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/5 text-slate-700 dark:text-white/80 transition-colors hover:bg-slate-200 dark:hover:bg-white/10 hover:text-slate-950 dark:hover:text-white lg:hidden cursor-pointer"
+              className="flex lg:hidden h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/5 text-slate-700 dark:text-white/80 transition-colors hover:bg-slate-200 dark:hover:bg-white/10 hover:text-slate-950 dark:hover:text-white cursor-pointer"
               aria-label="Buka Menu Navigasi"
               aria-expanded={mobileMenuOpen}
             >
@@ -790,15 +774,6 @@ export function NavbarSection() {
                         <span>Testimoni Klien</span>
                       </span>
                       <span className="text-xs text-amber-600/80 dark:text-amber-400/70 font-mono">5.0 ★</span>
-                    </Link>
-
-                    <Link
-                      href="/#cara-kerja"
-                      onClick={(e) => handleAnchorClick(e, "#cara-kerja")}
-                      className="flex items-center justify-between py-3.5 px-4 rounded-2xl text-slate-800 dark:text-white/90 hover:text-emerald-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 active:bg-slate-200 dark:active:bg-white/15 transition-colors"
-                    >
-                      <span>Alur Kerja</span>
-                      <span className="text-xs text-slate-400 dark:text-white/40">04</span>
                     </Link>
 
                     <Link
