@@ -12,6 +12,23 @@ interface SplitWordsTitleProps {
   highlightClassName?: string;
 }
 
+// Create motion components outside of render
+const MotionH1 = motion.create("h1");
+const MotionH2 = motion.create("h2");
+const MotionH3 = motion.create("h3");
+const MotionH4 = motion.create("h4");
+const MotionP = motion.create("p");
+const MotionSpan = motion.create("span");
+
+const componentMap = {
+  h1: MotionH1,
+  h2: MotionH2,
+  h3: MotionH3,
+  h4: MotionH4,
+  p: MotionP,
+  span: MotionSpan,
+};
+
 export function SplitWordsTitle({
   text,
   className = "",
@@ -21,8 +38,7 @@ export function SplitWordsTitle({
   highlightClassName = "text-emerald-600 dark:text-emerald-400",
 }: SplitWordsTitleProps) {
   const words = text.split(" ");
-
-  const MotionComponent = motion.create(Component);
+  const MotionComponent = componentMap[Component];
 
   return (
     <MotionComponent
