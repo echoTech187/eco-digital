@@ -31,8 +31,11 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
   const [typewriterText, setTypewriterText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
 
-  // Typewriter effect cycling through the 4 scripts smoothly
+  // Typewriter effect cycling through the 4 scripts smoothly (Only active on desktop where speech bubble is visible)
   useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+      return;
+    }
     const fullText = HERO_BUBBLE_SCRIPTS[currentScriptIdx];
     let charIndex = 0;
     let nextTimer: NodeJS.Timeout | null = null;
@@ -49,7 +52,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
           setCurrentScriptIdx((prev) => (prev + 1) % HERO_BUBBLE_SCRIPTS.length);
         }, 3600);
       }
-    }, 22);
+    }, 28);
 
     return () => {
       clearInterval(interval);
@@ -89,70 +92,62 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
 
           {/* ── LEFT COLUMN: Headline, Uraian Persuasif, CTA, & Value Points (7 cols di desktop, full di mobile & tablet) ── */}
           <div className="lg:col-span-7 flex flex-col justify-center items-center text-center lg:items-start lg:text-left space-y-4 sm:space-y-5 lg:space-y-6 w-full">
-            <AnimateOnScroll preset="fade-right" once={false} duration={0.6} delay={0.15}>
-              {/* Primary H1 Heading */}
-              <h1
-                id="heroMainHeading"
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.2] lg:leading-[1.18] max-w-2xl mx-auto lg:mx-0"
+            {/* Primary H1 Heading (Immediate LCP Paint - Zero Delay) */}
+            <h1
+              id="heroMainHeading"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.2] lg:leading-[1.18] max-w-2xl mx-auto lg:mx-0"
+            >
+              Wujudkan Aplikasi Custom, API &amp; Backend Handal,{" "}
+              <span className="text-emerald-700 dark:text-emerald-400">
+                hingga Web Instansi &amp; Bisnis Anda.
+              </span>
+            </h1>
+
+            {/* Persuasive Description Subheadline */}
+            <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm md:text-base lg:text-[17px] leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Nggak perlu pusing hadapi arsitektur sistem sendirian atau bayar mahal ke agensi kaku. Di{" "}
+              <strong className="text-emerald-700 dark:text-emerald-400 font-semibold">ecoDigital</strong>, Anda diskusi langsung sama{" "}
+              <span className="text-slate-900 dark:text-white font-medium">lead developer-nya</span> — mulai dari rancang bangun <strong>Aplikasi Custom</strong>, fondasi <strong>Jasa API &amp; Backend</strong>, hingga <strong>Web Instansi &amp; Bisnis</strong> siap online.
+            </p>
+
+            {/* Action CTA Buttons */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-3.5 pt-1 w-full sm:w-auto">
+              <a
+                id="btnHeroWA"
+                href={getWaUrl(
+                  "Halo Mas Eko, saya mau diskusi santai seputar pembuatan sistem website / aplikasi kustom di ecoDigital."
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm sm:text-base shadow-lg shadow-emerald-500/25 transition-all transform hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2.5"
               >
-                Wujudkan Aplikasi Custom, API &amp; Backend Handal,{" "}
-                <span className="text-emerald-600 dark:text-emerald-400">
-                  hingga Web Instansi &amp; Bisnis Anda.
-                </span>
-              </h1>
-            </AnimateOnScroll>
+                <HugeiconsIcon icon={WhatsappIcon} size={18} />
+                <span>Konsultasi Gratis</span>
+              </a>
 
-            <AnimateOnScroll preset="fade-right" once={false} duration={0.6} delay={0.3}>
-              {/* Persuasive Description Subheadline */}
-              <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm md:text-base lg:text-[17px] leading-relaxed max-w-xl mx-auto lg:mx-0">
-                Nggak perlu pusing hadapi arsitektur sistem sendirian atau bayar mahal ke agensi kaku. Di{" "}
-                <strong className="text-emerald-700 dark:text-emerald-400 font-semibold">ecoDigital</strong>, Anda diskusi langsung sama{" "}
-                <span className="text-slate-900 dark:text-white font-medium">lead developer-nya</span> — mulai dari rancang bangun <strong>Aplikasi Custom</strong>, fondasi <strong>Jasa API &amp; Backend</strong>, hingga <strong>Web Instansi &amp; Bisnis</strong> siap online.
-              </p>
-            </AnimateOnScroll>
+              <a
+                href="#portofolio"
+                className="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 shadow-sm dark:bg-slate-900/90 dark:hover:bg-slate-800 dark:text-slate-200 dark:border-slate-700/80 font-semibold text-sm sm:text-base transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Lihat Portofolio
+              </a>
+            </div>
 
-            <AnimateOnScroll preset="fade-right" once={false} duration={0.6} delay={0.45}>
-              {/* Action CTA Buttons */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-3.5 pt-1 w-full sm:w-auto">
-                <a
-                  id="btnHeroWA"
-                  href={getWaUrl(
-                    "Halo Mas Eko, saya mau diskusi santai seputar pembuatan sistem website / aplikasi kustom di ecoDigital."
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm sm:text-base shadow-lg shadow-emerald-500/25 transition-all transform hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2.5"
-                >
-                  <HugeiconsIcon icon={WhatsappIcon} size={18} />
-                  <span>Konsultasi Gratis</span>
-                </a>
-
-                <a
-                  href="#portofolio"
-                  className="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 shadow-sm dark:bg-slate-900/90 dark:hover:bg-slate-800 dark:text-slate-200 dark:border-slate-700/80 font-semibold text-sm sm:text-base transition-all transform hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  Lihat Portofolio
-                </a>
-              </div>
-            </AnimateOnScroll>
-
-            <AnimateOnScroll preset="fade-right" once={false} duration={0.6} delay={0.6}>
-              {/* 3 Core Value / Trust Guarantees */}
-              <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-                <span className="inline-flex items-center gap-1.5">
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">✓</span>
-                  <span>Anti-Ghosting &amp; Transparan</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">✓</span>
-                  <span>Konsultasi Langsung Developer</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">✓</span>
-                  <span>Garansi Sistem &amp; Tanpa DP Mengambang</span>
-                </span>
-              </div>
-            </AnimateOnScroll>
+            {/* 3 Core Value / Trust Guarantees */}
+            <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <span className="inline-flex items-center gap-1.5">
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">✓</span>
+                <span>Anti-Ghosting &amp; Transparan</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">✓</span>
+                <span>Konsultasi Langsung Developer</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">✓</span>
+                <span>Garansi Sistem &amp; Tanpa DP Mengambang</span>
+              </span>
+            </div>
           </div>
 
           {/* ── RIGHT COLUMN: Foto Founder Alami + Cloud Speech Bubble (Hanya tampil di Desktop lg ke atas) ── */}
@@ -240,8 +235,8 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
                     src={founderImg}
                     alt="Eko Susanto — Developer & Systems Architect ecoDigital"
                     fill
-                    priority
-                    loading="eager"
+                    priority={false}
+                    loading="lazy"
                     unoptimized
                     sizes="(max-width: 768px) 80vw, (max-width: 1200px) 450px, 500px"
                     className="object-contain object-bottom drop-shadow-[0_12px_28px_rgba(15,23,42,0.10)] dark:drop-shadow-[0_20px_40px_rgba(0,0,0,0.75)] select-none pointer-events-none"
