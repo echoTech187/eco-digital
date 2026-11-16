@@ -22,7 +22,7 @@ import { ProjectScreenPreview } from "@/components/sections/project-screen-previ
 import { NavbarSection } from "@/components/sections/navbar-section";
 import { SiteFooter } from "@/components/layout/site-footer";
 
-const BASE_URL = "https://www.ecodigitalindo.com";
+const BASE_URL = "https://ecodigitalindo.com";
 
 // 1. Generate Static Params for Next.js Static Export
 export function generateStaticParams() {
@@ -42,15 +42,15 @@ export async function generateMetadata({
 
   if (!project) {
     return {
-      title: "Proyek Tidak Ditemukan | ecoDigital",
+      title: "Proyek Tidak Ditemukan | ecoDigital (ecodigitalindo.com)",
       description: "Halaman studi kasus sistem portofolio ecoDigital tidak ditemukan.",
     };
   }
 
-  const title = `${project.title} — Spesifikasi & Studi Kasus Sistem`;
+  const title = `${project.title} — Spesifikasi & Studi Kasus Sistem | ecoDigital`;
   const description =
     project.fullSpecs?.overview ||
-    `${project.desc} Dibangun dengan arsitektur modern oleh ecoDigital.`;
+    `${project.desc} Dibangun dengan arsitektur modern oleh ecoDigital (ecodigitalindo.com).`;
   const canonicalUrl = `${BASE_URL}/portofolio/${project.id}`;
 
   return {
@@ -59,6 +59,10 @@ export async function generateMetadata({
     keywords: [
       project.title,
       project.badge,
+      "ecodigitalindo",
+      "ecodigitalindo.com",
+      "eco digital",
+      "eco digital indonesia",
       "jasa pembuatan sistem",
       "jasa bikin web custom",
       "studi kasus sistem informasi",
@@ -74,7 +78,7 @@ export async function generateMetadata({
       title: `${project.title} — Spesifikasi & Studi Kasus Sistem | ecoDigital`,
       description,
       url: canonicalUrl,
-      siteName: "ecoDigital",
+      siteName: "Eco Digital Indonesia",
       locale: "id_ID",
       type: "article",
       images: [
@@ -151,7 +155,7 @@ export default async function ProjectDetailPage({
         "@type": "ListItem",
         position: 2,
         name: "Portofolio",
-        item: `${BASE_URL}/#portofolio`,
+        item: `${BASE_URL}/portofolio`,
       },
       {
         "@type": "ListItem",

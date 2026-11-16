@@ -16,14 +16,36 @@ export function JsonLd() {
       "ecoDigital Custom Web & Ecosystem",
     ],
     url: "https://ecodigitalindo.com",
-    logo: "https://ecodigitalindo.com/images/logo/logo-transparent.png",
-    image: "https://ecodigitalindo.com/images/logo/logo-transparent.png",
+    logo: "https://ecodigitalindo.com/icon-512x512.png",
+    image: "https://ecodigitalindo.com/icon-512x512.png",
     description:
       "ecoDigital (ecodigitalindo.com / Eco Digital Indonesia) — Jasa pembuatan Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis profesional langsung diskusi dengan lead developer tanpa perantara sales. Arsitektur bersih, transparan, dan serah terima tuntas bergaransi.",
     telephone: "+6287875856918",
     priceRange: "Rp 150.000 - Rp 3.500.000",
     currenciesAccepted: "IDR",
     paymentAccepted: "Bank Transfer, QRIS, E-Wallet",
+    areaServed: [
+      { "@type": "Country", name: "Indonesia" },
+      { "@type": "City", name: "Jakarta" },
+      { "@type": "City", name: "Tangerang" },
+      { "@type": "City", name: "Bandung" },
+      { "@type": "City", name: "Surabaya" },
+      { "@type": "City", name: "Yogyakarta" },
+      { "@type": "City", name: "Semarang" },
+      { "@type": "City", name: "Medan" },
+    ],
+    knowsAbout: [
+      "Web Development",
+      "Mobile App Development (Flutter, React Native)",
+      "RESTful API & Microservices",
+      "Laravel Framework",
+      "Next.js App Router",
+      "Clean Architecture & Modular Code",
+      "Database Design & Query Optimization",
+      "Payment Gateway Integration (Midtrans, Xendit)",
+      "Sistem Informasi Manajemen Instansi",
+      "Dashboard Analitik & Monitoring",
+    ],
     address: {
       "@type": "PostalAddress",
       addressCountry: "ID",
@@ -120,6 +142,19 @@ export function JsonLd() {
     },
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Beranda",
+        item: "https://ecodigitalindo.com",
+      },
+    ],
+  };
+
   return (
     <>
       <script
@@ -133,6 +168,10 @@ export function JsonLd() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </>
   );

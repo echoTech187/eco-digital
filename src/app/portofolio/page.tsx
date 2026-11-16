@@ -6,20 +6,26 @@ import { PortfolioArchiveList } from "@/components/sections/portfolio-archive-li
 import { NavbarSection } from "@/components/sections/navbar-section";
 import { SiteFooter } from "@/components/layout/site-footer";
 
-const BASE_URL = "https://www.ecodigitalindo.com";
+const BASE_URL = "https://ecodigitalindo.com";
 
 export const metadata: Metadata = {
-  title: "Portofolio Sistem Informasi & Web Aplikasi Custom | ecoDigital",
+  title: "Portofolio Sistem Informasi & Web Aplikasi Custom | ecoDigital (ecodigitalindo.com)",
   description:
-    "Koleksi hasil karya sistem informasi instansi kepolisian/dinas, web portal sekolah LMS, aplikasi mobile presensi GPS, dan dashboard analitik buatan ecoDigital.",
+    "Koleksi hasil karya Aplikasi Custom, Jasa API & Backend, sistem informasi instansi, web portal sekolah LMS, aplikasi mobile presensi GPS, dan dashboard analitik buatan ecoDigital (ecodigitalindo.com).",
   keywords: [
     "portofolio ecodigital",
+    "ecodigitalindo portofolio",
+    "eco digital indonesia",
+    "eco digital portofolio",
     "contoh sistem informasi web",
     "studi kasus aplikasi web",
     "portofolio software house",
     "aplikasi mobile flutter",
     "dashboard evaluasi kinerja",
     "web dinas instansi",
+    "jasa pembuatan website portofolio",
+    "contoh aplikasi custom",
+    "jasa web instansi",
   ],
   alternates: {
     canonical: `${BASE_URL}/portofolio`,
@@ -27,9 +33,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Portofolio Sistem Informasi & Web Aplikasi Custom | ecoDigital",
     description:
-      "Koleksi hasil karya Aplikasi Custom, arsitektur API & Backend, serta Web Instansi & Bisnis buatan ecoDigital.",
+      "Koleksi hasil karya Aplikasi Custom, arsitektur API & Backend, serta Web Instansi & Bisnis buatan ecoDigital (ecodigitalindo.com).",
     url: `${BASE_URL}/portofolio`,
-    siteName: "ecoDigital",
+    siteName: "Eco Digital Indonesia",
     locale: "id_ID",
     type: "website",
     images: [
@@ -37,7 +43,7 @@ export const metadata: Metadata = {
         url: "/images/logo/logo-transparent.png",
         width: 1200,
         height: 630,
-        alt: "Portofolio ecoDigital",
+        alt: "Portofolio ecoDigital (ecodigitalindo.com)",
       },
     ],
   },

@@ -16,12 +16,12 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp";
 import { getWaUrl, WA_DISPLAY } from "@/data/landing-data";
 
-const BASE_URL = "https://www.ecodigitalindo.com";
+const BASE_URL = "https://ecodigitalindo.com";
 
 export const metadata: Metadata = {
-  title: "Simulasi & Hitung Estimasi Biaya Pembuatan Website & Aplikasi | ecoDigital",
+  title: "Simulasi & Hitung Estimasi Biaya Pembuatan Website & Aplikasi | ecoDigital (ecodigitalindo.com)",
   description:
-    "Hitung estimasi biaya pembuatan Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis secara mandiri dan transparan di ecoDigital.",
+    "Hitung estimasi biaya pembuatan Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis secara mandiri dan transparan di ecoDigital (ecodigitalindo.com).",
   keywords: [
     "kalkulator biaya website",
     "simulasi biaya aplikasi",
@@ -31,6 +31,12 @@ export const metadata: Metadata = {
     "biaya sistem informasi web",
     "estimasi biaya koding",
     "ecodigital biaya",
+    "ecodigitalindo",
+    "ecodigitalindo.com",
+    "eco digital",
+    "eco digital indonesia",
+    "harga jasa developer website",
+    "biaya backend api",
   ],
   alternates: {
     canonical: `${BASE_URL}/simulasi-biaya`,
@@ -38,9 +44,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Simulasi & Hitung Estimasi Biaya Pembuatan Website & Aplikasi | ecoDigital",
     description:
-      "Hitung sendiri estimasi biaya proyek web & aplikasimu secara transparan tanpa biaya siluman.",
+      "Hitung sendiri estimasi biaya proyek web & aplikasimu secara transparan tanpa biaya siluman di ecoDigital (ecodigitalindo.com).",
     url: `${BASE_URL}/simulasi-biaya`,
-    siteName: "ecoDigital",
+    siteName: "Eco Digital Indonesia",
     locale: "id_ID",
     type: "website",
     images: [

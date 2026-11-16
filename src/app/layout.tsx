@@ -25,19 +25,19 @@ export const viewport: Viewport = {
 };
 
 const SITE_URL = "https://ecodigitalindo.com";
-const SITE_TITLE = "ecoDigital (ecodigitalindo.com) — Jasa Pembuatan Website & Aplikasi Custom | Direct Developer";
+const SITE_TITLE = "Eco Digital — Jasa Pembuatan Website & Aplikasi Custom | Direct Developer";
 const SITE_DESC =
-  "ecoDigital (ecodigitalindo.com / Eco Digital Indonesia) — Jasa pembuatan Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis profesional. Diskusi langsung bersama lead developer tanpa perantara sales. Arsitektur bersih, transparan, dan serah terima tuntas bergaransi.";
+  "Eco Digital (ecodigitalindo) — Jasa pembuatan Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis profesional. Diskusi langsung bersama lead developer tanpa perantara sales. Arsitektur bersih, transparan, dan serah terima tuntas bergaransi.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
-    template: "%s | ecoDigital (ecodigitalindo.com)",
+    template: "%s | Eco Digital (ecodigitalindo.com)",
   },
   description: SITE_DESC,
-  applicationName: "ecoDigital",
-  authors: [{ name: "ecoDigital", url: SITE_URL }],
+  applicationName: "Eco Digital",
+  authors: [{ name: "Eco Digital", url: SITE_URL }],
   generator: "Next.js",
   keywords: [
     "ecoDigital",
@@ -48,28 +48,41 @@ export const metadata: Metadata = {
     "ecodigital indonesia",
     "eco digitalindo",
     "ecodigital web",
+    "mas eko digital",
     "jasa pembuatan website",
     "jasa bikin web",
+    "jasa pembuatan aplikasi",
     "jasa aplikasi custom",
+    "jasa pembuatan aplikasi web",
+    "jasa pembuatan aplikasi mobile",
+    "jasa bikin aplikasi android",
     "jasa api dan backend",
     "jasa pembuatan rest api",
+    "jasa backend architecture",
+    "jasa database mysql postgresql",
     "jasa web instansi dan bisnis",
     "jasa aplikasi custom web dan mobile",
-    "jasa pembuatan aplikasi",
     "jasa sistem informasi instansi",
+    "jasa website pemerintah pemda",
+    "jasa sistem informasi sekolah",
+    "jasa web profil perusahaan company profile",
+    "jasa website umkm profesional",
     "jasa arsitektur software",
-    "jasa perbaikan error koding",
-    "jasa fix bug php laravel",
-    "jasa web sekolah",
-    "jasa website umkm",
     "jasa coding direct developer",
-    "jasa sistem informasi",
-    "jasa website instansi",
-    "jasa web profesional",
-    "software house custom web",
+    "jasa programmer fullstack",
+    "jasa pembuatan web jakarta",
+    "jasa pembuatan website surabaya",
+    "jasa pembuatan website tangerang",
+    "jasa pembuatan website bandung",
+    "jasa software house indonesia",
+    "jasa konsultasi it indonesia",
+    "jasa integrasi payment gateway midtrans xendit",
+    "jasa integrasi whatsapp api gateway",
+    "jasa perbaikan error koding bug fixing",
+    "jasa laravel nextjs flutter",
   ],
-  creator: "ecoDigital",
-  publisher: "ecoDigital",
+  creator: "Eco Digital Indonesia",
+  publisher: "Eco Digital Indonesia",
   formatDetection: {
     email: false,
     address: false,
@@ -113,9 +126,17 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
     shortcut: "/favicon.ico",
-    apple: "/images/logo/logo-transparent.png",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
@@ -133,6 +154,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon-48x48.png" sizes="48x48" type="image/png" />
+        <link rel="icon" href="/icon-96x96.png" sizes="96x96" type="image/png" />
+        <link rel="icon" href="/icon-192x192.png" sizes="192x192" type="image/png" />
+        <link rel="icon" href="/icon-512x512.png" sizes="512x512" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <JsonLd />
         <script
           dangerouslySetInnerHTML={{
