@@ -7,6 +7,9 @@ import {
   AttachmentIcon,
   Camera01Icon,
   SmileIcon,
+  CheckmarkBadge01Icon,
+  FlashIcon,
+  ShieldCheckIcon,
 } from "@hugeicons/core-free-icons";
 
 function WhatsAppDoubleCheck() {
@@ -62,17 +65,18 @@ export function DirectDeveloperChatShowcase() {
       <div className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[380px] h-[380px] rounded-full bg-emerald-500/12 dark:bg-emerald-500/18 blur-[100px]" />
       <div className="pointer-events-none absolute bottom-10 left-1/2 -translate-x-1/2 w-[320px] h-[320px] rounded-full bg-teal-500/10 dark:bg-teal-500/15 blur-[90px]" />
 
-      {/* ─── TALL REALISTIC SMARTPHONE MOCKUP ─── */}
-      <div className="relative w-[295px] sm:w-[315px] lg:w-[325px] h-[480px] sm:h-[490px] lg:h-[495px] rounded-[44px] sm:rounded-[48px] p-[8px] sm:p-[9px] bg-gradient-to-b from-slate-800 via-slate-900 to-slate-950 dark:from-slate-700 dark:via-slate-800 dark:to-slate-900 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] dark:shadow-[0_30px_75px_-20px_rgba(0,0,0,0.85)] border border-slate-700/60 dark:border-slate-600/50">
+      {/* ─── TALL REALISTIC SMARTPHONE MOCKUP: iPHONE 17 PRO MAX FORM FACTOR ─── */}
+      <div className="relative w-[285px] sm:w-[295px] lg:w-[305px] h-[575px] sm:h-[595px] lg:h-[610px] rounded-[48px] sm:rounded-[52px] p-[6.5px] sm:p-[7.5px] bg-gradient-to-b from-slate-700 via-slate-800 to-slate-950 dark:from-slate-600 dark:via-slate-800 dark:to-slate-900 shadow-[0_25px_60px_rgba(0,0,0,0.35)] dark:shadow-[0_30px_75px_rgba(0,0,0,0.85)] border border-slate-600/70 dark:border-slate-500/50 z-20 transform-gpu isolate">
         
-        {/* Phone Side Hardware Buttons */}
-        <div className="absolute -left-[9px] top-[90px] w-[2px] h-[28px] bg-slate-700 rounded-l-xs" />
-        <div className="absolute -left-[9px] top-[132px] w-[2px] h-[46px] bg-slate-700 rounded-l-xs" />
-        <div className="absolute -left-[9px] top-[188px] w-[2px] h-[46px] bg-slate-700 rounded-l-xs" />
-        <div className="absolute -right-[9px] top-[120px] w-[2px] h-[60px] bg-slate-700 rounded-r-xs" />
+        {/* Phone Side Hardware Buttons (iPhone 17 Pro Max Titanium Action & Control Buttons) */}
+        <div className="absolute -left-[8px] top-[72px] w-[2.5px] h-[20px] bg-slate-500/80 rounded-l-xs" />
+        <div className="absolute -left-[8px] top-[106px] w-[2.5px] h-[40px] bg-slate-500/80 rounded-l-xs" />
+        <div className="absolute -left-[8px] top-[156px] w-[2.5px] h-[40px] bg-slate-500/80 rounded-l-xs" />
+        <div className="absolute -right-[8px] top-[106px] w-[2.5px] h-[54px] bg-slate-500/80 rounded-r-xs" />
+        <div className="absolute -right-[7px] bottom-[110px] w-[2px] h-[34px] bg-slate-500/60 rounded-r-xs" />
 
         {/* ─── PHONE SCREEN CONTAINER ─── */}
-        <div className="relative w-full h-full rounded-[36px] sm:rounded-[40px] overflow-hidden flex flex-col justify-between bg-[#EFEAE2] dark:bg-[#0B141A] text-slate-900 dark:text-slate-100 transition-colors duration-300">
+        <div className="relative w-full h-full rounded-[42px] sm:rounded-[46px] overflow-hidden flex flex-col justify-between bg-[#EFEAE2] dark:bg-[#0B141A] text-slate-900 dark:text-slate-100 transition-colors duration-300">
           
           {/* Subtle WhatsApp Wallpaper Texture Overlay */}
           <div
@@ -88,15 +92,18 @@ export function DirectDeveloperChatShowcase() {
              ════════════════════════════════════════════════════════════════ */}
           <div className="relative z-20 shrink-0">
             {/* iOS Status Bar */}
-            <div className="bg-[#075E54] dark:bg-[#1F2C34] text-white/90 px-5 pt-2 pb-1 flex items-center justify-between text-[11px] font-semibold tracking-tight">
-              <span>10:15</span>
+            <div className="bg-[#075E54] dark:bg-[#1F2C34] text-white/90 px-4 pt-2.5 pb-1 flex items-center justify-between text-[10.5px] font-semibold tracking-tight">
+              <span className="font-mono">10:15</span>
               {/* Dynamic Island Pill */}
-              <div className="w-18 h-3.5 bg-black rounded-full flex items-center justify-end px-1.5 gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <div className="w-[94px] h-[22px] bg-black rounded-full flex items-center justify-center gap-1.5 px-2 shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-[8.5px] font-mono text-emerald-300 font-bold tracking-wider">DEV•DIRECT</span>
               </div>
-              <div className="flex items-center gap-1.5 text-[10px]">
+              <div className="flex items-center gap-1.5 text-[9.5px]">
                 <span>5G</span>
-                <span>92%</span>
+                <span className="w-3.5 h-2 border border-current rounded-xs p-0.5 flex items-center">
+                  <span className="w-full h-full bg-emerald-400 rounded-2xs" />
+                </span>
               </div>
             </div>
 
@@ -146,7 +153,7 @@ export function DirectDeveloperChatShowcase() {
           {/* ════════════════════════════════════════════════════════════════
               2. CHAT CANVAS & CONVERSATION STREAM (Top-to-Bottom Natural Flow)
              ════════════════════════════════════════════════════════════════ */}
-          <div className="relative z-10 flex-1 px-3 py-2.5 overflow-hidden space-y-2.5 font-sans flex flex-col justify-start">
+          <div className="relative z-10 flex-1 px-3 py-3 overflow-hidden space-y-2.5 font-sans flex flex-col justify-start">
             
             {/* Date Pill at Top */}
             <div className="flex justify-center my-0.5">
@@ -260,6 +267,22 @@ export function DirectDeveloperChatShowcase() {
           </div>
 
         </div>
+      </div>
+
+      {/* ─── FLOATING VALUE BADGES (Below Device, Consistent with other tabs) ─── */}
+      <div className="mt-4 relative z-30 flex flex-wrap items-center justify-center gap-2 text-[10px] sm:text-[11px] font-bold text-slate-700 dark:text-slate-200">
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-white/10 shadow-xs">
+          <HugeiconsIcon icon={CheckmarkBadge01Icon} size={13} className="text-emerald-500" />
+          Langsung Lead Developer
+        </span>
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-white/10 shadow-xs">
+          <HugeiconsIcon icon={FlashIcon} size={13} className="text-cyan-500" />
+          Respon Cepat &amp; Solutif
+        </span>
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-white/10 shadow-xs">
+          <HugeiconsIcon icon={ShieldCheckIcon} size={13} className="text-amber-500" />
+          Tanpa Perantara Sales
+        </span>
       </div>
 
     </div>

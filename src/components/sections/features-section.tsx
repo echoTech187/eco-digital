@@ -194,18 +194,18 @@ export function FeaturesSection() {
               RIGHT COLUMN: Subtitle Description + REAL RESPONSIVE COVER ANIMATION (5 cols)
               (Hidden pada layar mobile, hanya aktif di desktop lg+)
              ══════════════════════════════════════════════════════════════════ */}
-          <div className="hidden lg:block lg:col-span-6 lg:sticky lg:top-28 space-y-4">
+          <div className="hidden lg:block lg:col-span-6 lg:sticky lg:top-20 space-y-6">
             {/* Top Editorial Subtext (AERVA Style) */}
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300/80 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300/80 leading-relaxed max-w-lg">
               Empat standar kualitas rekayasa software untuk menjamin proyek <strong>Aplikasi Custom</strong>, <strong>Jasa API &amp; Backend</strong>, dan <strong>Web Instansi &amp; Bisnis</strong> Anda selesai tepat waktu, terstruktur rapi, dan transparan.
             </p>
 
             {/* ─── REAL MULTI-DEVICE RESPONSIVE VISUAL & INTERACTIVE TABS (Ultra-Crisp Vector Retina Devices & Direct Chat) ─── */}
-            <div className="relative w-full h-[510px] flex items-center justify-center select-none">
+            <div className="relative w-full min-h-[640px] lg:h-[660px] flex items-center justify-center select-none pt-2">
               
               {/* Subtle ambient backglow to ground the hardware */}
-              <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[340px] w-[340px] sm:h-[420px] sm:w-[420px] rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 blur-[100px]" />
-              <div className="pointer-events-none absolute top-1/2 right-10 -translate-y-1/2 h-[260px] w-[260px] rounded-full bg-cyan-500/10 dark:bg-cyan-500/15 blur-[90px]" />
+              <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[380px] w-[380px] sm:h-[440px] sm:w-[440px] rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 blur-[100px]" />
+              <div className="pointer-events-none absolute top-1/2 right-10 -translate-y-1/2 h-[280px] w-[280px] rounded-full bg-cyan-500/10 dark:bg-cyan-500/15 blur-[90px]" />
 
               <AnimatePresence mode="wait">
                 {activeItem === 0 ? (

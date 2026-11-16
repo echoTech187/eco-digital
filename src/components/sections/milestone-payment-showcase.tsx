@@ -66,13 +66,13 @@ export function MilestonePaymentShowcase() {
       />
 
       {/* ─── FLOATING STAGE CONTAINER: Phone + Floating Shield + Floating Card ─── */}
-      <div className="relative w-full flex items-center justify-center min-h-[480px] lg:min-h-[495px] isolate">
+      <div className="relative w-full flex items-center justify-center min-h-[580px] lg:min-h-[610px] isolate">
 
         {/* ══════════════════════════════════════════════════════════════════
-            1. FLOATING 3D SECURITY SHIELD (Top-Left, Inspired by Video)
+            1. FLOATING 3D SECURITY SHIELD (Top-Left, Perfectly Balanced, No Text Overlap)
            ══════════════════════════════════════════════════════════════════ */}
         <div
-          className="absolute -top-3 left-2 sm:left-4 z-30 pointer-events-none flex flex-col items-center transform-gpu animate-float"
+          className="absolute top-5 -left-3 sm:-left-5 z-30 pointer-events-none flex flex-col items-center transform-gpu animate-float"
           style={{ willChange: "transform" }}
         >
           {/* Glowing Shield Shape */}
@@ -112,28 +112,29 @@ export function MilestonePaymentShowcase() {
 
 
         {/* ══════════════════════════════════════════════════════════════════
-            2. CENTRAL SMARTPHONE MOCKUP (Escrow Payment & Milestone UI)
+            2. CENTRAL SMARTPHONE MOCKUP: iPHONE 17 PRO MAX FORM FACTOR
            ══════════════════════════════════════════════════════════════════ */}
         <div
-          className="relative w-[280px] sm:w-[295px] h-[495px] sm:h-[520px] rounded-[42px] sm:rounded-[46px] p-[7px] sm:p-[8px] bg-gradient-to-b from-slate-800 via-slate-900 to-slate-950 dark:from-slate-700 dark:via-slate-800 dark:to-slate-900 shadow-[0_20px_50px_rgba(0,0,0,0.35)] dark:shadow-[0_25px_65px_rgba(0,0,0,0.85)] border border-slate-700/60 dark:border-slate-600/50 z-20 transform-gpu isolate"
+          className="relative w-[285px] sm:w-[295px] lg:w-[305px] h-[575px] sm:h-[595px] lg:h-[610px] rounded-[48px] sm:rounded-[52px] p-[6.5px] sm:p-[7.5px] bg-gradient-to-b from-slate-700 via-slate-800 to-slate-950 dark:from-slate-600 dark:via-slate-800 dark:to-slate-900 shadow-[0_25px_60px_rgba(0,0,0,0.35)] dark:shadow-[0_30px_75px_rgba(0,0,0,0.85)] border border-slate-600/70 dark:border-slate-500/50 z-20 transform-gpu isolate"
           style={{ willChange: "transform" }}
         >
           
-          {/* Phone Side Hardware Buttons */}
-          <div className="absolute -left-[8px] top-[75px] w-[2px] h-[24px] bg-slate-700 rounded-l-xs" />
-          <div className="absolute -left-[8px] top-[112px] w-[2px] h-[38px] bg-slate-700 rounded-l-xs" />
-          <div className="absolute -left-[8px] top-[160px] w-[2px] h-[38px] bg-slate-700 rounded-l-xs" />
-          <div className="absolute -right-[8px] top-[105px] w-[2px] h-[48px] bg-slate-700 rounded-r-xs" />
+          {/* Phone Side Hardware Buttons (iPhone 17 Pro Max Titanium Action & Control Buttons) */}
+          <div className="absolute -left-[8px] top-[72px] w-[2.5px] h-[20px] bg-slate-500/80 rounded-l-xs" />
+          <div className="absolute -left-[8px] top-[106px] w-[2.5px] h-[40px] bg-slate-500/80 rounded-l-xs" />
+          <div className="absolute -left-[8px] top-[156px] w-[2.5px] h-[40px] bg-slate-500/80 rounded-l-xs" />
+          <div className="absolute -right-[8px] top-[106px] w-[2.5px] h-[54px] bg-slate-500/80 rounded-r-xs" />
+          <div className="absolute -right-[7px] bottom-[110px] w-[2px] h-[34px] bg-slate-500/60 rounded-r-xs" />
 
           {/* Phone Screen Container */}
-          <div className="relative w-full h-full rounded-[35px] sm:rounded-[39px] overflow-hidden flex flex-col justify-between bg-slate-100 dark:bg-[#070C16] text-slate-900 dark:text-slate-100 transition-colors duration-200">
+          <div className="relative w-full h-full rounded-[42px] sm:rounded-[46px] overflow-hidden flex flex-col justify-between bg-slate-100 dark:bg-[#070C16] text-slate-900 dark:text-slate-100 transition-colors duration-200">
             
             {/* Top Status Bar with Dynamic Island */}
             <div className="relative w-full pt-2.5 pb-1.5 px-4 flex items-center justify-between text-[10.5px] font-semibold text-slate-700 dark:text-slate-300 z-10 shrink-0">
               <span className="font-mono tracking-tight text-[10.5px]">10:30</span>
               
               {/* Dynamic Island Pill with Escrow Lock */}
-              <div className="w-[92px] h-[20px] bg-black rounded-full flex items-center justify-center gap-1.5 px-2 shadow-xs">
+              <div className="w-[94px] h-[22px] bg-black rounded-full flex items-center justify-center gap-1.5 px-2 shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-[8.5px] font-mono text-emerald-300 font-bold tracking-wider">30•40•30</span>
                 <HugeiconsIcon icon={LockIcon} size={8.5} className="text-emerald-400" />
@@ -148,11 +149,11 @@ export function MilestonePaymentShowcase() {
             </div>
 
             {/* Main Phone Content: Escrow Milestone Tracker */}
-            <div className="flex-1 px-3.5 py-1 flex flex-col justify-between overflow-hidden">
+            <div className="flex-1 px-3.5 py-1.5 flex flex-col justify-between overflow-hidden">
               
               {/* Header Box: Escrow Balance / Status */}
-              <div className="rounded-xl p-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xs">
-                <div className="flex items-center gap-2 mb-0.5">
+              <div className="rounded-2xl p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-xs">
+                <div className="flex items-center gap-2 mb-1">
                   <div className="w-5 h-5 rounded-md bg-emerald-500/10 text-emerald-500 flex items-center justify-center shrink-0">
                     <HugeiconsIcon icon={ShieldCheckIcon} size={13} />
                   </div>
@@ -182,14 +183,14 @@ export function MilestonePaymentShowcase() {
               </div>
 
               {/* 3 Interactive Milestone Cards (Zero scale glitch, pure paint-safe transitions) */}
-              <div className="space-y-1 my-1">
+              <div className="space-y-1.5 my-1">
                 {milestones.map((m, idx) => {
                   const isCurrent = activeStep === idx;
                   return (
                     <div
                       key={m.step}
                       onClick={() => setActiveStep(idx)}
-                      className={`p-2 rounded-xl border cursor-pointer flex items-center justify-between gap-2 transition-colors duration-200 ${
+                      className={`p-2.5 rounded-2xl border cursor-pointer flex items-center justify-between gap-2 transition-colors duration-200 ${
                         isCurrent
                           ? "bg-white dark:bg-slate-900 border-emerald-500/60 shadow-xs ring-1 ring-emerald-500/20"
                           : "bg-white/80 dark:bg-slate-900/60 border-slate-200 dark:border-white/5 opacity-80 hover:opacity-100"
@@ -231,7 +232,7 @@ export function MilestonePaymentShowcase() {
               </div>
 
               {/* Biometric Fingerprint Verification Area */}
-              <div className="rounded-xl p-2 bg-slate-200/70 dark:bg-slate-900 border border-slate-300/80 dark:border-white/10 flex items-center justify-between gap-2.5 relative overflow-hidden">
+              <div className="rounded-2xl p-2.5 bg-slate-200/70 dark:bg-slate-900 border border-slate-300/80 dark:border-white/10 flex items-center justify-between gap-2.5 relative overflow-hidden">
                 
                 {/* Fingerprint Scanner with Hardware-Accelerated Neon Scan */}
                 <div className="relative w-9 h-9 rounded-lg bg-slate-900 dark:bg-black flex items-center justify-center shrink-0 overflow-hidden border border-emerald-500/30">
