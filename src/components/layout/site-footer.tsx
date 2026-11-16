@@ -61,7 +61,7 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="text-xs leading-relaxed text-slate-600 dark:text-white/60 max-w-sm">
-              Software engineering partner untuk instansi, perusahaan, dan tim teknis: <strong>Aplikasi Custom</strong>, <strong>Jasa API &amp; Backend</strong>, dan <strong>Web Instansi &amp; Bisnis</strong>. Ngoding transparan, arsitektur bersih, dan serah terima tuntas bergaransi.
+              <strong>ecoDigital (ecodigitalindo.com)</strong> — Software engineering partner &amp; developer web Indonesia untuk instansi, perusahaan, dan tim teknis: <strong>Aplikasi Custom</strong>, <strong>Jasa API &amp; Backend</strong>, dan <strong>Web Instansi &amp; Bisnis</strong>. Ngoding transparan, arsitektur bersih, dan serah terima tuntas bergaransi.
             </p>
             <div className="flex items-center gap-2 pt-1">
               <a
@@ -178,7 +178,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-white/40 gap-3">
-          <p>&copy; {new Date().getFullYear()} ecoDigital. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} ecoDigital (ecodigitalindo.com) — Eco Digital Indonesia. All rights reserved.</p>
           <div className="flex items-center gap-4 text-slate-500 dark:text-white/50">
             <Link href="/" prefetch={false} className="hover:text-slate-900 dark:hover:text-white transition-colors">
               Beranda

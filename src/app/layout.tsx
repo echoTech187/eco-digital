@@ -25,21 +25,29 @@ export const viewport: Viewport = {
 };
 
 const SITE_URL = "https://ecodigitalindo.com";
-const SITE_TITLE = "ecoDigital — Jasa Pembuatan Website & Aplikasi Custom | Direct Developer";
+const SITE_TITLE = "ecoDigital (ecodigitalindo.com) — Jasa Pembuatan Website & Aplikasi Custom | Direct Developer";
 const SITE_DESC =
-  "Jasa pembuatan Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis profesional. Diskusi langsung bersama lead developer tanpa perantara sales. Arsitektur bersih, transparan, dan serah terima tuntas bergaransi.";
+  "ecoDigital (ecodigitalindo.com / Eco Digital Indonesia) — Jasa pembuatan Aplikasi Custom, Jasa API & Backend, dan Web Instansi & Bisnis profesional. Diskusi langsung bersama lead developer tanpa perantara sales. Arsitektur bersih, transparan, dan serah terima tuntas bergaransi.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
-    template: "%s | ecoDigital",
+    template: "%s | ecoDigital (ecodigitalindo.com)",
   },
   description: SITE_DESC,
   applicationName: "ecoDigital",
   authors: [{ name: "ecoDigital", url: SITE_URL }],
   generator: "Next.js",
   keywords: [
+    "ecoDigital",
+    "eco digital",
+    "ecodigitalindo",
+    "ecodigitalindo.com",
+    "eco digital indonesia",
+    "ecodigital indonesia",
+    "eco digitalindo",
+    "ecodigital web",
     "jasa pembuatan website",
     "jasa bikin web",
     "jasa aplikasi custom",
@@ -55,7 +63,6 @@ export const metadata: Metadata = {
     "jasa web sekolah",
     "jasa website umkm",
     "jasa coding direct developer",
-    "ecoDigital",
     "jasa sistem informasi",
     "jasa website instansi",
     "jasa web profesional",
@@ -75,7 +82,7 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESC,
     url: SITE_URL,
-    siteName: "ecoDigital",
+    siteName: "Eco Digital Indonesia",
     locale: "id_ID",
     type: "website",
     images: [
@@ -83,7 +90,7 @@ export const metadata: Metadata = {
         url: "/images/logo/logo-transparent.png",
         width: 1200,
         height: 630,
-        alt: "ecoDigital — Jasa Pembuatan Website & Aplikasi Custom",
+        alt: "Eco Digital — Jasa Pembuatan Website & Aplikasi Custom",
       },
     ],
   },
