@@ -231,7 +231,7 @@ export function ConsultationFormSection() {
                           id="landing-contact-info"
                           name="contact"
                           type="text"
-                          autoComplete="tel email"
+                          autoComplete="tel"
                           required
                           maxLength={80}
                           placeholder="0812xxxxxx atau email@anda.com"

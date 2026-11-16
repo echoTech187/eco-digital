@@ -288,9 +288,9 @@ export function TestimonialsSection() {
 
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-1.5">
-                        <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white truncate">
+                        <h3 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white truncate">
                           {item.name}
-                        </h4>
+                        </h3>
                         <span
                           className="text-[9px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.2 rounded border border-emerald-500/20 shrink-0"
                           title="Klien Terverifikasi"

@@ -253,11 +253,12 @@ export function FeaturesSection() {
                               }
                             }}
                             src="/videos/showcase/desktop.mp4"
+                            poster="/images/showcase/preview-desktop.png"
                             autoPlay
                             loop
                             muted
                             playsInline
-                            preload="auto"
+                            preload="none"
                             className="w-full h-full object-fill pointer-events-none select-none"
                           />
                         </div>
@@ -295,11 +296,12 @@ export function FeaturesSection() {
                               }
                             }}
                             src="/videos/showcase/tablet.mp4"
+                            poster="/images/showcase/preview-tablet.png"
                             autoPlay
                             loop
                             muted
                             playsInline
-                            preload="auto"
+                            preload="none"
                             className="w-full h-full object-cover object-top pointer-events-none select-none"
                           />
                         </div>
@@ -337,11 +339,12 @@ export function FeaturesSection() {
                               }
                             }}
                             src="/videos/showcase/mobile.mp4"
+                            poster="/images/showcase/preview-mobile.png"
                             autoPlay
                             loop
                             muted
                             playsInline
-                            preload="auto"
+                            preload="none"
                             className="w-full h-full object-cover object-top pointer-events-none select-none"
                           />
                         </div>

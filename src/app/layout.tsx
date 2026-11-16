@@ -42,6 +42,8 @@ export const metadata: Metadata = {
   keywords: [
     "ecoDigital",
     "eco digital",
+    "eco digitalindo",
+    "eco",
     "ecodigitalindo",
     "ecodigitalindo.com",
     "eco digital indonesia",

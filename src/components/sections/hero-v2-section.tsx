@@ -106,7 +106,7 @@ export function HeroV2Section({ videoSrc }: { videoSrc?: string | null } = {}) {
               {/* Persuasive Description Subheadline */}
               <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm md:text-base lg:text-[17px] leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Nggak perlu pusing hadapi arsitektur sistem sendirian atau bayar mahal ke agensi kaku. Di{" "}
-                <strong className="text-emerald-600 dark:text-emerald-400 font-semibold">ecoDigital</strong>, Anda diskusi langsung sama{" "}
+                <strong className="text-emerald-700 dark:text-emerald-400 font-semibold">ecoDigital</strong>, Anda diskusi langsung sama{" "}
                 <span className="text-slate-900 dark:text-white font-medium">lead developer-nya</span> — mulai dari rancang bangun <strong>Aplikasi Custom</strong>, fondasi <strong>Jasa API &amp; Backend</strong>, hingga <strong>Web Instansi &amp; Bisnis</strong> siap online.
               </p>
             </AnimateOnScroll>
