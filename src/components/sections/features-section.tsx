@@ -92,13 +92,10 @@ export function FeaturesSection() {
         style={{ scale, y, opacity }}
         className="mx-auto max-w-7xl relative z-10 will-change-transform origin-top"
       >
-        {/* ─── AERVA-STYLE SPLIT LAYOUT (Two Columns) ─── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          
-          {/* ══════════════════════════════════════════════════════════════════
-              LEFT COLUMN: Main Headline + 4 Clean Row Items (7 cols)
-             ══════════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-6 flex flex-col justify-between">
+        {/* ─── SECTION HEADER: Two-Column Header (Headline Left, Editorial Subtext Right) ─── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-14 items-end mb-10 lg:mb-12">
+          {/* Header Left: Kicker Tag + Main Headline */}
+          <div className="lg:col-span-7">
             {/* Kicker Tag */}
             <div className="mb-4">
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400 backdrop-blur-md shadow-xs">
@@ -113,95 +110,98 @@ export function FeaturesSection() {
               as="h2"
               highlightWords={["Jauh", "Lebih", "Tenang?"]}
               highlightClassName="bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent"
-              className="text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-900 dark:text-white tracking-tight leading-[1.18] mb-4 lg:mb-12"
+              className="text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-900 dark:text-white tracking-tight leading-[1.18]"
             />
-
-            {/* Subheading Mobile (Dipindahkan tepat di bawah heading pada mobile) */}
-            <p className="block lg:hidden text-xs sm:text-sm text-slate-600 dark:text-slate-300/80 leading-relaxed mb-8">
-              Empat standar kualitas rekayasa software untuk menjamin proyek <strong>Aplikasi Custom</strong>, <strong>Jasa API &amp; Backend</strong>, dan <strong>Web Instansi &amp; Bisnis</strong> Anda selesai tepat waktu, terstruktur rapi, dan transparan.
-            </p>
-
-            {/* 4 Clean Editorial Feature Rows with Dividers */}
-            <div className="border-t border-slate-200/90 dark:border-white/10 divide-y divide-slate-200/80 dark:divide-white/10">
-              {features.map((item) => {
-                const isSelected = activeItem === item.id;
-
-                return (
-                  <div
-                    key={item.id}
-                    onMouseEnter={() => setActiveItem(item.id)}
-                    onClick={() => setActiveItem(item.id)}
-                    className={`group relative py-6 sm:py-7 flex items-center justify-between gap-4 sm:gap-6 cursor-pointer transition-all duration-300 rounded-2xl px-3 sm:px-4 -mx-3 sm:-mx-4 ${
-                      isSelected
-                        ? "bg-slate-50/80 dark:bg-white/[0.03]"
-                        : "hover:bg-slate-50/50 dark:hover:bg-white/[0.02]"
-                    }`}
-                  >
-                    {/* Left: Icon Squircle + Content */}
-                    <div className="flex items-start gap-4 sm:gap-5 flex-1 min-w-0">
-                      {/* Icon Squircle (AERVA Style) */}
-                      <div
-                        className={`h-12 w-12 sm:h-14 sm:w-14 rounded-2xl border flex items-center justify-center shrink-0 transition-all duration-300 shadow-xs ${
-                          isSelected
-                            ? "bg-emerald-500 text-slate-950 border-emerald-500 scale-105 shadow-md shadow-emerald-500/20"
-                            : "bg-white dark:bg-slate-900 border-slate-200/90 dark:border-white/10 text-slate-700 dark:text-slate-300 group-hover:border-slate-400 dark:group-hover:border-white/30"
-                        }`}
-                      >
-                        <HugeiconsIcon icon={item.icon} size={22} />
-                      </div>
-
-                      {/* Text Details */}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="font-mono text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">
-                            {item.step}
-                          </span>
-                          <span className="text-slate-300 dark:text-slate-700">•</span>
-                          <span className="font-mono text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
-                            {item.tag}
-                          </span>
-                        </div>
-
-                        <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
-                          {item.title}
-                        </h3>
-
-                        <p className="mt-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Right: Chevron-Right Indicator (Hanya tampil di desktop) */}
-                    <div className="shrink-0 hidden lg:flex items-center justify-center pl-2">
-                      <div
-                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                          isSelected
-                            ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 shadow-xs translate-x-1"
-                            : "bg-slate-100/70 dark:bg-white/5 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300 group-hover:bg-slate-200/70 dark:group-hover:bg-white/10 group-hover:translate-x-0.5"
-                        }`}
-                      >
-                        <HugeiconsIcon icon={ChevronRightIcon} size={18} />
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
           </div>
 
-          {/* ══════════════════════════════════════════════════════════════════
-              RIGHT COLUMN: Subtitle Description + REAL RESPONSIVE COVER ANIMATION (5 cols)
-              (Hidden pada layar mobile, hanya aktif di desktop lg+)
-             ══════════════════════════════════════════════════════════════════ */}
-          <div className="hidden lg:block lg:col-span-6 lg:sticky lg:top-20 space-y-6">
-            {/* Top Editorial Subtext (AERVA Style) */}
+          {/* Header Right: Editorial Subtext (Disejajarkan di samping headline) */}
+          <div className="lg:col-span-5 pb-1">
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300/80 leading-relaxed max-w-lg">
               Empat standar kualitas rekayasa software untuk menjamin proyek <strong>Aplikasi Custom</strong>, <strong>Jasa API &amp; Backend</strong>, dan <strong>Web Instansi &amp; Bisnis</strong> Anda selesai tepat waktu, terstruktur rapi, dan transparan.
             </p>
+          </div>
+        </div>
 
+        {/* ─── MAIN CONTENT: TABS (LEFT) & DEVICE SHOWCASE (RIGHT) PARALLEL ALIGNMENT ─── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          
+          {/* ══════════════════════════════════════════════════════════════════
+              LEFT COLUMN: 4 Clean Editorial Feature Rows (6 cols)
+             ══════════════════════════════════════════════════════════════════ */}
+          <div className="lg:col-span-6 border-t border-slate-200/90 dark:border-white/10 divide-y divide-slate-200/80 dark:divide-white/10">
+            {features.map((item) => {
+              const isSelected = activeItem === item.id;
+
+              return (
+                <div
+                  key={item.id}
+                  onMouseEnter={() => setActiveItem(item.id)}
+                  onClick={() => setActiveItem(item.id)}
+                  className={`group relative py-6 sm:py-7 flex items-center justify-between gap-4 sm:gap-6 cursor-pointer transition-all duration-300 rounded-2xl px-3 sm:px-4 -mx-3 sm:-mx-4 ${
+                    isSelected
+                      ? "bg-slate-50/80 dark:bg-white/[0.03]"
+                      : "hover:bg-slate-50/50 dark:hover:bg-white/[0.02]"
+                  }`}
+                >
+                  {/* Left: Icon Squircle + Content */}
+                  <div className="flex items-start gap-4 sm:gap-5 flex-1 min-w-0">
+                    {/* Icon Squircle (AERVA Style) */}
+                    <div
+                      className={`h-12 w-12 sm:h-14 sm:w-14 rounded-2xl border flex items-center justify-center shrink-0 transition-all duration-300 shadow-xs ${
+                        isSelected
+                          ? "bg-emerald-500 text-slate-950 border-emerald-500 scale-105 shadow-md shadow-emerald-500/20"
+                          : "bg-white dark:bg-slate-900 border-slate-200/90 dark:border-white/10 text-slate-700 dark:text-slate-300 group-hover:border-slate-400 dark:group-hover:border-white/30"
+                      }`}
+                    >
+                      <HugeiconsIcon icon={item.icon} size={22} />
+                    </div>
+
+                    {/* Text Details */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-mono text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">
+                          {item.step}
+                        </span>
+                        <span className="text-slate-300 dark:text-slate-700">•</span>
+                        <span className="font-mono text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                          {item.tag}
+                        </span>
+                      </div>
+
+                      <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
+                        {item.title}
+                      </h3>
+
+                      <p className="mt-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Right: Chevron-Right Indicator (Hanya tampil di desktop) */}
+                  <div className="shrink-0 hidden lg:flex items-center justify-center pl-2">
+                    <div
+                      className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                        isSelected
+                          ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 shadow-xs translate-x-1"
+                          : "bg-slate-100/70 dark:bg-white/5 text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300 group-hover:bg-slate-200/70 dark:group-hover:bg-white/10 group-hover:translate-x-0.5"
+                      }`}
+                    >
+                      <HugeiconsIcon icon={ChevronRightIcon} size={18} />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* ══════════════════════════════════════════════════════════════════
+              RIGHT COLUMN: REAL RESPONSIVE COVER ANIMATION (6 cols)
+              (Hidden pada layar mobile, sejajar sempurna dengan tabs di desktop lg+)
+             ══════════════════════════════════════════════════════════════════ */}
+          <div className="hidden lg:block lg:col-span-6 lg:sticky lg:top-24">
             {/* ─── REAL MULTI-DEVICE RESPONSIVE VISUAL & INTERACTIVE TABS (Ultra-Crisp Vector Retina Devices & Direct Chat) ─── */}
-            <div className="relative w-full min-h-[640px] lg:h-[660px] flex items-center justify-center select-none pt-2">
+            <div className="relative w-full min-h-[580px] lg:min-h-[620px] flex flex-col items-center justify-start select-none pt-1">
               
               {/* Subtle ambient backglow to ground the hardware */}
               <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[380px] w-[380px] sm:h-[440px] sm:w-[440px] rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 blur-[100px]" />
@@ -215,7 +215,7 @@ export function FeaturesSection() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -12, scale: 0.98 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="w-full flex items-center justify-center"
+                    className="w-full flex flex-col items-center justify-start pt-4 sm:pt-6"
                   >
                     {/* Multi-Device Cluster Stage: MacBook + iPad + iPhone with Real Live Screen Recordings */}
                     <div
@@ -370,7 +370,7 @@ export function FeaturesSection() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -12, scale: 0.98 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="w-full flex items-center justify-center"
+                    className="w-full flex flex-col items-center justify-start pt-0"
                   >
                     <DirectDeveloperChatShowcase />
                   </motion.div>
@@ -381,7 +381,7 @@ export function FeaturesSection() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -12, scale: 0.98 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="w-full flex items-center justify-center"
+                    className="w-full flex flex-col items-center justify-start pt-4 sm:pt-6"
                   >
                     <DashboardAnalyticsShowcase />
                   </motion.div>
@@ -392,7 +392,7 @@ export function FeaturesSection() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="w-full flex items-center justify-center transform-gpu"
+                    className="w-full flex flex-col items-center justify-start pt-0 transform-gpu"
                   >
                     <MilestonePaymentShowcase />
                   </motion.div>
